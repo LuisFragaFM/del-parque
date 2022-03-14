@@ -1,6 +1,5 @@
 package com.example.delparque.model;
 
-import com.example.delparque.dto.Condominio;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,8 +18,10 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Pago {
     @Id
-    @Column(name = "id_pagos")
     private String id;
+
     private Boolean pagado;
+
+    @Column(name = "id_condominio")
     private String idCondominio;
 }
