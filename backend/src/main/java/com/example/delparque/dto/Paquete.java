@@ -14,5 +14,6 @@ public class Paquete {
     private String emisor;
     private String receptor;
     private String caseta;
+    private boolean entregado;
     private Condominio condominio;
 }

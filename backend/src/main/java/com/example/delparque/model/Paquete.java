@@ -20,8 +20,15 @@ public class Paquete {
     @Id
     @Column(name = "id_paquete")
     private String id;
+
     private String emisor;
+
     private String receptor;
+
     private String caseta;
+
+    private Boolean entregado;
+
+    @Column(name = "id_condominio")
     private String idCondominio;
 }

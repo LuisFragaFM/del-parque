@@ -18,9 +18,12 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Usuario {
     @Id
-    @Column(name = "id_usuario")
     private String id;
+
     private String roles;
+
+    @Column(name = "id_contacto")
     private String idContacto;
+
     private String nombre;
 }
