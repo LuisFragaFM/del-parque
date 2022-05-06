@@ -18,10 +18,14 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Direccion {
     @Id
-    @Column(name = "id_direccion")
     private String id;
+
     private String numeroCasa;
-    private String idCasa;
+
+    @Column(name = "id_calle")
+    private String idCalle;
+
     private String nombreColonia;
+
     private String numeroInterior;
 }

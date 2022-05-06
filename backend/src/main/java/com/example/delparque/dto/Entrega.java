@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class Entrega {
     private String id;
     private String quienEntrega;
-    private Paquete paquete;
+    private String idPaquete;
 }

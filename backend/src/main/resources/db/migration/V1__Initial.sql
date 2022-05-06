@@ -83,6 +83,7 @@ CREATE TABLE paquetes
     emisor        varchar(120),
     receptor      varchar(120),
     caseta        varchar(120),
+    entregado     boolean,
     id_condominio varchar(40) references condominios
 );
 

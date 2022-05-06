@@ -19,14 +19,23 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Visitante {
     @Id
-    @Column(name = "id_visitante")
     private String id;
+
+    @Column(name = "id_automovil")
     private String idAutomovil;
+
+    @Column(name = "id_condominio")
     private String idCondominio;
+
     private String nombre;
+
     private LocalDate fecha;
+
     private String vigilanteAutorizo;
+
     private String residente;
+
     private String casetaEntrada;
+
     private String casetaSalida;
 }

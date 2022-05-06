@@ -11,16 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "automoviles")
+@Table(name = "condominios")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Condominio {
     @Id
-    @Column(name = "id_condominio")
     private String id;
+
+    @Column(name = "id_usuario")
     private String idUsuario;
+
+    @Column(name = "id_direccion")
     private String idDireccion;
+
+    @Column(name = "id_trabajador")
     private String idTrabajador;
 }
