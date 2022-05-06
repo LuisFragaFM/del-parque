@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Condominio {
     private String id;
-    private Usuario usuario;
-    private Direccion direccion;
-    private Trabajador trabajador;
+    private String idUsuario;
+    private String idDireccion;
+    private String idTrabajador;
 }

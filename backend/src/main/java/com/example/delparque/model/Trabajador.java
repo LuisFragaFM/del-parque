@@ -19,6 +19,7 @@ import java.time.LocalDate;
 public class Trabajador {
     @Id
     private String id;
+
     private String nombre;
 
     private String fecha;

@@ -18,6 +18,7 @@ import javax.persistence.Table;
 public class Roles {
     @Id
     private String id;
+
     private Boolean administrador;
 
     private Boolean vigilante;

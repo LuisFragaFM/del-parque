@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class Usuario {
     private String id;
     private String roles;
-    private Contacto contacto;
+    private String idContacto;
     private String nombre;
 }

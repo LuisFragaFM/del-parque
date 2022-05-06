@@ -10,6 +10,7 @@ public class AutomovilesMapper {
                 .color(automovil.getColor())
                 .modelo(automovil.getModelo())
                 .placas(automovil.getPlacas())
+                .tarjeta(automovil.getTarjeta())
                 .build();
     }
 
@@ -19,6 +20,7 @@ public class AutomovilesMapper {
                 .color(automovil.getColor())
                 .modelo(automovil.getModelo())
                 .placas(automovil.getPlacas())
+                .tarjeta(automovil.getTarjeta())
                 .build();
     }
 }

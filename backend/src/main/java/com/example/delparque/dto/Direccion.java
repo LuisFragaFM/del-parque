@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Direccion {
     private String id;
     private String numeroCasa;
-    private Calle calle;
+    private String idCalle;
     private String nombreColonia;
     private String numeroInterior;
 }

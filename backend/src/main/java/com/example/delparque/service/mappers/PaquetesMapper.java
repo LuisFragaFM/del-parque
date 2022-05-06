@@ -3,12 +3,15 @@ package com.example.delparque.service.mappers;
 import com.example.delparque.dto.Paquete;
 
 public class PaquetesMapper {
+
     public static Paquete entityToDto(com.example.delparque.model.Paquete paquete) {
         return Paquete.builder()
                 .id(paquete.getId())
                 .caseta(paquete.getCaseta())
                 .emisor(paquete.getEmisor())
                 .receptor(paquete.getEmisor())
+                .entregado(paquete.getEntregado())
+                .idCondominio(paquete.getIdCondominio())
                 .build();
     }
 
@@ -18,6 +21,8 @@ public class PaquetesMapper {
                 .caseta(paquete.getCaseta())
                 .emisor(paquete.getEmisor())
                 .receptor(paquete.getEmisor())
+                .entregado(paquete.getEntregado())
+                .idCondominio(paquete.getIdCondominio())
                 .build();
     }
 }
