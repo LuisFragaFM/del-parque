@@ -22,8 +22,8 @@ public class Direccion {
 
     private String numeroCasa;
 
-    @Column(name = "id_casa")
-    private String idCasa;
+    @Column(name = "id_calle")
+    private String idCalle;
 
     private String nombreColonia;
 

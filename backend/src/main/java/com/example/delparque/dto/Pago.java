@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class Pago {
     private String id;
     private Boolean pagado;
-    private Condominio condominio;
+    private String idCondominio;
 }

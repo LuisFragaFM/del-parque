@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Calle {
     private String id;
-    private String calle;
+    private String nombre;
 }

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -14,10 +13,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Visitante {
     private String id;
-    private Automovil automovil;
-    private Condominio condominio;
+    private String idAutomovil;
+    private String idCondominio;
     private String nombre;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fecha;
     private String vigilanteAutorizo;
     private String residente;

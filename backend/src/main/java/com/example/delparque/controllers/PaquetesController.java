@@ -2,10 +2,7 @@ package com.example.delparque.controllers;
 
 import com.example.delparque.dto.Paquete;
 import com.example.delparque.service.PaquetesService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,12 +17,17 @@ public class PaquetesController {
     }
 
     @GetMapping()
-    public List<Paquete> findAll(){
+    public List<Paquete> findAll() {
         return paquetesService.findAll();
     }
 
     @GetMapping("/{status}")
     public List<Paquete> findAllByStatus(@PathVariable Boolean status) {
         return paquetesService.findAllByEntregado(status);
+    }
+
+    @PostMapping()
+    public Paquete save(@RequestBody Paquete paquete) {
+        return paquetesService.save(paquete);
     }
 }
