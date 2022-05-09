@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+body{ height: 100%; width: 100%;
+background-image: url("./assets/Fondo.PNG");
+background-size: cover;}
+
+/* ------prueba de blur ------------
+-------para uso futuro en las otras pantallas medidas aun no listas----------
+.blurs{
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    height: 100vh;
+    width: 100%;
+}
+*/
