@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-body{ height: 100%; width: 100%;
+body{ height: 943px;
 background-image: url("./assets/Fondo.PNG");
+background-position: center;
+  background-repeat: no-repeat;
 background-size: cover;}
+
 
 /* ------prueba de blur ------------
 -------para uso futuro en las otras pantallas medidas aun no listas----------
