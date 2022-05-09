@@ -1,0 +1,19 @@
+.infoContainer1 {
+    position: relative;
+    width: 1800px;
+    height: 300px;
+    border-style: solid;
+    background-color: #d3f5c5;
+    left: 60px;
+    top: 150px;
+}
+
+.infoContainer2 {
+    position: relative;
+    width: 1800px;
+    height: 300px;
+    border-style: solid;
+    background-color: #d3f5c5;
+    left: 60px;
+    top: 200px;
+}
