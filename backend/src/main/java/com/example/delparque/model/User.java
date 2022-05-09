@@ -16,14 +16,16 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario {
+public class User {
     @Id
     private String id;
-
-    private String roles;
 
     @Column(name = "id_contacto")
     private String idContacto;
 
-    private String nombre;
+    private String username;
+
+    private String email;
+
+    private String password;
 }

@@ -22,20 +22,20 @@ CREATE TABLE contactos
     telefono_emergencia varchar(20)
 );
 
-CREATE TABLE roles
-(
-    id            varchar(40) primary key,
-    administrador boolean,
-    vigilante     boolean,
-    residente     boolean
-);
-
 CREATE TABLE usuarios
 (
     id          varchar(40) primary key,
-    id_roles    varchar(40) references roles,
     id_contacto varchar(40) references contactos,
-    nombre      varchar(120)
+    username      varchar(120) unique,
+    email       varchar(120) unique,
+    password    varchar(120)
+);
+
+CREATE TABLE roles_by_user
+(
+    id      varchar(40) primary key,
+    user_id varchar(40) references usuarios,
+    role    varchar(40)
 );
 
 CREATE TABLE automoviles

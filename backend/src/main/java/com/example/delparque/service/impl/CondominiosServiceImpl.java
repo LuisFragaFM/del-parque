@@ -4,7 +4,7 @@ import com.example.delparque.dto.Condominio;
 import com.example.delparque.repository.CondominiosRepository;
 import com.example.delparque.repository.DireccionesRepository;
 import com.example.delparque.repository.TrabajadoresRepository;
-import com.example.delparque.repository.UsuariosRepository;
+import com.example.delparque.repository.UserRepository;
 import com.example.delparque.service.CondominiosService;
 import com.example.delparque.service.mappers.CondominiosMapper;
 import org.springframework.stereotype.Service;
@@ -21,12 +21,12 @@ public class CondominiosServiceImpl implements CondominiosService {
     private final CondominiosRepository condominiosRepository;
     private final DireccionesRepository direccionesRepository;
     private final TrabajadoresRepository trabajadoresRepository;
-    private final UsuariosRepository usuariosRepository;
+    private final UserRepository usuariosRepository;
 
     public CondominiosServiceImpl(CondominiosRepository condominiosRepository,
                                   DireccionesRepository direccionesRepository,
                                   TrabajadoresRepository trabajadoresRepository,
-                                  UsuariosRepository usuariosRepository) {
+                                  UserRepository usuariosRepository) {
         this.condominiosRepository = condominiosRepository;
         this.direccionesRepository = direccionesRepository;
         this.trabajadoresRepository = trabajadoresRepository;
