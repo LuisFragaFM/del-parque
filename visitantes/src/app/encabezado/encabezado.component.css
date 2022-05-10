@@ -1,0 +1,47 @@
+.encabezado{
+    width: auto;
+    height: 100px;
+    background-image: url(../../assets/Fondo.PNG);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
+}
+
+.fondoenc{
+    height: 100px;
+    background-color: rgba(211, 245, 197, 0.7);
+}
+
+.titulo{
+    height: 100px;
+    background-image: url(../../assets/title.PNG);
+    background-repeat: no-repeat;
+    position: static;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    position: relative;
+    bottom: 80px;
+    right: 100px;
+}
+
+.img{
+    height: 40px;
+    width: 40px;
+    background-image: url(../../assets/perfil.PNG);
+    background-repeat: no-repeat;
+}
+
+.name{
+    font-size: 20px;
+}
+
+nav{
+    width: fit-content;
+    position: relative;
+    left: 1520px;
+    bottom: 80px;
+}
