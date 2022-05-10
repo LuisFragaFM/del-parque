@@ -39,6 +39,7 @@
     font-size: 20px;
     top: 10px;
     left: 10px;
+    width: 300px;
 }
 
 .nombre {
@@ -46,6 +47,7 @@
     font-size: 20px;
     top: 20px;
     left: 30px;
+    width: 600px;
 }
 
 .inputBarra {
@@ -68,7 +70,7 @@
     font-size: 20px;
     top: 10px;
     left: 30px;
-    width: 300px;
+    width: 600px;
 }
 
 
@@ -96,6 +98,7 @@
     left: 800px;
     top: 220px;
     font-size: 20px;
+    width: 550px;
 }
 
 
@@ -111,4 +114,35 @@
     color: white;
     border-radius: 40px;
     font-size: 28px;
+}
+
+
+/* Imagen de usuario */
+
+.imagenUser {
+    position: relative;
+    left: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.nombreBar {
+    position: relative;
+    left: 460px;
+    width: 600px;
+    top: 150px;
+    font-size: 40px;
+}
+
+.inputBarraInquilino {
+    width: 600px;
+    top: 100px;
+    font-size: 30px;
+}
+
+.buttonDescarga {
+    position: relative;
+    top: -200px;
+    left: 200px;
+    width: 600px;
 }
