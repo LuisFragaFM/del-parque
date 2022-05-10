@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+* {
+    font-family: url("./assets/SedanSC-Regular.ttf");
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 body {
     height: 943px;
     background-image: url("./assets/Fondo.PNG");
@@ -12,9 +19,16 @@ body {
 /* estilo para los titulos */
 
 h1 {
-    position: relative;
-    font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
     text-shadow: #555 1px 1px 2px;
+    /* agregar tamnaño */
+    font-size: 30px;
+}
+
+
+/* quita borde para cada uno de los input */
+
+input:focus {
+    outline: 0px;
 }
 
 

@@ -5,28 +5,56 @@
 <!-- contenedor de Busqueda de busqueda de inquilinos -->
 <div class="infoContainer1">
     <!-- titulo de seccion -->
-    <div class="infoTxt">
-        <h1>BUSQUEDA DE INQUILINO</h1>
-    </div>
+    <div class="infoTxt">BUSQUEDA DE INQUILINO</div>
     <!-- form de nombre -->
     <div class="nombre">
-        <h1>Nombre</h1><br>
+        Nombre<br><br>
         <input type="text" placeholder="Buscar Inquilino" class="inputBarra" name="busqueda">
     </div>
-    <!--  Numero de casa -->
-    <div class="numCasa">
-        <!-- menu desplegable de los numeros -->
-        <a class="numCasa">
-            <h1>Número de casa</h1>
-        </a>
-        <ul>
-            <li><a class="num">Partners</a></li>
-            <li><a class="num">Team</a></li>
-            <li><a class="num">Products</a></li>
-        </ul>
+    <!-- Seleccionar numero de casa -->
+    <div class="casasNum">Numero de casa<br><br>
+        <select name="id_casa" id="id_casa" class="inputBarra">
+        <option value="">Seleccione numero de casa</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        </select>
+    </div>
+    <!-- Seleccionar fecha  inicio-->
+    <div class="periodoDe">
+        <div class="periodoTxt">Periodo de: <br><br>
+            <input type="date" placeholder="DD/MM/AAAA" class="Periodo" name="periodoDate">
+        </div>
+    </div>
+    <!-- Seleccionar fecha final -->
+    <div class="hasta">
+        <div class="hastaTxt">Hasta: <br><br>
+            <input type="date" placeholder="DD/MM/AAAA" class="hasta" name="hastaDate">
+        </div>
     </div>
 </div>
-<!-- contenedor de Busqueda de busqueda de inquilinos -->
-<div class="infoContainer2">
-
+<!-- Calle de la residencia -->
+<div class="calleName">Calle de la casa<br><br>
+    <select name="id_calle" id="id_calle" class="inputBarra">
+        <option value="">Seleccione calle de la residencia</option>
+        <option value="1">Viento</option>
+        <option value="2">Rayo</option>
+        <option value="3">Lutita</option>
+        <option value="4">Centella</option>
+        <option value="5">Niño Artillero</option>
+        <option value="6">America del Norte</option>
+        <option value="7">Himalaya</option>
+        </select>
 </div>
+<!-- boton para enviar datos del formulario -->
+<div class="button">
+    <button class="boton">Enviar</button>
+</div>
+<!-- contenedor de Busqueda de busqueda de inquilinos -->
+<!-- <div class="infoContainer2">
+
+</div> -->
