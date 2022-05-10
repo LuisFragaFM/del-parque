@@ -8,6 +8,13 @@
     top: 150px;
 }
 
+.containerTitle {
+    position: relative;
+    font-size: 20px;
+    top: 130px;
+    left: 60px;
+}
+
 .infoContainer2 {
     position: relative;
     width: 1800px;
@@ -16,4 +23,35 @@
     background-color: #d3f5c5;
     left: 60px;
     top: 200px;
+}
+
+.infoTxt {
+    position: relative;
+    font-size: 10px;
+    top: 10px;
+    left: 10px;
+}
+
+.nombre {
+    position: relative;
+    font-size: 10px;
+    top: 10px;
+    left: 30px;
+}
+
+.inputBarra {
+    position: relative;
+    height: 30px;
+    width: 600px;
+    border: 6px solid rgb(211, 245, 197);
+    border-radius: 10px;
+    top: -15px;
+    left: 10px;
+}
+
+.numCasa {
+    position: relative;
+    font-size: 10px;
+    top: -10px;
+    left: 15px;
 }
