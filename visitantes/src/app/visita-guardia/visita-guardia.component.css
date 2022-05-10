@@ -1,5 +1,5 @@
 .contenido{
-    height: 943px;
+    height: 900px;
     margin: 0 auto;
     background-color: white;
     background-position: center;
@@ -7,28 +7,68 @@
     background-size: cover;
    
 }
-.contenido div{
-    margin: 0 auto;
-    float: left;
-    
-}
-.barra{
-    height: 20px;
+.Opciones{
+    height: 30px;
     width: 350px;
-    border: 2px solid black;
-
-    
+    font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
+    text-shadow: #555 1px 1px 2px;
+    font-size: 20px;
 }
-.Datos{
-    margin-left: 50px;
+.BotonVehiculo{
+    height: 30px;
+    width: 30px;
+}
+.DatosTipo{
+    width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    line-height: auto;
+    vertical-align: middle;
     width: 1200px;
     font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
     text-shadow: #555 1px 1px 2px;
     font-size: 20px;
     float: left;
-    border: 1px solid black;
+    
 }
+.contenido div{
+    margin: 0 auto;
+    padding-left: 50px;
+    float: left;
+    border: 1px solid black;
+    
+}
+.barra{
+    height: 20px;
+    width: 350px;
+    font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
+    text-shadow: #555 1px 1px 2px;
+    font-size: 20px;
+}
+.Datos{
+    padding-left: 50px;
+    width: 1200px;
+    font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
+    text-shadow: #555 1px 1px 2px;
+    font-size: 20px;
+    float: left;
+}  
 .Datos div{
     margin: 0 auto;
-    width: 600px; 
+    width: 500px; 
+}
+.boton{
+    height: 50px;
+    width: 200px;
+    position: relative;
+    background-color: rgb(110, 148, 221);
+    color: white;
+    border-radius: 40px;
+    font-size: 28px;
+}
+.BotDiv{
+    width: 1200px;
+    padding-top:  20px;
 }
