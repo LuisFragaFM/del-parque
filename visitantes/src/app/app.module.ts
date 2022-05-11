@@ -19,6 +19,7 @@ import { AltasModificacionesComponent } from './altas-modificaciones/altas-modif
 import { AgendaCondominoComponent } from './agenda-condomino/agenda-condomino.component';
 import { VisitaCondominoComponent } from './visita-condomino/visita-condomino.component';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
+import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
     AltasModificacionesComponent,
     AgendaCondominoComponent,
     VisitaCondominoComponent,
-    EncabezadoComponent
+    EncabezadoComponent,
+    PiePaginaComponent
   ],
   imports: [
     BrowserModule,

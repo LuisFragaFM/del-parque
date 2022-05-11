@@ -1,0 +1,11 @@
+.pie{
+    background-color: rgb(211, 245, 197);
+    height: 70px;
+    width: 100%;
+}
+
+.texto{
+    text-align: center;
+    position: relative;
+    top: 5px;
+}
