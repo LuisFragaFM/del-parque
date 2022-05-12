@@ -2,13 +2,15 @@
 
 * {
     font-family: url("./assets/SedanSC-Regular.ttf");
-    margin: 0px;
+    margin: 0px auto;
     padding: 0px;
     box-sizing: border-box;
 }
 
-body {
-    height: 943px;
+
+.pagina{
+    width: 1170px;
+    height: 860px;
     background-image: url("./assets/Fondo.PNG");
     background-position: center;
     background-repeat: no-repeat;

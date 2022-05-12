@@ -1,7 +1,9 @@
 .pie{
     background-color: rgb(211, 245, 197);
     height: 70px;
-    width: 100%;
+    width: 1170px;
+    position: absolute;
+    bottom: 0px;
 }
 
 .texto{
