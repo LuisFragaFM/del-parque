@@ -1,20 +1,24 @@
 <app-encabezado></app-encabezado>
-<!-- contenedor de titulo de seccion -->
-<div class="containerTitle">
-    <h1>INFORMES</h1>
-</div>
-<!-- contenedor de Busqueda de busqueda de inquilinos -->
-<div class="infoContainer1">
-    <!-- titulo de seccion -->
-    <div class="infoTxt">BUSQUEDA DE INQUILINO</div>
-    <!-- form de nombre -->
-    <div class="nombre">
-        Nombre<br><br>
-        <input type="text" placeholder="Buscar Inquilino" class="inputBarra" name="busqueda">
-    </div>
-    <!-- Seleccionar numero de casa -->
-    <div class="casasNum">Numero de casa<br><br>
-        <select name="id_casa" id="id_casa" class="inputBarra">
+<!-- contenedor de informes de inquilinos -->
+<div class="contenido">
+    <div class="containerInformes">
+        <!-- contenedor de titulo contenedor -->
+        <div class="title1">
+            <h1>Informes</h1>
+        </div>
+        <!-- titulo de seccion-->
+        <div class="infoTxt">
+            <h2>BUSQUEDA DE INQUILINO</h2>
+        </div>
+        <!-- form de nombre -->
+        <div class="nombre">
+            <h3>Nombre:<br><br></h3>
+            <input type="text" placeholder="Buscar Inquilino" class="inputBarra" name="busqueda">
+        </div>
+        <!-- Seleccionar numero de casa -->
+        <div class="casasNum">
+            <h3>Numero de casa:<br><br></h3>
+            <select name="id_casa" id="id_casa" class="inputBarra">
         <option value="">Seleccione numero de casa</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -24,23 +28,24 @@
         <option value="6">6</option>
         <option value="7">7</option>
         </select>
-    </div>
-    <!-- Seleccionar fecha  inicio-->
-    <div class="periodoDe">
-        <div class="periodoTxt">Periodo de: <br><br>
-            <input type="date" placeholder="DD/MM/AAAA" class="Periodo" name="periodoDate">
         </div>
-    </div>
-    <!-- Seleccionar fecha final -->
-    <div class="hasta">
-        <div class="hastaTxt">Hasta: <br><br>
-            <input type="date" placeholder="DD/MM/AAAA" class="hasta" name="hastaDate">
+        <!-- Seleccionar fecha  inicio-->
+        <div class="periodoDe">
+            <div class="periodoTxt">
+                <h3>Periodo de: <br><br> </h3>
+                <input type="date" placeholder="DD/MM/AAAA" class="Periodo" name="periodoDate">
+            </div>
         </div>
-    </div>
-</div>
-<!-- Calle de la residencia -->
-<div class="calleName">Calle de la casa<br><br>
-    <select name="id_calle" id="id_calle" class="inputBarra">
+        <!-- Seleccionar fecha final -->
+        <div class="hasta">
+            <div class="hastaTxt">
+                <h3>Hasta: <br><br> </h3>
+                <input type="date" placeholder="DD/MM/AAAA" class="hasta" name="hastaDate">
+            </div>
+        </div>
+        <!-- Calle de la residencia -->
+        <div class="calleName">Calle de la casa<br><br>
+            <select name="id_calle" id="id_calle" class="inputBarra">
         <option value="">Seleccione calle de la residencia</option>
         <option value="1">Viento</option>
         <option value="2">Rayo</option>
@@ -50,25 +55,27 @@
         <option value="6">America del Norte</option>
         <option value="7">Himalaya</option>
         </select>
-</div>
-<!-- boton para enviar datos del formulario y realizar busqueda-->
-<div class="button">
-    <button class="boton">Buscar</button>
-</div>
-<!-- contenedor de Busqueda de busqueda de inquilinos -->
-<div class="infoContainer2">
-    <!-- Imagen de programa -->
-    <div class="imagenUser">
-        <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="300px">
+        </div>
+        <!-- boton para enviar datos del formulario y realizar busqueda-->
+        <div class="button">
+            <button class="boton">BUSCAR</button>
+        </div>
     </div>
-</div>
-<!-- nombre de busqueda para descargar datos -->
-<div class="nombreBar">
-    Nombre<br><br>
-    <input type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino">
-</div>
-<!-- boton para enviar datos del formulario y realizar la descarga -->
-<div class="buttonDescarga">
-    <button class="boton">Descargar</button>
+    <!-- contenedor descargar datos inquilino -->
+    <div class="containerDescargar">
+        <!-- Imagen de programa -->
+        <div class="imagenUser">
+            <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="180px">
+        </div>
+        <!-- nombre de busqueda para descargar datos -->
+        <div class="nombreBar">
+            <h3>Nombre<br><br></h3>
+            <input type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino">
+        </div>
+        <!-- boton para enviar datos del formulario y realizar la descarga -->
+        <div class="buttonDescarga">
+            <button class="boton">Descargar</button>
+        </div>
+    </div>
 </div>
 <app-pie-pagina></app-pie-pagina>
