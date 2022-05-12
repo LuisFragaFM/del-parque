@@ -2,7 +2,7 @@
     background-color: rgb(211, 245, 197);
     height: 70px;
     width: 1170px;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
 }
 

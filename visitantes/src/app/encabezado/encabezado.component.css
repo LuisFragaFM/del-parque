@@ -1,5 +1,5 @@
 .encabezado{
-    width: auto;
+    width: 1170px;
     height: 100px;
     background-image: url(../../assets/Fondo.PNG);
     background-position: center;
@@ -14,18 +14,19 @@
 
 .titulo{
     height: 100px;
+    width: 400px;
     background-image: url(../../assets/title.PNG);
     background-repeat: no-repeat;
-    position: static;
+    position: absolute;
 }
 
 .container{
+    width: 250px;
     display: flex;
     align-items: center;
-    justify-content: end;
-    position: absolute;
-    right: 400px;
+    position: relative;
     top: 20px;
+    left: 420px;
 }
 
 .img{
@@ -41,7 +42,7 @@
 
 nav{
     width: fit-content;
-    position: absolute;
-    right: 440px;
-    top: 60px;
+    position: relative;
+    top: 20px;
+    left: 400px;
 }
