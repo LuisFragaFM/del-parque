@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+html {
+    background-color: #BAD9AD;
+}
+
 * {
     font-family: url("./assets/SedanSC-Regular.ttf");
     margin: 0px auto;
@@ -7,8 +11,7 @@
     box-sizing: border-box;
 }
 
-
-.pagina{
+.pagina {
     width: 1170px;
     background-image: url("./assets/Fondo.PNG");
     background-position: center;
@@ -17,12 +20,30 @@
 }
 
 
-/* estilo para los titulos */
+/* estilo para los titulos eg.(inquilinos)*/
 
 h1 {
-    text-shadow: #555 1px 1px 2px;
     /* agregar tamnaño */
     font-size: 30px;
+    font-family: url("./assets/SedanSC-Regular.ttf");
+}
+
+
+/* estilo para subtitulos eg.(Busqueda de inquilino */
+
+h2 {
+    /* agregar tamnaño */
+    font-size: 25px;
+    font-family: url("./assets/SedanSC-Regular.ttf");
+}
+
+
+/* estilo para titulo de indicacion eg.(nombre) */
+
+h3 {
+    /* agregar tamnaño */
+    font-size: 20px;
+    font-family: url("./assets/SedanSC-Regular.ttf");
 }
 
 
