@@ -2,7 +2,7 @@
 
 .title1 {
     position: relative;
-    top: -50px;
+    top: -40px;
     left: -30px;
 }
 
@@ -19,7 +19,7 @@
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
     height: 710px;
-    width: 1688px;
+    width: 1170px;
 }
 
 
@@ -27,24 +27,21 @@
 
 .containerInquilinos {
     position: relative;
-    width: 1420px;
-    height: 320px;
+    width: 1000px;
+    height: 250px;
     border-style: solid;
     background-color: #d3f5c5;
-    left: 180px;
     top: 100px;
     opacity: 0.9;
 }
 
 .containerDatos {
     position: relative;
-    width: 1420px;
-    height: 320px;
-    border-style: solid;
-    background-color: #d3f5c5;
-    left: 180px;
-    top: 200px;
-    opacity: 0.9;
+    width: 1000px;
+    height: 250px;
+    left: 5px;
+    top: 160px;
+    /* border-style: solid; */
 }
 
 
@@ -53,8 +50,9 @@
 .infoTxt {
     position: relative;
     font-size: 20px;
-    left: 30px;
-    width: 300px;
+    left: -320px;
+    top: -25px;
+    width: 324px;
 }
 
 
@@ -63,8 +61,8 @@
 .nombre {
     position: relative;
     font-size: 20px;
-    top: 20px;
-    left: 70px;
+    top: -20px;
+    left: -170px;
     width: 600px;
 }
 
@@ -74,18 +72,18 @@
 .telefono {
     position: relative;
     font-size: 20px;
-    top: 20px;
-    left: 70px;
+    top: -35px;
+    left: -170px;
     width: 600px;
 }
 
 
-/* Barra de busqueda */
+/* Barra de busqueda y mostrar datos*/
 
 .inputBarra {
     position: relative;
     height: 40px;
-    width: 1250px;
+    width: 900px;
     padding-left: 10px;
     border: 6px solid rgb(211, 245, 197);
     border-radius: 10px;
@@ -95,17 +93,68 @@
     font-size: 20px;
 }
 
+.inputDatos {
+    position: relative;
+    height: 35px;
+    width: 350px;
+    padding-left: 10px;
+    border: 6px solid rgb(211, 245, 197);
+    border-radius: 10px;
+    top: -15px;
+    left: 30px;
+    outline: 0px;
+    font-size: 15px;
+}
+
 
 /* dise;o del boton */
 
 .boton {
     position: relative;
-    height: 50px;
-    width: 600px;
+    height: 35px;
+    width: 300px;
     left: 350px;
-    top: 20px;
+    top: -35px;
     background-color: rgb(110, 148, 221);
     color: white;
     border-radius: 40px;
-    font-size: 28px;
+    font-size: 25px;
+}
+
+
+/* imagen de usuario */
+
+.imagenUser {
+    position: relative;
+    height: 35px;
+    width: 300px;
+    left: -400px;
+    top: -90px;
+}
+
+
+/* campo de los datosa mostrar */
+
+.nombreDatos {
+    position: relative;
+    font-size: 20px;
+    top: -35px;
+    left: -10px;
+    width: 600px;
+}
+
+.correoDatos {
+    position: relative;
+    font-size: 20px;
+    top: -75px;
+    left: -10px;
+    width: 600px;
+}
+
+.direccionDatos {
+    position: relative;
+    font-size: 20px;
+    top: -75px;
+    left: -10px;
+    width: 600px;
 }
