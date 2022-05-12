@@ -24,6 +24,7 @@ h1 {
     text-shadow: #555 1px 1px 2px;
     /* agregar tamnaño */
     font-size: 30px;
+    font-family: url("./assets/SedanSC-Regular.ttf");
 }
 
 
