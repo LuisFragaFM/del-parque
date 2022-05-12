@@ -1,0 +1,111 @@
+/* titulos */
+
+.title1 {
+    position: relative;
+    top: -50px;
+    left: -30px;
+}
+
+.title2 {
+    position: relative;
+    top: -50px;
+    left: -30px;
+}
+
+
+/* blur */
+
+.contenido {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    height: 710px;
+    width: 1688px;
+}
+
+
+/* Contenedores principales */
+
+.containerInquilinos {
+    position: relative;
+    width: 1420px;
+    height: 320px;
+    border-style: solid;
+    background-color: #d3f5c5;
+    left: 180px;
+    top: 100px;
+    opacity: 0.9;
+}
+
+.containerDatos {
+    position: relative;
+    width: 1420px;
+    height: 320px;
+    border-style: solid;
+    background-color: #d3f5c5;
+    left: 180px;
+    top: 200px;
+    opacity: 0.9;
+}
+
+
+/* Titulo seccion */
+
+.infoTxt {
+    position: relative;
+    font-size: 20px;
+    left: 30px;
+    width: 300px;
+}
+
+
+/* titulo de barra de busqueda nombre */
+
+.nombre {
+    position: relative;
+    font-size: 20px;
+    top: 20px;
+    left: 70px;
+    width: 600px;
+}
+
+
+/* titulo de barra de busqueda titulo */
+
+.telefono {
+    position: relative;
+    font-size: 20px;
+    top: 20px;
+    left: 70px;
+    width: 600px;
+}
+
+
+/* Barra de busqueda */
+
+.inputBarra {
+    position: relative;
+    height: 40px;
+    width: 1250px;
+    padding-left: 10px;
+    border: 6px solid rgb(211, 245, 197);
+    border-radius: 10px;
+    top: -15px;
+    left: 30px;
+    outline: 0px;
+    font-size: 20px;
+}
+
+
+/* dise;o del boton */
+
+.boton {
+    position: relative;
+    height: 50px;
+    width: 600px;
+    left: 350px;
+    top: 20px;
+    background-color: rgb(110, 148, 221);
+    color: white;
+    border-radius: 40px;
+    font-size: 28px;
+}
