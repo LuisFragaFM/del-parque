@@ -1,6 +1,10 @@
 /*div{
     border: 1px solid black;
 }*/
+.contenido{
+    width: 1170px;
+    height: 860px;
+}
 
 .cuadro{
     margin: 0 auto;
@@ -29,15 +33,14 @@
 }
 
 .img{
-    width: 100%;
+    width: 600px;
     height: 230px;
     background-image: url("../../assets/Silueta1.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-    left: 1px;
-    top: 125px;
+    top: 120px;
 }
 
 .container{
