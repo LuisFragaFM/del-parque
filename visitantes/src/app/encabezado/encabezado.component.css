@@ -23,9 +23,9 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    position: relative;
-    bottom: 80px;
-    right: 100px;
+    position: absolute;
+    right: 400px;
+    top: 20px;
 }
 
 .img{
@@ -41,7 +41,7 @@
 
 nav{
     width: fit-content;
-    position: relative;
-    left: 1520px;
-    bottom: 80px;
+    position: absolute;
+    right: 440px;
+    top: 60px;
 }
