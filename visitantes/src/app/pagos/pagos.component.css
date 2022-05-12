@@ -158,3 +158,56 @@
     left: -10px;
     width: 600px;
 }
+
+.telefonoDatos {
+    position: relative;
+    font-size: 20px;
+    top: -75px;
+    left: -10px;
+    width: 600px;
+}
+
+.emergenciaDatos {
+    position: relative;
+    font-size: 20px;
+    top: -75px;
+    left: -10px;
+    width: 600px;
+}
+
+
+/* dise;o del boton */
+
+.botonModificar {
+    height: 40px;
+    width: 150px;
+    left: 300px;
+    top: -75px;
+    position: relative;
+    background-color: rgb(110, 148, 221);
+    color: white;
+    border-radius: 40px;
+    font-size: 20px;
+}
+
+.botonEliminar {
+    height: 40px;
+    width: 150px;
+    left: 700px;
+    top: -115px;
+    position: relative;
+    background-color: rgb(237, 95, 95);
+    color: white;
+    border-radius: 40px;
+    font-size: 20px;
+}
+
+
+/* estado de pago */
+
+.estadoPago {
+    position: absolute;
+    top: -10px;
+    left: 800px;
+    width: 600px;
+}
