@@ -1,5 +1,5 @@
 .contenido{
-    height: 900px;
+    width: 1170px;
     margin: 0 auto;
     background-color: white;
     background-position: center;
@@ -8,67 +8,74 @@
    
 }
 .Opciones{
-    height: 30px;
-    width: 350px;
+    height: 40px;
+    width: 500px;
     font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
     text-shadow: #555 1px 1px 2px;
-    font-size: 20px;
+    font-size: 35px;
 }
 .BotonVehiculo{
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
 }
 .DatosTipo{
-    width: 1200px;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     text-align: center; 
     line-height: auto;
     vertical-align: middle;
-    width: 1200px;
+    width: 1170px;
     font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
     text-shadow: #555 1px 1px 2px;
-    font-size: 20px;
+    font-size: 35px;
     float: left;
     
 }
 .contenido div{
     margin: 0 auto;
     padding-left: 50px;
+    padding-top: 25px;
     float: left;
-    border: 1px solid black;
+   
     
 }
 .barra{
-    height: 20px;
-    width: 350px;
+    height: 40px;
+    width: 500px;
     font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
     text-shadow: #555 1px 1px 2px;
-    font-size: 20px;
+    font-size: 40px;
 }
 .Datos{
     padding-left: 50px;
-    width: 1200px;
+    width: 1170px;
     font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
     text-shadow: #555 1px 1px 2px;
-    font-size: 20px;
+    font-size: 35px;
     float: left;
 }  
 .Datos div{
     margin: 0 auto;
-    width: 500px; 
+    width: 550px; 
 }
 .boton{
     height: 50px;
     width: 200px;
-    position: relative;
+    float: right;
     background-color: rgb(110, 148, 221);
     color: white;
     border-radius: 40px;
-    font-size: 28px;
+    font-size: 35px;
+}
+.Titulo{
+    padding-top: 50px;
+    font-size: 45px;
+    font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
 }
 .BotDiv{
-    width: 1200px;
+    width: 1170px;
     padding-top:  20px;
+    padding-bottom: 50px;
+    
 }
