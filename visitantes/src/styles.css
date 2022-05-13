@@ -20,6 +20,10 @@ html {
 }
 
 
+button:hover {
+    cursor: pointer;
+}
+
 /* estilo para los titulos eg.(inquilinos)*/
 
 h1 {
