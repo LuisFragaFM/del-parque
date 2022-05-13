@@ -1,7 +1,7 @@
 package com.example.delparque.service.impl;
 
-import com.example.delparque.dto.Condominio;
-import com.example.delparque.repository.CondominiosRepository;
+import com.example.delparque.dto.Condomino;
+import com.example.delparque.repository.CondominosRepository;
 import com.example.delparque.repository.DireccionesRepository;
 import com.example.delparque.repository.TrabajadoresRepository;
 import com.example.delparque.repository.UserRepository;
@@ -18,16 +18,16 @@ import java.util.stream.Collectors;
 @Service
 public class CondominiosServiceImpl implements CondominiosService {
 
-    private final CondominiosRepository condominiosRepository;
+    private final CondominosRepository condominosRepository;
     private final DireccionesRepository direccionesRepository;
     private final TrabajadoresRepository trabajadoresRepository;
     private final UserRepository usuariosRepository;
 
-    public CondominiosServiceImpl(CondominiosRepository condominiosRepository,
+    public CondominiosServiceImpl(CondominosRepository condominosRepository,
                                   DireccionesRepository direccionesRepository,
                                   TrabajadoresRepository trabajadoresRepository,
                                   UserRepository usuariosRepository) {
-        this.condominiosRepository = condominiosRepository;
+        this.condominosRepository = condominosRepository;
         this.direccionesRepository = direccionesRepository;
         this.trabajadoresRepository = trabajadoresRepository;
         this.usuariosRepository = usuariosRepository;
@@ -35,21 +35,21 @@ public class CondominiosServiceImpl implements CondominiosService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Condominio> findAll() {
-        return condominiosRepository.findAll().stream()
+    public List<Condomino> findAll() {
+        return condominosRepository.findAll().stream()
                 .map(CondominiosMapper::entityToDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Condominio> findById(String id) {
-        return Optional.ofNullable(CondominiosMapper.entityToDto(condominiosRepository.findById(id)
-                .orElse(new com.example.delparque.model.Condominio())));
+    public Optional<Condomino> findById(String id) {
+        return Optional.ofNullable(CondominiosMapper.entityToDto(condominosRepository.findById(id)
+                .orElse(new com.example.delparque.model.Condomino())));
     }
 
     @Override
-    public Condominio save(Condominio condominio) {
+    public Condomino save(Condomino condominio) {
         direccionesRepository.findById(condominio.getIdDireccion()).orElseThrow();
 
         trabajadoresRepository.findById(condominio.getIdTrabajador()).orElseThrow();
@@ -60,6 +60,6 @@ public class CondominiosServiceImpl implements CondominiosService {
             condominio.setId(UUID.randomUUID().toString());
         }
 
-        return CondominiosMapper.entityToDto(condominiosRepository.save(CondominiosMapper.dtoToEntity(condominio)));
+        return CondominiosMapper.entityToDto(condominosRepository.save(CondominiosMapper.dtoToEntity(condominio)));
     }
 }

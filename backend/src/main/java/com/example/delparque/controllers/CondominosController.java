@@ -1,6 +1,6 @@
 package com.example.delparque.controllers;
 
-import com.example.delparque.dto.Condominio;
+import com.example.delparque.dto.Condomino;
 import com.example.delparque.service.CondominiosService;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,26 +9,26 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/condominios")
-public class CondominiosController {
+public class CondominosController {
 
     private final CondominiosService condominiosService;
 
-    public CondominiosController(CondominiosService condominiosService) {
+    public CondominosController(CondominiosService condominiosService) {
         this.condominiosService = condominiosService;
     }
 
     @GetMapping()
-    public List<Condominio> findAll() {
+    public List<Condomino> findAll() {
         return condominiosService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Condominio> findById(@PathVariable String id) {
+    public Optional<Condomino> findById(@PathVariable String id) {
         return condominiosService.findById(id);
     }
 
     @PostMapping()
-    public Condominio save(Condominio condominio) {
-        return condominiosService.save(condominio);
+    public Condomino save(Condomino condomino) {
+        return condominiosService.save(condomino);
     }
 }

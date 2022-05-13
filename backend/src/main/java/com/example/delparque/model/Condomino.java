@@ -11,12 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "condominios")
+@Table(name = "condominos")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Condominio {
+public class Condomino {
     @Id
     private String id;
 

@@ -1,14 +1,14 @@
 package com.example.delparque.service;
 
-import com.example.delparque.dto.Condominio;
+import com.example.delparque.dto.Condomino;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CondominiosService {
-    List<Condominio> findAll();
+    List<Condomino> findAll();
 
-    Optional<Condominio> findById(String id);
+    Optional<Condomino> findById(String id);
 
-    Condominio save(Condominio condominio);
+    Condomino save(Condomino condominio);
 }

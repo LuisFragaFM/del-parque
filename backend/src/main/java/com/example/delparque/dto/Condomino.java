@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Condominio {
+public class Condomino {
     private String id;
     private String idUsuario;
     private String idDireccion;
