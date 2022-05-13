@@ -1,7 +1,7 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Paquete;
-import com.example.delparque.repository.CondominiosRepository;
+import com.example.delparque.repository.CondominosRepository;
 import com.example.delparque.repository.PaquetesRepository;
 import com.example.delparque.service.PaquetesService;
 import com.example.delparque.service.mappers.PaquetesMapper;
@@ -17,11 +17,11 @@ import java.util.stream.Collectors;
 public class PaquetesServiceImpl implements PaquetesService {
 
     private final PaquetesRepository paquetesRepository;
-    private final CondominiosRepository condominiosRepository;
+    private final CondominosRepository condominosRepository;
 
-    public PaquetesServiceImpl(PaquetesRepository paquetesRepository, CondominiosRepository condominiosRepository) {
+    public PaquetesServiceImpl(PaquetesRepository paquetesRepository, CondominosRepository condominosRepository) {
         this.paquetesRepository = paquetesRepository;
-        this.condominiosRepository = condominiosRepository;
+        this.condominosRepository = condominosRepository;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class PaquetesServiceImpl implements PaquetesService {
 
     @Override
     public Paquete save(Paquete paquete) {
-        condominiosRepository.findById(paquete.getIdCondominio()).orElseThrow();
+        condominosRepository.findById(paquete.getIdCondominio()).orElseThrow();
 
         if (paquete.getId() == null) {
             paquete.setId(UUID.randomUUID().toString());

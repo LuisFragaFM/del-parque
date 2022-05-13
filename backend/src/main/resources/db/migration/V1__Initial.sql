@@ -56,7 +56,7 @@ CREATE TABLE trabajadores
     hora   date not null
 );
 
-CREATE TABLE condominios
+CREATE TABLE condominos
 (
     id            varchar(40) primary key,
     id_usuario    varchar(40) references usuarios,
@@ -68,7 +68,7 @@ CREATE TABLE visitantes
 (
     id                 varchar(40) primary key,
     id_automovil       varchar(40) references automoviles,
-    id_condominio      varchar(40) references condominios,
+    id_condominio      varchar(40) references condominos,
     nombre             varchar(40),
     fecha              date not null,
     vigilante_autorizo varchar(120),
@@ -84,7 +84,7 @@ CREATE TABLE paquetes
     receptor      varchar(120),
     caseta        varchar(120),
     entregado     boolean,
-    id_condominio varchar(40) references condominios
+    id_condominio varchar(40) references condominos
 );
 
 CREATE TABLE entregas
@@ -98,5 +98,5 @@ CREATE TABLE pagos
 (
     id            varchar(40) primary key,
     pagado        boolean,
-    id_condominio varchar(40) references condominios
+    id_condominio varchar(40) references condominos
 );

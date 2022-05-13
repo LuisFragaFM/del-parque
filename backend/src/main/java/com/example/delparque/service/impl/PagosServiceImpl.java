@@ -1,7 +1,7 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Pago;
-import com.example.delparque.repository.CondominiosRepository;
+import com.example.delparque.repository.CondominosRepository;
 import com.example.delparque.repository.PagosRepository;
 import com.example.delparque.service.PagosService;
 import com.example.delparque.service.mappers.PagosMapper;
@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 public class PagosServiceImpl implements PagosService {
 
     private final PagosRepository pagosRepository;
-    private final CondominiosRepository condominiosRepository;
+    private final CondominosRepository condominosRepository;
 
     public PagosServiceImpl(PagosRepository pagosRepository,
-                            CondominiosRepository condominiosRepository) {
+                            CondominosRepository condominosRepository) {
         this.pagosRepository = pagosRepository;
-        this.condominiosRepository = condominiosRepository;
+        this.condominosRepository = condominosRepository;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class PagosServiceImpl implements PagosService {
 
     @Override
     public Pago save(Pago pago) {
-        condominiosRepository.findById(pago.getIdCondominio()).orElseThrow();
+        condominosRepository.findById(pago.getIdCondominio()).orElseThrow();
 
         if (pago.getId() == null) {
             pago.setId(UUID.randomUUID().toString());
