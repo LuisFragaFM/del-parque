@@ -1,0 +1,58 @@
+.contenido{
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    height: 710px;
+    width: 1170px;
+}
+
+h1{
+    position: relative;
+    top: 25px;
+    left: 180px;
+    font-size: 40px;
+}
+
+form {
+    position: relative;
+    top: 30px;
+}
+
+.input {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 8px;
+}
+
+input{
+    height: 30px;
+    width: 600px;
+}
+
+.Opciones{
+    height: 30px;
+    width: 600px; 
+}
+
+label {
+    margin-top: 7px;
+    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    right: 200px;
+}
+
+.boton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 300px;
+    position: relative;
+    top: 50px;
+    background-color: rgb(110, 148, 221);
+    color: white;
+    border-radius: 40px;
+    font-size: 28px;
+}
