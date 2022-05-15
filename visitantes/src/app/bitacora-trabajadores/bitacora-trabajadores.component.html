@@ -1,1 +1,63 @@
-<p>bitacora-trabajadores works!</p>
+<app-encabezado></app-encabezado>
+<!-- contenedor de inquinos -->
+<div class="contenido">
+    <!-- contenedor para flexbox -->
+    <div class="trabajadorBusqueda">
+        <div class="tipoTrabajador">
+            <!-- seleccionar tipo de trabajador -->
+            <h3>Tipo de trabajador:</h3>
+            <!-- seleccionar trabajador -->
+            <select name="id_trabajador" id="id_trabajador" class="inputTrabajador">
+                <option value="">Tipo de trabajador</option>
+                <option value="1">Trabajador de obra</option>
+                <option value="2">Trabajador del hogar</option>
+                </select>
+        </div>
+        <!-- buscar trabajador -->
+        <div class="buscaTrabajador">
+            <h3>Buscar:</h3>
+            <input type="text" placeholder="Buscar" class="inputBuscar" name="buscaTrabajador">
+        </div>
+        <!-- boton de registro -->
+        <button class="botonRegistro">Registrar trabajador</button>
+    </div>
+    <!-- Datos de bitacora-->
+    <div class="bitacoraDatos">
+        <!-- titulo contenedor -->
+        <div class="titleDatos">
+            <h2>BITACORA DE TRABAJADORES</h2>
+        </div>
+        <!-- form de nombre -->
+        <div class="nombreTrabajador">
+            <h3>Nombre del trabajador:</h3>
+            <input type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName">
+        </div>
+        <!-- form de dias de trabajo-->
+        <div class="diasTrabajo">
+            <h3>Dias de trabajo</h3>
+            <input type="text" placeholder="Dias de trabajo" class="inputBitacora" name="buscaTrabajadorDias">
+        </div>
+        <!-- form de hora de trabajo-->
+        <div class="horaTrabajo">
+            <h3>Hora </h3>
+            <input type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras">
+        </div>
+        <!-- form de nombre condomino-->
+        <div class="nombreCondomino">
+            <h3>Nombre del condomino</h3>
+            <input type="text" placeholder="Nombre de condomino" class="inputBitacora" name="buscaNameCondomino">
+        </div>
+        <!-- boton para enviar datos del eliminar y realizar modificar-->
+        <div class="botonesBitacora">
+            <!-- boton modificar -->
+            <div class="buttonModificar">
+                <button class="botonModificar">Modificar</button>
+            </div>
+            <!-- boton eliminar -->
+            <div class="buttonEliminar">
+                <button class="botonEliminar">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-pie-pagina></app-pie-pagina>
