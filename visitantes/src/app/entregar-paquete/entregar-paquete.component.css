@@ -1,61 +1,149 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* blur */
 
-.container {
+.contenido {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
-  max-width: 1170px;
   height: 710px;
+  width: 1170px;
 }
 
-h2 {
-  text-transform: uppercase;
-  font-size: 21px;
+
+/* estilo para el contenedor bitacoras */
+
+.bitacoraDatos {
+  position: relative;
+    top: 90px;
+    height: 300px;
+    width: 1100px;
+    background:rgb(42, 42, 42);;
+    backdrop-filter: blur(8px);
+    color: white;
+
 }
 
-section {
+
+/* flexbox para barra de busqueda */
+
+.PaqueteBusqueda {
+  position: relative;
+    top: 60px;
+    display: flex;
+    height: 50px;
+    width: 1100px;
+    background: rgb(42, 42, 42);
+    backdrop-filter: blur(8px);
+    color :white
+}
+
+.botonesRegistro {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 1200px;
-  padding: 18px;
-  margin: 16px;
+  
 }
 
-.input {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-left: 8px;
-}
-
-form {
-  display: flex;
-  justify-content: space-around;
-}
-
-label {
-  margin-top: 7px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.caseta {
-  margin-left: 10px;
-  margin-top: 14px;
-  display: flex;
-  justify-content: space-between;
+.buscaPaquete {
+  position: absolute;
+    top: 10px;
+    left: 250px;
 }
 
 
-button {
-  border: 1px solid #000;
-  border-radius: 10px;
-  padding: 2px 12px;
-  color: #fff;
+/* estilo para barra de busqueda y mostrar datos */
+
+
+.inputBuscar {
+  position: absolute;
+  top: -4px;
+  left: 80px;
+  height: 30px;
+  width: 500px;
+  padding-left: 10px;
+  outline: 0px;
+  font-size: 15px;
+}
+
+/* estilo a bitacora de trabajadores */
+
+.titleDatos {
+  position: relative;
+  top: 10px;
+  left: 30px;
+}
+
+
+/* estilo para texto de formularios */
+
+.nombreRecibido{
+  position: relative;
+    font-size: 20px;
+    top: 16px;
+    left: -330px;
+    width: 350px;
+}
+
+.FechaEntregada{
+  position: relative;
+  font-size: 20px;
+  top: 30px;
+  left: -330px;
+  width: 350px;
+}
+
+.nombreEntregado {
+  position: relative;
+  font-size: 20px;
+  top: -90px;
+  left: 200px;
+  width: 350px;
+}
+.horaEntregado{
+  position: relative;
+  font-size: 20px;
+  top: -78px;
+  left: 200px;
+  width: 350px;
+}
+
+.Caseta {
+  position: relative;
+  font-size: 20px;
+  top: -60px;
+  left: -330px;
+  width: 350px;
+}
+
+.inputPaquetes {
+  position: relative;
+  height: 30px;
+  width: 450px;
+  padding-left: 10px;
+  outline: 0px;
+  font-size: 15px;
+}
+
+
+/* estilo de botones */
+
+.botonEliminar {
+  position: absolute;
+  height: 40px;
+  width: 150px;
+  left: 600px;
+  top: 205px;
+  background-color: rgb(237, 95, 95);
+  color: white;
+  border-radius: 40px;
+  font-size: 20px;
+}
+
+.botonRegistro {
+  position: absolute;
+  height: 40px;
+  width: 150px;
+  left: 850px;
+  top: 205px;
   background-color: rgb(110, 148, 221);
+  color: white;
+  border-radius: 40px;
+  font-size: 20px;
 }
 
