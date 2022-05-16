@@ -20,12 +20,21 @@ public class Condomino {
     @Id
     private String id;
 
-    @Column(name = "id_usuario")
-    private String idUsuario;
+    private String nombre;
 
-    @Column(name = "id_direccion")
-    private String idDireccion;
+    private String calle;
 
-    @Column(name = "id_trabajador")
-    private String idTrabajador;
+    @Column(name = "numero_casa")
+    private String numeroCasa;
+
+    @Column(name = "numero_telefono")
+    private String numeroTelefono;
+
+    private String direccion;
+
+    @Column(name = "correo_electronico")
+    private String correoElectronico;
+
+    @Column(name = "numero_emergencia")
+    private String numeroEmergencia;
 }

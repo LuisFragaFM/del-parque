@@ -5,10 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "trabajadores")
@@ -20,11 +20,18 @@ public class Trabajador {
     @Id
     private String id;
 
-    private String nombre;
+    private String tipo;
 
-    private String fecha;
+    @Column(name = "nombre_trabajador")
+    private String nombreTrabajador;
 
-    private String caseta;
+    @Column(name = "nombre_condomino")
+    private String nombreCondomino;
 
-    private LocalDate hora;
+    private String horario;
+
+    private String telefono;
+
+    @Column(name = "id_condomino")
+    private String idCondomino;
 }

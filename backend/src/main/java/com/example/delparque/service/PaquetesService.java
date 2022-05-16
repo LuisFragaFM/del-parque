@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PaquetesService {
+    Paquete save(Paquete paquete);
+
     List<Paquete> findAll();
 
     Optional<Paquete> findById(String id);
 
-    List<Paquete> findAllByEntregado(Boolean status);
-
-    Paquete save(Paquete paquete);
+    void delete(String id);
 }

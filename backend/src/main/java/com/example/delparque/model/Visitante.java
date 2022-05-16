@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "visitantes")
@@ -21,21 +20,38 @@ public class Visitante {
     @Id
     private String id;
 
-    @Column(name = "id_automovil")
-    private String idAutomovil;
+    @Column(name = "nombre_visitante")
+    private String nombreVisitante;
 
-    @Column(name = "id_condominio")
-    private String idCondominio;
+    @Column(name = "tarjeton_visitante")
+    private String tarjetonVisitante;
 
-    private String nombre;
+    @Column(name = "vehiculo_visitante")
+    private String vehiculoVisitante;
 
-    private LocalDate fecha;
+    @Column(name = "placas_vehiculo")
+    private String placasVehiculo;
 
-    private String vigilanteAutorizo;
+    @Column(name = "fecha_llegada")
+    private String fechaLlegada;
 
-    private String residente;
+    @Column(name = "fecha_salida")
+    private String fechaSalida;
 
-    private String casetaEntrada;
+    @Column(name = "hora_llegada")
+    private String horaLlegada;
 
+    @Column(name = "hora_salida")
+    private String horaSalida;
+
+    private String autorizacion;
+
+    @Column(name = "caseta_llegada")
+    private String casetaLlegada;
+
+    @Column(name = "caseta_salida")
     private String casetaSalida;
+
+    @Column(name = "id_condomino")
+    private String idCondomino;
 }

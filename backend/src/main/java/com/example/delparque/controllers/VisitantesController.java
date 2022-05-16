@@ -13,7 +13,7 @@ public class VisitantesController {
 
     private final VisitantesService visitantesService;
 
-    public VisitantesController(VisitantesService visitantesService) {
+    VisitantesController(VisitantesService visitantesService) {
         this.visitantesService = visitantesService;
     }
 
@@ -22,7 +22,7 @@ public class VisitantesController {
         return visitantesService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Optional<Visitante> findById(@PathVariable String id) {
         return visitantesService.findById(id);
     }
@@ -31,4 +31,10 @@ public class VisitantesController {
     public Visitante save(@RequestBody Visitante visitante) {
         return visitantesService.save(visitante);
     }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable String id) {
+        visitantesService.delete(id);
+    }
+
 }

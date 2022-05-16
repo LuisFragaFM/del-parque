@@ -1,9 +1,9 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.exception.BadRequestDataException;
-import com.example.delparque.model.User;
-import com.example.delparque.repository.UserRepository;
-import com.example.delparque.service.UserService;
+import com.example.delparque.model.Usuario;
+import com.example.delparque.repository.UsuariosRepository;
+import com.example.delparque.service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,23 +11,23 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UsuariosServiceImpl implements UsuariosService {
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
-    private final UserRepository userRepository;
+    private final UsuariosRepository usuariosRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UsuariosServiceImpl(UsuariosRepository usuariosRepository) {
+        this.usuariosRepository = usuariosRepository;
     }
 
     @Override
-    public void register(com.example.delparque.model.User user) {
+    public void register(com.example.delparque.model.Usuario user) {
 
-        User username = userRepository.findByUsername(user.getUsername());
+        Usuario username = usuariosRepository.findByUsername(user.getUsername());
 
-        User email = userRepository.findByEmail(user.getEmail());
+        Usuario email = usuariosRepository.findByEmail(user.getEmail());
 
         if (username != null) {
             throw new BadRequestDataException("usuario en uso", "BAD_USERNAME_REGISTER");
@@ -43,6 +43,6 @@ public class UserServiceImpl implements UserService {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        userRepository.save(user);
+        usuariosRepository.save(user);
     }
 }

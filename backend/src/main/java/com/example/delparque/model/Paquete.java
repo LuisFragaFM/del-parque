@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "paquetes")
@@ -20,14 +21,32 @@ public class Paquete {
     @Id
     private String id;
 
-    private String emisor;
+    @Column(name = "nombre_empresa")
+    private String nombreEmpresa;
 
-    private String receptor;
+    @Column(name = "numero_guia")
+    private String numeroGuia;
 
-    private String caseta;
+    @Column(name = "recibe_guardia")
+    private String recibeGuardia;
 
-    private Boolean entregado;
+    @Column(name = "fecha_llegada")
+    private LocalDate fechaLlegada;
 
-    @Column(name = "id_condominio")
-    private String idCondominio;
+    @Column(name = "caseta_recibida")
+    private String casetaRecibida;
+
+    @Column(name = "recibe_inquilino")
+    private String recibeInquilino;
+
+    @Column(name = "entrega_guardia")
+    private String entregaGuardia;
+
+    @Column(name = "fecha_entrega")
+    private LocalDate fechaEntrega;
+
+    private String entrega;
+
+    @Column(name = "id_condomino")
+    private String idCondomino;
 }

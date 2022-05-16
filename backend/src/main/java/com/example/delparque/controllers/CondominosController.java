@@ -1,34 +1,49 @@
 package com.example.delparque.controllers;
 
 import com.example.delparque.dto.Condomino;
-import com.example.delparque.service.CondominiosService;
+import com.example.delparque.service.CondominosService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/condominios")
+@RequestMapping("api/condominos")
 public class CondominosController {
 
-    private final CondominiosService condominiosService;
+    private final CondominosService condominosService;
 
-    public CondominosController(CondominiosService condominiosService) {
-        this.condominiosService = condominiosService;
+    CondominosController(CondominosService condominosService) {
+        this.condominosService = condominosService;
     }
 
     @GetMapping()
     public List<Condomino> findAll() {
-        return condominiosService.findAll();
+        return condominosService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Optional<Condomino> findById(@PathVariable String id) {
-        return condominiosService.findById(id);
+        return condominosService.findById(id);
+    }
+
+    @GetMapping("{nombre}")
+    public Optional<Condomino> findByNombre(@PathVariable String nombre) {
+        return condominosService.findByNombre(nombre);
+    }
+
+    @GetMapping("{telefono}")
+    public Optional<Condomino> findByNumeroTelefono(@PathVariable String telefono) {
+        return condominosService.findByNumeroTelefono(telefono);
     }
 
     @PostMapping()
-    public Condomino save(Condomino condomino) {
-        return condominiosService.save(condomino);
+    public Condomino save(@RequestBody Condomino condomino) {
+        return condominosService.save(condomino);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable String id) {
+        condominosService.delete(id);
     }
 }

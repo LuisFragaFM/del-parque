@@ -1,102 +1,72 @@
-CREATE TABLE calles
+CREATE TABLE condominos
 (
-    id     varchar(40) primary key,
-    nombre varchar(40)
-);
-
-CREATE TABLE direcciones
-(
-    id              varchar(40) primary key,
-    numero_casa     varchar(10),
-    id_calle        varchar(40) references calles,
-    nombre_colonia  varchar(40),
-    codigo_postal   varchar(10),
-    numero_interior varchar(10)
-);
-
-CREATE TABLE contactos
-(
-    id                  varchar(40) primary key,
-    email               varchar(120),
-    numero_telefono     varchar(20),
-    telefono_emergencia varchar(20)
-);
-
-CREATE TABLE usuarios
-(
-    id          varchar(40) primary key,
-    id_contacto varchar(40) references contactos,
-    username      varchar(120) unique,
-    email       varchar(120) unique,
-    password    varchar(120)
-);
-
-CREATE TABLE roles_by_user
-(
-    id      varchar(40) primary key,
-    user_id varchar(40) references usuarios,
-    role    varchar(40)
-);
-
-CREATE TABLE automoviles
-(
-    id      varchar(40) primary key,
-    placas  varchar(40),
-    color   varchar(40),
-    modelo  varchar(40),
-    tarjeta varchar(40)
+    id                 varchar(40) primary key,
+    nombre             varchar(120),
+    calle              varchar(120),
+    numero_casa        varchar(10),
+    numero_telefono    varchar(40),
+    direccion          varchar(120),
+    correo_electronico varchar(140),
+    numero_emergencia  varchar(40)
 );
 
 CREATE TABLE trabajadores
 (
-    id     varchar(40) primary key,
-    nombre varchar(120),
-    fecha  date not null,
-    caseta varchar(40),
-    hora   date not null
+    id                varchar(40) primary key,
+    tipo              varchar(40),
+    nombre_trabajador varchar(40),
+    nombre_condomino  varchar(40),
+    horario           varchar(40),
+    telefono          varchar(40),
+    id_condomino      varchar(40) references condominos
 );
 
-CREATE TABLE condominos
+CREATE TABLE paquetes
 (
-    id            varchar(40) primary key,
-    id_usuario    varchar(40) references usuarios,
-    id_direccion  varchar(40) references direcciones,
-    id_trabajador varchar(40) references trabajadores
+    id               varchar(40) primary key,
+    nombre_empresa   varchar(120),
+    numero_guia      varchar(120),
+    recibe_guardia   varchar(120),
+    fecha_llegada    date,
+    hora_llegada     varchar(40),
+    caseta_recibida  varchar(120),
+    recibe_inquilino varchar(120),
+    entrega_guardia  varchar(120),
+    fecha_entrega    date,
+    hora_entrega     varchar(40),
+    caseta_entrega   varchar(120),
+    id_condomino     varchar(40) references condominos
 );
 
 CREATE TABLE visitantes
 (
     id                 varchar(40) primary key,
-    id_automovil       varchar(40) references automoviles,
-    id_condominio      varchar(40) references condominos,
-    nombre             varchar(40),
-    fecha              date not null,
-    vigilante_autorizo varchar(120),
-    residente          varchar(120),
-    caseta_entrada     varchar(40),
-    caseta_salida      varchar(40)
+    nombre_visitante   varchar(140),
+    tarjeton_visitante varchar(140),
+    vehiculo_visitante varchar(140),
+    placas_vehiculo    varchar(120),
+    fecha_llegada      date,
+    fecha_salida       date,
+    hora_llegada       varchar(40),
+    hora_salida        varchar(40),
+    autorizacion       varchar(120),
+    caseta_llegada     varchar(120),
+    caseta_salida      varchar(120),
+    id_condomino       varchar(40) references condominos
 );
 
-CREATE TABLE paquetes
+CREATE TABLE usuarios
 (
-    id            varchar(40) primary key,
-    emisor        varchar(120),
-    receptor      varchar(120),
-    caseta        varchar(120),
-    entregado     boolean,
-    id_condominio varchar(40) references condominos
+    id       varchar(40) primary key,
+    username varchar(40),
+    email    varchar(100),
+    nombre   varchar(40),
+    password varchar(120)
 );
 
-CREATE TABLE entregas
+CREATE TABLE roles_usuario
 (
-    id            varchar(40) primary key,
-    quien_entrega varchar(120),
-    id_paquete    varchar(40) references paquetes
-);
-
-CREATE TABLE pagos
-(
-    id            varchar(40) primary key,
-    pagado        boolean,
-    id_condominio varchar(40) references condominos
-);
+    id         varchar(40) primary key,
+    role       varchar(40),
+    id_usuario varchar(40) references usuarios
+)

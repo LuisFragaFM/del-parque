@@ -10,18 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "contactos")
+@Table(name = "roles_usuario")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Contacto {
+public class RolesPorUsuario {
     @Id
     private String id;
 
-    private String email;
+    private String role;
 
-    private String numeroTelefono;
-
-    private String telefonoEmergencia;
+    private String idUsuario;
 }

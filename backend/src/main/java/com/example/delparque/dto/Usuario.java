@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Entrega {
+public class Usuario {
     private String id;
-    private String quienEntrega;
-    private String idPaquete;
+    private String username;
+    private String nombre;
+    private String password;
 }

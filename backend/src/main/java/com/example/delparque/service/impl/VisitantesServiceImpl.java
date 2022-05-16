@@ -3,11 +3,11 @@ package com.example.delparque.service.impl;
 import com.example.delparque.dto.Visitante;
 import com.example.delparque.repository.VisitantesRepository;
 import com.example.delparque.service.VisitantesService;
-import com.example.delparque.service.mappers.VisitantesMapper;
+import com.example.delparque.service.mappers.VisitanteMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -17,23 +17,21 @@ public class VisitantesServiceImpl implements VisitantesService {
 
     private final VisitantesRepository visitantesRepository;
 
-    public VisitantesServiceImpl(VisitantesRepository visitantesRepository) {
+    VisitantesServiceImpl(VisitantesRepository visitantesRepository) {
         this.visitantesRepository = visitantesRepository;
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Visitante> findAll() {
-        return visitantesRepository.findAll().stream()
-                .map(VisitantesMapper::entityToDto)
-                .collect(Collectors.toList());
+    public Optional<Visitante> findById(String id) {
+        return Optional.ofNullable(VisitanteMapper.entityToDto(
+                Objects.requireNonNull(visitantesRepository.findById(id).orElse(null))));
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Optional<Visitante> findById(String id) {
-        return Optional.ofNullable(VisitantesMapper.entityToDto(visitantesRepository.findById(id)
-                .orElse(new com.example.delparque.model.Visitante())));
+    public List<Visitante> findAll() {
+        return visitantesRepository.findAll().stream()
+                .map(VisitanteMapper::entityToDto)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -42,7 +40,11 @@ public class VisitantesServiceImpl implements VisitantesService {
             visitante.setId(UUID.randomUUID().toString());
         }
 
-        return VisitantesMapper.entityToDto(visitantesRepository.save(VisitantesMapper.dtoToEntity(visitante)));
+        return VisitanteMapper.entityToDto(visitantesRepository.save(VisitanteMapper.dtoToEntity(visitante)));
     }
 
+    @Override
+    public void delete(String id) {
+        visitantesRepository.deleteById(id);
+    }
 }
