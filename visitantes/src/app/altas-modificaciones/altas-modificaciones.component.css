@@ -1,0 +1,117 @@
+/* titulo */
+
+.title {
+    position: relative;
+    top: 60px;
+    left: 50px;
+}
+
+
+/* blur */
+
+.contenido {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    height: 710px;
+    width: 1170px;
+}
+
+
+/* imagen de usuario */
+
+.imagenUser {
+    position: absolute;
+    height: 35px;
+    width: 300px;
+    left: 75px;
+    top: 380px;
+}
+
+
+/* mostrar datos*/
+
+.inputDatosAltas {
+    position: absolute;
+    height: 35px;
+    width: 400px;
+    padding-left: 10px;
+    border: 6px solid rgb(211, 245, 197);
+    border-radius: 10px;
+    top: 30px;
+    outline: 0px;
+    font-size: 15px;
+}
+
+
+/* campo de los datosa mostrar */
+
+.nombreDatos {
+    position: absolute;
+    font-size: 20px;
+    top: 120px;
+    left: 90px;
+    width: 600px;
+}
+
+.direccionDatos {
+    position: absolute;
+    font-size: 20px;
+    top: 195px;
+    left: 90px;
+    width: 600px;
+}
+
+.emergenciaDatos {
+    position: absolute;
+    font-size: 20px;
+    top: 285px;
+    left: 90px;
+    width: 600px;
+}
+
+.telefonoDatos {
+    position: absolute;
+    font-size: 20px;
+    top: 120px;
+    left: 650px;
+    width: 600px;
+}
+
+.correoDatos {
+    position: absolute;
+    font-size: 20px;
+    top: 195px;
+    left: 650px;
+    width: 600px;
+}
+
+
+/* dise;o del boton */
+
+.botonGuardar {
+    position: absolute;
+    height: 35px;
+    width: 200px;
+    top: 300px;
+    left: 850px;
+    background-color: rgb(110, 148, 221);
+    color: white;
+    border-radius: 40px;
+    font-size: 25px;
+}
+
+
+/* estado de pago */
+
+.estadoPago {
+    position: absolute;
+    top: 340px;
+    left: 600px;
+    width: 500px;
+}
+
+.imgNoPagado {
+    position: absolute;
+    top: 45px;
+    left: 300px;
+}
