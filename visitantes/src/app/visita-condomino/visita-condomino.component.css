@@ -1,0 +1,35 @@
+.contenido {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    height: 710px;
+    width: 1170px;
+    
+    
+}
+
+.Title1{
+    margin: 30px;
+    
+}
+
+.Form{
+    display: flex;
+}
+
+input{
+     width: 400px;
+     margin-bottom: 20px;
+}
+
+.botonAgendar {
+    float: right;
+    height: 35px;
+    width: 200px;
+    top: 300px;
+    left: 850px;
+    background-color: rgb(110, 148, 221);
+    margin-right: 70px;
+    color: white;
+    border-radius: 40px;
+    font-size: 25px;
+}

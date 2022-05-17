@@ -20,6 +20,8 @@ import { AgendaCondominoComponent } from './agenda-condomino/agenda-condomino.co
 import { VisitaCondominoComponent } from './visita-condomino/visita-condomino.component';
 import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
+import { MenuAgendaComponent } from './menu-agenda/menu-agenda.component';
+import { MenuGlobalComponent } from './menu-global/menu-global.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
     AgendaCondominoComponent,
     VisitaCondominoComponent,
     EncabezadoComponent,
-    PiePaginaComponent
+    PiePaginaComponent,
+    MenuAgendaComponent,
+    MenuGlobalComponent
   ],
   imports: [
     BrowserModule,
