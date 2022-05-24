@@ -39,8 +39,8 @@ public class SystemUserDetailsService {
 
         Usuario user = usuariosService.findOrRegister(email, name);
 
-        rolesRepository.findAllByIdUsuario(user.getId()).forEach(role ->
-                authorities.add(new SimpleGrantedAuthority(role.getRole())));
+        rolesRepository.findRolesByUser(user.getId()).forEach(role ->
+                authorities.add(new SimpleGrantedAuthority(role)));
 
         attributes.put("userId", user.getId());
 

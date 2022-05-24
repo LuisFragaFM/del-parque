@@ -1,0 +1,50 @@
+<app-encabezado></app-encabezado>
+
+<div class="contenido">
+  <app-menu-agenda></app-menu-agenda>
+  <div class="VisitanteContainer">
+    <div class="Title1">
+      <h1>Datos del Visitante</h1>
+    </div>
+    <div class="Form">
+      <div class="Izq">
+        <h3>Nombre</h3> <br>
+        <input type="text" placeholder="Escriba aqui" [(ngModel)]="visitante.nombreVisitante"> <br>
+        <h3>Tarjeton</h3> <br>
+        <input type="text" placeholder="Escriba aqui" [(ngModel)]="visitante.tarjetonVisitante">
+      </div>
+      <div class="Der">
+        <h3>Tipo de Vehiculo</h3> <br>
+        <input type="text" placeholder="Escriba aqui" [(ngModel)]="visitante.vehiculoVisitante"> <br>
+        <h3>Placas</h3> <br>
+        <input type="text" placeholder="Escriba aqui" [(ngModel)]="visitante.placasVehiculo">
+      </div>
+    </div>
+    <div class="Title1">
+      <h1>Datos Generales</h1>
+    </div>
+    <div class="Form">
+      <div class="Izq">
+        <h3>Fecha</h3> <br>
+        <input type="date" placeholder="Escriba aqui" [(ngModel)]="visitante.fechaLlegada"> <br>
+        <h3>Hora</h3> <br>
+        <input type="time" placeholder="Escriba aqui" [(ngModel)]="visitante.horaLlegada">
+      </div>
+      <div class="Der">
+        <h3>Autorizada por</h3> <br>
+        <input type="text" placeholder="Escriba aqui"> <br>
+        <h3>Caseta</h3> <br>
+        <select class="Opciones" name="Caseta" id="Caseta" [(ngModel)]="visitante.casetaLlegada">
+          <option value="Caseta 1"><h2>Caseta 1</h2></option>
+          <option value="Caseta 2"><h2>Caseta 2</h2></option>
+        </select>
+      </div>
+
+    </div>
+    <button class="botonAgendar" (click)="save()">Agendar</button>
+  </div>
+
+</div>
+
+
+<app-pie-pagina></app-pie-pagina>

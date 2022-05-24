@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.security.Principal;
 
 @Component
-@Profile("tests")
 public class SessionHelper implements com.example.delparque.controllers.SessionHelper {
 
     public String getEmailForLoggedUser(Principal principal) {

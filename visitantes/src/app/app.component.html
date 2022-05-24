@@ -1,39 +1,68 @@
-<!-- 
+<!--
     -------------- comentado namas porque era de referencia
-    para seguir buscando entre paginas quitar comentado 
+    para seguir buscando entre paginas quitar comentado
     o en el url poner /X --------------
-    
-    <h1>INICIO</h1>
-<nav>
-    <a routerLink="/login">LOG-IN</a>
-    <br>
-    <a routerLink="/visita-a-g">Registro de visitas (guardia/administrador)</a>
-    <br>
-    <a routerLink="/visita-c">Registro de visitas (condomino)</a>
-    <br>
-    <a routerLink="/trabajador-s">Trabajador servicio</a>
-    <br>
-    <a routerLink="/trabajador">Trabajador</a>
-    <br>
-    <a routerLink="/salida">Registrar Salida</a>
-    <br>
-    <a routerLink="/registro-paq">Registrar Paqueteria</a>
-    <br>
-    <a routerLink="/registro-a">Registrar Agenda</a>
-    <br>
-    <a routerLink="/pagos">Pagos</a>
-    <br>
-    <a routerLink="/informes">Informes</a>
-    <br>
-    <a routerLink="/entregar-paq">Entregar Paqueteria</a>
-    <br>
-    <a routerLink="/bitacora-tra">Bitacora Trabajadores</a>
-    <br>
-    <a routerLink="/bajas">Bajas</a>
-    <br>
-    <a routerLink="/altas-mod">Altas/Modificaciones</a>
-    <br>
-    <a routerLink="/agenda-cond">Agenda Condomino</a>
-</nav>-->
+-->
+<h1>INICIO</h1>
+<nav *ngIf="user">
+  <a routerLink="/login">LOG-IN</a>
+  <br>
+  <a routerLink="/visita-a-g">Registro de visitas (guardia/administrador)</a>
+  <br>
+  <a routerLink="/visita-c">Registro de visitas (condomino)</a>
+  <br>
+  <a routerLink="/trabajador-s">Trabajador servicio</a>
+  <br>
+  <a routerLink="/trabajador">Trabajador</a>
+  <br>
+  <a routerLink="/salida">Registrar Salida</a>
+  <br>
+  <a routerLink="/registro-paq">Registrar Paqueteria</a>
+  <br>
+  <a routerLink="/registro-a">Registrar Agenda</a>
+  <br>
+  <a routerLink="/pagos">Pagos</a>
+  <br>
+  <a routerLink="/informes">Informes</a>
+  <br>
+  <a routerLink="/entregar-paq">Entregar Paqueteria</a>
+  <br>
+  <a routerLink="/bitacora-tra">Bitacora Trabajadores</a>
+  <br>
+  <a routerLink="/bajas">Bajas</a>
+  <br>
+  <a routerLink="/altas-mod">Altas/Modificaciones</a>
+  <br>
+  <a routerLink="/agenda-cond">Agenda Condomino</a>
+</nav>
 
 <router-outlet></router-outlet>
+
+<form class="contenido" *ngIf="failedLogin">
+  <div class="cuadro">
+    <div class="sec_azul">
+      <div class="titulo"></div>
+    </div>
+    <div class="sec_osc">
+      <div class="img"></div>
+      <div class="container">
+        <div class="img_2"></div>
+
+        <input type="text" class="barra" placeholder="Ingresa usuario" #user>
+      </div>
+      <div class="container">
+        <div class="img_3"></div>
+
+        <input type="password" class="barra" placeholder="Contrasena" #password>
+      </div>
+
+      <button class="boton" (click)="apiLogin(user.value, password.value)">Entrar</button>
+      <div class="pie">Av. Parque Chapultepec 1050
+        <br>
+        Colinas del Parque
+        <br>
+        78260 San Luis, S.L.P.
+      </div>
+    </div>
+  </div>
+</form>
