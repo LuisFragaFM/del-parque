@@ -58,6 +58,7 @@ CREATE TABLE visitantes
 CREATE TABLE usuarios
 (
     id     varchar(40) primary key,
+    email  varchar(100),
     nombre varchar(40)
 );
 

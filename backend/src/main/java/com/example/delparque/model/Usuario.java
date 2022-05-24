@@ -19,5 +19,7 @@ public class Usuario {
     @Id
     private String id;
 
+    private String email;
+
     private String nombre;
 }
