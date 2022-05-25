@@ -7,8 +7,6 @@ import com.example.delparque.service.mappers.VisitanteMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -22,9 +20,8 @@ public class VisitantesServiceImpl implements VisitantesService {
     }
 
     @Override
-    public Optional<Visitante> findById(String id) {
-        return Optional.ofNullable(VisitanteMapper.entityToDto(
-                Objects.requireNonNull(visitantesRepository.findById(id).orElse(null))));
+    public Visitante findById(String id) {
+        return visitantesRepository.findById(id).map(VisitanteMapper::entityToDto).orElse(null);
     }
 
     @Override

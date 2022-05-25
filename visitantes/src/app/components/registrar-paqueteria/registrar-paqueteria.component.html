@@ -1,68 +1,63 @@
 <div class="container">
-    <app-encabezado></app-encabezado>
 
-    <section>
-      <h2>Datos de la paqueteria</h2>
-  
-      <form>
-        <div class="input">
-          <label for="nombre_paqueteria">Nombre / Empresa</label>
-          <input type="text" placeholder="Escriba aqui" id="nombre_paqueteria">
-        </div>
-        <div class="input">
-          <label for="guia">Numero de Guia</label>
-          <input type="text" placeholder="Escriba aqui" id="guia">
-        </div>
-      </form>
-    </section>
-  
-    <section>
-      <h2>Datos del condomino</h2>
-      <form>
-        <div class="input">
-          <label for="nombre_condomino">Nombre</label>
-          <input type="text" placeholder="Escriba aqui" id="nombre_condomino">
-          <label for="calle">Numero de la casa</label>
-          <input type="text" placeholder="Escriba aqui" id="casa">
-        </div>
-  
-        <div class="input">
-          <label for="calle">Calle</label>
-          <input type="text" placeholder="Escriba aqui" id="calle">
-        </div>
-      </form>
-    </section>
-  
-    <section>
-      <h2>Datos generales</h2>
-      <form>
-        <div class="input">
-          <label for="recibido">Recibido por:</label>
-          <input type="text" placeholder="Escriba aqui" id="recibido">
-          <label for="hora">Hora</label>
-          <input type="text" id="hora">
-        </div>
-  
-        <div class="input">
-          <label for="fecha">Fecha</label>
-          <input type="date" id="fecha">
-          <label for="caseta">Caseta recibida:</label>
-          <input type="text" id="caseta">
-        </div>
-      </form>
-      <div class="caseta">
-        <div>
-          <label for="caseta">Caseta:</label>
-          Caseta 1
-          <input type="checkbox">
-          Caseta 2
-          <input type="checkbox">
-        </div>
-        <button>Registrar</button>
+  <section>
+    <h2>Datos de la paqueteria</h2>
+
+    <div class="form">
+      <div class="input">
+        <label for="nombre_paqueteria">Nombre / Empresa</label>
+        <input type="text" placeholder="Escriba aqui" id="nombre_paqueteria" [(ngModel)]="paquete.nombreEmpresa">
       </div>
-    </section>
-  
-    <app-pie-pagina></app-pie-pagina>
-  
-  </div>
-  
+      <div class="input">
+        <label for="guia">Numero de Guia</label>
+        <input type="text" placeholder="Escriba aqui" id="guia" [(ngModel)]="paquete.numeroGuia">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Datos del condomino</h2>
+    <div class="form">
+      <div class="input">
+        <label for="nombre_condomino">Nombre</label>
+        <input type="text" placeholder="Escriba aqui" id="nombre_condomino" [(ngModel)]="paquete.nombreCondomino">
+        <label for="calle">Numero de la casa</label>
+        <input type="text" placeholder="Escriba aqui" id="casa" [(ngModel)]="paquete.numeroCasa">
+      </div>
+
+      <div class="input">
+        <label for="calle">Calle</label>
+        <input type="text" placeholder="Escriba aqui" id="calle" [(ngModel)]="paquete.calle">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Datos generales</h2>
+    <div class="form">
+      <div class="input">
+        <label for="recibido">Recibido por:</label>
+        <input type="text" placeholder="Escriba aqui" id="recibido" [(ngModel)]="paquete.recibeInquilino">
+        <label for="hora">Hora</label>
+        <input type="time" id="hora" [(ngModel)]="paquete.horaEntrega">
+      </div>
+
+      <div class="input">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" [(ngModel)]="paquete.fechaEntrega">
+        <label for="caseta">Caseta recibida:</label>
+        <input type="text" id="caseta" [(ngModel)]="paquete.casetaEntrega">
+      </div>
+    </div>
+    <div class="caseta">
+      <div>
+        <label for="caseta">Caseta:</label>
+        Caseta 1
+        <input type="checkbox" value="Caseta 1" checked disabled>
+        Caseta 2
+        <input type="checkbox" value="Caseta 2" checked disabled>
+      </div>
+      <button (click)="save()">Registrar</button>
+    </div>
+  </section>
+</div>

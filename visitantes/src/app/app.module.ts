@@ -19,7 +19,6 @@ import {AgendaCondominoComponent} from './components/agenda-condomino/agenda-con
 import {VisitaCondominoComponent} from './components/visita-condomino/visita-condomino.component';
 import {EncabezadoComponent} from './components/encabezado/encabezado.component';
 import {PiePaginaComponent} from './components/pie-pagina/pie-pagina.component';
-import {MenuAgendaComponent} from './components/menu-agenda/menu-agenda.component';
 import {MenuGlobalComponent} from './components/menu-global/menu-global.component';
 import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -45,7 +44,6 @@ import {CookieService} from 'ngx-cookie-service';
     VisitaCondominoComponent,
     EncabezadoComponent,
     PiePaginaComponent,
-    MenuAgendaComponent,
     MenuGlobalComponent
   ],
   imports: [

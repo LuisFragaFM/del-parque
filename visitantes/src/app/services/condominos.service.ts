@@ -21,11 +21,11 @@ export class CondominosService {
   }
 
   findByNombre(nombre: string): Observable<Condomino> {
-    return this.http.get<Condomino>(`${environment.baseUrl}/condominos/${nombre}`);
+    return this.http.get<Condomino>(`${environment.baseUrl}/condominos/nombre?nombre=${nombre}`);
   }
 
   findByTelefono(telefono: string): Observable<Condomino> {
-    return this.http.get<Condomino>(`${environment.baseUrl}/condominos/${telefono}`);
+    return this.http.get<Condomino>(`${environment.baseUrl}/condominos/telefono?telefono${telefono}`);
   }
 
   save(condomino: Condomino): Observable<Condomino> {

@@ -7,8 +7,6 @@ import com.example.delparque.service.mappers.TrabajadorMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -29,9 +27,8 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     }
 
     @Override
-    public Optional<Trabajador> findById(String id) {
-        return Optional.ofNullable(TrabajadorMapper.entityToDto(
-                Objects.requireNonNull(trabajadoresRepository.findById(id).orElse(null))));
+    public Trabajador findById(String id) {
+        return trabajadoresRepository.findById(id).map(TrabajadorMapper::entityToDto).orElse(null);
     }
 
     @Override

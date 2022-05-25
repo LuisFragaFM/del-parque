@@ -23,7 +23,7 @@ public class VisitantesController {
     }
 
     @GetMapping("{id}")
-    public Optional<Visitante> findById(@PathVariable String id) {
+    public Visitante findById(@PathVariable String id) {
         return visitantesService.findById(id);
     }
 

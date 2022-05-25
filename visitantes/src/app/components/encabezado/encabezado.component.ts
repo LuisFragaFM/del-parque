@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-encabezado',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EncabezadoComponent implements OnInit {
 
-  constructor() { }
+  @Input('user') user!: User;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

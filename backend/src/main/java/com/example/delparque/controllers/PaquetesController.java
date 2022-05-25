@@ -23,7 +23,7 @@ public class PaquetesController {
     }
 
     @GetMapping("{id}")
-    public Optional<Paquete> findById(@PathVariable String id) {
+    public Paquete findById(@PathVariable String id) {
         return paquetesService.findById(id);
     }
 

@@ -23,7 +23,7 @@ public class TrabajadoresController {
     }
 
     @GetMapping("{id}")
-    public Optional<Trabajador> findById(@PathVariable String id) {
+    public Trabajador findById(@PathVariable String id) {
         return trabajadoresService.findById(id);
     }
 

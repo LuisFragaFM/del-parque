@@ -18,9 +18,12 @@ public class Paquete {
     private String recibeGuardia;
     private LocalDate fechaLlegada;
     private String casetaRecibida;
+    private String casetaEntrega;
     private String recibeInquilino;
     private String entregaGuardia;
     private LocalDate fechaEntrega;
-    private String entrega;
-    private String idCondomino;
+    private String nombreCondomino;
+    private String numeroCasa;
+    private String calle;
+    private String horaEntrega;
 }

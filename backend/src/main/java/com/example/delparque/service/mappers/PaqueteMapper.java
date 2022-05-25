@@ -7,15 +7,18 @@ public class PaqueteMapper {
         return Paquete.builder()
                 .id(paquete.getId())
                 .casetaRecibida(paquete.getCasetaRecibida())
-                .entrega(paquete.getEntrega())
+                .casetaEntrega(paquete.getCasetaEntrega())
                 .entregaGuardia(paquete.getEntregaGuardia())
                 .fechaEntrega(paquete.getFechaEntrega())
                 .fechaLlegada(paquete.getFechaLlegada())
-                .idCondomino(paquete.getIdCondomino())
+                .nombreCondomino(paquete.getNombreCondomino())
+                .calle(paquete.getCalle())
+                .numeroCasa(paquete.getNumeroCasa())
                 .nombreEmpresa(paquete.getNombreEmpresa())
                 .numeroGuia(paquete.getNumeroGuia())
                 .recibeGuardia(paquete.getRecibeGuardia())
                 .recibeInquilino(paquete.getRecibeInquilino())
+                .horaEntrega(paquete.getHoraEntrega())
                 .build();
     }
 
@@ -23,15 +26,17 @@ public class PaqueteMapper {
         return com.example.delparque.model.Paquete.builder()
                 .id(paquete.getId())
                 .casetaRecibida(paquete.getCasetaRecibida())
-                .entrega(paquete.getEntrega())
+                .casetaEntrega(paquete.getCasetaEntrega())
                 .entregaGuardia(paquete.getEntregaGuardia())
                 .fechaEntrega(paquete.getFechaEntrega())
                 .fechaLlegada(paquete.getFechaLlegada())
-                .idCondomino(paquete.getIdCondomino())
-                .nombreEmpresa(paquete.getNombreEmpresa())
+                .nombreCondomino(paquete.getNombreCondomino())
+                .calle(paquete.getCalle())
+                .numeroCasa(paquete.getNumeroCasa()).nombreEmpresa(paquete.getNombreEmpresa())
                 .numeroGuia(paquete.getNumeroGuia())
                 .recibeGuardia(paquete.getRecibeGuardia())
                 .recibeInquilino(paquete.getRecibeInquilino())
+                .horaEntrega(paquete.getHoraEntrega())
                 .build();
     }
 }

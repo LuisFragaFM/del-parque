@@ -38,9 +38,8 @@ public class PaquetesServiceImpl implements PaquetesService {
     }
 
     @Override
-    public Optional<Paquete> findById(String id) {
-        return Optional.ofNullable(PaqueteMapper.entityToDto(
-                Objects.requireNonNull(paquetesRepository.findById(id).orElse(null))));
+    public Paquete findById(String id) {
+        return paquetesRepository.findById(id).map(PaqueteMapper::entityToDto).orElse(null);
     }
 
     @Override

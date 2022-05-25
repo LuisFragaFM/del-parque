@@ -1,66 +1,65 @@
-<app-encabezado></app-encabezado>
 <!-- contenedor de inquinos -->
 <div class="contenido">
-    <!-- contenedor para flexbox -->
-    <div class="VisitanteBusqueda">
-        <div class="tipoVisitante">
-            <!-- seleccionar tipo de visitante -->
-            <h3>Tipo de visita:</h3>
-            <!-- seleccionar visitante -->
-            <select name="id_salida" id="id_salida" class="inputVisitante">
-                <option value="">Tipo de vista</option>
-                <option value="1">Trabajador de obra</option>
-                <option value="2">Trabajador del hogar</option>
-                <option value="3">Visita agendada</option>
-                <option value="4">Visita no agendada</option>
-                </select>
-        </div>
-        <!-- buscar visitante -->
-        <div class="buscaVisitante">
-            <h3>Buscar:</h3>
-            <input type="text" placeholder="Buscar" class="inputBuscar" name="buscaSalida">
-        </div>
-      
+  <!-- contenedor para flexbox -->
+  <div class="VisitanteBusqueda">
+    <div class="tipoVisitante">
+      <!-- seleccionar tipo de visitante -->
+      <h3>Tipo de visita:</h3>
+      <!-- seleccionar visitante -->
+      <select name="id_salida" id="id_salida" class="inputVisitante">
+        <option value="">Tipo de vista</option>
+        <option value="1">Trabajador de obra</option>
+        <option value="2">Trabajador del hogar</option>
+        <option value="3">Visita agendada</option>
+        <option value="4">Visita no agendada</option>
+      </select>
+    </div>
+    <!-- buscar visitante -->
+    <div class="buscaVisitante">
+      <h3>Buscar:</h3>
+      <input type="text" placeholder="Buscar" class="inputBuscar" name="buscaSalida">
+    </div>
+
     <!-- Datos del Visitante-->
     <div class="bitacoraDatos">
-        <!-- titulo contenedor -->
-        <div class="titleDatos">
-            <h2>Visitante</h2>
+      <!-- titulo contenedor -->
+      <div class="titleDatos">
+        <h2>Visitante</h2>
+      </div>
+      <!-- form de nombre -->
+      <div class="nombreVisitante">
+        <h3>Nombre:</h3>
+        <input type="text" placeholder="Nombre" class="inputSalidas" name="buscaSalidaName">
+      </div>
+      <!-- form de hora de entrada-->
+      <div class="horaEntrada">
+        <h3>Hora de Entrada </h3>
+        <input type="time" placeholder="Hora" class="inputSalidas" name="buscaHorasEntrada">
+      </div>
+      <!-- form de hora de salida-->
+      <div class="horaSalida">
+        <h3>Hora de Salida </h3>
+        <input type="time" placeholder="Hora" class="inputSalidas" name="buscaHorasSalida">
+      </div>
+      <!-- form de Caseta-->
+      <div class="Caseta">
+        <h3>Caseta</h3>
+        <select class="inputSalidas" name="Caseta" id="Caseta">
+          <option value="Caseta 1"><h3>Caseta 1</h3></option>
+          <option value="Caseta 2"><h3>Caseta 2</h3></option>
+        </select>
+      </div>
+      <!-- boton para enviar datos del eliminar y realizar registro de la salida-->
+      <div class="botonesSalida">
+        <!-- boton Guardar -->
+        <div class="buttonGuardar">
+          <button class="botonGuardar">Guardar</button>
         </div>
-        <!-- form de nombre -->
-        <div class="nombreVisitante">
-            <h3>Nombre:</h3>
-            <input type="text" placeholder="Nombre" class="inputSalidas" name="buscaSalidaName">
+        <!-- boton eliminar -->
+        <div class="buttonEliminar">
+          <button class="botonEliminar">Eliminar</button>
         </div>
-        <!-- form de hora de entrada-->
-        <div class="horaEntrada">
-            <h3>Hora de Entrada </h3>
-            <input type="time" placeholder="Hora" class= "inputSalidas" name= "buscaHorasEntrada">
-        </div>
-        <!-- form de hora de salida-->
-        <div class="horaSalida">
-            <h3>Hora de Salida </h3>
-            <input type="time" placeholder="Hora" class="inputSalidas" name="buscaHorasSalida">
-        </div>
-        <!-- form de Caseta-->
-        <div class="Caseta">
-            <h3>Caseta</h3>
-                <select class="inputSalidas" name="Caseta" id="Caseta">
-                    <option value="Caseta 1"><h3>Caseta 1</h3></option>
-                    <option value="Caseta 2"><h3>Caseta 2</h3></option>
-                </select>
-        </div>
-        <!-- boton para enviar datos del eliminar y realizar registro de la salida-->
-        <div class="botonesSalida">
-            <!-- boton Guardar -->
-            <div class="buttonGuardar">
-                <button class="botonGuardar">Guardar</button>
-            </div>
-            <!-- boton eliminar -->
-            <div class="buttonEliminar">
-                <button class="botonEliminar">Eliminar</button>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
-<app-pie-pagina></app-pie-pagina>
