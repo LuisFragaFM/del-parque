@@ -5,5 +5,5 @@ export interface Trabajador {
   nombreCondomino: string;
   horario: string;
   telefono: string;
-  idCondomino: string;
+  diasTrabajo: string;
 }

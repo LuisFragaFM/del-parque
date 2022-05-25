@@ -19,8 +19,8 @@ export class TrabajadoresService {
     return this.http.get<Trabajador>(`${environment.baseUrl}/trabajadores/${id}`);
   }
 
-  save(condomino: Trabajador): Observable<Trabajador> {
-    return this.http.post<Trabajador>(`${environment.baseUrl}/trabajadores/`, condomino);
+  save(trabajador: Trabajador): Observable<Trabajador> {
+    return this.http.post<Trabajador>(`${environment.baseUrl}/trabajadores/`, trabajador);
   }
 
   delete(id: string): Observable<void> {

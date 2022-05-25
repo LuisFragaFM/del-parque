@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface VisitantesService {
     List<Visitante> findAll();
 
-    Optional<Visitante> findById(String id);
+    Visitante findById(String id);
 
     Visitante save(Visitante visitante);
 

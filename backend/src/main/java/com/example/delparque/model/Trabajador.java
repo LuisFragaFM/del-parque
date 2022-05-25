@@ -32,6 +32,6 @@ public class Trabajador {
 
     private String telefono;
 
-    @Column(name = "id_condomino")
-    private String idCondomino;
+    @Column(name = "dias_trabajo")
+    private String diasTrabajo;
 }

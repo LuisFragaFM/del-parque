@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface TrabajadoresService {
     List<Trabajador> findAll();
 
-    Optional<Trabajador> findById(String id);
+    Trabajador findById(String id);
 
     Trabajador save(Trabajador trabajador);
 

@@ -15,10 +15,10 @@ CREATE TABLE trabajadores
     id                varchar(40) primary key,
     tipo              varchar(40),
     nombre_trabajador varchar(40),
+    dias_trabajo      varchar(150),
     nombre_condomino  varchar(40),
     horario           varchar(40),
-    telefono          varchar(40),
-    id_condomino      varchar(40) references condominos
+    telefono          varchar(40)
 );
 
 CREATE TABLE paquetes
@@ -35,7 +35,9 @@ CREATE TABLE paquetes
     fecha_entrega    date,
     hora_entrega     varchar(40),
     caseta_entrega   varchar(120),
-    id_condomino     varchar(40) references condominos
+    nombre_condomino varchar(40),
+    numero_casa      varchar(15),
+    calle            varchar(120)
 );
 
 CREATE TABLE visitantes

@@ -16,5 +16,5 @@ public class Trabajador {
     private String nombreCondomino;
     private String horario;
     private String telefono;
-    private String idCondomino;
+    private String diasTrabajo;
 }

@@ -36,6 +36,9 @@ public class Paquete {
     @Column(name = "caseta_recibida")
     private String casetaRecibida;
 
+    @Column(name = "caseta_entrega")
+    private String casetaEntrega;
+
     @Column(name = "recibe_inquilino")
     private String recibeInquilino;
 
@@ -45,8 +48,14 @@ public class Paquete {
     @Column(name = "fecha_entrega")
     private LocalDate fechaEntrega;
 
-    private String entrega;
+    @Column(name = "nombre_condomino")
+    private String nombreCondomino;
 
-    @Column(name = "id_condomino")
-    private String idCondomino;
+    @Column(name = "numero_casa")
+    private String numeroCasa;
+
+    private String calle;
+
+    @Column(name = "hora_entrega")
+    private String horaEntrega;
 }

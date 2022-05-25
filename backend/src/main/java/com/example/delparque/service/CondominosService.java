@@ -8,11 +8,11 @@ import java.util.Optional;
 public interface CondominosService {
     List<Condomino> findAll();
 
-    Optional<Condomino> findById(String id);
+    Condomino findById(String id);
 
-    Optional<Condomino> findByNumeroTelefono(String numeroTelefono);
+    Condomino findByNumeroTelefono(String numeroTelefono);
 
-    Optional<Condomino> findByNombre(String nombre);
+    Condomino findByNombre(String nombre);
 
     Condomino save(Condomino condomino);
 

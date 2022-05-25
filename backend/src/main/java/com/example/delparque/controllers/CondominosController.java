@@ -23,17 +23,17 @@ public class CondominosController {
     }
 
     @GetMapping("{id}")
-    public Optional<Condomino> findById(@PathVariable String id) {
+    public Condomino findById(@PathVariable String id) {
         return condominosService.findById(id);
     }
 
-    @GetMapping("{nombre}")
-    public Optional<Condomino> findByNombre(@PathVariable String nombre) {
+    @GetMapping("nombre")
+    public Condomino findByNombre(@RequestParam() String nombre) {
         return condominosService.findByNombre(nombre);
     }
 
-    @GetMapping("{telefono}")
-    public Optional<Condomino> findByNumeroTelefono(@PathVariable String telefono) {
+    @GetMapping("telefono")
+    public Condomino findByNumeroTelefono(@RequestParam() String telefono) {
         return condominosService.findByNumeroTelefono(telefono);
     }
 

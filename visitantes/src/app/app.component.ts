@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {User} from "./models/user";
 import {SessionService} from "./services/session.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,7 @@ export class AppComponent {
   user: User | undefined;
   failedLogin = false;
 
-  constructor(private sessionService: SessionService, private router: Router) {
+  constructor(private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +28,7 @@ export class AppComponent {
     this.failedLogin = false;
     this.sessionService.getUser().subscribe(user => {
       this.user = user;
+      console.log(this.user)
     }, error => {
       this.failedLogin = true;
       console.log(error);

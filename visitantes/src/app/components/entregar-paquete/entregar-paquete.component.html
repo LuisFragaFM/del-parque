@@ -1,60 +1,58 @@
-<app-encabezado></app-encabezado>
 <!-- contenedor de inquinos -->
 <div class="contenido">
-    <app-menu-global></app-menu-global>
-    <!-- contenedor para flexbox -->
-    <div class="PaqueteBusqueda">
-        <!-- buscar visitante -->
-        <div class="buscaPaquete">
-           <h3>Buscar:</h3>
-            <input type="text" placeholder="Buscar" class="inputBuscar" name="buscaSalida">
-        </div>
-      
+  <!-- contenedor para flexbox -->
+  <div class="PaqueteBusqueda">
+    <!-- buscar visitante -->
+    <div class="buscaPaquete">
+      <h3>Buscar:</h3>
+      <input type="text" placeholder="Buscar" class="inputBuscar" name="buscaSalida">
+    </div>
+
     <!-- Datos del Visitante-->
     <div class="bitacoraDatos">
-        <!-- titulo contenedor -->
-        <div class="titleDatos">
-            <h2>Paqueteria</h2>
-        </div>
-        <!-- form de nombre recibido -->
-        <div class="nombreRecibido">
-            <h3>Recibido por:</h3>
-            <input type="text" placeholder="Nombre del Recibidor" class="inputPaquetes" name="buscaNombreRecibido">
-        </div>
-        <!-- form de Fecha entregada-->
-        <div class="FechaEntregada">
-            <h3>Fecha de entrega </h3>
-            <input type="date" placeholder="Fecha Entregada" class= "inputPaquetes" name= "buscaFechaEntregad">
-        </div>
-        <!-- form de Nombre del entregado-->
-        <div class="nombreEntregado">
-            <h3>Entregado por: </h3>
-            <input type="text" placeholder="Nombre Entregado" class="inputPaquetes" name="buscanombreEntregado">
-        </div>
-        <!-- form de horas Entregado-->
-        <div class="horaEntregado">
-          <h3>Hora de entrega </h3>
-          <input type="time" placeholder="Hora Entregada" class="inputPaquetes" name="buscahoraEntregado">
+      <!-- titulo contenedor -->
+      <div class="titleDatos">
+        <h2>Paqueteria</h2>
+      </div>
+      <!-- form de nombre recibido -->
+      <div class="nombreRecibido">
+        <h3>Recibido por:</h3>
+        <input type="text" placeholder="Nombre del Recibidor" class="inputPaquetes" name="buscaNombreRecibido">
+      </div>
+      <!-- form de Fecha entregada-->
+      <div class="FechaEntregada">
+        <h3>Fecha de entrega </h3>
+        <input type="date" placeholder="Fecha Entregada" class="inputPaquetes" name="buscaFechaEntregad">
+      </div>
+      <!-- form de Nombre del entregado-->
+      <div class="nombreEntregado">
+        <h3>Entregado por: </h3>
+        <input type="text" placeholder="Nombre Entregado" class="inputPaquetes" name="buscanombreEntregado">
+      </div>
+      <!-- form de horas Entregado-->
+      <div class="horaEntregado">
+        <h3>Hora de entrega </h3>
+        <input type="time" placeholder="Hora Entregada" class="inputPaquetes" name="buscahoraEntregado">
       </div>
       <!-- form de Caseta-->
-        <div class="Caseta">
-            <h3>Caseta</h3>
-                <select class="inputPaquetes" name="buscaCaseta" id="Caseta">
-                    <option value="Caseta 1"><h3>Caseta 1</h3></option>
-                    <option value="Caseta 2"><h3>Caseta 2</h3></option>
-                </select>
+      <div class="Caseta">
+        <h3>Caseta</h3>
+        <select class="inputPaquetes" name="buscaCaseta" id="Caseta">
+          <option value="Caseta 1"><h3>Caseta 1</h3></option>
+          <option value="Caseta 2"><h3>Caseta 2</h3></option>
+        </select>
+      </div>
+      <!-- boton para enviar datos del eliminar y realizar registro del paquete-->
+      <div class="botonesRegistro">
+        <!-- boton Guardar -->
+        <div class="buttonRegistro">
+          <button class="botonRegistro">Registro</button>
         </div>
-        <!-- boton para enviar datos del eliminar y realizar registro del paquete-->
-        <div class="botonesRegistro">
-            <!-- boton Guardar -->
-            <div class="buttonRegistro">
-                <button class="botonRegistro">Registro</button>
-            </div>
-            <!-- boton eliminar -->
-            <div class="buttonEliminar">
-                <button class="botonEliminar">Eliminar</button>
-            </div>
+        <!-- boton eliminar -->
+        <div class="buttonEliminar">
+          <button class="botonEliminar">Eliminar</button>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-<app-pie-pagina></app-pie-pagina>

@@ -10,7 +10,7 @@ public interface PaquetesService {
 
     List<Paquete> findAll();
 
-    Optional<Paquete> findById(String id);
+    Paquete findById(String id);
 
     void delete(String id);
 }
