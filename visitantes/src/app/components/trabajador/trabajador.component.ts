@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Trabajador} from "../../models/trabajador";
 import {TrabajadoresService} from "../../services/trabajadores.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-trabajador',
@@ -18,8 +19,15 @@ export class TrabajadorComponent implements OnInit {
 
   save(): void {
     this.trabajadoresService.save(this.trabajador).subscribe(trabajador => {
-      this.trabajador = {} as Trabajador;
-      alert('Trabajador guardado corractamente');
+      Swal.fire({
+        title: `El trabajador ${trabajador.nombreTrabajador} fue guardado correctamente`,
+        icon: 'success',
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: `Cerrar`
+      }).then(() => {
+        this.trabajador = {} as Trabajador;
+      });
     });
   }
 

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PaquetesService} from "../../services/paquetes.service";
 import {Paquete} from "../../models/paquete";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -19,7 +20,16 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   save() {
     this.paquetesService.save(this.paquete).subscribe(paquete => {
       this.paquete = {} as Paquete;
-      alert('Guardado con exito');
+      Swal.fire({
+        title: `El paquete para la casa ${paquete.numeroCasa} en la calle ${paquete.calle} fue guardado correctamente`,
+        icon: 'success',
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: `Cerrar`
+      }).then(() => {
+        this.paquete = {} as Paquete;
+
+      });
     });
   }
 }
