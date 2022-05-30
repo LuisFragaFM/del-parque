@@ -15,33 +15,33 @@
       <!-- form de nombre -->
       <div class="nombreDatos">
         <h3>Nombre:<br><br></h3>
-        <input type="text" placeholder="Nombre Inquilino" class="inputDatosAltas" name="muestraCondominoName"
+        <input required type="text" placeholder="Nombre Inquilino" class="inputDatosAltas" name="muestraCondominoName"
                [(ngModel)]="condomino.nombre">
       </div>
       <!-- form de direccion -->
       <div class="direccionDatos">
         <h3>Dirección:<br><br></h3>
-        <input type="text" placeholder="Direccion" class="inputDatosAltas" name="muestraCondominoDireccion"
+        <input required type="text" placeholder="Direccion" class="inputDatosAltas" name="muestraCondominoDireccion"
                [(ngModel)]="condomino.direccion">
       </div>
       <!-- form de numero emergencia -->
       <div class="emergenciaDatos">
         <h3>Número de emergencia:<br><br></h3>
-        <input type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia" class="inputDatosAltas"
+        <input required type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia" class="inputDatosAltas"
                name="muestraCondominoEmergencia"
                [(ngModel)]="condomino.numeroEmergencia">
       </div>
       <!-- form de telefono-->
       <div class="telefonoDatos">
         <h3>Telefono:<br><br></h3>
-        <input type="number" minlength="10" maxlength="10" placeholder="Telefono" class="inputDatosAltas"
+        <input  required type="number" minlength="10" maxlength="10" placeholder="Telefono" class="inputDatosAltas"
                name="muestraCondominoTelefono"
                [(ngModel)]="condomino.numeroTelefono">
       </div>
       <!-- form de correo -->
       <div class="correoDatos">
         <h3>Correo Electronico:<br><br></h3>
-        <input type="email" pattern="[^ @]*@[^ @]*" placeholder="Correo electronico" class="inputDatosAltas"
+        <input required type="email" pattern="[^ @]*@[^ @]*" placeholder="Correo electronico" class="inputDatosAltas"
                name="muestraCondominoCorreo"
                [(ngModel)]="condomino.correoElectronico">
       </div>
