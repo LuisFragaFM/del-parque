@@ -16,7 +16,7 @@
     height: 30px;
     width: 30px;
 }
-.DatosTipo{
+.DatosTipo {
     margin: 0 auto;
     align-items: center;
     justify-content: center;
@@ -27,6 +27,22 @@
     float: left;
     
 }
+
+.Datos h2{
+    font-size: 19px;
+    margin: 3px;
+}
+
+.DatosTipo h1 {
+    font-size: 25px;
+    margin: 10px;
+    
+}
+
+.Titulo h1{
+    font-size: 20px;
+    margin: 10px;
+}
 .contenido div{
     margin: 0 auto;
     padding-left: 50px;
@@ -35,8 +51,8 @@
     
 }
 .barra{
-    height: 30px;
-    width: 500px;
+    height: 18px;
+    width: 400px;
 
 }
 .Datos{
@@ -49,12 +65,14 @@
 }
 .boton{
     height: 50px;
-    width: 200px;
+    width: 150px;
     float: right;
     background-color: rgb(110, 148, 221);
     color: white;
     border-radius: 40px;
-    font-size: 35px;
+    margin-right: 25px;
+    
+    font-size: 27px;
 }
 
 .BotDiv{

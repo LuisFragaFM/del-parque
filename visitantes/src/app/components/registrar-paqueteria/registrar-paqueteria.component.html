@@ -5,12 +5,12 @@
 
     <div class="form">
       <div class="input">
-        <label for="nombre_paqueteria">Nombre / Empresa</label>
-        <input type="text" placeholder="Escriba aqui" id="nombre_paqueteria" [(ngModel)]="paquete.nombreEmpresa">
+        <label  for="nombre_paqueteria">Nombre / Empresa</label>
+        <input required type="text" placeholder="Escriba aqui" id="nombre_paqueteria" [(ngModel)]="paquete.nombreEmpresa">
       </div>
       <div class="input">
         <label for="guia">Numero de Guia</label>
-        <input type="text" placeholder="Escriba aqui" id="guia" [(ngModel)]="paquete.numeroGuia">
+        <input required type="text" placeholder="Escriba aqui" id="guia" [(ngModel)]="paquete.numeroGuia">
       </div>
     </div>
   </section>
@@ -20,14 +20,14 @@
     <div class="form">
       <div class="input">
         <label for="nombre_condomino">Nombre</label>
-        <input type="text" placeholder="Escriba aqui" id="nombre_condomino" [(ngModel)]="paquete.nombreCondomino">
+        <input required type="text" placeholder="Escriba aqui" id="nombre_condomino" [(ngModel)]="paquete.nombreCondomino">
         <label for="calle">Numero de la casa</label>
-        <input type="text" placeholder="Escriba aqui" id="casa" [(ngModel)]="paquete.numeroCasa">
+        <input required type="text" placeholder="Escriba aqui" id="casa" [(ngModel)]="paquete.numeroCasa">
       </div>
 
       <div class="input">
         <label for="calle">Calle</label>
-        <input type="text" placeholder="Escriba aqui" id="calle" [(ngModel)]="paquete.calle">
+        <input required type="text" placeholder="Escriba aqui" id="calle" [(ngModel)]="paquete.calle">
       </div>
     </div>
   </section>
@@ -37,25 +37,25 @@
     <div class="form">
       <div class="input">
         <label for="recibido">Recibido por:</label>
-        <input type="text" placeholder="Escriba aqui" id="recibido" [(ngModel)]="paquete.recibeInquilino">
+        <input required type="text" placeholder="Escriba aqui" id="recibido" [(ngModel)]="paquete.recibeInquilino">
         <label for="hora">Hora</label>
-        <input type="time" id="hora" [(ngModel)]="paquete.horaEntrega">
+        <input required type="time" id="hora" [(ngModel)]="paquete.horaEntrega">
       </div>
 
       <div class="input">
         <label for="fecha">Fecha</label>
-        <input type="date" id="fecha" [(ngModel)]="paquete.fechaEntrega">
+        <input required type="date" id="fecha" [(ngModel)]="paquete.fechaEntrega">
         <label for="caseta">Caseta recibida:</label>
-        <input type="text" id="caseta" [(ngModel)]="paquete.casetaEntrega">
+        <input required type="text" id="caseta" [(ngModel)]="paquete.casetaEntrega">
       </div>
     </div>
     <div class="caseta">
       <div>
         <label for="caseta">Caseta:</label>
         Caseta 1
-        <input type="checkbox" value="Caseta 1" checked disabled>
+        <input required type="checkbox" value="Caseta 1" checked disabled>
         Caseta 2
-        <input type="checkbox" value="Caseta 2" checked disabled>
+        <input required type="checkbox" value="Caseta 2" checked disabled>
       </div>
       <button (click)="save()">Registrar</button>
     </div>
