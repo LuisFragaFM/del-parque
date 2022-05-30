@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'salida', component: RegistrarSalidaComponent},
   {path: 'registro-paq', component: RegistrarPaqueteriaComponent},
   {path: 'registro-a', component: RegistrarAgendaComponent},
-  {path: 'pagos', component: PagosComponent},
+  {path: 'modificaciones', component: PagosComponent},
   {path: 'informes', component: InformesComponent},
   {path: 'entregar-paq', component: EntregarPaqueteComponent},
   {path: 'bitacora-tra', component: BitacoraTrabajadoresComponent},

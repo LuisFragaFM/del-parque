@@ -18,8 +18,8 @@
 .contenido {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    height: 710px;
-    width: 1170px;
+    height: 900px;
+    /*width: 1170px;*/
 }
 
 
