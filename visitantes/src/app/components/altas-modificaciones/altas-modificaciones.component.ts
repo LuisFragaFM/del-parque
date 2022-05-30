@@ -17,8 +17,6 @@ export class AltasModificacionesComponent implements OnInit {
 
   save() {
     this.condominosService.save(this.condomino).subscribe(condomino => {
-      this.condomino = {} as Condomino;
-      alert('Agregado con exito');
       Swal.fire({
         title: `El condomino ${condomino.nombre} fue guardado correctamente`,
         icon: 'success',
