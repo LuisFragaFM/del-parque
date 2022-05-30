@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CondominosService} from "../../services/condominos.service";
 import {Condomino} from "../../models/condomino";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-pagos',
@@ -11,19 +12,18 @@ export class PagosComponent implements OnInit {
   name: string | undefined;
   phone: string | undefined;
   condomino: Condomino = {} as Condomino;
-
   constructor(private condominosService: CondominosService) {
   }
-
   ngOnInit(): void {
   }
 
   findInquilino() {
 
-    if (!this.name) {
-      this.condominosService.findByTelefono(this.phone!).subscribe(condomino => {
+    
+    if (this.phone) {
+      this.condominosService.findByTelefono(this.phone).subscribe(condomino => {
         this.condomino = condomino;
-        console.log(this.condomino)
+        
 
       });
     } else {
@@ -34,20 +34,52 @@ export class PagosComponent implements OnInit {
   }
 
   modify() {
-    if (this.condomino) {
+    
+    if (this.condomino.id) {
       this.condominosService.save(this.condomino).subscribe(condomino => {
-        alert('Modificado con exito');
+        
+        Swal.fire({
+          title: `El condomino de ${condomino.nombre} fue guardado correctamente`,
+          icon: 'success',
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: `Cerrar`
+        }).then(() => {
+          this.condomino = {} as Condomino;
+
+        });
         this.condomino = condomino;
       });
     }
   }
 
   delete() {
-    if (this.condomino) {
-      this.condominosService.delete(this.condomino.id).subscribe(() => {
-        alert('Borrado con exito');
-        this.condomino = {} as Condomino;
+    if (this.condomino.id) {
+
+      Swal.fire({
+        title: `Estas seguro que deseas borrar este condomino?`,
+        icon: 'warning',
+        showDenyButton: true,
+        confirmButtonText: `Si`,
+        cancelButtonText: `No`
+      }).then((value) => {
+        if (value.isConfirmed) {
+          this.condominosService.delete(this.condomino.id).subscribe(() => {
+            Swal.fire({
+              title: `El condomino de ${this.condomino.nombre} fue borrado correctamente`,
+              icon: 'success',
+              showDenyButton: false,
+              showCancelButton: false,
+              confirmButtonText: `Cerrar`
+            }).then(() => {
+              this.condomino = {} as Condomino;
+
+            });
+          });
+        }
+
       });
+
     }
   }
 }
