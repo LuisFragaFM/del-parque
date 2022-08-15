@@ -12,7 +12,6 @@ import {RegistrarAgendaComponent} from './components/registrar-agenda/registrar-
 import {RegistrarPaqueteriaComponent} from './components/registrar-paqueteria/registrar-paqueteria.component';
 import {RegistrarSalidaComponent} from './components/registrar-salida/registrar-salida.component';
 import {TrabajadorComponent} from './components/trabajador/trabajador.component';
-import {TrabajadorServicioComponent} from './components/trabajador-servicio/trabajador-servicio.component';
 import {VisitaGuardiaComponent} from './components/visita-guardia/visita-guardia.component';
 import {AltasModificacionesComponent} from './components/altas-modificaciones/altas-modificaciones.component';
 import {AgendaCondominoComponent} from './components/agenda-condomino/agenda-condomino.component';
@@ -24,6 +23,8 @@ import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
+import { ModificacionesComponent } from './components/modificaciones/modificaciones.component';
+import { AltasComponent } from './components/altas/altas.component';
 
 @NgModule({
   declarations: [
@@ -37,14 +38,15 @@ import {CookieService} from 'ngx-cookie-service';
     RegistrarPaqueteriaComponent,
     RegistrarSalidaComponent,
     TrabajadorComponent,
-    TrabajadorServicioComponent,
     VisitaGuardiaComponent,
     AltasModificacionesComponent,
     AgendaCondominoComponent,
     VisitaCondominoComponent,
     EncabezadoComponent,
     PiePaginaComponent,
-    MenuGlobalComponent
+    MenuGlobalComponent,
+    ModificacionesComponent,
+    AltasComponent
   ],
   imports: [
     BrowserModule,
