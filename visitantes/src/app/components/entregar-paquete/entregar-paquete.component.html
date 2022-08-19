@@ -16,38 +16,33 @@
       </div>
       <!-- form de nombre recibido -->
       <div class="nombreRecibido">
-        <h3>Recibido por:</h3>
-        <input required type="text" placeholder="Nombre del Recibidor" class="inputPaquetes" name="buscaNombreRecibido">
+        <label for="recibe_Paquete">Recibido por:</label>
+        <input required type="text" placeholder="Persona que recibe" id="recibe_Paquete" [(ngModel)]="Entrega_paquete.nombreCondomino">
       </div>
       <!-- form de Fecha entregada-->
       <div class="FechaEntregada">
-        <h3>Fecha de entrega </h3>
-        <input required type="date" placeholder="Fecha Entregada" class="inputPaquetes" name="buscaFechaEntregad">
+        <label for="fecha_entrega">Fecha de entrega:</label>
+        <input required type="date" id="fecha_entrega" [(ngModel)]="Entrega_paquete.fechaEntrega">
       </div>
       <!-- form de Nombre del entregado-->
       <div class="nombreEntregado">
-        <h3>Entregado por: </h3>
-        <input required type="text" placeholder="Nombre Entregado" class="inputPaquetes" name="buscanombreEntregado">
+        <label for="entrega_Paquete">Entregado por:</label>
+        <input required type="text" placeholder="Persona que entrega" id="entrega_Paquete" [(ngModel)]="Entrega_paquete.recibeGuardia">
       </div>
       <!-- form de horas Entregado-->
       <div class="horaEntregado">
-        <h3>Hora de entrega </h3>
-        <input required type="time" placeholder="Hora Entregada" class="inputPaquetes" name="buscahoraEntregado">
+        <label for="hora_entrega">Hora de entrega:</label>
+        <input required type="time" id="hora_entrega" [(ngModel)]="Entrega_paquete.horaEntrega">
       </div>
       <!-- form de Caseta-->
       <div class="Caseta">
-        <h3>Caseta</h3>
-        <select class="inputPaquetes" name="buscaCaseta" id="Caseta">
-          <option value="Caseta 1"><h3>Caseta 1</h3></option>
-          <option value="Caseta 2"><h3>Caseta 2</h3></option>
-        </select>
+        <label for="guarda_Paquete">Caseta</label>
+        <input required type="text" placeholder="guardar paquete en" id="guarda_Paquete" [(ngModel)]="Entrega_paquete.casetaEntrega">
       </div>
       <!-- boton para enviar datos del eliminar y realizar registro del paquete-->
       <div class="botonesRegistro">
         <!-- boton Guardar -->
-        <div class="buttonRegistro">
-          <button class="botonRegistro">Registro</button>
-        </div>
+        <button (click)="save()">Registrar</button>
         <!-- boton eliminar -->
         <div class="buttonEliminar">
           <button class="botonEliminar">Eliminar</button>
