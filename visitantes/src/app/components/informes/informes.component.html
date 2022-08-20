@@ -1,34 +1,30 @@
 <!-- contenedor de informes de inquilinos -->
 <div class="contenido">
-    <div class="containerInformes">
+    <div class="containerInquilinos">
         <!-- contenedor de titulo contenedor -->
         <div class="title1">
-            <h1>Informes</h1>
+          <h1>INFORMES</h1>
         </div>
         <!-- titulo de seccion-->
         <div class="infoTxt">
-            <h2>BUSQUEDA DE INQUILINO</h2>
+          <h2>BUSQUEDA DE INQUILINO</h2>
         </div>
         <!-- form de nombre -->
         <div class="nombre">
-            <h3>Nombre:<br><br></h3>
-            <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="busqueda">
+          <h3>Nombre<br><br></h3>
+          <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName" [(ngModel)]="name">
         </div>
-        <!-- Seleccionar numero de casa -->
-        <div class="casasNum">
-            <h3>Numero de casa:<br><br></h3>
-            <select name="id_casa" id="id_casa" class="inputBarra">
-        <option value="">Seleccione numero de casa</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        </select>
+        <!-- form de telefono -->
+        <div class="telefono">
+          <h3>Número de telefono<br><br></h3>
+          <input required type="text" placeholder="Buscar por numero de telefono" class="inputBarra" name="buscaPagosTel"
+                 [(ngModel)]="phone">
         </div>
-        <!-- Seleccionar fecha  inicio-->
+        <!-- boton para enviar datos del formulario y realizar busqueda-->
+        <div class="button">
+          <button class="boton" (click)="findInquilino()">Buscar</button>
+        </div>
+      
         <div class="periodoDe">
             <div class="periodoTxt">
                 <h3>Periodo de: <br><br> </h3>
@@ -42,22 +38,9 @@
                 <input required type="date" placeholder="DD/MM/AAAA" class="hasta" name="hastaDate">
             </div>
         </div>
-        <!-- Calle de la residencia -->
-        <div class="calleName">Calle de la casa<br><br>
-            <select name="id_calle" id="id_calle" class="inputBarra">
-        <option value="">Seleccione calle de la residencia</option>
-        <option value="1">Viento</option>
-        <option value="2">Rayo</option>
-        <option value="3">Lutita</option>
-        <option value="4">Centella</option>
-        <option value="5">Niño Artillero</option>
-        <option value="6">America del Norte</option>
-        <option value="7">Himalaya</option>
-        </select>
-        </div>
         <!-- boton para enviar datos del formulario y realizar busqueda-->
         <div class="button">
-            <button class="boton">BUSCAR</button>
+            <button class="boton"  (click)="findInquilino()">BUSCAR</button>
         </div>
     </div>
     <!-- contenedor descargar datos inquilino -->
@@ -69,7 +52,8 @@
         <!-- nombre de busqueda para descargar datos -->
         <div class="nombreBar">
             <h3>Nombre<br><br></h3>
-            <input required type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino">
+            <input required type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino" 
+            [(ngModel)]="condomino.nombre" readonly="readonly">
         </div>
         <!-- boton para enviar datos del formulario y realizar la descarga -->
         <div class="buttonDescarga">
