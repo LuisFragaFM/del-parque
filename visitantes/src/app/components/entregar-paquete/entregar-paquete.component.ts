@@ -21,7 +21,7 @@ export class EntregarPaqueteComponent implements OnInit {
     this.PaquetesService.save(this.Entrega_paquete).subscribe(Entrega_paquete => {
       this. Entrega_paquete = {} as Paquete;
       Swal.fire({
-        title: `El paquete fue recibido por ${Entrega_paquete.recibeGuardia} y guardado en ${Entrega_paquete.casetaEntrega}`,
+        title: `El paquete fue recibido por ${Entrega_paquete.nombreCondomino} y entregado por ${Entrega_paquete.recibeGuardia}`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
