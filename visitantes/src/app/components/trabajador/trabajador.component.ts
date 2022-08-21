@@ -28,5 +28,4 @@ export class TrabajadorComponent implements OnInit {
       });
     });
   }
-
 }
