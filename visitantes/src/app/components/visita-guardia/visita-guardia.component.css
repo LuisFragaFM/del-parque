@@ -75,6 +75,18 @@
     font-size: 27px;
 }
 
+.boton2{
+    height: 25px;
+    width: 25px;
+    float: left;
+    background-color: rgb(110, 148, 221);
+    color: white;
+    border-radius: 40px;
+    margin-right: 0px;
+    
+    font-size: 20px;
+}
+
 .BotDiv{
     width: 1170px;
     padding-top: 20px;

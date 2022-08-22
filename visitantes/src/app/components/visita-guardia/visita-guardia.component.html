@@ -28,13 +28,16 @@
   </div>
   <div class="Datos">
     <div><h2>Nombre</h2> <br>
-      <input required type="text" class="barra" name="asdasd" required>
+      <input required type="text" class="barra" name="asdasd" [(ngModel)]="name">
+    </div>
+    <div class="BotDiv2">
+      <button class="boton2" (click)="findInquilino()">?</button>
     </div>
     <div><h2>Calle</h2><br>
-      <input required type="text" class="barra" name="asdasd">
+      <input required type="text" class="barra" name="asdasd" [(ngModel)]="condomino.direccion">
     </div>
     <div><h2>Numero de la Casa</h2><br>
-      <input required type="text" class="barra" name="asdasd">
+      <input required type="text" class="barra" name="asdasd" [(ngModel)]="condomino.numeroCasa">
     </div>
   </div>
   <div class="Titulo">
