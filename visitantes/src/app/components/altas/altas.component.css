@@ -85,6 +85,14 @@
     width: 600px;
 }
 
+.numcasaDatos{
+    position: absolute;
+    font-size: 20px;
+    top: 280px;
+    left: 650px;
+    width: 600px;
+}
+
 
 /* dise;o del boton */
 
@@ -92,7 +100,7 @@
     position: absolute;
     height: 35px;
     width: 200px;
-    top: 300px;
+    top: 350px;
     left: 850px;
     background-color: rgb(110, 148, 221);
     color: white;
