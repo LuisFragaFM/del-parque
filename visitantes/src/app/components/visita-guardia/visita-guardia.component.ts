@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
+import {CondominosService} from "../../services/condominos.service";
+import {Condomino} from "../../models/condomino";
 import Swal from "sweetalert2";
 
 @Component({
@@ -9,10 +11,24 @@ import Swal from "sweetalert2";
   styleUrls: ['./visita-guardia.component.css']
 })
 export class VisitaGuardiaComponent implements OnInit {
+  name: string | undefined;
   visitante: Visitante = {} as Visitante;
-  constructor(private visitantesService: VisitantesService) { }
+  condomino: Condomino = {} as Condomino;
+  constructor(private visitantesService: VisitantesService , private condominosService: CondominosService) { }
 
   ngOnInit(): void {
+  }
+
+  findInquilino() {
+
+    
+    if (this.name) {
+      this.condominosService.findByNombre(this.name!).subscribe(condomino => {
+        this.condomino = condomino;
+        
+
+      });
+    }
   }
 
   save() {
