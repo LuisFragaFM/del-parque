@@ -45,6 +45,12 @@
                  name="muestraCondominoCorreo"
                  [(ngModel)]="condomino.correoElectronico">
         </div>
+        <div class="numcasaDatos">
+          <h3>Numero casa:<br><br></h3>
+          <input  required type="number" minlength="10" maxlength="10" placeholder="Numero de casa" class="inputDatosAltas"
+                 name="muestraCondominonumcasa"
+                 [(ngModel)]="condomino.numeroCasa">
+        </div>
         <!-- boton guardar -->
         <button class="botonGuardar" type="submit">Guardar</button>
       </form>
