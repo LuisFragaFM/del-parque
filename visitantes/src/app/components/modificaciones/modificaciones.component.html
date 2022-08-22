@@ -9,7 +9,7 @@
       <form (ngSubmit)="save()">
         <!-- Imagen de programa -->
         <div class="imagenUser">
-          <h3>Foto del condomino<br><br></h3>
+          <h3>Foto del condómino<br><br></h3>
           <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="200px">
         </div>
         <!-- form de nombre -->
@@ -21,13 +21,13 @@
         <!-- form de direccion -->
         <div class="direccionDatos">
           <h3>Dirección:<br><br></h3>
-          <input required type="text" placeholder="Direccion" class="inputDatosAltas" name="muestraCondominoDireccion"
+          <input required type="text" placeholder="Dirección" class="inputDatosAltas" name="muestraCondominoDireccion"
                  [(ngModel)]="condomino.direccion">
         </div>
         <!-- form de numero emergencia -->
         <div class="emergenciaDatos">
           <h3>Número de emergencia:<br><br></h3>
-          <input required type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia" class="inputDatosAltas"
+          <input required type="text" minlength="10" maxlength="10" placeholder="Teléfono de Emergencia" class="inputDatosAltas"
                  name="muestraCondominoEmergencia"
                  [(ngModel)]="condomino.numeroEmergencia">
         </div>
@@ -41,7 +41,7 @@
         <!-- form de correo -->
         <div class="correoDatos">
           <h3>Correo Electronico:<br><br></h3>
-          <input required type="email" pattern="[^ @]*@[^ @]*" placeholder="Correo electronico" class="inputDatosAltas"
+          <input required type="email" pattern="[^ @]*@[^ @]*" placeholder="Correo Electrónico" class="inputDatosAltas"
                  name="muestraCondominoCorreo"
                  [(ngModel)]="condomino.correoElectronico">
         </div>
