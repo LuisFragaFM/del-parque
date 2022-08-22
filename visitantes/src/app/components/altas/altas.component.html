@@ -9,7 +9,7 @@
       <form (ngSubmit)="save()">
         <!-- Imagen de programa -->
         <div class="imagenUser">
-          <h3>Foto del condomino<br><br></h3>
+          <h3>Foto del condómino<br><br></h3>
           <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="200px">
         </div>
         <!-- form de nombre -->
@@ -33,20 +33,20 @@
         </div>
         <!-- form de telefono-->
         <div class="telefonoDatos">
-          <h3>Telefono:<br><br></h3>
+          <h3>Teléfono:<br><br></h3>
           <input  required type="number" minlength="10" maxlength="10" placeholder="Telefono" class="inputDatosAltas"
                  name="muestraCondominoTelefono"
                  [(ngModel)]="condomino.numeroTelefono">
         </div>
         <!-- form de correo -->
         <div class="correoDatos">
-          <h3>Correo Electronico:<br><br></h3>
+          <h3>Correo Electrónico:<br><br></h3>
           <input required type="email" pattern="[^ @]*@[^ @]*" placeholder="Correo electronico" class="inputDatosAltas"
                  name="muestraCondominoCorreo"
                  [(ngModel)]="condomino.correoElectronico">
         </div>
         <div class="numcasaDatos">
-          <h3>Numero casa:<br><br></h3>
+          <h3>Número casa:<br><br></h3>
           <input  required type="number" minlength="10" maxlength="10" placeholder="Numero de casa" class="inputDatosAltas"
                  name="muestraCondominonumcasa"
                  [(ngModel)]="condomino.numeroCasa">

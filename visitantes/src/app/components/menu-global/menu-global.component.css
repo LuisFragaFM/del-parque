@@ -1,53 +1,59 @@
 .derecha{
-    width: 20%;
-    margin-top: 15px;
+    width: 20%; 
+    margin-top: 10px;  
 }
 
 .izquierda{
-    margin-top: 15px;
-}
-
-.derecha a{
-    border: 1px solid #ffffff; /*anchura, estilo y color borde*/
-    padding: 5px; /*espacio alrededor texto*/
-    background-color: #000000; /*color botón*/
-    color: #ffffff; /*color texto*/
-    text-decoration: none; /*decoración texto*/
-    text-transform: uppercase; /*capitalización texto*/
-    font-family: 'Helvetica', sans-serif; /*tipografía texto*/
-    border-radius: 10px; /*bordes redondos*/
-    margin: 5px;
-    
-    
+    margin-top: 10px;
 }
 
 .derecha a:hover , .izquierda a:hover{
     color: #000000; /*color texto*/
     border: 1px solid #000000; /*anchura, estilo y color borde*/
-    background-color: #ffffff; /*color botón*/
+    background-color: #ffffff; 
 }
 
 
 
 .izquierda a{
+    position: relative;
     border: 1px solid #ffffff; /*anchura, estilo y color borde*/
-    padding: 5px; /*espacio alrededor texto*/
-    margin: 5px;
+    padding: 4px;
+    margin: 10px;
+    top: 5px;
+    left: -50px;
+    background-color: #000000; 
+    color: #ffffff; 
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif; 
+    border-radius: 10px; 
+    
+    
+}
+.derecha a{
+    position: relative;
+    padding: 4px;
+    margin: 10px;
+    top: 5px;
+    left: -50px;
+    border: 1px solid #ffffff; /*anchura, estilo y color borde*/
+    padding: 2px; /*espacio alrededor texto*/
     background-color: #000000; /*color botón*/
     color: #ffffff; /*color texto*/
     text-decoration: none; /*decoración texto*/
     text-transform: uppercase; /*capitalización texto*/
     font-family: 'Helvetica', sans-serif; /*tipografía texto*/
-    border-radius: 10px; /*bordes redondos*/
+    border-radius: 5px;
     
     
 }
 
 .MenuBar{
     display: flex;
-    height: 50px;
+    height: 80px;
     max-width: 100%;
-    border-bottom: 3px solid;
+    border-bottom: 70px solid;
     color: black;
     background-color: #000000;
 }
