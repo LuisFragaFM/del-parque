@@ -17,15 +17,19 @@ export class BitacoraTrabajadoresComponent implements OnInit {
   ngOnInit(): void {
   }
   // busqueda de trabajador
-  // findTrabajador() {
-  //   if (this.name) {
-  //     this.trabajadoresService.findByNombre(this.name).subscribe(trabajador=> {
-  //       this.trabajador = trabajador;
-  //     });
-  //   } else {
-  //     this.condominosService.findByNombre(this.name!).subscribe(condomino => {
-  //       this.condomino = condomino;
-  //     });
-  //   }
-  // }
+  findTrabajador() {
+    console.log(this.name);
+    
+    if (this.name) {
+      this.trabajadoresService.findByNombre(this.name).subscribe(trabajador=> {
+        this.trabajador = trabajador;
+      });
+    } else {
+      this.trabajadoresService.findByNombre(this.name!).subscribe(trabajador => {
+        this.trabajador = trabajador;
+      });
+    }
+    console.log(this.trabajador);
+
+  }
 }

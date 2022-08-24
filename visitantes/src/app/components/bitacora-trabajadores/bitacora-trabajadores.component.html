@@ -6,20 +6,21 @@
         <div class="tipoTrabajador">
             <!-- seleccionar tipo de trabajador -->
             <h3>Tipo de trabajador:</h3>
-            <!-- seleccionar trabajador -->
+            <!-- seleccionar el tipo de trabajador a buscar-->
             <select name="id_trabajador" id="id_trabajador" class="inputTrabajador">
                 <option value="">Tipo de trabajador</option>
                 <option value="1">Trabajador de obra</option>
                 <option value="2">Trabajador del hogar</option>
                 </select>
         </div>
-        <!-- buscar trabajador -->
+        <!-- buscar trabajador por nombre-->
         <div class="buscaTrabajador">
             <h3>Buscar:</h3>
-            <input required type="text" placeholder="Buscar" class="inputBuscar" name="buscaTrabajador">
+            <!-- <input required type="text" placeholder="Buscar" class="inputBuscar" name="buscaTrabajador"> -->
+            <input required type="text" placeholder="Buscar" class="Buscar" [(ngModel)]="name">
         </div>
         <!-- boton de registro -->
-        <button class="botonRegistro">Registrar trabajador</button>
+        <button class="botonRegistro" (click)="findTrabajador()">Registrar trabajador(Buscar)</button>
     </div>
     <!-- Datos de bitacora-->
     <div class="bitacoraDatos">
@@ -30,22 +31,23 @@
         <!-- form de nombre -->
         <div class="nombreTrabajador">
             <h3>Nombre del trabajador:</h3>
-            <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName">
+            <!-- <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"> -->
+            <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"[(ngModel)]="trabajador.nombreTrabajador">
         </div>
         <!-- form de dias de trabajo-->
         <div class="diasTrabajo">
             <h3>Días de trabajo</h3>
-            <input  required type="text" placeholder="Días de trabajo" class="inputBitacora" name="buscaTrabajadorDias">
+            <input  required type="text" placeholder="Días de trabajo" class="inputBitacora" name="buscaTrabajadorDias" [(ngModel)]="trabajador.diasTrabajo">
         </div>
         <!-- form de hora de trabajo-->
         <div class="horaTrabajo">
             <h3>Hora </h3>
-            <input required type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras">
+            <input required type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras" [(ngModel)]="trabajador.horario">
         </div>
         <!-- form de nombre condomino-->
         <div class="nombreCondomino">
             <h3>Nombre del Condómino</h3>
-            <input required type="text" placeholder="Nombre del Condómino" class="inputBitacora" name="buscaNameCondomino">
+            <input required type="text" placeholder="Nombre del Condómino" class="inputBitacora" name="buscaNameCondomino" [(ngModel)]="trabajador.nombreCondomino">
         </div>
         <!-- boton para enviar datos del eliminar y realizar modificar-->
         <div class="botonesBitacora">

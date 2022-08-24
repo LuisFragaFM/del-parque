@@ -32,6 +32,11 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     }
 
     @Override
+    public Trabajador findByName(String name) {
+        return TrabajadorMapper.entityToDto(trabajadoresRepository.findTrabajadorBynombreTrabajador(name));
+    }
+
+    @Override
     public Trabajador save(Trabajador trabajador) {
         if (trabajador.getId() == null) {
             trabajador.setId(UUID.randomUUID().toString());

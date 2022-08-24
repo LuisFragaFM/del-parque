@@ -12,7 +12,14 @@
     <!-- form de nombre -->
     <div class="nombre">
       <h3>Nombre<br><br></h3>
-      <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName" [(ngModel)]="name">
+      <select>
+        <option *ngFor="let condomino of condominos">
+          {{condomino.nombre}}
+        </option>
+      </select>
+      <br>
+      <br>
+      <!-- <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName" [(ngModel)]="name"> -->
     </div>
     <!-- form de telefono -->
     <div class="telefono">

@@ -19,6 +19,11 @@ export class TrabajadoresService {
     return this.http.get<Trabajador>(`${environment.baseUrl}/trabajadores/${id}`);
   }
 
+  // Busqueda de nombre
+  findByNombre(nombre: string): Observable<Trabajador> {
+    return this.http.get<Trabajador>(`${environment.baseUrl}/trabajadores/nombre?nombre=${nombre}`);
+  }
+
   save(trabajador: Trabajador): Observable<Trabajador> {
     return this.http.post<Trabajador>(`${environment.baseUrl}/trabajadores/`, trabajador);
   }

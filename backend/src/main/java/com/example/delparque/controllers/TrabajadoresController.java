@@ -5,7 +5,6 @@ import com.example.delparque.service.TrabajadoresService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/trabajadores")
@@ -25,6 +24,12 @@ public class TrabajadoresController {
     @GetMapping("{id}")
     public Trabajador findById(@PathVariable String id) {
         return trabajadoresService.findById(id);
+    }
+
+    @GetMapping("/nombre")
+    public Trabajador findByNombreTrabajador(@RequestParam(name = "nombre") String nombre) {
+        System.out.println("hola");
+        return trabajadoresService.findByName(nombre);
     }
 
     @PostMapping()

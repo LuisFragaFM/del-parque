@@ -1,7 +1,6 @@
 package com.example.delparque.config;
 
 import com.example.delparque.dto.LoggedUser;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Component;
 
