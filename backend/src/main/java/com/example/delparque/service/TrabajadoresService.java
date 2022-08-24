@@ -10,6 +10,8 @@ public interface TrabajadoresService {
 
     Trabajador findById(String id);
 
+    Trabajador findByName(String name);
+
     Trabajador save(Trabajador trabajador);
 
     void delete(String id);

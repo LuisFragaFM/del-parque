@@ -12,9 +12,11 @@ export class PagosComponent implements OnInit {
   name: string | undefined;
   phone: string | undefined;
   condomino: Condomino = {} as Condomino;
+  condominos: Condomino[] = [];
   constructor(private condominosService: CondominosService) {
   }
   ngOnInit(): void {
+    this.condominosService.getCondominos().subscribe(condominos => this.condominos = condominos);
   }
 
   findInquilino() {
