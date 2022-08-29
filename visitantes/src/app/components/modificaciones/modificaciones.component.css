@@ -109,7 +109,9 @@
     left: 600px;
     width: 500px;
 }
-
+.bitacoraDatos{
+    margin-top: 100px;
+}
 .imgNoPagado {
     position: absolute;
     top: 45px;
