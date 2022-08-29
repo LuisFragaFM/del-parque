@@ -37,4 +37,7 @@ public class Condomino {
 
     @Column(name = "numero_emergencia")
     private String numeroEmergencia;
+
+    @Column(name = "estado_pago")
+    private String estadoPago;
 }

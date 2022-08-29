@@ -14,6 +14,7 @@ public class CondominoMapper {
                 .numeroCasa(condomino.getNumeroCasa())
                 .numeroEmergencia(condomino.getNumeroEmergencia())
                 .numeroTelefono(condomino.getNumeroTelefono())
+                .estadoPago(condomino.getEstadoPago())
                 .build();
     }
 
@@ -27,6 +28,7 @@ public class CondominoMapper {
                 .numeroCasa(condomino.getNumeroCasa())
                 .numeroEmergencia(condomino.getNumeroEmergencia())
                 .numeroTelefono(condomino.getNumeroTelefono())
+                .estadoPago(condomino.getEstadoPago())
                 .build();
     }
 }
