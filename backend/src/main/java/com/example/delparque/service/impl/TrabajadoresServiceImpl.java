@@ -1,6 +1,7 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Trabajador;
+import com.example.delparque.exception.BadRequestDataException;
 import com.example.delparque.repository.TrabajadoresRepository;
 import com.example.delparque.service.TrabajadoresService;
 import com.example.delparque.service.mappers.TrabajadorMapper;
@@ -60,6 +61,11 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
         if (trabajador.getId() == null) {
             trabajador.setId(UUID.randomUUID().toString());
         }
+
+        if(trabajador.getNombreTrabajador() == null) {
+            throw new BadRequestDataException("nombre requerido", "NAME_WOKER_ERROR");
+        }
+
         return TrabajadorMapper.entityToDto(trabajadoresRepository.save(TrabajadorMapper.dtoToEntity(trabajador)));
     }
 
