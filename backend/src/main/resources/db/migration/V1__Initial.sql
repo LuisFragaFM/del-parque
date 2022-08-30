@@ -7,7 +7,8 @@ CREATE TABLE condominos
     numero_telefono    varchar(40),
     direccion          varchar(120),
     correo_electronico varchar(140),
-    numero_emergencia  varchar(40)
+    numero_emergencia  varchar(40),
+    estado_pago        boolean
 );
 
 CREATE TABLE trabajadores

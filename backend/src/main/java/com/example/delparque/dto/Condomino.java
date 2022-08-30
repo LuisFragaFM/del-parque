@@ -18,4 +18,5 @@ public class Condomino {
     private String direccion;
     private String correoElectronico;
     private String numeroEmergencia;
+    private String estadoPago;
 }
