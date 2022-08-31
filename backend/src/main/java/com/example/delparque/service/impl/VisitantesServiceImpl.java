@@ -4,19 +4,29 @@ import com.example.delparque.dto.Visitante;
 import com.example.delparque.repository.VisitantesRepository;
 import com.example.delparque.service.VisitantesService;
 import com.example.delparque.service.mappers.VisitanteMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class VisitantesServiceImpl implements VisitantesService {
 
     private final VisitantesRepository visitantesRepository;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    VisitantesServiceImpl(VisitantesRepository visitantesRepository) {
+
+    VisitantesServiceImpl(VisitantesRepository visitantesRepository,
+                          NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.visitantesRepository = visitantesRepository;
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     @Override
@@ -25,10 +35,18 @@ public class VisitantesServiceImpl implements VisitantesService {
     }
 
     @Override
-    public List<Visitante> findAll() {
-        return visitantesRepository.findAll().stream()
-                .map(VisitanteMapper::entityToDto)
-                .collect(Collectors.toList());
+    public Page<Visitante> findAll(Integer page) {
+        String query = "SELECT * FROM visitantes";
+
+        Pageable pageable = PageRequest.of(page, 10);
+        BeanPropertyRowMapper<Visitante> trabajadoresViewMapper = new BeanPropertyRowMapper<>(Visitante.class);
+        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+
+        List<Visitante> visitantes = namedParameterJdbcTemplate.query(query +
+                " LIMIT " + pageable.getPageSize() +
+                " OFFSET " + pageable.getOffset(), mapSqlParameterSource, trabajadoresViewMapper);
+
+        return new PageImpl<>(visitantes, pageable, 10);
     }
 
     @Override

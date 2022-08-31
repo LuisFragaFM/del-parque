@@ -2,10 +2,9 @@ package com.example.delparque.controllers;
 
 import com.example.delparque.dto.Condomino;
 import com.example.delparque.service.CondominosService;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/condominos")
@@ -18,8 +17,8 @@ public class CondominosController {
     }
 
     @GetMapping()
-    public List<Condomino> findAll() {
-        return condominosService.findAll();
+    public Page<Condomino> findAll(@RequestParam Integer page) {
+        return condominosService.findAll(page);
     }
 
     @GetMapping("{id}")

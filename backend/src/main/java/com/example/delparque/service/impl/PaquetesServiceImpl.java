@@ -4,21 +4,27 @@ import com.example.delparque.dto.Paquete;
 import com.example.delparque.repository.PaquetesRepository;
 import com.example.delparque.service.PaquetesService;
 import com.example.delparque.service.mappers.PaqueteMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class PaquetesServiceImpl implements PaquetesService {
 
     private final PaquetesRepository paquetesRepository;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    PaquetesServiceImpl(PaquetesRepository paquetesRepository) {
+    PaquetesServiceImpl(PaquetesRepository paquetesRepository, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.paquetesRepository = paquetesRepository;
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     @Override
@@ -31,10 +37,19 @@ public class PaquetesServiceImpl implements PaquetesService {
     }
 
     @Override
-    public List<Paquete> findAll() {
-        return paquetesRepository.findAll().stream()
-                .map(PaqueteMapper::entityToDto)
-                .collect(Collectors.toList());
+    public Page<Paquete> findAll(Integer page) {
+
+        String query = "SELECT * FROM paquetes";
+
+        Pageable pageable = PageRequest.of(page, 10);
+        BeanPropertyRowMapper<Paquete> paquetesViewMapper = new BeanPropertyRowMapper<>(Paquete.class);
+        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+
+        List<Paquete> paquetes = namedParameterJdbcTemplate.query(query +
+                " LIMIT " + pageable.getPageSize() +
+                " OFFSET " + pageable.getOffset(), mapSqlParameterSource, paquetesViewMapper);
+
+        return new PageImpl<>(paquetes, pageable, 10);
     }
 
     @Override

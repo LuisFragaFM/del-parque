@@ -2,9 +2,8 @@ package com.example.delparque.controllers;
 
 import com.example.delparque.dto.Trabajador;
 import com.example.delparque.service.TrabajadoresService;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("api/trabajadores")
@@ -17,8 +16,8 @@ public class TrabajadoresController {
     }
 
     @GetMapping()
-    public List<Trabajador> findAll() {
-        return trabajadoresService.findAll();
+    public Page<Trabajador> findAll(@RequestParam Integer page) {
+        return trabajadoresService.findAll(page);
     }
 
     @GetMapping("{id}")
@@ -28,7 +27,6 @@ public class TrabajadoresController {
 
     @GetMapping("/nombre")
     public Trabajador findByNombreTrabajador(@RequestParam(name = "nombre") String nombre) {
-        System.out.println("hola");
         return trabajadoresService.findByName(nombre);
     }
 

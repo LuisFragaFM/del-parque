@@ -4,26 +4,45 @@ import com.example.delparque.dto.Trabajador;
 import com.example.delparque.repository.TrabajadoresRepository;
 import com.example.delparque.service.TrabajadoresService;
 import com.example.delparque.service.mappers.TrabajadorMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class TrabajadoresServiceImpl implements TrabajadoresService {
 
     private final TrabajadoresRepository trabajadoresRepository;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    TrabajadoresServiceImpl(TrabajadoresRepository trabajadoresRepository) {
+
+    TrabajadoresServiceImpl(TrabajadoresRepository trabajadoresRepository,
+                            NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.trabajadoresRepository = trabajadoresRepository;
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     @Override
-    public List<Trabajador> findAll() {
-        return trabajadoresRepository.findAll().stream()
-                .map(TrabajadorMapper::entityToDto)
-                .collect(Collectors.toList());
+    public Page<Trabajador> findAll(Integer page) {
+
+        String query = "SELECT * FROM trabajadores";
+
+        Pageable pageable = PageRequest.of(page, 10);
+        BeanPropertyRowMapper<Trabajador> trabajadoresViewMapper = new BeanPropertyRowMapper<>(Trabajador.class);
+        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+
+        List<Trabajador> trabajadores = namedParameterJdbcTemplate.query(query +
+                " LIMIT " + pageable.getPageSize() +
+                " OFFSET " + pageable.getOffset(), mapSqlParameterSource, trabajadoresViewMapper);
+
+        return new PageImpl<>(trabajadores, pageable, 10);
     }
 
     @Override

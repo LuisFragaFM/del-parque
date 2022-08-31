@@ -1,12 +1,10 @@
 package com.example.delparque.service;
 
 import com.example.delparque.dto.Visitante;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.data.domain.Page;
 
 public interface VisitantesService {
-    List<Visitante> findAll();
+    Page<Visitante> findAll(Integer page);
 
     Visitante findById(String id);
 
