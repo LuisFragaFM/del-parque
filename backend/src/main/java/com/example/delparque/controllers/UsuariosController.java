@@ -3,7 +3,6 @@ package com.example.delparque.controllers;
 import com.example.delparque.dto.Usuario;
 import com.example.delparque.service.UsuariosService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
