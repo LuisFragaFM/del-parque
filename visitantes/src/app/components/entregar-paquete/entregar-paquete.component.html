@@ -19,7 +19,7 @@
         <div class="form">
           <div class="input">
             <label for="recibe_Paquete">Recibido por:</label>
-            <input required type="text" placeholder="Persona que recibe" id="recibe_Paquete" [(ngModel)]="Entrega_paquete.nombreCondomino">
+            <input required type="text" placeholder="Persona que recibe" id="recibe_Paquete" [(ngModel)]="entregaPaquete.nombreCondomino">
           </div>
         </div>
       </section>
@@ -29,7 +29,7 @@
           <div class="input">
             <label for="fecha_entrega">Fecha de entrega:</label>
             <div class="dateForm">
-              <input required type="date" id="fecha_entrega" [(ngModel)]="Entrega_paquete.fechaEntrega">
+              <input required type="date" id="fecha_entrega" [(ngModel)]="entregaPaquete.fechaEntrega">
             </div>
           </div>
         </div>
@@ -38,9 +38,9 @@
       <section>
         <div class="form3">
           <div class="input">
-            <label for="entrega_Paquete">Entregado por:</label>
+            <label for="entregaPaquete">Entregado por:</label>
             <div class="entregaForm">
-              <input required type="text" placeholder="Persona que entrega" id="entrega_Paquete" [(ngModel)]="Entrega_paquete.recibeGuardia">
+              <input required type="text" placeholder="Persona que entrega" id="entregaPaquete" [(ngModel)]="entregaPaquete.recibeGuardia">
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
           <div class="input">
             <label for="hora_entrega">Hora de entrega:</label>
             <div class="entregaHora">
-              <input required type="time" id="hora_entrega" [(ngModel)]="Entrega_paquete.horaEntrega">
+              <input required type="time" id="hora_entrega" [(ngModel)]="entregaPaquete.horaEntrega">
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
           <div class="input">
             <label for="guarda_Paquete">Caseta</label>
             <div class="entregaCaseta">
-              <input required type="text" placeholder="Guardar paquete en" id="guarda_Paquete" [(ngModel)]="Entrega_paquete.casetaEntrega">
+              <input required type="text" placeholder="Guardar paquete en" id="guarda_Paquete" [(ngModel)]="entregaPaquete.casetaEntrega">
             </div>
           </div>
         </div>

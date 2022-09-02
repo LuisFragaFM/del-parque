@@ -17,7 +17,9 @@
         <div class="buscaTrabajador">
             <h3>Buscar:</h3>
             <!-- <input required type="text" placeholder="Buscar" class="inputBuscar" name="buscaTrabajador"> -->
-            <input required type="text" placeholder="Buscar" class="Buscar" [(ngModel)]="name">
+            <div class="buscarTrabajador">
+                <input required type="text" placeholder="Buscar" class="Buscar" [(ngModel)]="name">
+            </div>
         </div>
         <!-- boton de registro -->
         <button class="botonRegistro" (click)="findTrabajador()">Registrar trabajador(Buscar)</button>

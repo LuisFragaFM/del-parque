@@ -111,6 +111,16 @@
     left: -330px;
     width: 350px;
 }
+.buscarTrabajador{
+    position: relative;
+    left: 80px;
+    top: -27px;
+    width: 350px;
+}
+.Buscar{
+    height: 30px;
+    width: 250px;
+}
 
 .diasTrabajo {
     position: relative;
