@@ -62,8 +62,28 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
             trabajador.setId(UUID.randomUUID().toString());
         }
 
+        if(trabajador.getTipo() == null) {
+            throw new BadRequestDataException("tipo requerido", "TYPE_WORKER_ERROR");
+        }
+
         if(trabajador.getNombreTrabajador() == null) {
-            throw new BadRequestDataException("nombre requerido", "NAME_WOKER_ERROR");
+            throw new BadRequestDataException("nombre requerido", "NAME_WORKER_ERROR");
+        }
+
+        if(trabajador.getNombreCondomino() == null) {
+            throw new BadRequestDataException("nombre_condomino requerido", "NAME_COND_ERROR");
+        }
+
+        if(trabajador.getDiasTrabajo() == null) {
+            throw new BadRequestDataException("dias requerido", "DAYS_WORK_ERROR");
+        }
+
+        if(trabajador.getHorario() == null) {
+            throw new BadRequestDataException("hora requerido", "ARRIVE_WORKER_ERROR");
+        }
+
+        if(trabajador.getTelefono() == null) {
+            throw new BadRequestDataException("telefono requerido", "NUMBER_WORKER_ERROR");
         }
 
         return TrabajadorMapper.entityToDto(trabajadoresRepository.save(TrabajadorMapper.dtoToEntity(trabajador)));

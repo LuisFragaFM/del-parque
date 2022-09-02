@@ -1,6 +1,7 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Visitante;
+import com.example.delparque.exception.BadRequestDataException;
 import com.example.delparque.repository.VisitantesRepository;
 import com.example.delparque.service.VisitantesService;
 import com.example.delparque.service.mappers.VisitanteMapper;
@@ -53,6 +54,34 @@ public class VisitantesServiceImpl implements VisitantesService {
     public Visitante save(Visitante visitante) {
         if (visitante.getId() == null) {
             visitante.setId(UUID.randomUUID().toString());
+        }
+
+        if (visitante.getNombreVisitante() == null) {
+            throw new BadRequestDataException("nombre requerido", "NAME_VISIT_ERROR");
+        }
+
+        if (visitante.getTarjetonVisitante() == null) {
+            throw new BadRequestDataException("tarjeton requerido", "CARD_VISIT_ERROR");
+        }
+
+        if (visitante.getVehiculoVisitante() == null) {
+            throw new BadRequestDataException("vehiculo requerido", "CAR_TYPE_ERROR");
+        }
+
+        if (visitante.getPlacasVehiculo() == null) {
+            throw new BadRequestDataException("placas requerido", "PLATES_VISIT_ERROR");
+        }
+        if (visitante.getFechaLlegada() == null) {
+            throw new BadRequestDataException("fecha requerido", "DATE_ERROR");
+        }
+        if (visitante.getHoraLlegada() == null) {
+            throw new BadRequestDataException("hora requerido", "TIME_ERROR");
+        }
+        if (visitante.getAutorizacion() == null) {
+            throw new BadRequestDataException("autorizacion requerido", "AUTHORIZATION_ERROR");
+        }
+        if (visitante.getCasetaLlegada() == null) {
+            throw new BadRequestDataException("caseta requerido", "ARRIVED_STAND_ERROR");
         }
 
         return VisitanteMapper.entityToDto(visitantesRepository.save(VisitanteMapper.dtoToEntity(visitante)));

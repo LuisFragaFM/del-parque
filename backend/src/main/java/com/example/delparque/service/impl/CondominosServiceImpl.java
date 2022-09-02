@@ -71,6 +71,10 @@ public class CondominosServiceImpl implements CondominosService {
             throw new BadRequestDataException("email requerido", "EMAIL_ERROR");
         }
 
+        if (condomino.getNumeroCasa() == null) {
+            throw new BadRequestDataException("numero_casa requerido", "HOUSE_NUMBER_ERROR");
+        }
+
         return CondominoMapper.entityToDto(condominosRepository.save(CondominoMapper.dtoToEntity(condomino)));
     }
 
