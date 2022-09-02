@@ -10,11 +10,19 @@ import Swal from "sweetalert2";
 })
 export class RegistrarPaqueteriaComponent implements OnInit {
   paquete: Paquete = {} as Paquete;
+  numberOfPages: number = 1;
+
   constructor(private paquetesService: PaquetesService) {
   }
+
   ngOnInit(): void {
+    this.paquetesService.getPaquetes(0).subscribe(paquetes => {
+      console.log(paquetes);
+      
+    });
   }
   save() {
+    
     this.paquetesService.save(this.paquete).subscribe(paquete => {
       this.paquete = {} as Paquete;
       Swal.fire({

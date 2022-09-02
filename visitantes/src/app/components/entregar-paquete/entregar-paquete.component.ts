@@ -10,24 +10,26 @@ import Swal from "sweetalert2";
   styleUrls: ['./entregar-paquete.component.css']
 })
 export class EntregarPaqueteComponent implements OnInit {
-  Entrega_paquete: Paquete = {} as Paquete;
-  constructor(private PaquetesService: PaquetesService) {
+  entregaPaquete: Paquete = {} as Paquete;
+
+  constructor(private paquetesService: PaquetesService) {
   }
+
   ngOnInit(): void {
   }
 
   // Notificaciones de usuario
   save() {
-    this.PaquetesService.save(this.Entrega_paquete).subscribe(Entrega_paquete => {
-      this. Entrega_paquete = {} as Paquete;
+    this.paquetesService.save(this.entregaPaquete).subscribe(entregaPaquete => {
+      this.entregaPaquete = {} as Paquete;    
       Swal.fire({
-        title: `El paquete fue recibido por ${Entrega_paquete.nombreCondomino} y entregado por ${Entrega_paquete.recibeGuardia}`,
+        title: `El paquete fue recibido por ${entregaPaquete.nombreCondomino} y entregado por ${entregaPaquete.recibeGuardia}`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonText: `Cerrar`
       }).then(() => {
-        this.Entrega_paquete = {} as Paquete;
+        this.entregaPaquete = {} as Paquete;
 
       });
     });

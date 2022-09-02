@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("api/paquetes")
 public class PaquetesController {
@@ -40,4 +39,8 @@ public class PaquetesController {
     public void delete(@PathVariable String id) {
         paquetesService.delete(id);
     }
+
+
+
 }
+
