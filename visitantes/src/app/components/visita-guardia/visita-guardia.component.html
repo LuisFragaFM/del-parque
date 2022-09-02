@@ -51,12 +51,12 @@
       <input required type="time" class="barra" name="asdasd" [(ngModel)]="visitante.horaLlegada">
     </div>
     <div><h2>Autorizado por</h2><br>
-      <input required type="text" class="barra" name="asdasd">
+      <input required type="text" class="barra" name="asdasd" [(ngModel)]="visitante.autorizacion">
     </div>
     <div><h2>Caseta</h2><br>
-      <select class="Opciones" name="Caseta" id="Caseta">
-        <option value="Caseta 1" [(ngModel)]="visitante.casetaLlegada"><h2>Caseta 1</h2></option>
-        <option value="Caseta 2" [(ngModel)]="visitante.casetaLlegada"><h2>Caseta 2</h2></option>
+      <select class="Opciones" name="Caseta" id="Caseta" [(ngModel)]="visitante.casetaLlegada">
+        <option value="Caseta 1"><h2>Caseta 1</h2></option>
+        <option value="Caseta 2"><h2>Caseta 2</h2></option>
       </select>
     </div>
   </div>
