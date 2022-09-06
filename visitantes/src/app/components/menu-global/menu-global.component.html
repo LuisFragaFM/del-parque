@@ -2,14 +2,14 @@
 <nav class="MenuBar">
   <nav class="izquierda">
   
-    <a routerLink="registro-paq">Registrar Paquete</a>
-    <a routerLink="trabajador">Registrar Trabajador</a> 
-    <a routerLink="altas">Registrar Condomino</a> 
-    <a routerLink="registro-a">Visitas Registradas</a>
-    <a routerLink="pagos">Pagos</a> 
-    <a routerLink="entregar-paq">Entrega Paquete</a>
-    <a routerLink="agenda-cond">Visitas Agendadas</a>
-    <a routerLink="bitacora-tra">Lista de Trabajadores</a>
+    <a routerLink="registro-paq">Registrar Paquete</a> D
+    <a routerLink="trabajador">Registrar Trabajador</a> D
+    <a routerLink="altas">Registrar Condomino</a> D
+    <a routerLink="registro-a">Visitas Registradas</a> D
+    <a routerLink="pagos">Pagos</a> D
+    <a routerLink="entregar-paq">Entrega Paquete</a> D
+    <a routerLink="agenda-cond">Visitas Agendadas</a> D
+    <a routerLink="bitacora-tra">Lista de Trabajadores</a> D
     <br>
     <br>
     <br>
@@ -32,6 +32,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
+        <!-- Paqueteria -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Paqueteria
@@ -41,6 +42,7 @@
             <li><a class="dropdown-item" routerLink="registro-paq">Registrar</a></li>
           </ul>
         </li>
+        <!-- Trabajadores -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Trabajadores
@@ -50,16 +52,24 @@
             <li><a class="dropdown-item" routerLink="trabajador">Registrar</a></li>
           </ul>
         </li>
+        <!-- Condomino -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Condomino
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" routerLink="visita-c">Registrar Visitas</a></li>
+            <li><a class="dropdown-item" routerLink="visita-c">Agendar Visitas</a></li>
             <li><a class="dropdown-item" routerLink="altas">Registrar Condomino</a></li>
             <li><a class="dropdown-item" routerLink="agenda-cond">Visitas Agendadas</a></li>
+            <li><a class="dropdown-item" routerLink="pagos">Modificación de Condominos</a></li>
+            <!--  -->
+            <li><a class="dropdown-item" routerLink="visita-c">Registrar Visitas (Condominos)</a></li>
+            <li><a class="dropdown-item" routerLink="visita-a-g">Registrar Visitas (Guardias/Admin)</a></li>
+            <li><a class="dropdown-item" routerLink="salida">Registrar Salida</a></li>
+            <li><a class="dropdown-item" routerLink="informes">Reportes</a></li>
           </ul>
         </li>
+        
       </ul>
     </div>
   </div>
