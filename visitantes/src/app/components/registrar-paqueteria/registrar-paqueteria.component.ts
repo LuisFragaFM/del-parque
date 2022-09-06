@@ -16,9 +16,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.paquetesService.getPaquetes(0).subscribe(paquetes => {
-      console.log(paquetes);
-      
+    this.paquetesService.getPaquetes(0).subscribe(paquetes => {      
     });
   }
   save() {
