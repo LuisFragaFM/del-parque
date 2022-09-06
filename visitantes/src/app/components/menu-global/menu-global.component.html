@@ -1,26 +1,66 @@
+  <!--
 <nav class="MenuBar">
   <nav class="izquierda">
-
-    <a routerLink="registro-paq">Paqueterías</a> <!---->
-    <a routerLink="trabajador">Trabajador</a> <!---->
-    <a routerLink="altas">Altas</a> <!---->
-    <a routerLink="registro-a">Registro</a>
-    <a routerLink="pagos">Pagos</a>
-    <a routerLink="modificaciones">Modificaciones</a>
-    <br>
-    <br>
+  
+    <a routerLink="registro-paq">Registrar Paquete</a>
+    <a routerLink="trabajador">Registrar Trabajador</a> 
+    <a routerLink="altas">Registrar Condomino</a> 
+    <a routerLink="registro-a">Visitas Registradas</a>
+    <a routerLink="pagos">Pagos</a> 
     <a routerLink="entregar-paq">Entrega Paquete</a>
-    <a routerLink="bajas">Bajas</a>
-    <a routerLink="agenda-cond">Agenda Condomino</a>
-    <a routerLink="bitacora-tra">Bitácora Trabajador</a>
-
+    <a routerLink="agenda-cond">Visitas Agendadas</a>
+    <a routerLink="bitacora-tra">Lista de Trabajadores</a>
+    <br>
+    <br>
+    <br>
   </nav>
   <nav class="derecha">
-    <a routerLink="visita-c">Visitas</a>
-    <a routerLink="visita-a-g">Visitas 2</a>
-    <br>
-    <br>
-    <a routerLink="salida">Salidas</a>
-    <a routerLink="informes">Informes</a>
+    <a routerLink="visita-c">Registrar Visitas (Condominos)</a>
+    <a routerLink="visita-a-g">Registrar Visitas (Guardias/Admin)</a>
+    <a routerLink="salida">Registrar Salida</a>
+    <a routerLink="informes">Reportes</a>
   </nav>
+</nav>
+-->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Paqueteria
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLink="entregar-paq">Entregar</a></li>
+            <li><a class="dropdown-item" routerLink="registro-paq">Registrar</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Trabajadores
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLink="bitacora-tra">Lista</a></li>
+            <li><a class="dropdown-item" routerLink="trabajador">Registrar</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Condomino
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLink="visita-c">Registrar Visitas</a></li>
+            <li><a class="dropdown-item" routerLink="altas">Registrar Condomino</a></li>
+            <li><a class="dropdown-item" routerLink="agenda-cond">Visitas Agendadas</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
