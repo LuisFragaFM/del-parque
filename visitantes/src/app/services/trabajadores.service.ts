@@ -3,16 +3,18 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {Trabajador} from "../models/trabajador";
+import {TrabajadorPage} from "../models/trabajador-page";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrabajadoresService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getTrabajadores(): Observable<Trabajador[]> {
-    return this.http.get<Trabajador[]>(`${environment.baseUrl}/trabajadores`);
+  getTrabajadores(page: number = 0): Observable<TrabajadorPage> {
+    return this.http.get<TrabajadorPage>(`${environment.baseUrl}/trabajadores?page=${page}`);
   }
 
   findById(id: string): Observable<Trabajador> {

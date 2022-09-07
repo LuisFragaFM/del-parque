@@ -23,8 +23,8 @@ import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
-import { ModificacionesComponent } from './components/modificaciones/modificaciones.component';
-import { AltasComponent } from './components/altas/altas.component';
+import {ModificacionesComponent} from './components/modificaciones/modificaciones.component';
+import {AltasComponent} from './components/altas/altas.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { AltasComponent } from './components/altas/altas.component';
     PiePaginaComponent,
     MenuGlobalComponent,
     ModificacionesComponent,
-    AltasComponent
+    AltasComponent,
   ],
   imports: [
     BrowserModule,
