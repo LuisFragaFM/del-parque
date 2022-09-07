@@ -12,9 +12,15 @@ export class BitacoraTrabajadoresComponent implements OnInit {
   // datos usados para realizar la busqueda
   name: string | undefined;
   trabajador: Trabajador = {} as Trabajador;
+  trabajadores: Trabajador[] = [];
   constructor(private trabajadoresService: TrabajadoresService){ }
 
   ngOnInit(): void {
+    //Paginacion
+    this.trabajadoresService.getTrabajadores(1).subscribe((trabajadores)=>{
+      
+      this.trabajadores = trabajadores.content;
+    });
   }
   // busqueda de trabajador
   findTrabajador() {

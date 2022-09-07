@@ -11,7 +11,7 @@
                 <option value="">Tipo de trabajador</option>
                 <option value="1">Trabajador de obra</option>
                 <option value="2">Trabajador del hogar</option>
-                </select>
+            </select>
         </div>
         <!-- buscar trabajador por nombre-->
         <div class="buscaTrabajador">
@@ -30,37 +30,43 @@
         <div class="titleDatos">
             <h2>BITÁCORA DE TRABAJADORES</h2>
         </div>
-        <!-- form de nombre -->
-        <div class="nombreTrabajador">
-            <h3>Nombre del trabajador:</h3>
-            <!-- <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"> -->
-            <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"[(ngModel)]="trabajador.nombreTrabajador">
-        </div>
-        <!-- form de dias de trabajo-->
-        <div class="diasTrabajo">
-            <h3>Días de trabajo</h3>
-            <input  required type="text" placeholder="Días de trabajo" class="inputBitacora" name="buscaTrabajadorDias" [(ngModel)]="trabajador.diasTrabajo">
-        </div>
-        <!-- form de hora de trabajo-->
-        <div class="horaTrabajo">
-            <h3>Hora </h3>
-            <input required type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras" [(ngModel)]="trabajador.horario">
-        </div>
-        <!-- form de nombre condomino-->
-        <div class="nombreCondomino">
-            <h3>Nombre del Condómino</h3>
-            <input required type="text" placeholder="Nombre del Condómino" class="inputBitacora" name="buscaNameCondomino" [(ngModel)]="trabajador.nombreCondomino">
-        </div>
-        <!-- boton para enviar datos del eliminar y realizar modificar-->
-        <div class="botonesBitacora">
-            <!-- boton modificar -->
-            <div class="buttonModificar">
-                <button class="botonModificar">Modificar</button>
+        <div *ngFor="let trabajador of trabajadores">
+            <!-- form de nombre -->
+            <div class="nombreTrabajador">
+                <h3>Nombre del trabajador:</h3>
+                <!-- <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"> -->
+                <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora"
+                    name="buscaTrabajadorName" [(ngModel)]="trabajador.nombreTrabajador">
             </div>
-            <!-- boton eliminar -->
-            <div class="buttonEliminar">
-                <button class="botonEliminar">Eliminar</button>
+            <!-- form de dias de trabajo-->
+            <div class="diasTrabajo">
+                <h3>Días de trabajo</h3>
+                <input required type="text" placeholder="Días de trabajo" class="inputBitacora"
+                    name="buscaTrabajadorDias" [(ngModel)]="trabajador.diasTrabajo">
+            </div>
+            <!-- form de hora de trabajo-->
+            <div class="horaTrabajo">
+                <h3>Hora </h3>
+                <input required type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras" [(ngModel)]="trabajador.horario">
+            </div>
+            <!-- form de nombre condomino-->
+            <div class="nombreCondomino">
+                <h3>Nombre del Condómino</h3>
+                <input required type="text" placeholder="Nombre del Condómino" class="inputBitacora"
+                    name="buscaNameCondomino" [(ngModel)]="trabajador.nombreCondomino">
+            </div>
+            <!-- boton para enviar datos del eliminar y realizar modificar-->
+            <div class="botonesBitacora">
+                <!-- boton modificar -->
+                <div class="buttonModificar">
+                    <button class="botonModificar">Modificar</button>
+                </div>
+                <!-- boton eliminar -->
+                <div class="buttonEliminar">
+                    <button class="botonEliminar">Eliminar</button>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
