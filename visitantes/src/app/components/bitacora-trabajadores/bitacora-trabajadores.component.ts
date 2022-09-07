@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // imports para realizar la busqueda y notificaciones
 import {TrabajadoresService} from "../../services/trabajadores.service";
 import {Trabajador} from "../../models/trabajador";
-
+import Swal from "sweetalert2";
 @Component({
   selector: 'app-bitacora-trabajadores',
   templateUrl: './bitacora-trabajadores.component.html',
@@ -20,6 +20,11 @@ export class BitacoraTrabajadoresComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //Paginacion
+    this.trabajadoresService.getTrabajadores(1).subscribe((trabajadores)=>{
+
+      this.trabajadores = trabajadores.content;
+    });
     this.trabajadoresService.getTrabajadores(this.page).subscribe(trabajadores => {
       this.trabajadores = trabajadores.content;
       const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
@@ -32,9 +37,8 @@ export class BitacoraTrabajadoresComponent implements OnInit {
 
   // busqueda de trabajador
   findTrabajador() {
-
     if (this.name) {
-      this.trabajadoresService.findByNombre(this.name).subscribe(trabajador => {
+      this.trabajadoresService.findByNombre(this.name).subscribe(trabajador=> {
         this.trabajador = trabajador;
       });
     } else {

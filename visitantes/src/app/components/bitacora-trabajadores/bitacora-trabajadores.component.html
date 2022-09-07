@@ -1,5 +1,4 @@
 <!-- contenedor de inquinos -->
-<script src="../../../test.ts"></script>
 <div class="contenido">
 
   <!-- contenedor para flexbox -->
@@ -25,61 +24,55 @@
     <!-- boton de registro -->
     <button class="botonRegistro" (click)="findTrabajador()">Registrar trabajador(Buscar)</button>
   </div>
-  <div class="titleDatos">
-    <h2>BITÁCORA DE TRABAJADORES</h2>
-  </div>
-  <div *ngFor="let trabajador of trabajadores">
-    <div class="bitacoraDatos">
-      <!-- titulo contenedor -->
-      <!-- form de nombre -->
-      <div class="nombreTrabajador">
-        <h3>Nombre del trabajador:</h3>
-        <!-- <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"> -->
-        <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"
-               [(ngModel)]="trabajador.nombreTrabajador">
+  <!-- Datos de bitacora-->
+  <div class="bitacoraDatos">
+    <!-- titulo contenedor -->
+    <div class="titleDatos">
+      <h2>BITÁCORA DE TRABAJADORES</h2>
+    </div>
+    <!-- form de nombre -->
+    <div class="nombreTrabajador">
+      <h3>Nombre del trabajador:</h3>
+      <!-- <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"> -->
+      <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"
+             [(ngModel)]="trabajador.nombreTrabajador">
+    </div>
+    <!-- form de dias de trabajo-->
+    <div class="diasTrabajo">
+      <h3>Días de trabajo</h3>
+      <input required type="text" placeholder="Días de trabajo" class="inputBitacora" name="buscaTrabajadorDias"
+             [(ngModel)]="trabajador.diasTrabajo">
+    </div>
+    <!-- form de hora de trabajo-->
+    <div class="horaTrabajo">
+      <h3>Hora </h3>
+      <input required type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras"
+             [(ngModel)]="trabajador.horario">
+    </div>
+    <!-- form de nombre condomino-->
+    <div class="nombreCondomino">
+      <h3>Nombre del Condómino</h3>
+      <input required type="text" placeholder="Nombre del Condómino" class="inputBitacora" name="buscaNameCondomino"
+             [(ngModel)]="trabajador.nombreCondomino">
+    </div>
+    <!-- boton para enviar datos del eliminar y realizar modificar-->
+    <div class="botonesBitacora">
+      <!-- boton modificar -->
+      <div class="buttonModificar">
+        <button class="botonModificar">Modificar</button>
       </div>
-      <!-- form de dias de trabajo-->
-      <div class="diasTrabajo">
-        <h3>Días de trabajo</h3>
-        <input required type="text" placeholder="Días de trabajo" class="inputBitacora" name="buscaTrabajadorDias"
-               [(ngModel)]="trabajador.diasTrabajo">
-      </div>
-      <!-- form de hora de trabajo-->
-      <div class="horaTrabajo">
-        <h3>Hora </h3>
-        <input required type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras"
-               [(ngModel)]="trabajador.horario">
-      </div>
-      <!-- form de nombre condomino-->
-      <div class="nombreCondomino">
-        <h3>Nombre del Condómino</h3>
-        <input required type="text" placeholder="Nombre del Condómino" class="inputBitacora" name="buscaNameCondomino"
-               [(ngModel)]="trabajador.nombreCondomino">
-      </div>
-      <!-- boton para enviar datos del eliminar y realizar modificar-->
-      <div class="botonesBitacora">
-        <!-- boton modificar -->
-        <div class="buttonModificar">
-          <button class="botonModificar">Modificar</button>
-        </div>
-        <!-- boton eliminar -->
-        <div class="buttonEliminar">
-          <button class="botonEliminar">Eliminar</button>
-        </div>
+      <!-- boton eliminar -->
+      <div class="buttonEliminar">
+        <button class="botonEliminar">Eliminar</button>
       </div>
     </div>
   </div>
-
-  <!--  Numero paginas-->
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div *ngFor="let p of listOfPages">
-    <div (click)="updatePage(p)" class="cursor">{{p}}</div>
-  </div>
-
-  <!-- Datos de bitacora-->
 </div>
+
+<!--  Numero paginas-->
+
+<div *ngFor="let p of listOfPages">
+  <div (click)="updatePage(p)" class="cursor">{{p}}</div>
+</div>
+
+<!-- Datos de bitacora-->

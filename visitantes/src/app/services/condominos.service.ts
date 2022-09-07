@@ -12,8 +12,8 @@ export class CondominosService {
   constructor(private http: HttpClient) {
   }
 
-  getCondominos(): Observable<Condomino[]> {
-    return this.http.get<Condomino[]>(`${environment.baseUrl}/condominos`);
+  getCondominos(page: number = 0): Observable<Condomino[]> {
+    return this.http.get<Condomino[]>(`${environment.baseUrl}/condominos?page=${page}`);
   }
 
   findById(id: string): Observable<Condomino> {
