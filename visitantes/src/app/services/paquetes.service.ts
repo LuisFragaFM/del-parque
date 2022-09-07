@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {Paquete} from "../models/paquete";
+import { PaquetePage } from '../models/paquete-page';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class PaquetesService {
 
   constructor(private http: HttpClient) { }
 
-  getPaquetes(page: number): Observable<Paquete[]> {
-    return this.http.get<Paquete[]>(`${environment.baseUrl}/paquetes?page=${page}`);
+  getPaquetes(page: number = 0): Observable<PaquetePage> {
+    return this.http.get<PaquetePage>(`${environment.baseUrl}/paquetes?page=${page}`);
   }
 
   findById(id: string): Observable<Paquete> {

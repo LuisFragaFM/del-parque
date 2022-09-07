@@ -30,6 +30,8 @@
     <div class="titleDatos">
       <h2>BITÁCORA DE TRABAJADORES</h2>
     </div>
+<!-- Paginaciob de datos -->
+<div *ngFor="let trabajador of trabajadores">
     <!-- form de nombre -->
     <div class="nombreTrabajador">
       <h3>Nombre del trabajador:</h3>
@@ -68,11 +70,13 @@
     </div>
   </div>
 </div>
+</div>
 
 <!--  Numero paginas-->
-
+<div class="buttons">
 <div *ngFor="let p of listOfPages">
   <div (click)="updatePage(p)" class="cursor">{{p}}</div>
+</div>
 </div>
 
 <!-- Datos de bitacora-->
