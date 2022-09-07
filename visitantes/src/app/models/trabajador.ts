@@ -6,4 +6,5 @@ export interface Trabajador {
   horario: string;
   telefono: string;
   diasTrabajo: string;
+  content: any;
 }
