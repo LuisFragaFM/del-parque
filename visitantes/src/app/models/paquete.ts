@@ -13,4 +13,5 @@ export interface Paquete {
   entregaGuardia: string;
   fechaEntrega: string;
   nombreCondomino: string;
+  content: any;
 }

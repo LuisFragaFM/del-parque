@@ -4,6 +4,7 @@ import {Paquete} from "../../models/paquete"; //Modelo de paquete
 import {PaquetesService} from "../../services/paquetes.service"; //Servicio de paquete
 import Swal from "sweetalert2";
 
+
 @Component({
   selector: 'app-entregar-paquete',
   templateUrl: './entregar-paquete.component.html',
@@ -11,11 +12,28 @@ import Swal from "sweetalert2";
 })
 export class EntregarPaqueteComponent implements OnInit {
   entregaPaquete: Paquete = {} as Paquete;
+  // datos para realizar la paginacion 
+  paquetes: Paquete[] = [];
+  page: number = 0;
+  listOfPages: number[] = [];
 
   constructor(private paquetesService: PaquetesService) {
   }
 
   ngOnInit(): void {
+    //Paginacion
+    this.paquetesService.getPaquetes(0).subscribe((paquetes)=>{
+
+      this.paquetes = paquetes.content;
+    });
+    this.paquetesService.getPaquetes(this.page).subscribe(paquetes=> {
+      this.paquetes = paquetes.content;
+      const totalOfPages = 10
+      for (let i = 0; i < totalOfPages; i++) {
+        this.listOfPages.push(i + 1);
+      }
+    })
+
   }
 
   // Notificaciones de usuario
@@ -33,5 +51,11 @@ export class EntregarPaqueteComponent implements OnInit {
 
       });
     });
+  }
+  updatePage(page: number) {
+    this.page = page - 1;
+    this.paquetesService.getPaquetes(this.page).subscribe(paquetes => {
+      this.paquetes = paquetes.content;
+    })
   }
 }
