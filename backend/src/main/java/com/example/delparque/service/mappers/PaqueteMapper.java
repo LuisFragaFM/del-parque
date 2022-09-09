@@ -19,6 +19,7 @@ public class PaqueteMapper {
                 .recibeGuardia(paquete.getRecibeGuardia())
                 .recibeInquilino(paquete.getRecibeInquilino())
                 .horaEntrega(paquete.getHoraEntrega())
+                .horaLlegada(paquete.getHoraLlegada())
                 .build();
     }
 
@@ -37,6 +38,7 @@ public class PaqueteMapper {
                 .recibeGuardia(paquete.getRecibeGuardia())
                 .recibeInquilino(paquete.getRecibeInquilino())
                 .horaEntrega(paquete.getHoraEntrega())
+                .horaLlegada(paquete.getHoraLlegada())
                 .build();
     }
 }

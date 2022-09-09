@@ -39,14 +39,14 @@
         <label for="recibido">Recibido por:</label>
         <input required type="text" placeholder="Escriba aqui" id="recibido" [(ngModel)]="paquete.recibeInquilino">
         <label for="hora">Hora</label>
-        <input required type="time" id="hora" [(ngModel)]="paquete.horaEntrega">
+        <input required type="time" id="hora" [(ngModel)]="paquete.horaLlegada">
       </div>
 
       <div class="input">
         <label for="fecha">Fecha</label>
-        <input required type="date" id="fecha" [(ngModel)]="paquete.fechaEntrega">
+        <input required type="date" id="fecha" [(ngModel)]="paquete.fechaLlegada">
         <label for="caseta">Caseta recibida:</label>
-        <input required type="text" id="caseta" [(ngModel)]="paquete.casetaEntrega">
+        <input required type="text" id="caseta" [(ngModel)]="paquete.casetaRecibida">
       </div>
     </div>
     <div class="caseta">

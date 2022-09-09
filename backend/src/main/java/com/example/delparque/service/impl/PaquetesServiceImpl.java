@@ -58,15 +58,15 @@ public class PaquetesServiceImpl implements PaquetesService {
             throw new BadRequestDataException("recibido requerido", "RECEIVED_BY_ERROR");
         }
 
-        if(paquete.getFechaEntrega() == null) {
+        if(paquete.getFechaLlegada() == null) {
             throw new BadRequestDataException("fecha requerido", "DATE_ERROR");
         }
 
-        if(paquete.getHoraEntrega() == null) {
+        if(paquete.getHoraLlegada() == null) {
             throw new BadRequestDataException("hora requerido", "TIME_ERROR");
         }
 
-        if(paquete.getCasetaEntrega() == null) {
+        if(paquete.getCasetaRecibida() == null) {
             throw new BadRequestDataException("caseta requerido", "ARRIVED_STAND_ERROR");
         }
 

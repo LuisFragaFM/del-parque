@@ -11,7 +11,6 @@ import Swal from "sweetalert2";
   styleUrls: ['./entregar-paquete.component.css']
 })
 export class EntregarPaqueteComponent implements OnInit {
-  entregaPaquete: Paquete = {} as Paquete;
   // datos para realizar la paginacion 
   paquetes: Paquete[] = [];
   page: number = 0;
@@ -37,18 +36,17 @@ export class EntregarPaqueteComponent implements OnInit {
   }
 
   // Notificaciones de usuario
-  save() {
-    this.paquetesService.save(this.entregaPaquete).subscribe(entregaPaquete => {
-      this.entregaPaquete = {} as Paquete;    
+  save(paquete: Paquete) {
+    
+    this.paquetesService.save(paquete).subscribe(entregaPaquete => {
       Swal.fire({
-        title: `El paquete fue recibido por ${entregaPaquete.nombreCondomino} y entregado por ${entregaPaquete.recibeGuardia}`,
+        title: `El paquete fue recibido por ${entregaPaquete.recibeInquilino} y entregado por ${entregaPaquete.entregaGuardia}`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonText: `Cerrar`
       }).then(() => {
-        this.entregaPaquete = {} as Paquete;
-
+        entregaPaquete = {} as Paquete;
       });
     });
   }

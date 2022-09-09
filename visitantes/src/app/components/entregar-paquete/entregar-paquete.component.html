@@ -4,75 +4,79 @@
     <div (click)="updatePage(p)" class="cursor">{{p}}</div>
   </div>
 </div>
-<div *ngFor="let paquete of paquetes"> 
-<!-- contenedor de inquinos -->
-<div class="contenido">
-  <!-- contenedor para flexbox -->
-  <div class="PaqueteBusqueda">
-    <!-- Datos del Visitante-->
-    <div class="bitacoraDatos">
-      <!-- titulo contenedor -->
-      <div class="titleDatos">
-        <h2>Paquete</h2>
-      </div>
+<div *ngFor="let paquete of paquetes">
+  <!-- contenedor de inquinos -->
+  <div class="contenido">
+    <!-- contenedor para flexbox -->
+    <div class="PaqueteBusqueda">
+      <!-- Datos del Visitante-->
+      <div class="bitacoraDatos">
+        <!-- titulo contenedor -->
+        <div class="titleDatos">
+          <h2>Paquete</h2>
+        </div>
 
-      <!-- formulario recibido -->
-      <section>
-        <div class="form">
-          <div class="input">
-            <label for="recibe_Paquete">Recibido por:</label>
-            <input required type="text" placeholder="Persona que recibe" id="recibe_Paquete" [(ngModel)]="paquete.nombreCondomino">
-          </div>
-        </div>
-      </section>
-      <!-- formulario fecha -->
-      <section>
-        <div class="form2">
-          <div class="input">
-            <label for="fecha_entrega">Fecha de entrega:</label>
-            <div class="dateForm">
-              <input required type="date" id="fecha_entrega" [(ngModel)]="paquete.fechaEntrega">
+        <!-- formulario recibido -->
+        <section>
+          <div class="form">
+            <div class="input">
+              <label for="recibe_Paquete">Recibido por:</label>
+              <input required type="text" placeholder="Persona que recibe" id="recibe_Paquete"
+                [(ngModel)]="paquete.recibeGuardia">
             </div>
           </div>
-        </div>
-      </section>
-      <!-- formulario Nombre del entregado -->
-      <section>
-        <div class="form3">
-          <div class="input">
-            <label for="entregaPaquete">Entregado por:</label>
-            <div class="entregaForm">
-              <input required type="text" placeholder="Persona que entrega" id="entregaPaquete" [(ngModel)]="paquete.recibeGuardia">
+        </section>
+        <!-- formulario fecha -->
+        <section>
+          <div class="form2">
+            <div class="input">
+              <label for="fecha_entrega">Fecha de entrega:</label>
+              <div class="dateForm">
+                <input required type="date" id="fecha_entrega" [(ngModel)]="paquete.fechaLlegada">
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- formulario horas Entregado -->
-      <section>
-        <div class="form4">
-          <div class="input">
-            <label for="hora_entrega">Hora de entrega:</label>
-            <div class="entregaHora">
-              <input required type="time" id="hora_entrega" [(ngModel)]="paquete.horaEntrega">
+        </section>
+        <!-- formulario Nombre del entregado -->
+        <section>
+          <div class="form3">
+            <div class="input">
+              <label for="entregaPaquete">Entregado por:</label>
+              <div class="entregaForm">
+                <input required type="text" placeholder="Persona que entrega" id="entregaPaquete"
+                  [(ngModel)]="paquete.entregaGuardia">
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- formulario caseta -->
-      <section>
-        <div class="form5">
-          <div class="input">
-            <label for="guarda_Paquete">Caseta</label>
-            <div class="entregaCaseta">
-              <input required type="text" placeholder="Guardar paquete en" id="guarda_Paquete" [(ngModel)]="paquete.casetaEntrega">
+        </section>
+        <!-- formulario horas Entregado -->
+        <section>
+          <div class="form4">
+            <div class="input">
+              <label for="hora_entrega">Hora de entrega:</label>
+              <div class="entregaHora">
+                <input required type="time" id="hora_entrega" [(ngModel)]="paquete.horaLlegada">
+              </div>
             </div>
           </div>
+        </section>
+        <!-- formulario caseta -->
+        <section>
+          <div class="form5">
+            <div class="input">
+              <label for="guarda_Paquete">Caseta Llegada</label>
+              <div class="entregaCaseta">
+                <input required type="text" placeholder="Guardar paquete en" id="guarda_Paquete"
+                  [(ngModel)]="paquete.casetaRecibida">
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- boton para enviar datos del eliminar y realizar registro del paquete-->
+        <div class="botonesRegistro">
+          <!-- boton Guardar -->
+          <button (click)="save(paquete)">Entregar</button>
         </div>
-      </section>
-      <!-- boton para enviar datos del eliminar y realizar registro del paquete-->
-      <div class="botonesRegistro">
-        <!-- boton Guardar -->
-        <button (click)="save()">Entregar</button>
       </div>
     </div>
   </div>

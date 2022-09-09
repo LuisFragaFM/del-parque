@@ -56,6 +56,9 @@ public class Paquete {
 
     private String calle;
 
+    @Column(name = "hora_llegada")
+    private String horaLlegada;
+
     @Column(name = "hora_entrega")
     private String horaEntrega;
 }
