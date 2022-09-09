@@ -22,7 +22,7 @@
 
 /* flexbox para barra de busqueda */
 
-.trabajadorBusqueda {
+/* .trabajadorBusqueda {
     position: relative;
     top: 60px;
     display: flex;
@@ -30,7 +30,7 @@
     height: 50px;
     width: 1100px;
     background-color: rgb(42, 42, 42);
-}
+} */
 
 .botonesBitacora {
     display: flex;
