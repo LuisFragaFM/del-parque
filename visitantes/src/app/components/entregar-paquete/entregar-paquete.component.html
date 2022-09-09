@@ -1,9 +1,10 @@
 <!--  Numero paginas-->
 <div class="buttons">
-  <div *ngFor="let p of listOfPages">
+  <div *ngFor="let p of listOfPages" [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}">
     <div (click)="updatePage(p)" class="cursor">{{p}}</div>
   </div>
 </div>
+<!--  -->
 <div *ngFor="let paquete of paquetes">
   <!-- contenedor de inquinos -->
   <div class="contenido">
@@ -15,7 +16,6 @@
         <div class="titleDatos">
           <h2>Paquete</h2>
         </div>
-
         <!-- formulario recibido -->
         <section>
           <div class="form">
