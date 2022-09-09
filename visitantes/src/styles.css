@@ -12,7 +12,7 @@ html {
 }
 
 .pagina {
-    width: 1170px;
+    width: auto;
     background-image: url("./assets/Fondo.PNG");
     background-position: center;
     background-repeat: no-repeat;
