@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import java.time.LocalDate;
 
 @Builder
@@ -26,4 +27,5 @@ public class Paquete {
     private String numeroCasa;
     private String calle;
     private String horaEntrega;
+    private String horaLlegada;
 }
