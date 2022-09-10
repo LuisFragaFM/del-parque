@@ -11,10 +11,10 @@ import {InformesComponent} from './components/informes/informes.component';
 import {EntregarPaqueteComponent} from './components/entregar-paquete/entregar-paquete.component';
 import {BitacoraTrabajadoresComponent} from './components/bitacora-trabajadores/bitacora-trabajadores.component';
 import {BajasComponent} from './components/bajas/bajas.component';
-import {AltasModificacionesComponent} from './components/altas-modificaciones/altas-modificaciones.component';
 import {AgendaCondominoComponent} from './components/agenda-condomino/agenda-condomino.component';
 import {AltasComponent} from './components/altas/altas.component';
 import {ModificacionesComponent} from './components/modificaciones/modificaciones.component';
+import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 
 const routes: Routes = [
   {path: 'visita-a-g', component: VisitaGuardiaComponent},
@@ -23,14 +23,15 @@ const routes: Routes = [
   {path: 'salida', component: RegistrarSalidaComponent},
   {path: 'registro-paq', component: RegistrarPaqueteriaComponent},
   {path: 'registro-a', component: RegistrarAgendaComponent},
-  {path: 'pagos', component: PagosComponent}, 
+  {path: 'pagos', component: PagosComponent},
   {path: 'informes', component: InformesComponent},
   {path: 'entregar-paq', component: EntregarPaqueteComponent},
   {path: 'bitacora-tra', component: BitacoraTrabajadoresComponent},
   {path: 'bajas', component: BajasComponent},
   {path: 'altas', component: AltasComponent},
   {path: 'agenda-cond', component: AgendaCondominoComponent},
-  {path: 'modificaciones', component: ModificacionesComponent}
+  {path: 'modificaciones', component: ModificacionesComponent},
+  {path: 'usuarios', component: UsuariosComponent}
 ];
 
 @NgModule({

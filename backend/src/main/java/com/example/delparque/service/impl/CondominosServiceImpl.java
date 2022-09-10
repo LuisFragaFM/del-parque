@@ -34,15 +34,16 @@ public class CondominosServiceImpl implements CondominosService {
 
         String query = "SELECT * FROM condominos";
 
-        Pageable pageable = PageRequest.of(page, 10);
         BeanPropertyRowMapper<Condomino> condominoViewMapper = new BeanPropertyRowMapper<>(Condomino.class);
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+
+        Pageable pageable = PageRequest.of(page, 10);
 
         List<Condomino> condominos = namedParameterJdbcTemplate.query(query +
                 " LIMIT " + pageable.getPageSize() +
                 " OFFSET " + pageable.getOffset(), mapSqlParameterSource, condominoViewMapper);
 
-        return new PageImpl<>(condominos, pageable, 10);
+        return new PageImpl<>(condominos, pageable,  pageable.getPageSize());
     }
 
     @Override

@@ -78,15 +78,16 @@ public class PaquetesServiceImpl implements PaquetesService {
 
         String query = "SELECT * FROM paquetes";
 
-        Pageable pageable = PageRequest.of(page, 10);
         BeanPropertyRowMapper<Paquete> paquetesViewMapper = new BeanPropertyRowMapper<>(Paquete.class);
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+
+        Pageable pageable = PageRequest.of(page, 10);
 
         List<Paquete> paquetes = namedParameterJdbcTemplate.query(query +
                 " LIMIT " + pageable.getPageSize() +
                 " OFFSET " + pageable.getOffset(), mapSqlParameterSource, paquetesViewMapper);
 
-        return new PageImpl<>(paquetes, pageable, 10);
+        return new PageImpl<>(paquetes, pageable, pageable.getPageSize());
     }
 
     @Override

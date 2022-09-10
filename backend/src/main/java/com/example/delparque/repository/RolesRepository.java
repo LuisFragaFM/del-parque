@@ -10,4 +10,6 @@ public interface RolesRepository extends JpaRepository<RolesPorUsuario, String> 
 
     @Query("SELECT r.role FROM RolesPorUsuario r WHERE r.idUsuario = :user")
     List<String> findRolesByUser(String user);
+
+    void deleteRolesPorUsuarioByIdUsuarioAndRole(String userId, String role);
 }

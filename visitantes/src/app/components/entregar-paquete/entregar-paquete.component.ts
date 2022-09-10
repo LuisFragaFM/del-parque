@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // modelos, servicios y alertas
 import {Paquete} from "../../models/paquete"; //Modelo de paquete
 import {PaquetesService} from "../../services/paquetes.service"; //Servicio de paquete
@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
   styleUrls: ['./entregar-paquete.component.css']
 })
 export class EntregarPaqueteComponent implements OnInit {
-  // datos para realizar la paginacion 
+  // datos para realizar la paginacion
   paquetes: Paquete[] = [];
   page: number = 0;
   listOfPages: number[] = [];
@@ -20,12 +20,7 @@ export class EntregarPaqueteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //Paginacion
-    this.paquetesService.getPaquetes(0).subscribe((paquetes)=>{
-
-      this.paquetes = paquetes.content;
-    });
-    this.paquetesService.getPaquetes(this.page).subscribe(paquetes=> {
+    this.paquetesService.getPaquetes().subscribe(paquetes => {
       this.paquetes = paquetes.content;
       const totalOfPages = 10
       for (let i = 0; i < totalOfPages; i++) {
@@ -37,7 +32,7 @@ export class EntregarPaqueteComponent implements OnInit {
 
   // Notificaciones de usuario
   save(paquete: Paquete) {
-    
+
     this.paquetesService.save(paquete).subscribe(entregaPaquete => {
       Swal.fire({
         title: `El paquete fue recibido por ${entregaPaquete.recibeInquilino} y entregado por ${entregaPaquete.entregaGuardia}`,
@@ -50,6 +45,7 @@ export class EntregarPaqueteComponent implements OnInit {
       });
     });
   }
+
   updatePage(page: number) {
     this.page = page - 1;
     this.paquetesService.getPaquetes(this.page).subscribe(paquetes => {

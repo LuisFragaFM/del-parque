@@ -25,6 +25,8 @@ import {AuthInterceptorService} from "./services/auth-interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
 import {ModificacionesComponent} from './components/modificaciones/modificaciones.component';
 import {AltasComponent} from './components/altas/altas.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { RolePipe } from './pipes/role.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import {AltasComponent} from './components/altas/altas.component';
     MenuGlobalComponent,
     ModificacionesComponent,
     AltasComponent,
+    UsuariosComponent,
+    RolePipe,
   ],
   imports: [
     BrowserModule,
