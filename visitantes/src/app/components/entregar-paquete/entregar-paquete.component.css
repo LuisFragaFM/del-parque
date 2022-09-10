@@ -113,3 +113,17 @@ button {
   color: #fff;
   background-color: rgb(110, 148, 221);
 }
+
+.cursor:hover {
+  cursor: pointer;
+}
+
+.pagination {
+  padding: 14px;
+  margin: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}

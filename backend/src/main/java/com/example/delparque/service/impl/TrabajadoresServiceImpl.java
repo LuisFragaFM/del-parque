@@ -23,7 +23,6 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     private final TrabajadoresRepository trabajadoresRepository;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-
     TrabajadoresServiceImpl(TrabajadoresRepository trabajadoresRepository,
                             NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.trabajadoresRepository = trabajadoresRepository;
@@ -35,15 +34,16 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
 
         String query = "SELECT * FROM trabajadores";
 
-        Pageable pageable = PageRequest.of(page, 10);
         BeanPropertyRowMapper<Trabajador> trabajadoresViewMapper = new BeanPropertyRowMapper<>(Trabajador.class);
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+
+        Pageable pageable = PageRequest.of(page, 10);
 
         List<Trabajador> trabajadores = namedParameterJdbcTemplate.query(query +
                 " LIMIT " + pageable.getPageSize() +
                 " OFFSET " + pageable.getOffset(), mapSqlParameterSource, trabajadoresViewMapper);
 
-        return new PageImpl<>(trabajadores, pageable, 10);
+        return new PageImpl<>(trabajadores, pageable, pageable.getPageSize());
     }
 
     @Override

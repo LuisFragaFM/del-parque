@@ -1,16 +1,20 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.model.Login;
+import com.example.delparque.model.RolesPorUsuario;
 import com.example.delparque.model.Usuario;
 import com.example.delparque.repository.LoginRepository;
 import com.example.delparque.repository.RolesRepository;
 import com.example.delparque.repository.UsuariosRepository;
 import com.example.delparque.service.UsuariosService;
+import com.example.delparque.service.mappers.UsuarioMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuariosServiceImpl implements UsuariosService {
@@ -62,5 +66,37 @@ public class UsuariosServiceImpl implements UsuariosService {
         loginRepository.save(login);
 
         return Optional.of(user);
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<com.example.delparque.dto.Usuario> getAllUsers() {
+        return usuariosRepository.findAll().stream().map(UsuarioMapper::entityToDto)
+                .peek(user -> user.setRoles(rolesRepository.findRolesByUser(user.getId())))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public List<String> removeRole(String userId, String role) {
+
+        rolesRepository.deleteRolesPorUsuarioByIdUsuarioAndRole(userId, role);
+
+        return rolesRepository.findRolesByUser(userId);
+    }
+
+    @Override
+    @Transactional
+    public List<String> addRole(String userId, String role) {
+        RolesPorUsuario roleByUser = new RolesPorUsuario();
+
+        roleByUser.setId(UUID.randomUUID().toString());
+        roleByUser.setRole(role);
+        roleByUser.setIdUsuario(userId);
+
+        rolesRepository.save(roleByUser);
+
+        return rolesRepository.findRolesByUser(userId);
     }
 }
