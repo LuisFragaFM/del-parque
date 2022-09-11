@@ -62,6 +62,7 @@ label {
   font-size: 20px;
   left: 40px;
   top: 36px;
+  color: rgb(161, 161, 161);
   /* border: 5px solid rgb(6, 68, 24); */
 }
 .dateForm{
