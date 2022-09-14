@@ -91,4 +91,10 @@ public class VisitantesServiceImpl implements VisitantesService {
     public void delete(String id) {
         visitantesRepository.deleteById(id);
     }
+
+    @Override
+    public Visitante findByName(String name) {
+        return VisitanteMapper.entityToDto(visitantesRepository
+                .findByNombreVisitante(name).orElse(new com.example.delparque.model.Visitante()));
+    }
 }

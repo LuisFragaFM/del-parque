@@ -11,4 +11,6 @@ public interface VisitantesService {
     Visitante save(Visitante visitante);
 
     void delete(String id);
+
+    Visitante findByName(String name);
 }

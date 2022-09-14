@@ -29,6 +29,12 @@ public class VisitantesController {
         return visitantesService.findById(id);
     }
 
+    @GetMapping("{name}")
+    @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
+    public Visitante findByName(@PathVariable String name) {
+        return visitantesService.findByName(name);
+    }
+
     @PostMapping()
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_RESIDENT', 'ROLE_ADMIN')")
     public Visitante save(@RequestBody Visitante visitante) {
