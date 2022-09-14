@@ -181,3 +181,17 @@
     border-radius: 40px;
     font-size: 20px;
 }
+
+.cursor:hover {
+    cursor: pointer;
+  }
+  
+  .pagination {
+    padding: 14px;
+    margin: 5px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }

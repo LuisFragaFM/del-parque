@@ -29,7 +29,7 @@ export class PagosComponent implements OnInit {
 
       });
     } else {
-      this.condominosService.findByNombre(this.name!).subscribe(condomino => {
+      this.condominosService.findByNombre(this.name!).subscribe(condomino => { console.log(condomino);
         this.condomino = condomino;
       });
     }

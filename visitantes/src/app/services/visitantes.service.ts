@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Visitante} from "../models/visitante";
+import { VisitantePage } from '../models/visitante-page';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,16 @@ export class VisitantesService {
 
   constructor(private http: HttpClient) { }
 
-  getTrabajadores(): Observable<Visitante[]> {
-    return this.http.get<Visitante[]>(`${environment.baseUrl}/visitantes`);
+  getVisitantes(page: number = 0): Observable<VisitantePage> {
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/trabajadores?page=${page}`);
   }
 
   findById(id: string): Observable<Visitante> {
     return this.http.get<Visitante>(`${environment.baseUrl}/visitantes/${id}`);
+  }
+
+  findByName(name: string): Observable<Visitante> {
+    return this.http.get<Visitante>(`${environment.baseUrl}/visitantes/name/${name}`);
   }
 
   save(condomino: Visitante): Observable<Visitante> {
