@@ -13,7 +13,7 @@ export class VisitantesService {
   constructor(private http: HttpClient) { }
 
   getVisitantes(page: number = 0): Observable<VisitantePage> {
-    return this.http.get<VisitantePage>(`${environment.baseUrl}/trabajadores?page=${page}`);
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes?page=${page}`);
   }
 
   findById(id: string): Observable<Visitante> {
