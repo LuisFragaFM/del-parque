@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
   styleUrls: ['./visita-guardia.component.css']
 })
 export class VisitaGuardiaComponent implements OnInit {
+  isChecked: boolean = true;
   name: string | undefined;
   visitante: Visitante = {} as Visitante;
   condomino: Condomino = {} as Condomino;
@@ -42,5 +43,4 @@ export class VisitaGuardiaComponent implements OnInit {
       }).then(() => {});
     });
   }
-
 }
