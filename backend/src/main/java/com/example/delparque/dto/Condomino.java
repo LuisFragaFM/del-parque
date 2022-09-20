@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Condomino {
     private String id;
-    private String nombre;
+    private String name;
     private String calle;
     private String numeroCasa;
     private String numeroTelefono;

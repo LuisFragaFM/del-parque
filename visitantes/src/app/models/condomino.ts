@@ -1,6 +1,6 @@
 export interface Condomino {
   id: string;
-  nombre: string;
+  name: string;
   calle: string;
   numeroCasa: string;
   numeroTelefono: string;

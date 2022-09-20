@@ -13,35 +13,33 @@ export class PagosComponent implements OnInit {
   phone: string | undefined;
   condomino: Condomino = {} as Condomino;
   condominos: Condomino[] = [];
+
   constructor(private condominosService: CondominosService) {
   }
+
   ngOnInit(): void {
-    this.condominosService.getCondominos().subscribe(condominos => this.condominos = condominos);
   }
 
-  findInquilino() {
+  findInquilinoByName() {
+    this.condominosService.findByName(this.name!).subscribe(condominos => {
+      console.log(condominos);
+      this.condominos = condominos;
+    });
+  }
 
-    
-    if (this.phone) {
-      this.condominosService.findByTelefono(this.phone).subscribe(condomino => {
-        this.condomino = condomino;
-        
-
-      });
-    } else {
-      this.condominosService.findByNombre(this.name!).subscribe(condomino => { console.log(condomino);
-        this.condomino = condomino;
-      });
-    }
+  findInquilinoByTelephone() {
+    this.condominosService.findByTelefono(this.phone!).subscribe(condomino => {
+      this.condomino = condomino;
+    });
   }
 
   modify() {
-    
+
     if (this.condomino.id) {
       this.condominosService.save(this.condomino).subscribe(condomino => {
-        
+
         Swal.fire({
-          title: `El condomino de ${condomino.nombre} fue guardado correctamente`,
+          title: `El condomino de ${condomino.name} fue guardado correctamente`,
           icon: 'success',
           showDenyButton: false,
           showCancelButton: false,
@@ -68,7 +66,7 @@ export class PagosComponent implements OnInit {
         if (value.isConfirmed) {
           this.condominosService.delete(this.condomino.id).subscribe(() => {
             Swal.fire({
-              title: `El condomino de ${this.condomino.nombre} fue borrado correctamente`,
+              title: `El condomino de ${this.condomino.name} fue borrado correctamente`,
               icon: 'success',
               showDenyButton: false,
               showCancelButton: false,
@@ -83,5 +81,12 @@ export class PagosComponent implements OnInit {
       });
 
     }
+  }
+
+  selectInquilino(condomino: Condomino) {
+    this.condomino = condomino;
+    this.condominos = [];
+    this.name = undefined;
+    this.phone = undefined;
   }
 }

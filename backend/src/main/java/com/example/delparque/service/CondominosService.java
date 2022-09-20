@@ -3,6 +3,8 @@ package com.example.delparque.service;
 import com.example.delparque.dto.Condomino;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 
 public interface CondominosService {
     Page<Condomino> findAll(Integer page);
@@ -11,7 +13,7 @@ public interface CondominosService {
 
     Condomino findByNumeroTelefono(String numeroTelefono);
 
-    Condomino findByNombre(String nombre);
+    List<Condomino> findByName(String name);
 
     Condomino save(Condomino condomino);
 

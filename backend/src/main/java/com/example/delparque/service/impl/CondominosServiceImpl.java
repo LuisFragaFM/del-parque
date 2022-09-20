@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class CondominosServiceImpl implements CondominosService {
@@ -43,7 +44,7 @@ public class CondominosServiceImpl implements CondominosService {
                 " LIMIT " + pageable.getPageSize() +
                 " OFFSET " + pageable.getOffset(), mapSqlParameterSource, condominoViewMapper);
 
-        return new PageImpl<>(condominos, pageable,  pageable.getPageSize());
+        return new PageImpl<>(condominos, pageable, pageable.getPageSize());
     }
 
     @Override
@@ -64,7 +65,7 @@ public class CondominosServiceImpl implements CondominosService {
             throw new BadRequestDataException("telefono requerido", "NUMBER_ERROR");
         }
 
-        if (condomino.getNombre() == null) {
+        if (condomino.getName() == null) {
             throw new BadRequestDataException("nombre de casa requerido", "HOUSE_NAME_ERROR");
         }
 
@@ -90,8 +91,10 @@ public class CondominosServiceImpl implements CondominosService {
     }
 
     @Override
-    public Condomino findByNombre(String nombre) {
-        return condominosRepository.findByNombre(nombre).map(CondominoMapper::entityToDto).orElse(null);
+    public List<Condomino> findByName(String name) {
+        return condominosRepository.findByName(name)
+                .stream().map(CondominoMapper::entityToDto)
+                .collect(Collectors.toList());
     }
 
     @Override

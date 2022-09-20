@@ -24,7 +24,7 @@
         <div class="button">
           <button class="boton" (click)="findInquilino()">Buscar</button>
         </div>
-      
+
         <div class="periodoDe">
             <div class="periodoTxt">
                 <h3>Periodo de: <br><br> </h3>
@@ -52,8 +52,8 @@
         <!-- nombre de busqueda para descargar datos -->
         <div class="nombreBar">
             <h3>Nombre<br><br></h3>
-            <input required type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino" 
-            [(ngModel)]="condomino.nombre" readonly="readonly">
+            <input required type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino"
+                   [(ngModel)]="condomino.name" readonly="readonly">
         </div>
         <!-- boton para enviar datos del formulario y realizar la descarga -->
         <div class="buttonDescarga">
