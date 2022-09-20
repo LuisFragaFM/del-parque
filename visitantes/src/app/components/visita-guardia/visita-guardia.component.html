@@ -39,10 +39,12 @@
   <div class="Datos">
     <div>
       <h2>Nombre</h2> <br>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="name">
-    </div>
-    <div class="BotDiv2">
-      <button class="boton2" (click)="findInquilino()">?</button>
+      <input required type="text" class="barra" name="asdasd" 
+      (keyup)="findInquilinoByName()"
+      [(ngModel)]="name">
+      <div *ngFor="let c of condominos">
+        <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
+      </div>
     </div>
     <div>
       <h2>Calle</h2><br>
