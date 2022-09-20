@@ -13,6 +13,7 @@ html {
 
 .pagina {
     width: auto;
+    height: auto;
     background-image: url("./assets/Fondo.PNG");
     background-position: center;
     background-repeat: no-repeat;
