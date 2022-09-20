@@ -18,7 +18,7 @@ export class AltasComponent implements OnInit {
   save() {
     this.condominosService.save(this.condomino).subscribe(condomino => {
       Swal.fire({
-        title: `El condomino ${condomino.nombre} fue guardado correctamente`,
+        title: `El condomino ${condomino.name} fue guardado correctamente`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,

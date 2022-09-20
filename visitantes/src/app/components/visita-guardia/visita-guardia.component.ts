@@ -14,6 +14,7 @@ export class VisitaGuardiaComponent implements OnInit {
   isChecked: boolean = true;
   name: string | undefined;
   visitante: Visitante = {} as Visitante;
+  condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
   constructor(private visitantesService: VisitantesService , private condominosService: CondominosService) { }
 
@@ -21,13 +22,9 @@ export class VisitaGuardiaComponent implements OnInit {
   }
 
   findInquilino() {
-
-    
     if (this.name) {
-      this.condominosService.findByNombre(this.name!).subscribe(condomino => {
-        this.condomino = condomino;
-        
-
+      this.condominosService.findByName(this.name!).subscribe(condominos => {
+        this.condominos = condominos;
       });
     }
   }

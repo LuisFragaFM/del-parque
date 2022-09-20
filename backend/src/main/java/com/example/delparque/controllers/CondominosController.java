@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("api/condominos")
@@ -29,15 +31,15 @@ public class CondominosController {
         return condominosService.findById(id);
     }
 
-    @GetMapping("nombre")
+    @GetMapping("name/{name}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public Condomino findByNombre(@RequestParam() String nombre) {
-        return condominosService.findByNombre(nombre);
+    public List<Condomino> findByName(@PathVariable String name) {
+        return condominosService.findByName(name);
     }
 
-    @GetMapping("telefono")
+    @GetMapping("telefono/{telefono}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public Condomino findByNumeroTelefono(@RequestParam() String telefono) {
+    public Condomino findByNumeroTelefono(@PathVariable String telefono) {
         return condominosService.findByNumeroTelefono(telefono);
     }
 

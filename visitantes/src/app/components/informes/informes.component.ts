@@ -13,22 +13,23 @@ export class InformesComponent implements OnInit {
   name: string | undefined;
   phone: string | undefined;
   condomino: Condomino = {} as Condomino;
+  condominos: Condomino[] = [];
   constructor(private condominosService: CondominosService) {
   }
   ngOnInit(): void {
   }
   findInquilino() {
 
-    
+
     if (this.phone) {
       this.condominosService.findByTelefono(this.phone).subscribe(condomino => {
         this.condomino = condomino;
-        
+
 
       });
     } else {
-      this.condominosService.findByNombre(this.name!).subscribe(condomino => {
-        this.condomino = condomino;
+      this.condominosService.findByName(this.name!).subscribe(condominos => {
+        this.condominos = condominos;
       });
     }
   }

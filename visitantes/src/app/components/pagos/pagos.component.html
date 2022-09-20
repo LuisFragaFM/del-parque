@@ -1,4 +1,5 @@
 <!-- contenedor de inquinos -->
+
 <div class="contenido">
   <div class="containerInquilinos">
     <!-- contenedor de titulo contenedor -->
@@ -12,15 +13,13 @@
     <!-- form de nombre -->
     <div class="nombre">
       <h3>Nombre<br><br></h3>
-      <!-- <select>
-        <option *ngFor="let condomino of condominos">
-          {{condomino.nombre}}
-        </option>
-      </select>
-      <br>
-      <br> -->
-      <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName" [(ngModel)]="name">
-    </div> 
+      <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName"
+             (keyup)="findInquilinoByName()"
+             [(ngModel)]="name">
+      <div *ngFor="let c of condominos">
+        <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
+      </div>
+    </div>
     <!-- form de telefono -->
     <div class="telefono">
       <h3>Número de telefono<br><br></h3>
@@ -29,7 +28,7 @@
     </div>
     <!-- boton para enviar datos del formulario y realizar busqueda-->
     <div class="button">
-      <button class="boton" (click)="findInquilino()">Buscar</button>
+      <button class="boton">Buscar</button>
     </div>
   </div>
   <!-- contenedor datos de inquilino -->
@@ -42,7 +41,7 @@
     <div class="nombreDatos">
       <h3>Nombre:<br><br></h3>
       <input required type="text" placeholder="Buscar Inquilino" class="inputDatos" name="muestraPagosName"
-             [(ngModel)]="condomino.nombre">
+             [(ngModel)]="condomino.name">
     </div>
     <!-- Imagen de programa -->
     <div class="imagenUser">
