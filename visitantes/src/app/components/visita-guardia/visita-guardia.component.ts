@@ -21,12 +21,11 @@ export class VisitaGuardiaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  findInquilino() {
-    if (this.name) {
-      this.condominosService.findByName(this.name!).subscribe(condominos => {
-        this.condominos = condominos;
-      });
-    }
+  findInquilinoByName() {
+    this.condominosService.findByName(this.name!).subscribe(condominos => {
+      console.log(condominos);
+      this.condominos = condominos;
+    });
   }
 
   save() {
@@ -39,5 +38,11 @@ export class VisitaGuardiaComponent implements OnInit {
         confirmButtonText: `Cerrar`
       }).then(() => {});
     });
+  }
+
+  selectInquilino(condomino: Condomino) {
+    this.condomino = condomino;
+    this.condominos = [];
+    this.name = condomino.name;
   }
 }
