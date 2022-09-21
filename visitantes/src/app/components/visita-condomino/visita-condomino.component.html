@@ -35,7 +35,12 @@
       </div>
       <div class="Der">
         <h3>Autorizada por</h3> <br>
-        <input required autocomplete="off" type="text" placeholder="Escriba aqui" [(ngModel)]="visitante.autorizacion"> <br>
+        <input required autocomplete="off" type="text" placeholder="Escriba aqui" 
+        (keyup)="findInquilinoByName()"
+        [(ngModel)]="name"> <br>
+        <div *ngFor="let c of condominos">
+          <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
+        </div>
         <!--<h3>Caseta</h3> <br>
         <select class="Opciones" name="Caseta" id="Caseta" [(ngModel)]="visitante.casetaLlegada">
           <option value="Caseta 1"><h2>Caseta 1</h2></option>
