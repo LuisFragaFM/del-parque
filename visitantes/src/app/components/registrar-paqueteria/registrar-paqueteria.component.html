@@ -25,11 +25,12 @@
          <div *ngFor="let c of condominos">
           <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
         </div>
-        <label for="calle">Número de la casa</label>
-        <input required autocomplete="off" type="text" id="casa" [(ngModel)]="paquete.numeroCasa" disabled>
+        
       </div>
 
-      <div class="input">
+      <div class="input" *ngIf="condomino.id">
+        <label for="calle">Número de la casa</label>
+        <input required autocomplete="off" type="text" id="casa" [(ngModel)]="paquete.numeroCasa" disabled>
         <label for="calle">Calle</label>
         <input required autocomplete="off" type="text" id="calle" [(ngModel)]="paquete.calle" disabled>
       </div>
