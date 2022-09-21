@@ -20,7 +20,11 @@
     <div class="form">
       <div class="input">
         <label for="nombre_condomino">Nombre</label>
-        <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="nombre_condomino" [(ngModel)]="paquete.nombreCondomino">
+        <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="nombre_condomino" (keyup)="findInquilinoByName()"
+         [(ngModel)]="name">
+         <div *ngFor="let c of condominos">
+          <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
+        </div>
         <label for="calle">Número de la casa</label>
         <input required autocomplete="off" type="text" id="casa" [(ngModel)]="paquete.numeroCasa" disabled>
       </div>
