@@ -22,12 +22,12 @@
         <label for="nombre_condomino">Nombre</label>
         <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="nombre_condomino" [(ngModel)]="paquete.nombreCondomino">
         <label for="calle">Número de la casa</label>
-        <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="casa" [(ngModel)]="paquete.numeroCasa">
+        <input required autocomplete="off" type="text" id="casa" [(ngModel)]="paquete.numeroCasa" disabled>
       </div>
 
       <div class="input">
         <label for="calle">Calle</label>
-        <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="calle" [(ngModel)]="paquete.calle">
+        <input required autocomplete="off" type="text" id="calle" [(ngModel)]="paquete.calle" disabled>
       </div>
     </div>
   </section>
