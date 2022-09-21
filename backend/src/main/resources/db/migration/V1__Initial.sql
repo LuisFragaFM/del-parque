@@ -78,3 +78,11 @@ CREATE TABLE logins
     email   varchar(200) unique,
     user_id varchar(40) references usuarios
 );
+
+CREATE TABLE user_image
+(
+    id       varchar(40) primary key,
+    user_id  varchar(40) references usuarios,
+    uri      varchar(140),
+    filename varchar(140)
+);

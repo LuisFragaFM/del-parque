@@ -11,8 +11,6 @@ public interface CondominosService {
 
     Condomino findById(String id);
 
-    Condomino findByNumeroTelefono(String numeroTelefono);
-
     List<Condomino> findByName(String name);
 
     Condomino save(Condomino condomino);
