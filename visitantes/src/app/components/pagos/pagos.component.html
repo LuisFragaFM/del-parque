@@ -34,8 +34,17 @@
         [(ngModel)]="condomino.name">
     </div>
     <!-- Imagen de programa -->
-    <div class="imagenUser">
-      <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="200px">
+    <div>
+      <div class="div_file">
+        <label for="inputTag">
+          Cambiar foto <br/>
+          <i class="fa fa-2x fa-camera"></i>
+          <input id="inputTag" type="file" (change)="submit($event)" accept="image/*" required/>
+          <br/>
+          <span id="imageName"></span>
+        </label>
+      </div>
+      <img [src]="uri" alt="" class="imagenUser">
     </div>
     <!-- form de correo -->
     <div class="correoDatos">

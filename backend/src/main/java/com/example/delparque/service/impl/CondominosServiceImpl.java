@@ -86,11 +86,6 @@ public class CondominosServiceImpl implements CondominosService {
     }
 
     @Override
-    public Condomino findByNumeroTelefono(String numeroTelefono) {
-        return condominosRepository.findByNumeroTelefono(numeroTelefono).map(CondominoMapper::entityToDto).orElse(null);
-    }
-
-    @Override
     public List<Condomino> findByName(String name) {
         return condominosRepository.findByName(name)
                 .stream().map(CondominoMapper::entityToDto)
