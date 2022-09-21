@@ -6,11 +6,11 @@
     <div class="form">
       <div class="input">
         <label  for="nombre_paqueteria">Nombre / Empresa</label>
-        <input required type="text" placeholder="Escriba aqui" id="nombre_paqueteria" [(ngModel)]="paquete.nombreEmpresa">
+        <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="nombre_paqueteria" [(ngModel)]="paquete.nombreEmpresa">
       </div>
       <div class="input">
         <label for="guia">Número de Guía</label>
-        <input required type="text" placeholder="Escriba aqui" id="guia" [(ngModel)]="paquete.numeroGuia">
+        <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="guia" [(ngModel)]="paquete.numeroGuia">
       </div>
     </div>
   </section>
@@ -20,14 +20,19 @@
     <div class="form">
       <div class="input">
         <label for="nombre_condomino">Nombre</label>
-        <input required type="text" placeholder="Escriba aqui" id="nombre_condomino" [(ngModel)]="paquete.nombreCondomino">
-        <label for="calle">Número de la casa</label>
-        <input required type="text" placeholder="Escriba aqui" id="casa" [(ngModel)]="paquete.numeroCasa">
+        <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="nombre_condomino" (keyup)="findInquilinoByName()"
+         [(ngModel)]="name">
+         <div *ngFor="let c of condominos">
+          <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
+        </div>
+        
       </div>
 
-      <div class="input">
+      <div class="input" *ngIf="condomino.id">
+        <label for="calle">Número de la casa</label>
+        <input required autocomplete="off" type="text" id="casa" [(ngModel)]="paquete.numeroCasa" disabled>
         <label for="calle">Calle</label>
-        <input required type="text" placeholder="Escriba aqui" id="calle" [(ngModel)]="paquete.calle">
+        <input required autocomplete="off" type="text" id="calle" [(ngModel)]="paquete.calle" disabled>
       </div>
     </div>
   </section>
@@ -37,26 +42,26 @@
     <div class="form">
       <div class="input">
         <label for="recibido">Recibido por:</label>
-        <input required type="text" placeholder="Escriba aqui" id="recibido" [(ngModel)]="paquete.recibeInquilino">
+        <input required autocomplete="off" type="text" placeholder="Escriba aqui" id="recibido" [(ngModel)]="paquete.recibeInquilino">
         <label for="hora">Hora</label>
-        <input required type="time" id="hora" [(ngModel)]="paquete.horaLlegada">
+        <input required autocomplete="off" type="time" id="hora" [(ngModel)]="paquete.horaLlegada">
       </div>
 
       <div class="input">
         <label for="fecha">Fecha</label>
-        <input required type="date" id="fecha" [(ngModel)]="paquete.fechaLlegada">
+        <input required autocomplete="off" type="date" id="fecha" [(ngModel)]="paquete.fechaLlegada">
         <label for="caseta">Caseta recibida:</label>
-        <input required type="text" id="caseta" [(ngModel)]="paquete.casetaRecibida">
+        <input required autocomplete="off" type="text" id="caseta" [(ngModel)]="paquete.casetaRecibida">
       </div>
     </div>
     <div class="caseta">
-      <div>
+      <!--<div>
         <label for="caseta">Caseta:</label>
         Caseta 1
-        <input required type="checkbox" value="Caseta 1" checked disabled>
+        <input required  type="checkbox" value="Caseta 1" checked disabled>
         Caseta 2
-        <input required type="checkbox" value="Caseta 2" checked disabled>
-      </div>
+        <input required  type="checkbox" value="Caseta 2" checked disabled>
+      </div>-->
       <button (click)="save()">Registrar</button>
     </div>
   </section>
