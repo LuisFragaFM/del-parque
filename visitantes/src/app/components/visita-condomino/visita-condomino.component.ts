@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
   styleUrls: ['./visita-condomino.component.css']
 })
 export class VisitaCondominoComponent implements OnInit {
+  isChecked: boolean = true;
   visitante: Visitante = {} as Visitante;
   constructor(private visitantesService: VisitantesService) {
   }

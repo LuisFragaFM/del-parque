@@ -5,7 +5,7 @@
       <option value="Visitantes">
         <h2>Visitantes</h2>
       </option>
-      <option value="Provedor">
+      <option value="Proovedor">
         <h2>Provedor</h2>
       </option>
     </select>
@@ -16,21 +16,21 @@
   <div class="Datos">
     <div>
       <h2>Nombre</h2> <br>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="visitante.nombreVisitante">
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" [(ngModel)]="visitante.nombreVisitante">
     </div>
     <span>¿Tiene vehiculo?</span>
     <input class="BotonVehiculo" type="checkbox" name="Vehiculo" [(ngModel)]="isChecked"><br>
     <div *ngIf="isChecked">
       <h2>Tipo de Vehículo</h2>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="visitante.vehiculoVisitante">
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" [(ngModel)]="visitante.vehiculoVisitante">
     </div>
     <div *ngIf="isChecked">
       <h2>Tarjetón</h2><br>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="visitante.tarjetonVisitante">
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" [(ngModel)]="visitante.tarjetonVisitante">
     </div>
     <div *ngIf="isChecked">
       <h2>Placas</h2><br>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="visitante.placasVehiculo">
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" [(ngModel)]="visitante.placasVehiculo">
     </div>
   </div>
   <div class="Titulo">
@@ -39,7 +39,7 @@
   <div class="Datos">
     <div>
       <h2>Nombre</h2> <br>
-      <input required type="text" class="barra" name="asdasd" 
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" 
       (keyup)="findInquilinoByName()"
       [(ngModel)]="name">
       <div *ngFor="let c of condominos">
@@ -48,11 +48,11 @@
     </div>
     <div>
       <h2>Calle</h2><br>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="condomino.direccion">
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" [(ngModel)]="condomino.direccion" disabled>
     </div>
     <div>
       <h2>Número de la Casa</h2><br>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="condomino.numeroCasa">
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" [(ngModel)]="condomino.numeroCasa" disabled>
     </div>
   </div>
   <div class="Titulo">
@@ -61,15 +61,15 @@
   <div class="Datos">
     <div>
       <h2>Fecha</h2><br>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="visitante.fechaLlegada">
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" [(ngModel)]="visitante.fechaLlegada">
     </div>
     <div>
       <h2>Hora</h2><br>
-      <input required type="time" class="barra" name="asdasd" [(ngModel)]="visitante.horaLlegada">
+      <input required autocomplete="off" type="time" class="barra" name="asdasd" [(ngModel)]="visitante.horaLlegada">
     </div>
     <div>
       <h2>Autorizado por</h2><br>
-      <input required type="text" class="barra" name="asdasd" [(ngModel)]="visitante.autorizacion">
+      <input required autocomplete="off" type="text" class="barra" name="asdasd" [(ngModel)]="visitante.autorizacion">
     </div>
     <div>
       <h2>Caseta</h2><br>

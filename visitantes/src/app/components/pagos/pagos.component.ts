@@ -35,6 +35,8 @@ export class PagosComponent implements OnInit {
 
   modify() {
 
+    console.log(this.condomino);
+    
     if (this.condomino.id) {
       this.condominosService.save(this.condomino).subscribe(condomino => {
 

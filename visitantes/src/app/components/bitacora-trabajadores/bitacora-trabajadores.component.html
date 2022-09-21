@@ -18,25 +18,25 @@
       <div class="nombreTrabajador">
         <h3>Nombre del trabajador:</h3>
         <!-- <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"> -->
-        <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"
+        <input required autocomplete="off" type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"
           [(ngModel)]="trabajador.nombreTrabajador">
       </div>
       <!-- form de dias de trabajo-->
       <div class="diasTrabajo">
         <h3>Días de trabajo</h3>
-        <input required type="text" placeholder="Días de trabajo" class="inputBitacora" name="buscaTrabajadorDias"
+        <input required autocomplete="off" type="text" placeholder="Días de trabajo" class="inputBitacora" name="buscaTrabajadorDias"
           [(ngModel)]="trabajador.diasTrabajo">
       </div>
       <!-- form de hora de trabajo-->
       <div class="horaTrabajo">
         <h3>Hora </h3>
-        <input required type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras"
+        <input required autocomplete="off" type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras"
           [(ngModel)]="trabajador.horario">
       </div>
       <!-- form de nombre condomino-->
       <div class="nombreCondomino">
         <h3>Nombre del Condómino</h3>
-        <input required type="text" placeholder="Nombre del Condómino" class="inputBitacora" name="buscaNameCondomino"
+        <input required autocomplete="off" type="text" placeholder="Nombre del Condómino" class="inputBitacora" name="buscaNameCondomino"
           [(ngModel)]="trabajador.nombreCondomino">
       </div>
       <!-- boton para enviar datos del eliminar y realizar modificar-->

@@ -13,26 +13,16 @@
     <!-- form de nombre -->
     <div class="nombre">
       <h3>Nombre<br><br></h3>
-      <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName"
-             (keyup)="findInquilinoByName()"
-             [(ngModel)]="name">
+      <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName" autocomplete="off"
+        (keyup)="findInquilinoByName()" [(ngModel)]="name">
       <div *ngFor="let c of condominos">
         <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
       </div>
     </div>
-    <!-- form de telefono -->
-    <div class="telefono">
-      <h3>Número de telefono<br><br></h3>
-      <input required type="text" placeholder="Buscar por número de telefono" class="inputBarra" name="buscaPagosTel"
-             [(ngModel)]="phone">
-    </div>
-    <!-- boton para enviar datos del formulario y realizar busqueda-->
-    <div class="button">
-      <button class="boton">Buscar</button>
-    </div>
+
   </div>
   <!-- contenedor datos de inquilino -->
-  <div class="containerDatos">
+  <div class="containerDatos" *ngIf="condomino.id">
     <!-- contenedor de titulo contenedor -->
     <div class="title2">
       <h1>DATOS DEL CONDÓMINO</h1>
@@ -40,8 +30,8 @@
     <!-- form de nombre -->
     <div class="nombreDatos">
       <h3>Nombre:<br><br></h3>
-      <input required type="text" placeholder="Buscar Inquilino" class="inputDatos" name="muestraPagosName"
-             [(ngModel)]="condomino.name">
+      <input required autocomplete="off" type="text" placeholder="Buscar Inquilino" class="inputDatos" name="muestraPagosName"
+        [(ngModel)]="condomino.name">
     </div>
     <!-- Imagen de programa -->
     <div class="imagenUser">
@@ -50,26 +40,26 @@
     <!-- form de correo -->
     <div class="correoDatos">
       <h3>Correo Electrónico:<br><br></h3>
-      <input required type="text" placeholder="Correo Electrónico" class="inputDatos" name="muestraPagosCorreo"
-             [(ngModel)]="condomino.correoElectronico">
+      <input required autocomplete="off" type="text" placeholder="Correo Electrónico" class="inputDatos" name="muestraPagosCorreo"
+        [(ngModel)]="condomino.correoElectronico">
     </div>
     <!-- form de direccion -->
     <div class="direccionDatos">
       <h3>Dirección:<br><br></h3>
-      <input required type="text" placeholder="Dirección" class="inputDatos" name="muestraPagosDireccion"
-             [(ngModel)]="condomino.direccion">
+      <input required autocomplete="off" type="text" placeholder="Dirección" class="inputDatos" name="muestraPagosDireccion"
+        [(ngModel)]="condomino.direccion">
     </div>
     <!-- form de telefono-->
     <div class="telefonoDatos">
       <h3>Teléfono:<br><br></h3>
-      <input required type="text" placeholder="Teléfono" class="inputDatos" name="muestraPagosTelefono"
-             [(ngModel)]="condomino.numeroTelefono">
+      <input required autocomplete="off" type="text" placeholder="Teléfono" class="inputDatos" name="muestraPagosTelefono"
+        [(ngModel)]="condomino.numeroTelefono">
     </div>
     <!-- form de numero emergencia -->
     <div class="emergenciaDatos">
       <h3>Número de emergencia:<br><br></h3>
-      <input required type="text" placeholder="Teléfono de emergencia" class="inputDatos" name="muestraPagosEmergencia"
-             [(ngModel)]="condomino.numeroEmergencia">
+      <input required autocomplete="off" type="text" placeholder="Teléfono de emergencia" class="inputDatos" name="muestraPagosEmergencia"
+        [(ngModel)]="condomino.numeroEmergencia">
     </div>
     <!-- boton modificar -->
     <div class="buttonModificar">
@@ -82,8 +72,14 @@
     <!-- Estado de pago -->
     <div class="estadoPago">
       <h3>Pago:<br><br></h3>
-      <img src="../../../assets/happyFace.png" alt="pago" id="pagoImg" width="150px"> <br><br><br>
-      <h3>Pagado<br><br></h3>
+      <div *ngIf="!condomino.estadoPago" (click)="condomino.estadoPago = 1;" class="cursor">
+         <img src="../../../assets/sadFace.png" alt="no pagado" id="noPagadoImg" width="160px"> <br><br><br>
+          <h3>No pagado<br><br></h3>
+      </div>
+      <div *ngIf="condomino.estadoPago" (click)="condomino.estadoPago = 0;" class="cursor">
+        <img src="../../../assets/happyFace.png" alt="pago" id="pagoImg" width="150px"> <br><br><br>
+        <h3>Pagado<br><br></h3>
+      </div>
     </div>
   </div>
 </div>

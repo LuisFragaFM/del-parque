@@ -12,14 +12,14 @@
         <!-- form de nombre -->
         <div class="nombre">
           <h3>Nombre<br><br></h3>
-          <input required type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName" [(ngModel)]="name">
+          <input required autocomplete="off" type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName" [(ngModel)]="name">
         </div>
-        <!-- form de telefono -->
+        <!-- form de telefono 
         <div class="telefono">
           <h3>Número de teléfono<br><br></h3>
-          <input required type="text" placeholder="Buscar por numero de teléfono" class="inputBarra" name="buscaPagosTel"
+          <input required autocomplete="off" type="text" placeholder="Buscar por numero de teléfono" class="inputBarra" name="buscaPagosTel"
                  [(ngModel)]="phone">
-        </div>
+        </div>-->
         <!-- boton para enviar datos del formulario y realizar busqueda-->
         <div class="button">
           <button class="boton" (click)="findInquilino()">Buscar</button>
@@ -28,14 +28,14 @@
         <div class="periodoDe">
             <div class="periodoTxt">
                 <h3>Periodo de: <br><br> </h3>
-                <input required type="date" placeholder="DD/MM/AAAA" class="Periodo" name="periodoDate">
+                <input required autocomplete="off" type="date" placeholder="DD/MM/AAAA" class="Periodo" name="periodoDate">
             </div>
         </div>
         <!-- Seleccionar fecha final -->
         <div class="hasta">
             <div class="hastaTxt">
                 <h3>Hasta: <br><br> </h3>
-                <input required type="date" placeholder="DD/MM/AAAA" class="hasta" name="hastaDate">
+                <input required autocomplete="off" type="date" placeholder="DD/MM/AAAA" class="hasta" name="hastaDate">
             </div>
         </div>
         <!-- boton para enviar datos del formulario y realizar busqueda-->
@@ -52,7 +52,7 @@
         <!-- nombre de busqueda para descargar datos -->
         <div class="nombreBar">
             <h3>Nombre<br><br></h3>
-            <input required type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino"
+            <input required autocomplete="off" type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino"
                    [(ngModel)]="condomino.name" readonly="readonly">
         </div>
         <!-- boton para enviar datos del formulario y realizar la descarga -->

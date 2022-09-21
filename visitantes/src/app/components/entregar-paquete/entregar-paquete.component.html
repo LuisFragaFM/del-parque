@@ -25,7 +25,7 @@
           <div class="form">
             <div class="input">
               <label for="recibe_Paquete">Recibido por:</label>
-              <input required type="text" placeholder="Persona que recibe" id="recibe_Paquete"
+              <input required autocomplete="off" type="text" placeholder="Persona que recibe" id="recibe_Paquete"
                      [(ngModel)]="paquete.recibeGuardia">
             </div>
           </div>
@@ -36,7 +36,7 @@
             <div class="input">
               <label for="fecha_entrega">Fecha de entrega:</label>
               <div class="dateForm">
-                <input required type="date" id="fecha_entrega" [(ngModel)]="paquete.fechaLlegada">
+                <input required autocomplete="off" type="date" id="fecha_entrega" [(ngModel)]="paquete.fechaLlegada">
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@
             <div class="input">
               <label for="entregaPaquete">Entregado por:</label>
               <div class="entregaForm">
-                <input required type="text" placeholder="Persona que entrega" id="entregaPaquete"
+                <input required autocomplete="off" type="text" placeholder="Persona que entrega" id="entregaPaquete"
                        [(ngModel)]="paquete.entregaGuardia">
               </div>
             </div>
@@ -59,7 +59,7 @@
             <div class="input">
               <label for="hora_entrega">Hora de entrega:</label>
               <div class="entregaHora">
-                <input required type="time" id="hora_entrega" [(ngModel)]="paquete.horaLlegada">
+                <input required autocomplete="off" type="time" id="hora_entrega" [(ngModel)]="paquete.horaLlegada">
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
             <div class="input">
               <label for="guarda_Paquete">Caseta Llegada</label>
               <div class="entregaCaseta">
-                <input required type="text" placeholder="Guardar paquete en" id="guarda_Paquete"
+                <input required autocomplete="off" type="text" placeholder="Guardar paquete en" id="guarda_Paquete"
                        [(ngModel)]="paquete.casetaRecibida">
               </div>
             </div>

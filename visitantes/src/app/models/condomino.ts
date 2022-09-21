@@ -7,4 +7,5 @@ export interface Condomino {
   direccion: string;
   correoElectronico: string;
   numeroEmergencia: string;
+  estadoPago: number;
 }
