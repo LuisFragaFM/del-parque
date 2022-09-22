@@ -37,12 +37,6 @@ public class CondominosController {
         return condominosService.findByName(name);
     }
 
-    @GetMapping("telefono/{telefono}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public Condomino findByNumeroTelefono(@PathVariable String telefono) {
-        return condominosService.findByNumeroTelefono(telefono);
-    }
-
     @PostMapping()
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public Condomino save(@RequestBody Condomino condomino) {
