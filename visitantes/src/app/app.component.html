@@ -7,8 +7,64 @@
 
 
 
+
+<form class="contenido" *ngIf="failedLogin">
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="loginperso">
+    <div class="p-4" style="width :25rem">
+      
+    <div class="d-flex justify-content-center p-2" >
+      <img src="../assets/Silueta1.png" alt="log-in icon" width="40%">
+    </div>
+    <div class="d-flex justify-content-center" >
+      <img src="../assets/title.PNG" alt="log-in icon" width="60%">
+    </div>
+    <div class="input-group-text bg-dark mt-4" >
+      <div class="p-2">
+        <img src="../assets/Silueta2.PNG" alt="icon username" style="height: 2rem">
+      </div>
+      <input class="form-control" type="text" placeholder="Ingresa Usuario" #user required>
+    </div>
+    <div class="input-group-text bg-dark mt-2">
+      <div class="p-1">
+        <img src="../assets/Silueta3.PNG" alt="icon password" style="height: 2rem">
+      </div>
+      <input class="form-control" type="password" placeholder="Ingresa Contraseña" #password required>
+    </div>
+    <div>
+      <div >
+        <button class="btn btn-dark w-100 mt-4" (click)="apiLogin(user.value, password.value)">Entrar</button>
+      </div>
+    </div>
+    
+    </div>
+
+    <div class="bg-dark text-center fixed-bottom text-white ">
+      Av. Parque Chapultepec 1050
+      <br>
+      Colinas del Parque
+      <br>
+      78260 San Luis Potosí, S.L.P.
+    </div>
+  </div>
+  
+    
+      
+  
+      
+    
+</div>
+
+</form>
+
+
+ <!--
 <form class="contenido" *ngIf="failedLogin">
   
+  
+  
+  
+ 
   <div class="cuadro">
     <div class="sec_azul">
       <div class="titulo"></div>
@@ -35,5 +91,6 @@
       </div>
     </div>
   </div>
+ 
 </form>
--->
+ -->
