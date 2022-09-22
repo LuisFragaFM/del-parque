@@ -160,3 +160,23 @@
     font-size: 20px;
 }
   
+.cursor:hover {
+    cursor: pointer;
+  }
+.pagination {
+    padding: 14px;
+    margin: 5px;
+  }
+.buttons {
+    display: flex;
+    justify-content: center;
+  }
+  .inputAgendados {
+    position: relative;
+    height: 30px;
+    width: 450px;
+    padding-left: 10px;
+    outline: 0px;
+    font-size: 15px;
+    color: black;
+}
