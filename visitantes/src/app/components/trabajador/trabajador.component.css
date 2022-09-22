@@ -56,3 +56,9 @@ label {
     border-radius: 40px;
     font-size: 28px;
 }
+.hiddenAlert{
+    display: none;
+}
+button:disabled{
+    opacity: 0.9;
+}
