@@ -16,8 +16,12 @@ export class TrabajadorComponent implements OnInit {
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
   //validaciones para activar boton
-  validacion: boolean = false;
-  validacion2: boolean = false; 
+  validacionTel: boolean = false; //variable para validar telefono
+  validacionName: boolean = false; //variable para validar nombre
+  //variable para activar boton
+  startName: boolean = false; 
+  startTel: boolean = false; 
+
   constructor(
     private trabajadoresService: TrabajadoresService,
     private condominosService: CondominosService
@@ -51,36 +55,35 @@ export class TrabajadorComponent implements OnInit {
     this.trabajador.nombreCondomino = condomino.name;
   }
   // funcion para validar datos de telefono
-  validaTel(telefono: string) {
+  validaTel(telefono: string, tel: any) {
+    this.startTel = true;
     const regTel = new RegExp(/^\+?[1-9][0-9]{7,14}$/); //Expresion regular a validar
     const testTel = regTel.test(telefono); //validar telefono
     const alert1 = document.getElementById('alertTel'); //Obtiene el elemento para mostrar la alerta
     if (testTel == false) {
       alert1?.classList.remove('hiddenAlert'); //oculta alerta
-      this.validacion = false;
+      this.validacionTel = false;
     } else {
       alert1?.classList.add('hiddenAlert'); //muestra alerta
-      this.validacion = true;
+      this.validacionTel = true;
     }
   }
   // funcion para validar datos de nombre
   validaName(nombre: string) {
+    this.startName = true;
     const regTel = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
     const testTel = regTel.test(nombre); //validar telefono
     const alertVal = document.getElementById('alertName'); //Obtiene el elemento para mostrar la alerta
     if (testTel == false) {
       alertVal?.classList.remove('hiddenAlertName'); //oculta alerta
-      this.validacion2 = false;
+      this.validacionName = false;
     } else {
       alertVal?.classList.add('hiddenAlertName'); //muestra alerta
-      this.validacion2 = true;
-    } 
+      this.validacionName = true;
+    }
   }
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
-    if (this.validacion == true && this.validacion2 == true) {
-      return true;
-    }
-    return false;
+    return this.validacionTel && this.validacionName;
   }
 }

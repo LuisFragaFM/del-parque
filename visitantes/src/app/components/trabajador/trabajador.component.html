@@ -30,7 +30,7 @@
         [(ngModel)]="trabajador.nombreTrabajador"
       />
       <!-- Alerta de datos -->
-      <div id="alertName" class="alert alert-info">
+      <div id="alertName" class="alert alert-danger" *ngIf="startName">
         Favor de agregar solamente letras en este campo
       </div>
     </div>
@@ -84,7 +84,8 @@
     <div class="input">
       <label for="telefono-trabajador">Teléfono</label>
       <input
-        (keydown)="validaTel(trabajador.telefono)"
+        (keydown)="validaTel(trabajador.telefono, telefono)"
+        #telefono
         required
         autocomplete="off"
         type="text"
@@ -94,7 +95,7 @@
         [(ngModel)]="trabajador.telefono"
       />
       <!-- Alerta de datos -->
-      <div id="alertTel" class="alert alert-info">
+      <div id="alertTel" class="alert alert-danger" *ngIf="startTel" >
         Inserte el número de telefono de 7 a 14 digitos
       </div>
     </div>
