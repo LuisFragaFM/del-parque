@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 html {
-    background-color: #BAD9AD;
+    background-color: rgba(156, 224, 179, 0.9);
+    
 }
 
 * {
@@ -13,7 +14,7 @@ html {
 
 .pagina {
     width: auto;
-    height: auto;
+    height: max-content;
     background-image: url("./assets/Fondo.PNG");
     background-position: center;
     background-repeat: no-repeat;

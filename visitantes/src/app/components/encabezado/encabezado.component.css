@@ -1,18 +1,15 @@
 
 header{
     padding: 10px 0;
+    
     background-color: rgba(211, 245, 197, 0.7);
 }
 
-.menu ul{
-    padding: 0;
-    margin: 0;
-    margin-right: 20px;
-    margin-top: 10px;
+.name{
+    font-weight: bolder;
 }
-.menu ul li{
-    list-style-type: none;
-}
+
+
 .LOGO{
     height: auto;
     width: auto;
@@ -28,24 +25,51 @@ a:hover.log{
     color: rgb(63, 59, 59);
 }
 @media only screen and (max-width: 999px){
-    .menu{
-        position: absolute;
-        right: 30px;
-        
-    }
+
+   .menu{
+    margin: 0 50px;
+   }
+    
     .LOGO{
         height: auto;
-        width: 200px;
+        width: 220px;
     }
 
     .menu ul li{
         font-size: 15px;
         margin: 5px;
-        margin-bottom: 10px;
+        
         list-style-type: none;
         display: inline-block;
+        
+        
+    }
+    .menu ul{
+        padding: 0;
+        margin: 0;
+        margin-right: 0;
+        margin-top: 0;
     }
 }
+
+@media only screen and (max-width: 499px){
+    .LOGO{
+        height: auto;
+        width: 150px;
+    }
+
+    .menu{
+        font-size: 13px;
+    }
+
+    .perfiluser{
+        height: auto;
+        width: 32px;
+    }
+
+}
+
+
 
 
 

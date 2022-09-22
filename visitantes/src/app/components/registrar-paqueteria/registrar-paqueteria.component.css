@@ -7,8 +7,12 @@
   .container {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    max-width: 1170px;
-    height: 710px;
+    border-radius: 5px;
+    height: 100% !important;
+
+    max-width: auto;
+    height: fit-content;
+    
   }
 
   h2 {
@@ -49,12 +53,24 @@
     display: flex;
     justify-content: space-between;
   }
-
-
-  button {
-    border: 1px solid #000;
-    border-radius: 10px;
-    padding: 2px 12px;
-    color: #fff;
-    background-color: rgb(110, 148, 221);
+  .busqueda{
+    background-color: rgb(159, 211, 176);
+    overflow: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    border-radius: 5px;
+    width: auto;
+    height: 40px;
   }
+
+  .cursor
+  {
+    padding-left: 8px;
+  }
+  :hover.cursor{
+    background-color: rgb(31, 146, 70);
+    font-weight: bold;
+  }
+
+
+  
