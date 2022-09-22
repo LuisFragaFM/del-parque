@@ -17,8 +17,10 @@
       </select>
     </div>
     <div class="input">
+      <!-- Nombre trabajador -->
       <label for="nombre-trabajador">Nombre</label>
       <input
+        (keydown)="validaName(trabajador.nombreTrabajador)"
         required
         autocomplete="off"
         type="text"
@@ -26,12 +28,14 @@
         name="nombre-trabajador"
         id="nombre-trabajador"
         [(ngModel)]="trabajador.nombreTrabajador"
-        pattern="^[A-Za-zÀ-ÿ ,.'-]+$"
-        title="Favor de agregar solamente letras en este campo"
       />
-      <!-- REGEX Validacion nombre -->
+      <!-- Alerta de datos -->
+      <div id="alertName" class="alert alert-info">
+        Favor de agregar solamente letras en este campo
+      </div>
     </div>
     <div class="input">
+      <!-- Nombre condomino -->
       <label for="nombre-condomino">Nombre del condómino</label>
       <input
         required
@@ -60,8 +64,10 @@
       />
     </div>
     <div class="input">
+      <!-- Hora de llegada a residencial -->
       <label for="hora-llegada">Hora llegada</label>
       <input
+        #hora="ngModel"
         required
         autocomplete="off"
         type="time"
@@ -71,11 +77,14 @@
         [(ngModel)]="trabajador.horario"
       />
     </div>
+    <!-- <div *ngIf="hora.touched" class="alert alert-info">
+      Favor de agregar un dato en este campo
+    </div> -->
     <!-- validacion y formulario de numero de telefono -->
     <div class="input">
       <label for="telefono-trabajador">Teléfono</label>
       <input
-        (keydown)="validaTel(trabajador.telefono)" 
+        (keydown)="validaTel(trabajador.telefono)"
         required
         autocomplete="off"
         type="text"
@@ -84,9 +93,14 @@
         id="telefono-trabajador"
         [(ngModel)]="trabajador.telefono"
       />
-      <div id="alertTel" class="hiddenAlert">Inserte solamente número en este campo</div>
+      <!-- Alerta de datos -->
+      <div id="alertTel" class="alert alert-info">
+        Inserte el número de telefono de 7 a 14 digitos
+      </div>
     </div>
-    <!--  -->
-    <button class="boton" (click)="save()" [disabled]="!isValidForm()">Guardar</button>
+    <!-- Boton de registro -->
+    <button class="boton" (click)="save()" [disabled]="!isValidForm()">
+      Guardar
+    </button>
   </form>
 </div>

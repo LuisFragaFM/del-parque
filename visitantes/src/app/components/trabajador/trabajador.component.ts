@@ -15,8 +15,9 @@ export class TrabajadorComponent implements OnInit {
   name: string | undefined;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-  //
+  //validaciones para activar boton
   validacion: boolean = false;
+  validacion2: boolean = false; 
   constructor(
     private trabajadoresService: TrabajadoresService,
     private condominosService: CondominosService
@@ -49,7 +50,7 @@ export class TrabajadorComponent implements OnInit {
     this.name = condomino.name;
     this.trabajador.nombreCondomino = condomino.name;
   }
-  // funcion para validar el dato
+  // funcion para validar datos de telefono
   validaTel(telefono: string) {
     const regTel = new RegExp(/^\+?[1-9][0-9]{7,14}$/); //Expresion regular a validar
     const testTel = regTel.test(telefono); //validar telefono
@@ -62,9 +63,22 @@ export class TrabajadorComponent implements OnInit {
       this.validacion = true;
     }
   }
+  // funcion para validar datos de nombre
+  validaName(nombre: string) {
+    const regTel = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
+    const testTel = regTel.test(nombre); //validar telefono
+    const alertVal = document.getElementById('alertName'); //Obtiene el elemento para mostrar la alerta
+    if (testTel == false) {
+      alertVal?.classList.remove('hiddenAlertName'); //oculta alerta
+      this.validacion2 = false;
+    } else {
+      alertVal?.classList.add('hiddenAlertName'); //muestra alerta
+      this.validacion2 = true;
+    } 
+  }
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
-    if (this.validacion == true) {
+    if (this.validacion == true && this.validacion2 == true) {
       return true;
     }
     return false;
