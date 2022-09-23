@@ -56,3 +56,34 @@ label {
     border-radius: 40px;
     font-size: 28px;
 }
+/* Alerta de telefono */
+.hiddenAlert{
+    display: none;
+    /*  */
+    background-color: #2196f3;
+    color: #ffffff;
+    font-family: inherit;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+/* Alerta de nombres */
+.hiddenAlertName{
+    display: none;
+    /*  */
+    background-color: #2196f3;
+    color: #ffffff;
+    font-family: inherit;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* boton de formulario */
+button:disabled{
+    opacity: 0.9;
+}
