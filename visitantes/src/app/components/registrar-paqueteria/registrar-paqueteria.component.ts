@@ -25,8 +25,10 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   }
 
   findInquilinoByName() {
+    if(this.name == "" ) {
+      this.condominos = [];
+    }
     this.condominosService.findByName(this.name!).subscribe(condominos => {
-      console.log(condominos);
       this.condominos = condominos;
     });
   }

@@ -3,36 +3,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <header>
 <div class="container">
-    <div class="row">
-        <div class="col-md-3 col-sm-3 col-3">
+    <div class="row align-items-center">
+        <div class="col">
             <div class="logo">
                 <img class="LOGO"src="../assets/title.PNG" alt="LOGO">
             </div>
         </div>
-        <div class="col-md-9 col-sm-9 col-9 text-end">
-            <div class="menu">
-                <ul>
-                    <li><img src="../assets/perfil.PNG" alt="PERFIL"></li>
-                    <li><div class="name">{{user.nombre}} </div></li>
-                    <li><a href="#" class="log"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesión</a></li>
-                </ul>
+        <div class="col text-end">
+            <div class="menu ">
+                <div class="name" ><img class="perfiluser"src="../assets/perfil.PNG" alt="PERFIL"> {{user.nombre}} </div>
+                <a href="#" class="log"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesión</a>
             </div>
         </div>
     </div>
 </div>
 </header>
 
-<!--
-<div class="encabezado">
-    <div class="fondoenc">
-        <div class="titulo"></div>
-        <div class="container">
-            <div class="img"></div>
-            <div class="name">{{user.nombre}}</div>
-        </div>
-        <nav><a href="#">Cerrar Sesión</a></nav>
-    </div>
-</div> 
 
-
--->
