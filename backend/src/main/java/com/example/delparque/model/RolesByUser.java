@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RolesPorUsuario {
+public class RolesByUser {
     @Id
     private String id;
 

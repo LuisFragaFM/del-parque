@@ -30,8 +30,8 @@ export class SessionService {
     return this._authorizationHeader;
   }
 
-  setCredentials(user: string, password: string): void {
-    this._authorizationHeader = btoa(user + ':' + password);
+  setCredentials(email: string, password: string): void {
+    this._authorizationHeader = btoa(email + ':' + password);
   }
 
   logout(): void {

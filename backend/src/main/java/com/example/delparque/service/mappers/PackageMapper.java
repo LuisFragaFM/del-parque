@@ -2,7 +2,7 @@ package com.example.delparque.service.mappers;
 
 import com.example.delparque.dto.Paquete;
 
-public class PaqueteMapper {
+public class PackageMapper {
     public static Paquete entityToDto(com.example.delparque.model.Paquete paquete) {
         return Paquete.builder()
                 .id(paquete.getId())

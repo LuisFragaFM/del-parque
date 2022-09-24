@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {User} from "./models/user";
 import {SessionService} from "./services/session.service";
+import {UsuariosService} from "./services/usuarios.service";
 
 @Component({
   selector: 'app-root',
@@ -9,24 +10,25 @@ import {SessionService} from "./services/session.service";
 })
 export class AppComponent {
   title = 'visitantes';
-  user: User | undefined;
+  @Input('user') user: User = {} as User;
   failedLogin = false;
+  isLogin: boolean = true;
 
-  constructor(private sessionService: SessionService) {
+  constructor(private sessionService: SessionService, private usuariosService: UsuariosService) {
   }
 
   ngOnInit(): void {
     this.login();
   }
 
-  apiLogin(user: string, password: string): void {
-    this.sessionService.setCredentials(user, password);
+  apiLogin(email: string, password: string): void {
+    this.sessionService.setCredentials(email, password);
     this.login();
   }
 
   login(): void {
-    this.failedLogin = false;
     this.sessionService.getUser().subscribe(user => {
+      this.failedLogin = false;
       this.user = user;
       console.log(this.user)
     }, error => {
@@ -35,4 +37,18 @@ export class AppComponent {
     });
   }
 
+  register() {
+    this.usuariosService.register(this.user!).subscribe((user) => {
+      this.user = user;
+    })
+  }
+
+
+  changeToRegister() {
+    this.isLogin = false;
+  }
+
+  changeToLogin() {
+    this.isLogin = true;
+  }
 }
