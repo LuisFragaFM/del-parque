@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -24,4 +25,7 @@ public class User {
     private String nombre;
 
     private String password;
+
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 }
