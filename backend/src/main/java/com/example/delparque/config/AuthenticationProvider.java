@@ -1,26 +1,25 @@
 package com.example.delparque.config;
 
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TestAuthenticationProvider implements AuthenticationProvider {
+public class AuthenticationProvider implements org.springframework.security.authentication.AuthenticationProvider {
 
-    private final SystemUserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
-    public TestAuthenticationProvider(SystemUserDetailsService userDetailsService) {
+    public AuthenticationProvider(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String name = authentication.getName();
+        String email = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        return userDetailsService.loadUser(name, password);
+        return userDetailsService.loadUser(email, password);
     }
 
     @Override

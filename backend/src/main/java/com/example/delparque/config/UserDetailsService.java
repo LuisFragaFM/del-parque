@@ -1,9 +1,9 @@
 package com.example.delparque.config;
 
 import com.example.delparque.dto.LoggedUser;
-import com.example.delparque.model.Usuario;
+import com.example.delparque.model.User;
 import com.example.delparque.repository.RolesRepository;
-import com.example.delparque.service.UsuariosService;
+import com.example.delparque.service.UsersService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,31 +18,29 @@ import java.util.Set;
 
 @Service
 @Transactional
-public class SystemUserDetailsService {
+public class UserDetailsService {
 
-    private final UsuariosService usuariosService;
+    private final UsersService usersService;
     private final RolesRepository rolesRepository;
 
-    public SystemUserDetailsService(UsuariosService usuariosService, RolesRepository rolesRepository) {
-        this.usuariosService = usuariosService;
+    public UserDetailsService(UsersService usersService, RolesRepository rolesRepository) {
+        this.usersService = usersService;
         this.rolesRepository = rolesRepository;
     }
 
-    public Authentication loadUser(String name, String password) {
+    public Authentication loadUser(String email, String password) {
 
         Map<String, Object> attributes = new HashMap<>();
         Set<GrantedAuthority> authorities = new HashSet<>();
-        String email = name + "@" + password + ".com";
+
+        User user = usersService.findUserByEmailAndPassword(email, password);
 
         attributes.put("email", email);
-        attributes.put("name", name);
-
-        Usuario user = usuariosService.findOrRegister(email, name);
+        attributes.put("name", user.getNombre());
+        attributes.put("userId", user.getId());
 
         rolesRepository.findRolesByUser(user.getId()).forEach(role ->
                 authorities.add(new SimpleGrantedAuthority(role)));
-
-        attributes.put("userId", user.getId());
 
         LoggedUser loggedUser = LoggedUser.builder()
                 .claims(attributes)

@@ -60,9 +60,10 @@ CREATE TABLE visitantes
 
 CREATE TABLE usuarios
 (
-    id     varchar(40) primary key,
-    email  varchar(100),
-    nombre varchar(40)
+    id       varchar(40) primary key,
+    email    varchar(100),
+    password varchar(100),
+    nombre   varchar(40)
 );
 
 CREATE TABLE roles_usuario
@@ -70,13 +71,6 @@ CREATE TABLE roles_usuario
     id         varchar(40) primary key,
     role       varchar(40),
     id_usuario varchar(40) references usuarios
-);
-
-CREATE TABLE logins
-(
-    id      varchar(40) primary key,
-    email   varchar(200) unique,
-    user_id varchar(40) references usuarios
 );
 
 CREATE TABLE user_image

@@ -3,8 +3,8 @@ package com.example.delparque.service.impl;
 import com.example.delparque.dto.Paquete;
 import com.example.delparque.exception.BadRequestDataException;
 import com.example.delparque.repository.PaquetesRepository;
-import com.example.delparque.service.PaquetesService;
-import com.example.delparque.service.mappers.PaqueteMapper;
+import com.example.delparque.service.PackageService;
+import com.example.delparque.service.mappers.PackageMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -18,12 +18,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class PaquetesServiceImpl implements PaquetesService {
+public class PackageServiceImpl implements PackageService {
 
     private final PaquetesRepository paquetesRepository;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    PaquetesServiceImpl(PaquetesRepository paquetesRepository, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+    PackageServiceImpl(PaquetesRepository paquetesRepository, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.paquetesRepository = paquetesRepository;
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
@@ -70,7 +70,7 @@ public class PaquetesServiceImpl implements PaquetesService {
             throw new BadRequestDataException("caseta requerido", "ARRIVED_STAND_ERROR");
         }
 
-        return PaqueteMapper.entityToDto(paquetesRepository.save(PaqueteMapper.dtoToEntity(paquete)));
+        return PackageMapper.entityToDto(paquetesRepository.save(PackageMapper.dtoToEntity(paquete)));
     }
 
     @Override
@@ -92,7 +92,7 @@ public class PaquetesServiceImpl implements PaquetesService {
 
     @Override
     public Paquete findById(String id) {
-        return paquetesRepository.findById(id).map(PaqueteMapper::entityToDto).orElse(null);
+        return paquetesRepository.findById(id).map(PackageMapper::entityToDto).orElse(null);
     }
 
     @Override

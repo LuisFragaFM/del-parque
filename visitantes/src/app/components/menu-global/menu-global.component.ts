@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-menu-global',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-global.component.css']
 })
 export class MenuGlobalComponent implements OnInit {
+  @Input() user!: User;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  hasRoles(roles: string []) {
+    return this.user.roles.some(r => roles.includes(r));
   }
 
 }

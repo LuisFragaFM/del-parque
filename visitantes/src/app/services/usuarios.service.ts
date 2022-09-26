@@ -16,6 +16,10 @@ export class UsuariosService {
     return this.http.get<User[]>(`${environment.baseUrl}/users`);
   }
 
+  register(user: User): Observable<User> {
+    return this.http.post<User>(`${environment.baseUrl}/users/register`, user);
+  }
+
   addRole(user: User, role: string): Observable<User[]> {
     return this.http.patch<User[]>(`${environment.baseUrl}/users/${user.id}/${role}`, user);
   }

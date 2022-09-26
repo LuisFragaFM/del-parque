@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
@@ -12,11 +13,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private TestAuthenticationProvider authProvider;
+    private AuthenticationProvider authProvider;
 
     @Override
     protected void configure(
-            AuthenticationManagerBuilder auth) throws Exception {
+            AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authProvider);
     }
 
@@ -28,5 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().deleteCookies("JSESSIONID").permitAll()
                 .and().cors()
                 .and().csrf().disable();
+    }
+
+    @Override
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers("/api/users/register");
     }
 }
