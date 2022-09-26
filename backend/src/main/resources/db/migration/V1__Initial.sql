@@ -60,10 +60,11 @@ CREATE TABLE visitantes
 
 CREATE TABLE usuarios
 (
-    id       varchar(40) primary key,
-    email    varchar(100),
-    password varchar(100),
-    nombre   varchar(40)
+    id                   varchar(40) primary key,
+    email                varchar(100),
+    password             varchar(100),
+    nombre               varchar(40),
+    reset_password_token varchar(40)
 );
 
 CREATE TABLE roles_usuario

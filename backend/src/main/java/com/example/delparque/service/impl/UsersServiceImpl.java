@@ -1,5 +1,7 @@
 package com.example.delparque.service.impl;
 
+import com.example.delparque.config.EmailSender;
+import com.example.delparque.dto.ResetPassword;
 import com.example.delparque.exception.DelParqueSystemException;
 import com.example.delparque.model.RolesByUser;
 import com.example.delparque.model.User;
@@ -7,13 +9,18 @@ import com.example.delparque.repository.RolesRepository;
 import com.example.delparque.repository.UsersRepository;
 import com.example.delparque.service.UsersService;
 import com.example.delparque.service.mappers.UserMapper;
-import org.springframework.http.HttpHeaders;
+import com.example.delparque.tools.Utility;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -22,18 +29,21 @@ import java.util.stream.Collectors;
 @Service
 public class UsersServiceImpl implements UsersService {
 
+    private final JavaMailSender mailSender;
+    private final EmailSender emailSender;
     private final UsersRepository usersRepository;
-
     private final RolesRepository rolesRepository;
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public UsersServiceImpl(UsersRepository usersRepository,
                             RolesRepository rolesRepository,
-                            BCryptPasswordEncoder bCryptPasswordEncoder) {
+                            BCryptPasswordEncoder bCryptPasswordEncoder,
+                            JavaMailSender mailSender, EmailSender emailSender) {
         this.usersRepository = usersRepository;
         this.rolesRepository = rolesRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.mailSender = mailSender;
+        this.emailSender = emailSender;
     }
 
     @Override
@@ -46,6 +56,54 @@ public class UsersServiceImpl implements UsersService {
         }
 
         throw new UsernameNotFoundException("Wrong credentials");
+    }
+
+    @Override
+    public void sendMailForRecoverPassword(HttpServletRequest httpServletRequest)
+            throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        String email = httpServletRequest.getParameter("email");
+
+        User user = usersRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("not found"));
+
+        if (user.getResetPasswordToken() == null) {
+            String token = UUID.randomUUID().toString();
+            user.setResetPasswordToken(token);
+            usersRepository.save(user);
+        }
+
+        helper.setFrom(emailSender.getUsername(), "Fraccionamiento DelParque");
+        helper.setTo(user.getEmail());
+
+        String resetPasswordLink = Utility.getSiteURL(httpServletRequest) + "/reset_password?token=" + user.getResetPasswordToken();
+
+        String subject = "Here's the link to reset your password";
+
+        String content = "<p>Hello " + user.getNombre() + "</p>"
+                + "<p>You have requested to reset your password.</p>"
+                + "<p>Click the link below to change your password:</p>"
+                + "<p><a href=\"" + resetPasswordLink + "\">Change my password</a></p>"
+                + "<br>"
+                + "<p>Ignore this email if you do remember your password, "
+                + "or you have not made the request.</p>";
+
+        helper.setSubject(subject);
+
+        helper.setText(content, true);
+
+        mailSender.send(message);
+    }
+
+    @Override
+    public void updatePassword(String token, ResetPassword resetPassword) {
+        User user = usersRepository.findByResetPasswordToken(token).orElseThrow();
+
+        user.setPassword(bCryptPasswordEncoder.encode(resetPassword.getNewPassword()));
+        user.setResetPasswordToken(null);
+
+        usersRepository.save(user);
     }
 
     @Override
