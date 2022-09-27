@@ -13,10 +13,7 @@
     height: fit-content;
   }
 
-  h2 {
-    text-transform: uppercase;
-    font-size: 21px;
-  }
+  
 
   section {
     display: flex;
@@ -39,11 +36,7 @@
     justify-content: space-around;
   }
 
-  label {
-    margin-top: 7px;
-    font-weight: bold;
-    font-size: 14px;
-  }
+  
 
   .caseta {
     margin-left: 10px;
