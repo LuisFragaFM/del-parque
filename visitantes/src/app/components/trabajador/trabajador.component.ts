@@ -19,8 +19,8 @@ export class TrabajadorComponent implements OnInit {
   validacionTel: boolean = false; //variable para validar telefono
   validacionName: boolean = false; //variable para validar nombre
   //variable para activar boton
-  startName: boolean = false; 
-  startTel: boolean = false; 
+  startName: boolean = false;
+  startTel: boolean = false;
 
   constructor(
     private trabajadoresService: TrabajadoresService,
@@ -71,10 +71,10 @@ export class TrabajadorComponent implements OnInit {
   // funcion para validar datos de nombre
   validaName(nombre: string) {
     this.startName = true;
-    const regTel = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
-    const testTel = regTel.test(nombre); //validar telefono
+    const regName = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
+    const testName = regName.test(nombre); //validar
     const alertVal = document.getElementById('alertName'); //Obtiene el elemento para mostrar la alerta
-    if (testTel == false) {
+    if (testName == false) {
       alertVal?.classList.remove('hiddenAlertName'); //oculta alerta
       this.validacionName = false;
     } else {
