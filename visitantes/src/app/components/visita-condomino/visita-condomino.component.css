@@ -1,12 +1,45 @@
-.contenido {
+.container {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    height: 710px;
-    width: 1170px;
-    
-    
-}
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+  }
 
+ .formulario{
+    margin: 10px;
+ }
+
+ button{
+    border-radius: 5 px;
+    margin: 10px;
+
+  }
+
+ .busqueda{
+    background-color: rgb(159, 211, 176);
+    overflow: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    border-radius: 5px;
+    width: auto;
+    height: 40px;
+  }
+
+  .cursor
+  {
+    padding-left: 8px;
+  }
+  
+  :hover.cursor{
+    background-color: rgb(31, 146, 70);
+    font-weight: bold;
+  }
+
+ 
+
+  /*
 .Title1{
     margin: 30px;
     
@@ -33,3 +66,4 @@ input{
     border-radius: 40px;
     font-size: 25px;
 }
+*/
