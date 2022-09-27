@@ -9,10 +9,8 @@
     backdrop-filter: blur(8px);
     border-radius: 5px;
     height: 100% !important;
-
     max-width: auto;
     height: fit-content;
-    
   }
 
   h2 {
@@ -67,6 +65,7 @@
   {
     padding-left: 8px;
   }
+  
   :hover.cursor{
     background-color: rgb(31, 146, 70);
     font-weight: bold;

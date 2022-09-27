@@ -1,61 +1,47 @@
-.contenido{
+
+
+.container {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    height: 710px;
-    width: 1170px;
-}
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+  }
+  .busqueda{
+    background-color: rgb(159, 211, 176);
+    overflow: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    border-radius: 5px;
+    width: auto;
+    height: 40px;
+  }
+
+  .cursor
+  {
+    padding-left: 8px;
+  }
+  :hover.cursor{
+    background-color: rgb(31, 146, 70);
+    font-weight: bold;
+  }
+
 
 h1{
-    position: relative;
-    top: 25px;
-    left: 180px;
+    
     font-size: 40px;
 }
 
-form {
-    position: relative;
-    top: 30px;
-}
-
-.input {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-left: 8px;
-}
-
-input{
-    height: 30px;
-    width: 600px;
-}
-
-.Opciones{
-    height: 30px;
-    width: 600px; 
-}
 
 label {
-    margin-top: 7px;
+    
     font-weight: bold;
     font-size: 20px;
-    position: relative;
-    right: 200px;
+    
 }
 
-.boton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: 300px;
-    position: relative;
-    top: 50px;
-    background-color: rgb(110, 148, 221);
-    color: white;
-    border-radius: 40px;
-    font-size: 28px;
-}
+
 /* Alerta de telefono */
 .hiddenAlert{
     display: none;
@@ -83,7 +69,7 @@ label {
     cursor: pointer;
 }
 
-/* boton de formulario */
-button:disabled{
-    opacity: 0.9;
+.boton{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

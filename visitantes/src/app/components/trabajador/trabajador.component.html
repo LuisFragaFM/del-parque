@@ -1,6 +1,94 @@
-<div class="contenido">
+<div class="container text-center">
   <h1>Nuevo trabajador</h1>
-  <!-- formulario de datos -->
+
+  <form>
+    <div class="row g-3 mt-3 justify-content-center align-items-center">
+      <div class="col-6">
+        <label class="form-label" for="tipo-trabajador">Tipo de trabajador</label>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="TipoTrabajador"
+          id="tipo-trabajador" [(ngModel)]="trabajador.tipo">
+          <option value="Trabajador diario">
+            <h2>Trabajador diario</h2>
+          </option>
+          <option value="Trabajador servicio">
+            <h2>Trabajador servicio</h2>
+          </option>
+        </select>
+      </div>
+      <div class="row g-2 mt-2 justify-content-center align-items-center">
+        <div class="col-6">
+          <label class="form-label" for="nombre-trabajador">Nombre</label>
+          <input class="form-control" (keydown)="validaName(trabajador.nombreTrabajador)" required autocomplete="off"
+            type="text" placeholder="Escriba aqui" name="nombre-trabajador" id="nombre-trabajador"
+            [(ngModel)]="trabajador.nombreTrabajador" />
+          <!--Alerta de datos -->
+          <div id="alertName" class="alert alert-danger" *ngIf="startName">
+            Favor de agregar solamente letras en este campo
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row g-2 mt-2 justify-content-center align-items-center">
+        <div class="col-6">
+          <!--Nombre condomino -->
+          <label class="form-label" for="nombre-condomino">Nombre del condómino</label>
+          <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
+            name="nombre-condomino" id="nombre-condomino" (keyup)="findInquilinoByName()" [(ngModel)]="name" />
+          <div class="busqueda" *ngIf="condominos.length > 0">
+            <div *ngFor="let c of condominos">
+              <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-2 mt-2 justify-content-center align-items-center">
+        <div class="col-6">
+          <label class="form-label" for="dias-trabajo">Días de trabajo</label>
+          <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
+            name="dias-trabajo" id="dias-trabajo" [(ngModel)]="trabajador.diasTrabajo" />
+        </div>
+      </div>
+
+      <div class="row g-2 mt-2 justify-content-center align-items-center">
+        <div class="col-6">
+          <!--Hora de llegada a residencial -->
+          <label class="form-label" for="hora-llegada">Hora llegada</label>
+          <input class="form-control" #hora="ngModel" required autocomplete="off" type="time" placeholder="Escriba aqui"
+            name="hora-llegada" id="hora-llegada" [(ngModel)]="trabajador.horario" />
+          <div *ngIf="hora.touched" class="alert alert-info">
+            Favor de agregar un dato en este campo
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-2 mt-2 justify-content-center align-items-center">
+        <div class="col-6">
+          <label for="telefono-trabajador">Teléfono</label>
+          <input class="form-control" (keydown)="validaTel(trabajador.telefono, telefono)" #telefono required
+            autocomplete="off" type="text" placeholder="Escriba aqui" name="telefono-trabajador"
+            id="telefono-trabajador" [(ngModel)]="trabajador.telefono" />
+          <!--Alerta de datos -->
+          <div id="alertTel" class="alert alert-danger" *ngIf="startTel">
+            Inserte el número de telefono de 7 a 14 digitos
+          </div>
+        </div>
+
+      </div>
+      <div class="row g-2 mt-6 mb-3 justify-content-center align-items-center">
+        <div class="col-4 text-end">
+          <button class="boton btn btn-success btn-block" (click)="save()" [disabled]="!isValidForm()">
+            Guardar
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+  <!--
+  
+  formulario de datos 
   <form>
     <div class="input">
       <label for="tipo-trabajador">Tipo de trabajador</label>
@@ -17,7 +105,6 @@
       </select>
     </div>
     <div class="input">
-      <!-- Nombre trabajador -->
       <label for="nombre-trabajador">Nombre</label>
       <input
         (keydown)="validaName(trabajador.nombreTrabajador)"
@@ -29,13 +116,13 @@
         id="nombre-trabajador"
         [(ngModel)]="trabajador.nombreTrabajador"
       />
-      <!-- Alerta de datos -->
+      Alerta de datos 
       <div id="alertName" class="alert alert-danger" *ngIf="startName">
         Favor de agregar solamente letras en este campo
       </div>
     </div>
     <div class="input">
-      <!-- Nombre condomino -->
+      Nombre condomino 
       <label for="nombre-condomino">Nombre del condómino</label>
       <input
         required
@@ -64,7 +151,7 @@
       />
     </div>
     <div class="input">
-      <!-- Hora de llegada a residencial -->
+      Hora de llegada a residencial 
       <label for="hora-llegada">Hora llegada</label>
       <input
         #hora="ngModel"
@@ -77,10 +164,10 @@
         [(ngModel)]="trabajador.horario"
       />
     </div>
-    <!-- <div *ngIf="hora.touched" class="alert alert-info">
+    <div *ngIf="hora.touched" class="alert alert-info">
       Favor de agregar un dato en este campo
-    </div> -->
-    <!-- validacion y formulario de numero de telefono -->
+    </div> 
+    validacion y formulario de numero de telefono 
     <div class="input">
       <label for="telefono-trabajador">Teléfono</label>
       <input
@@ -94,14 +181,15 @@
         id="telefono-trabajador"
         [(ngModel)]="trabajador.telefono"
       />
-      <!-- Alerta de datos -->
+      Alerta de datos 
       <div id="alertTel" class="alert alert-danger" *ngIf="startTel" >
         Inserte el número de telefono de 7 a 14 digitos
       </div>
     </div>
-    <!-- Boton de registro -->
+     Boton de registro 
     <button class="boton" (click)="save()" [disabled]="!isValidForm()">
       Guardar
     </button>
   </form>
+  -->
 </div>
