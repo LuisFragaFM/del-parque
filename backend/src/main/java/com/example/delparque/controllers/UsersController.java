@@ -57,8 +57,8 @@ public class UsersController {
 
     @PostMapping("/reset_password")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void resetPassword(@RequestParam(name = "token") String token, @RequestBody ResetPassword resetPassword) {
-        usersService.updatePassword(token, resetPassword);
+    public void updatePasswordForRecoverPassword(@RequestParam(name = "token") String token, @RequestBody ResetPassword resetPassword) {
+        usersService.updatePasswordForRecoverPassword(token, resetPassword);
     }
 
     @GetMapping("/api/loggedUser")

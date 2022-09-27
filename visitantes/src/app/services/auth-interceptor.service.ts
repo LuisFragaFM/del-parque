@@ -35,7 +35,8 @@ export class AuthInterceptorService implements HttpInterceptor {
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonText: `Cerrar`
-      }).then(() => {});
+      }).then(() => {
+      });
     }
 
     return throwError(errorMessage);
@@ -46,11 +47,14 @@ export class AuthInterceptorService implements HttpInterceptor {
       const req2 = req.clone({
         headers: req.headers.set('Authorization', `Basic ${this.sessionService.authorizationHeader}`)
       });
-      // @ts-ignore
-      return next.handle(req2).pipe(catchError(error => AuthInterceptorService.handleError(error)));
+      return next.handle(req2).pipe(catchError(error => {
+        if (localStorage.getItem('auth')) {
+          localStorage.removeItem('auth');
+        }
+        return AuthInterceptorService.handleError(error);
+      }));
     }
 
-    // @ts-ignore
     return next.handle(req).pipe(catchError(error => AuthInterceptorService.handleError(error)));
   }
 }

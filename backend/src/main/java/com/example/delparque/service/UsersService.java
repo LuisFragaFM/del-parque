@@ -15,7 +15,7 @@ public interface UsersService {
     void sendMailForRecoverPassword(HttpServletRequest httpServletRequest)
             throws MessagingException, UnsupportedEncodingException;
 
-    void updatePassword(String token,ResetPassword resetPassword);
+    void updatePasswordForRecoverPassword(String token, ResetPassword resetPassword);
 
     User register(com.example.delparque.dto.User user);
 

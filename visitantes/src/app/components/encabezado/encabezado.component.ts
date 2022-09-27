@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../models/user";
+import {SessionService} from "../../services/session.service";
 
 @Component({
   selector: 'app-encabezado',
@@ -10,10 +11,13 @@ export class EncabezadoComponent implements OnInit {
 
   @Input('user') user!: User;
 
-  constructor() {
+  constructor(private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
   }
 
+  logout() {
+    this.sessionService.logout();
+  }
 }
