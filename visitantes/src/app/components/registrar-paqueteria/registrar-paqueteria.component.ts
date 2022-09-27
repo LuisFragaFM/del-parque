@@ -16,10 +16,14 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   name: string | undefined;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-    //variables a utilizar en la validacion de datos
-    startEmpresa: boolean = false;
-    //variable para validar nombre y activar boton
-    validacionEmpresa: boolean = false;
+  //variables a utilizar en la validacion de datos
+  startEmpresa: boolean = false;
+  startGuia: boolean = false;
+  startRecibo: boolean = false;
+  //variable para validar nombre y activar boton
+  validacionEmpresa: boolean = false;
+  validacionGuia: boolean = false;
+  validacionRecibo: boolean = false;
   constructor(
     private paquetesService: PaquetesService,
     private condominosService: CondominosService
@@ -63,19 +67,67 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   // funcion para validar datos de nombre
   validaEmpresa(empresa: string) {
     this.startEmpresa = true;
-    const regMail = new RegExp(/^[A-Za-zÀ-ÿ ,.'-][1-9][0-9]+$/); //Expresion regular a validar
-    const testMail = regMail.test(empresa); //validar
-    const alertValMail = document.getElementById('alertMail'); //Obtiene el elemento para mostrar la alerta
-    if (testMail == false) {
-      alertValMail?.classList.remove('hiddenAlertName'); //oculta alerta
+    const regEmpresa = new RegExp(/^[A-Za-z0-9\s]+$/); //Expresion regular a validar
+    const testEmpresa = regEmpresa.test(empresa); //validar
+    const alertValEmpresa = document.getElementById('alertMail'); //Obtiene el elemento para mostrar la alerta
+    if (testEmpresa == false) {
+      alertValEmpresa?.classList.remove('hiddenAlertName'); //oculta alerta
       this.validacionEmpresa = false;
+      this.startEmpresa = true;
+      //
+      console.log(this.validacionEmpresa);
     } else {
-      alertValMail?.classList.add('hiddenAlertName'); //muestra alerta
-      this.validacionEmpresa= true;
+      alertValEmpresa?.classList.add('hiddenAlertName'); //muestra alerta
+      this.validacionEmpresa = true;
+      this.startEmpresa = false;
+      //
+      console.log(this.validacionEmpresa);
+    }
+  }
+  // funcion para validar datos de la guia
+  validaGuia(guia: string) {
+    this.startGuia = true;
+    const regGuia = new RegExp(/^[A-Za-z0-9\s]+$/); //Expresion regular a validar
+    const testGuia = regGuia.test(guia); //validar
+    const alertValGuia = document.getElementById('alertGuia'); //Obtiene el elemento para mostrar la alerta
+    if (testGuia == false) {
+      alertValGuia?.classList.remove('hiddenAlertName'); //oculta alerta
+      this.validacionGuia = false;
+      this.startGuia = true;
+      //
+      console.log(this.validacionGuia);
+    } else {
+      alertValGuia?.classList.add('hiddenAlertName'); //muestra alerta
+      this.validacionGuia = true;
+      this.startGuia = false;
+      //
+      console.log(this.validacionGuia);
+    }
+  }
+  // funcion para validar el nombre de recibido
+  validaRecibo(nombreRecibo: string) {
+    this.startRecibo = true;
+    const regRecibo = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
+    const testRecibo = regRecibo.test(nombreRecibo); //validar
+    const alertValRecibo = document.getElementById('alertRecibo'); //Obtiene el elemento para mostrar la alerta
+    if (testRecibo == false) {
+      alertValRecibo?.classList.remove('hiddenAlertName'); //oculta alerta
+      this.validacionRecibo = false;
+      this.startRecibo = true;
+      // 
+      console.log(this.validacionRecibo);
+    } else {
+      alertValRecibo?.classList.add('hiddenAlertName'); //muestra alerta
+      this.validacionRecibo = true;
+      this.startRecibo = false;
+      // 
+      console.log(this.validacionRecibo);
     }
   }
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
-    return this.validacionEmpresa;
+    return (
+      this.validacionEmpresa && this.validacionGuia && this.validacionRecibo
+    );
   }
 }

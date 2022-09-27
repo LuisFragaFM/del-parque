@@ -71,17 +71,15 @@ export class TrabajadorComponent implements OnInit {
   // funcion para validar datos de nombre
   validaName(nombre: string) {
     this.startName = true;
-    const regTel = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
-    const testTel = regTel.test(nombre); //validar
+    const regName = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
+    const testName = regName.test(nombre); //validar
     const alertVal = document.getElementById('alertName'); //Obtiene el elemento para mostrar la alerta
-    if (testTel == false) {
+    if (testName == false) {
       alertVal?.classList.remove('hiddenAlertName'); //oculta alerta
       this.validacionName = false;
-      console.log(nombre);
     } else {
       alertVal?.classList.add('hiddenAlertName'); //muestra alerta
       this.validacionName = true;
-      console.log(nombre);
     }
   }
   // deshabilitar o habilitar boton

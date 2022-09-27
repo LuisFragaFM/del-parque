@@ -9,8 +9,7 @@
         <!-- se ingresan los datos de la empresa que envia el paquete -->
         <input
           class="form-control"
-          (keydown)="validaEmpresa(empresa.value)"
-          #empresa
+          (keydown)="validaEmpresa(paquete.nombreEmpresa)"
           required
           autocomplete="off"
           type="text"
@@ -19,14 +18,16 @@
           [(ngModel)]="paquete.nombreEmpresa"
         />
       </div>
-      <!--Alerta de datos -->
+      <!--Alerta de datos (nombre)-->
       <div id="alertEmpresa" class="alert alert-danger" *ngIf="startEmpresa">
         Ingrese el nombre de la empresa
       </div>
       <div class="col-5">
+        <!-- Numero de guia del paquete -->
         <label class="form-label" for="guia">Número de Guía</label>
         <input
           class="form-control"
+          (keydown)="validaGuia(paquete.numeroGuia)"
           required
           autocomplete="off"
           type="text"
@@ -35,11 +36,16 @@
           [(ngModel)]="paquete.numeroGuia"
         />
       </div>
+      <!--Alerta de datos (numero de guia)-->
+      <div id="alertGuia" class="alert alert-danger" *ngIf="startGuia">
+        Ingrese la guia del paquete
+      </div>
     </div>
   </section>
   <section>
     <h2>Datos del condómino</h2>
     <div class="row g-3 mt-3 row justify-content-around">
+      <!--Se ingresan los datos que tiene el condomino  -->
       <div class="col-5">
         <label class="form-label" for="nombre_condomino">Nombre</label>
         <input
@@ -61,6 +67,7 @@
       </div>
 
       <div class="col-5">
+        <!-- Se ingresa el numero de la casa a la que va el paquete -->
         <div class="input" *ngIf="condomino.id">
           <label class="form-label" for="calle">Número de la casa</label>
           <input
@@ -91,9 +98,11 @@
     <h2>Datos generales</h2>
     <div class="row g-3 mt-3 row justify-content-around">
       <div class="col-5">
+        <!-- se escribe por quien fue recibido el paquete -->
         <label class="form-label" for="recibido">Recibido por:</label>
         <input
           class="form-control"
+          (keydown)="validaRecibo(paquete.recibeInquilino)"
           required
           autocomplete="off"
           type="text"
@@ -102,7 +111,10 @@
           [(ngModel)]="paquete.recibeInquilino"
         />
       </div>
-
+      <!--Alerta de datos (recibe Inquilino)-->
+      <div id="alertRecibo" class="alert alert-danger" *ngIf="startRecibo">
+        Ingrese el nombre de la persona qeu recibe
+      </div>
       <div class="col-5">
         <label class="form-label" for="fecha">Fecha</label>
         <input

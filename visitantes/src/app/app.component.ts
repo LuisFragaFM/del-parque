@@ -62,9 +62,12 @@ export class AppComponent {
     if (testMail == false) {
       alertValMail?.classList.remove('hiddenAlertName'); //oculta alerta
       this.validacionMail = false;
+      this.startMail = true;
     } else {
       alertValMail?.classList.add('hiddenAlertName'); //muestra alerta
       this.validacionMail = true;
+      this.startMail = false;
+      
     }
   }
   // funcion para validar datos de contra
@@ -78,9 +81,13 @@ export class AppComponent {
     if (testContra == false) {
       alertPassw?.classList.remove('hiddenAlertName'); //oculta alerta
       this.validacionContra= false;
+      this.startPassw = true;
+      
     } else {
       alertPassw?.classList.add('hiddenAlertName'); //muestra alerta
       this.validacionContra= true;
+      this.startPassw = false;
+      
     }
   }
   // deshabilitar o habilitar boton
