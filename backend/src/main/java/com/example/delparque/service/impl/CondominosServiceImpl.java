@@ -1,7 +1,6 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Condomino;
-import com.example.delparque.exception.BadRequestDataException;
 import com.example.delparque.repository.CondominosRepository;
 import com.example.delparque.service.CondominosService;
 import com.example.delparque.service.mappers.CondominoMapper;
@@ -51,30 +50,6 @@ public class CondominosServiceImpl implements CondominosService {
     public Condomino save(Condomino condomino) {
         if (condomino.getId() == null) {
             condomino.setId(UUID.randomUUID().toString());
-        }
-
-        if (condomino.getNumeroEmergencia() == null) {
-            throw new BadRequestDataException("numero de emergencia requerido", "EMERGENCY_NUMBER_ERROR");
-        }
-
-        if (condomino.getDireccion() == null) {
-            throw new BadRequestDataException("direccion requerida", "DIRECTION_ERROR");
-        }
-
-        if (condomino.getNumeroTelefono() == null) {
-            throw new BadRequestDataException("telefono requerido", "NUMBER_ERROR");
-        }
-
-        if (condomino.getName() == null) {
-            throw new BadRequestDataException("nombre de casa requerido", "HOUSE_NAME_ERROR");
-        }
-
-        if (condomino.getCorreoElectronico() == null) {
-            throw new BadRequestDataException("email requerido", "EMAIL_ERROR");
-        }
-
-        if (condomino.getNumeroCasa() == null) {
-            throw new BadRequestDataException("numero_casa requerido", "HOUSE_NUMBER_ERROR");
         }
 
         return CondominoMapper.entityToDto(condominosRepository.save(CondominoMapper.dtoToEntity(condomino)));

@@ -97,7 +97,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void updatePassword(String token, ResetPassword resetPassword) {
+    public void updatePasswordForRecoverPassword(String token, ResetPassword resetPassword) {
         User user = usersRepository.findByResetPasswordToken(token).orElseThrow();
 
         user.setPassword(bCryptPasswordEncoder.encode(resetPassword.getNewPassword()));

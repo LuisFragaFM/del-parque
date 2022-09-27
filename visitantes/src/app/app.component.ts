@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'visitantes';
   @Input('user') user: User = {} as User;
   failedLogin = false;
-  isLogin: boolean = true;
+  rememberMe: boolean = false;
 
   constructor(private sessionService: SessionService, private usuariosService: UsuariosService) {
   }
@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   apiLogin(email: string, password: string): void {
-    this.sessionService.setCredentials(email, password);
+    this.sessionService.setCredentials(email, password, this.rememberMe);
     this.login();
   }
 
@@ -41,14 +41,5 @@ export class AppComponent {
     this.usuariosService.register(this.user!).subscribe((user) => {
       this.user = user;
     })
-  }
-
-
-  changeToRegister() {
-    this.isLogin = false;
-  }
-
-  changeToLogin() {
-    this.isLogin = true;
   }
 }

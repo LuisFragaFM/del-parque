@@ -5,7 +5,7 @@
   <app-pie-pagina></app-pie-pagina>
 </div>
 
-<form class="contenido" *ngIf="!user.id && isLogin">
+<form class="contenido" *ngIf="!user.id">
   <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="loginperso">
       <div class="p-4" style="width :25rem">
@@ -36,26 +36,13 @@
           <div>
             <button class="btn btn-dark w-100 mt-4" (click)="apiLogin(login.value, password.value)">Entrar</button>
           </div>
-          <div (click)="changeToRegister()">Crear una cuenta</div>
+          <input type="checkbox" name="remember-me" [(ngModel)]="rememberMe" id="remember-me">
+          <label for="remember-me">Recordar Contraseña</label>
         </div>
 
       </div>
     </div>
   </div>
-</form>
-
-<form *ngIf="!isLogin && !user.id">
-  Nombre
-  <input type="text" name="name" [(ngModel)]="user.nombre">
-  Email
-  <input type="text" name="email" [(ngModel)]="user.email">
-  Password
-  <input type="text" name="password" [(ngModel)]="user.password">
-  Repetir Password
-  <input type="text" name="password2">
-
-  <div (click)="changeToLogin()">Ya tienes una cuenta?</div>
-  <div (click)="register()">Crear cuenta</div>
 </form>
 
 
