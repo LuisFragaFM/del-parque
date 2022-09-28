@@ -1,70 +1,175 @@
 <!-- contenedor de inquinos -->
 <div class="contenido">
-    <!-- contenedor modificar condomino-->
-    <div class="containerModificar">
-      <!-- contenedor de titulo contenedor -->
-      <div class="title">
-        <h1>ALTA DE CONDÓMINO</h1>
+  <!-- contenedor modificar condomino-->
+  <div class="containerModificar">
+    <!-- contenedor de titulo contenedor -->
+    <div class="title">
+      <h1>ALTA DE CONDÓMINO</h1>
+    </div>
+    <form (ngSubmit)="save()">
+      <!-- Imagen de programa -->
+      <div class="imagenUser">
+        <h3>Foto del condómino<br /><br /></h3>
+        <img
+          src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png"
+          alt="user"
+          id="userImg"
+          width="200px"
+        />
       </div>
-      <form (ngSubmit)="save()">
-        <!-- Imagen de programa -->
-        <div class="imagenUser">
-          <h3>Foto del condómino<br><br></h3>
-          <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="200px">
+      <!-- form de nombre -->
+      <div class="nombreDatos">
+        <h3>Nombre:<br /><br /></h3>
+        <input
+          required
+          (keydown)="validaResidente(regexName, altaResidente.value)"
+          #altaResidente
+          autocomplete="off"
+          type="text"
+          placeholder="Nombre Inquilino"
+          class="inputDatosAltas"
+          name="muestraCondominoName"
+          [(ngModel)]="condomino.name"
+        />
+        <!--Alerta de datos -->
+        <div id="alertName" class="alert alert-danger" *ngIf="!altaName">
+          Favor de agregar solamente letras en este campo
         </div>
-        <!-- form de nombre -->
-        <div class="nombreDatos">
-          <h3>Nombre:<br><br></h3>
-          <input required autocomplete="off" type="text" placeholder="Nombre Inquilino" class="inputDatosAltas" name="muestraCondominoName"
-                 [(ngModel)]="condomino.name">
+      </div>
+      <!-- form de direccion -->
+      <div class="direccionDatos">
+        <h3>Dirección:<br /><br /></h3>
+        <input
+          required
+          autocomplete="off"
+          type="text"
+          placeholder="Direccion"
+          class="inputDatosAltas"
+          name="muestraCondominoDireccion"
+          [(ngModel)]="condomino.direccion"
+        />
+      </div>
+      <!-- form de numero emergencia -->
+      <div class="emergenciaDatos">
+        <h3>Número de emergencia:<br /><br /></h3>
+        <input
+          required
+          (keydown)="validaEmergencia(regexTel, altaEmergencia.value)"
+          #altaEmergencia
+          autocomplete="off"
+          type="text"
+          minlength="10"
+          maxlength="10"
+          placeholder="Telefono de emergencia"
+          class="inputDatosAltas"
+          name="muestraCondominoEmergencia"
+          [(ngModel)]="condomino.numeroEmergencia"
+        />
+        <!--Alerta de datos -->
+        <div
+          id="alertEmergency"
+          class="alert alert-danger"
+          *ngIf="!altaTelEmergencia"
+        >
+          Favor de agregar un número de telefono valido
         </div>
-        <!-- form de direccion -->
-        <div class="direccionDatos">
-          <h3>Dirección:<br><br></h3>
-          <input required autocomplete="off" type="text" placeholder="Direccion" class="inputDatosAltas" name="muestraCondominoDireccion"
-                 [(ngModel)]="condomino.direccion">
+      </div>
+      <!-- form de telefono-->
+      <div class="telefonoDatos">
+        <h3>Teléfono:<br /><br /></h3>
+        <input
+          required
+          (keydown)="validaTel(regexTel, altaTel.value)"
+          #altaTel
+          autocomplete="off"
+          type="text"
+          placeholder="Telefono"
+          class="inputDatosAltas"
+          name="muestraCondominoTelefono"
+          [(ngModel)]="condomino.numeroTelefono"
+        />
+        <!--Alerta de datos -->
+        <div
+          id="alertTelefono"
+          class="alert alert-danger"
+          *ngIf="!altaTelResidente"
+        >
+          Favor de agregar un número de telefono valido
         </div>
-        <!-- form de numero emergencia -->
-        <div class="emergenciaDatos">
-          <h3>Número de emergencia:<br><br></h3>
-          <input required autocomplete="off" type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia" class="inputDatosAltas"
-                 name="muestraCondominoEmergencia"
-                 [(ngModel)]="condomino.numeroEmergencia">
+      </div>
+      <!-- form de correo -->
+      <div class="correoDatos">
+        <h3>Correo Electrónico:<br /><br /></h3>
+        <input
+          required
+          (keydown)="validaCorreo(regexMail, altaCorreo.value)"
+          #altaCorreo
+          autocomplete="off"
+          type="email"
+          placeholder="Correo electronico"
+          class="inputDatosAltas"
+          name="muestraCondominoCorreo"
+          [(ngModel)]="condomino.correoElectronico"
+        />
+        <!--Alerta de datos -->
+        <div
+          id="alertEmail"
+          class="alert alert-danger"
+          *ngIf="!altaMail"
+        >
+          Favor de agregar un número de telefono valido
         </div>
-        <!-- form de telefono-->
-        <div class="telefonoDatos">
-          <h3>Teléfono:<br><br></h3>
-          <input  required autocomplete="off" type="number" minlength="10" maxlength="10" placeholder="Telefono" class="inputDatosAltas"
-                 name="muestraCondominoTelefono"
-                 [(ngModel)]="condomino.numeroTelefono">
-        </div>
-        <!-- form de correo -->
-        <div class="correoDatos">
-          <h3>Correo Electrónico:<br><br></h3>
-          <input required autocomplete="off" type="email" pattern="[^ @]*@[^ @]*" placeholder="Correo electronico" class="inputDatosAltas"
-                 name="muestraCondominoCorreo"
-                 [(ngModel)]="condomino.correoElectronico">
-        </div>
-        <div class="numcasaDatos">
-          <h3>Número casa:<br><br></h3>
-          <input  required autocomplete="off" type="number" minlength="10" maxlength="10" placeholder="Numero de casa" class="inputDatosAltas"
-                 name="muestraCondominonumcasa"
-                 [(ngModel)]="condomino.numeroCasa">
-        </div>
-        <!-- boton guardar -->
-        <button class="botonGuardar" type="submit">Guardar</button>
-      </form>
-      <!-- Estado de pago -->
-      <div class="estadoPago">
-        <h3>Pago:<br><br></h3>
-        <div *ngIf="!condomino.estadoPago" (click)="condomino.estadoPago = 1;" class="cursor">
-           <img src="../../../assets/sadFace.png" alt="no pagado" id="noPagadoImg" width="160px"> <br><br><br>
-            <h3>No pagado<br><br></h3>
-        </div>
-        <div *ngIf="condomino.estadoPago" (click)="condomino.estadoPago = 0;" class="cursor">
-          <img src="../../../assets/happyFace.png" alt="pago" id="pagoImg" width="150px"> <br><br><br>
-          <h3>Pagado<br><br></h3>
-        </div>
+      </div>
+      <div class="numcasaDatos">
+        <h3>Número casa:<br /><br /></h3>
+        <input
+          required
+          autocomplete="off"
+          type="number"
+          minlength="10"
+          maxlength="10"
+          placeholder="Numero de casa"
+          class="inputDatosAltas"
+          name="muestraCondominonumcasa"
+          [(ngModel)]="condomino.numeroCasa"
+        />
+      </div>
+      <!-- boton guardar -->
+      <button class="botonGuardar" type="submit" [disabled]="!isValidForm()">
+        Guardar
+      </button>
+    </form>
+    <!-- Estado de pago -->
+    <div class="estadoPago">
+      <h3>Pago:<br /><br /></h3>
+      <div
+        *ngIf="!condomino.estadoPago"
+        (click)="condomino.estadoPago = 1"
+        class="cursor"
+      >
+        <img
+          src="../../../assets/sadFace.png"
+          alt="no pagado"
+          id="noPagadoImg"
+          width="160px"
+        />
+        <br /><br /><br />
+        <h3>No pagado<br /><br /></h3>
+      </div>
+      <div
+        *ngIf="condomino.estadoPago"
+        (click)="condomino.estadoPago = 0"
+        class="cursor"
+      >
+        <img
+          src="../../../assets/happyFace.png"
+          alt="pago"
+          id="pagoImg"
+          width="150px"
+        />
+        <br /><br /><br />
+        <h3>Pagado<br /><br /></h3>
       </div>
     </div>
   </div>
+</div>

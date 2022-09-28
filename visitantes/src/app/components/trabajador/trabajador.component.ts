@@ -3,6 +3,7 @@ import { Trabajador } from '../../models/trabajador';
 import { TrabajadoresService } from '../../services/trabajadores.service';
 import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
+import { validaInput } from 'src/tools/validation';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,18 +16,20 @@ export class TrabajadorComponent implements OnInit {
   name: string | undefined;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-  //validaciones para activar boton
-  validacionTel: boolean = false; //variable para validar telefono
-  validacionName: boolean = false; //variable para validar nombre
-  //variable para activar boton
-  startName: boolean = false;
-  startTel: boolean = false;
+  //Variable para validar nombre y activar boton
+  trabajadorName: boolean = true;
+  validacionTel: boolean = true;
+  //Validacion de fechas
+  regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
+  regexTel: any = /^\+?[1-9][0-9]{5,12}$/; //recibe paquete
 
   constructor(
     private trabajadoresService: TrabajadoresService,
     private condominosService: CondominosService
   ) {}
+
   ngOnInit(): void {}
+
   findInquilinoByName() {
     this.condominosService.findByName(this.name!).subscribe((condominos) => {
       console.log(condominos);
@@ -54,36 +57,19 @@ export class TrabajadorComponent implements OnInit {
     this.name = condomino.name;
     this.trabajador.nombreCondomino = condomino.name;
   }
-  // funcion para validar datos de telefono
-  validaTel(telefono: string, tel: any) {
-    this.startTel = true;
-    const regTel = new RegExp(/^\+?[1-9][0-9]{7,14}$/); //Expresion regular a validar
-    const testTel = regTel.test(telefono); //validar telefono
-    const alert1 = document.getElementById('alertTel'); //Obtiene el elemento para mostrar la alerta
-    if (testTel == false) {
-      alert1?.classList.remove('hiddenAlert'); //oculta alerta
-      this.validacionTel = false;
-    } else {
-      alert1?.classList.add('hiddenAlert'); //muestra alerta
-      this.validacionTel = true;
-    }
+
+  // funcion para validacion
+  validaTrabajador(regex: any, name: string) {
+    this.trabajadorName = validaInput(regex, name);
+    console.log(this.trabajadorName);
   }
-  // funcion para validar datos de nombre
-  validaName(nombre: string) {
-    this.startName = true;
-    const regName = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
-    const testName = regName.test(nombre); //validar
-    const alertVal = document.getElementById('alertName'); //Obtiene el elemento para mostrar la alerta
-    if (testName == false) {
-      alertVal?.classList.remove('hiddenAlertName'); //oculta alerta
-      this.validacionName = false;
-    } else {
-      alertVal?.classList.add('hiddenAlertName'); //muestra alerta
-      this.validacionName = true;
-    }
+
+  validaTel(regex: any, trabajadorTel: string) {
+    this.validacionTel = validaInput(regex, trabajadorTel);
   }
+
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
-    return this.validacionTel && this.validacionName;
+    return this.trabajadorName && this.validacionTel;
   }
 }

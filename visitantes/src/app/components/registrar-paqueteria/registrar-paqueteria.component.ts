@@ -4,6 +4,7 @@ import { Paquete } from '../../models/paquete';
 import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
 import Swal from 'sweetalert2';
+import { validaInput } from 'src/tools/validation';
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -16,14 +17,17 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   name: string | undefined;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-  //variables a utilizar en la validacion de datos
-  startEmpresa: boolean = false;
-  startGuia: boolean = false;
-  startRecibo: boolean = false;
-  //variable para validar nombre y activar boton
-  validacionEmpresa: boolean = false;
-  validacionGuia: boolean = false;
-  validacionRecibo: boolean = false;
+  //Variable para validar nombre y activar boton
+  validacionEmpresa: boolean = true;
+  validacionGuia: boolean = true;
+  validacionRecibo: boolean = true;
+  fechaRecibo: boolean = true;
+  //Validacion de fechas
+  regexName: any = /^[A-Za-z0-9_@./#&+-\s]+$/; //empresa
+  regexRecibe: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //recibe paquete
+  regexDate: any =
+    /^(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|1[1-2])\1\d{4}$/; //fecha
+
   constructor(
     private paquetesService: PaquetesService,
     private condominosService: CondominosService
@@ -41,6 +45,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
       this.condominos = condominos;
     });
   }
+
   save() {
     this.paquetesService.save(this.paquete).subscribe((paquete) => {
       this.paquete = {} as Paquete;
@@ -64,70 +69,31 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     this.paquete.calle = condomino.calle;
     this.paquete.numeroCasa = condomino.numeroCasa;
   }
-  // funcion para validar datos de nombre
-  validaEmpresa(empresa: string) {
-    this.startEmpresa = true;
-    const regEmpresa = new RegExp(/^[A-Za-z0-9\s]+$/); //Expresion regular a validar
-    const testEmpresa = regEmpresa.test(empresa); //validar
-    const alertValEmpresa = document.getElementById('alertMail'); //Obtiene el elemento para mostrar la alerta
-    if (testEmpresa == false) {
-      alertValEmpresa?.classList.remove('hiddenAlertName'); //oculta alerta
-      this.validacionEmpresa = false;
-      this.startEmpresa = true;
-      //
-      console.log(this.validacionEmpresa);
-    } else {
-      alertValEmpresa?.classList.add('hiddenAlertName'); //muestra alerta
-      this.validacionEmpresa = true;
-      this.startEmpresa = false;
-      //
-      console.log(this.validacionEmpresa);
-    }
+
+  // funcion para validacion
+  validaName(regex: any, nombreRecibo: string) {
+    this.validacionEmpresa = validaInput(regex, nombreRecibo);
   }
-  // funcion para validar datos de la guia
-  validaGuia(guia: string) {
-    this.startGuia = true;
-    const regGuia = new RegExp(/^[A-Za-z0-9\s]+$/); //Expresion regular a validar
-    const testGuia = regGuia.test(guia); //validar
-    const alertValGuia = document.getElementById('alertGuia'); //Obtiene el elemento para mostrar la alerta
-    if (testGuia == false) {
-      alertValGuia?.classList.remove('hiddenAlertName'); //oculta alerta
-      this.validacionGuia = false;
-      this.startGuia = true;
-      //
-      console.log(this.validacionGuia);
-    } else {
-      alertValGuia?.classList.add('hiddenAlertName'); //muestra alerta
-      this.validacionGuia = true;
-      this.startGuia = false;
-      //
-      console.log(this.validacionGuia);
-    }
+
+  validaGuia(regex: any, guiaRecibo: string) {
+    this.validacionGuia = validaInput(regex, guiaRecibo);
   }
-  // funcion para validar el nombre de recibido
-  validaRecibo(nombreRecibo: string) {
-    this.startRecibo = true;
-    const regRecibo = new RegExp(/^[A-Za-zÀ-ÿ ,.'-]+$/); //Expresion regular a validar
-    const testRecibo = regRecibo.test(nombreRecibo); //validar
-    const alertValRecibo = document.getElementById('alertRecibo'); //Obtiene el elemento para mostrar la alerta
-    if (testRecibo == false) {
-      alertValRecibo?.classList.remove('hiddenAlertName'); //oculta alerta
-      this.validacionRecibo = false;
-      this.startRecibo = true;
-      // 
-      console.log(this.validacionRecibo);
-    } else {
-      alertValRecibo?.classList.add('hiddenAlertName'); //muestra alerta
-      this.validacionRecibo = true;
-      this.startRecibo = false;
-      // 
-      console.log(this.validacionRecibo);
-    }
+
+  validaReci(regex: any, residenteRecibe: string) {
+    this.validacionRecibo = validaInput(regex, residenteRecibe);
   }
+
+  validaFecha(regex: any, fechaRecibe: string) {
+    this.fechaRecibo = validaInput(regex, fechaRecibe);
+  }
+
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
     return (
-      this.validacionEmpresa && this.validacionGuia && this.validacionRecibo
+      this.validacionEmpresa &&
+      this.validacionGuia &&
+      this.validacionRecibo &&
+      this.fechaRecibo
     );
   }
 }

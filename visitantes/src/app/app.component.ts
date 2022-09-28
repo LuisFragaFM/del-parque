@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { User } from './models/user';
 import { SessionService } from './services/session.service';
 import { UsuariosService } from './services/usuarios.service';
-
+import { validaInput } from 'src/tools/validation';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,12 +13,14 @@ export class AppComponent {
   @Input('user') user: User = {} as User;
   failedLogin = false;
   rememberMe: boolean = false;
-  //variables a utilizar en la validacion de datos
-  startMail: boolean = false;
-  startPassw: boolean = false;
+
   //variable para validar nombre y activar boton
-  validacionMail: boolean = false;
-  validacionContra: boolean = false;
+  validacionMail: boolean = true;
+  validacionContra: boolean = true;
+  // regex a utilizar
+  regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+  regexPssw = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{7,15}$/;
+
   constructor(
     private sessionService: SessionService,
     private usuariosService: UsuariosService
@@ -53,43 +55,15 @@ export class AppComponent {
     });
   }
 
-  // funcion para validar datos de nombre
-  validaEmail(correo: string) {
-    this.startMail = true;
-    const regMail = new RegExp(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/); //Expresion regular a validar
-    const testMail = regMail.test(correo); //validar
-    const alertValMail = document.getElementById('alertMail'); //Obtiene el elemento para mostrar la alerta
-    if (testMail == false) {
-      alertValMail?.classList.remove('hiddenAlertName'); //oculta alerta
-      this.validacionMail = false;
-      this.startMail = true;
-    } else {
-      alertValMail?.classList.add('hiddenAlertName'); //muestra alerta
-      this.validacionMail = true;
-      this.startMail = false;
-      
-    }
+  // funcion para validacion
+  validaMail(regex: any, nombreRecibo: string) {
+    this.validacionMail = validaInput(regex, nombreRecibo);
   }
-  // funcion para validar datos de contra
-  validaPassw(contra: string) {
-    this.startPassw = true;
-    const regContra = new RegExp(
-      /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
-    ); //Expresion regular a validar
-    const testContra = regContra.test(contra); //validar
-    const alertPassw = document.getElementById('alertMail'); //Obtiene el elemento para mostrar la alerta
-    if (testContra == false) {
-      alertPassw?.classList.remove('hiddenAlertName'); //oculta alerta
-      this.validacionContra= false;
-      this.startPassw = true;
-      
-    } else {
-      alertPassw?.classList.add('hiddenAlertName'); //muestra alerta
-      this.validacionContra= true;
-      this.startPassw = false;
-      
-    }
+
+  validaPassword(regex: any, nombreRecibo: string) {
+    this.validacionContra = validaInput(regex, nombreRecibo);
   }
+
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
     return this.validacionMail && this.validacionContra;
