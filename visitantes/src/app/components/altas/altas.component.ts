@@ -3,6 +3,8 @@ import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
 import { validaInput } from 'src/tools/validation';
 import Swal from 'sweetalert2';
+import {UploadFilesService} from "../../services/upload-files.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-altas',
@@ -20,7 +22,12 @@ export class AltasComponent implements OnInit {
   regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
   regexTel: any = /^\+?[1-9][0-9]{1,12}$/; //recibe paquete
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
-  constructor(private condominosService: CondominosService) {}
+  image: any;
+  environment = environment.baseUrl;
+  uri!: string;
+
+
+  constructor(private condominosService: CondominosService,  private uploadFilesService: UploadFilesService) {}
   ngOnInit(): void {}
 
   save() {
@@ -34,6 +41,20 @@ export class AltasComponent implements OnInit {
       }).then(() => {
         this.condomino = {} as Condomino;
       });
+    });
+  }
+
+  submit(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const files = target.files as FileList;
+    this.uploadFilesService.upload(files[0]).subscribe(() => {
+      this.findImage();
+    });
+  }
+
+  findImage() {
+    this.uploadFilesService.loadFilename().subscribe(({filename}) => {
+      this.uri = this.environment + "/file/" + filename;
     });
   }
   // funcion para validacion
@@ -59,4 +80,5 @@ export class AltasComponent implements OnInit {
       this.altaMail
     );
   }
+  
 }
