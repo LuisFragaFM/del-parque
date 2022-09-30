@@ -1,0 +1,101 @@
+  h2{
+    margin: 20px;
+  }
+
+
+  .container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+  }
+  .div_file {
+    text-align: center;
+    padding: 3%;
+    border: thin solid black;
+  }
+
+  #inputTag {
+    display: none;
+  }
+
+  #insert{
+    cursor: pointer;
+  }
+
+  .imagenUser {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  @media only screen and (max-width: 999px){
+    img{
+        width: 100px;
+    }
+  }
+
+  @media only screen and (max-width: 499px){
+
+    img{
+        width: 80px;
+    }
+  }
+
+/* imagen de usuario 
+
+.imagenUser {
+    position: absolute;
+    height: 35px;
+    width: 300px;
+    left: 75px;
+    top: 380px;
+}
+*/
+
+/* mostrar datos
+
+.inputDatosAltas {
+    position: absolute;
+    height: 35px;
+    width: 400px;
+    padding-left: 10px;
+    border: 6px solid rgb(211, 245, 197);
+    border-radius: 10px;
+    top: 30px;
+    outline: 0px;
+    font-size: 15px;
+}
+*/
+
+/* campo de los datosa mostrar */
+
+
+
+/* dise;o del boton */
+
+
+/* estado de pago 
+
+.estadoPago {
+    position: absolute;
+    top: 390px;
+    left: 600px;
+    width: 500px;
+}
+
+.imgNoPagado {
+    position: absolute;
+    top: 45px;
+    left: 300px;
+}
+*/
+
+button{
+    margin-top: 30px;
+}
+.cursor {
+    cursor: pointer;
+  }
