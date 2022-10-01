@@ -1,4 +1,100 @@
-/* titulos */
+.container {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 5px;
+  height: 100% !important;
+  max-width: auto;
+  height: fit-content;
+}
+
+.tarjet{
+  margin: 30px;
+  margin-top: 50px;
+  border-color: black;
+  border-width: 2px;
+  padding: 15px;
+  background-color:rgb(211, 245, 197) ;
+}
+
+
+
+.busqueda{
+  background-color: rgb(159, 211, 176);
+  overflow: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  border-radius: 5px;
+  width: auto;
+  height: 40px;
+}
+.cursor
+{
+  padding-left: 8px;
+}
+
+.cursorb
+{
+  padding-left: 8px;
+}
+
+:hover.cursorb{
+  background-color: rgb(31, 146, 70);
+  font-weight: bold;
+}
+
+.div_file {
+  text-align: center;
+  padding: 3%;
+  border: thin solid black;
+}
+
+#inputTag {
+  display: none;
+}
+
+#insert{
+  cursor: pointer;
+}
+
+.imagenUser {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+button{
+  margin-top: 30px;
+}
+.cursor {
+  cursor: pointer;
+}
+.cursorb {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 999px){
+  img{
+    width: 80px;
+      
+  }
+  .imagenUser{
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 499px){
+
+  img{
+      width: 80px;
+      
+  }
+  .imagenUser{
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* titulos;
 
 .title1 {
   position: relative;
@@ -13,20 +109,20 @@
 }
 
 
-/* blur */
+/* blur;
 
 .contenido {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
   height: 900px;
-  /*width: 1170px;*/
+  /*width: 1170px;
 }
 
 .cursor {
   cursor: pointer;
 }
 
-/* Contenedores principales */
+/* Contenedores principales;
 
 .containerInquilinos {
   position: relative;
@@ -44,11 +140,11 @@
   height: 250px;
   left: 5px;
   top: 160px;
-  /* border-style: solid; */
+  /* border-style: solid;;
 }
 
 
-/* Titulo seccion */
+/* Titulo seccion;
 
 .infoTxt {
   position: relative;
@@ -59,7 +155,7 @@
 }
 
 
-/* titulo de barra de busqueda nombre */
+/* titulo de barra de busqueda nombre;
 
 .nombre {
   position: relative;
@@ -70,7 +166,7 @@
 }
 
 
-/* titulo de barra de busqueda titulo */
+/* titulo de barra de busqueda titulo;
 
 .telefono {
   position: relative;
@@ -81,7 +177,7 @@
 }
 
 
-/* Barra de busqueda y mostrar datos*/
+/* Barra de busqueda y mostrar dato;
 
 .inputBarra {
   position: relative;
@@ -110,7 +206,7 @@
 }
 
 
-/* dise;o del boton */
+/* dise;o del boton;
 
 .boton {
   position: relative;
@@ -125,7 +221,7 @@
 }
 
 
-/* imagen de usuario */
+/* imagen de usuario;
 
 .imagenUser {
   width: 200px;
@@ -133,7 +229,7 @@
   border-radius: 50%;
 }
 
-/* campo de los datosa mostrar */
+/* campo de los datosa mostrar;
 
 .nombreDatos {
   position: relative;
@@ -176,7 +272,7 @@
 }
 
 
-/* dise;o del boton */
+/* dise;o del boton;
 
 .botonModificar {
   height: 40px;
@@ -203,7 +299,7 @@
 }
 
 
-/* estado de pago */
+/* estado de pago;
 
 .estadoPago {
   position: absolute;
@@ -228,3 +324,5 @@ label {
 #imageName {
   color: green;
 }
+ */
+ 

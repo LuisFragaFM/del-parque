@@ -1,15 +1,37 @@
-/* blur */
-
-.contenido {
+.container {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    height: 810px;
-    width: 1170px;
-    
-}
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
 
+  .cursor:hover {
+    cursor: pointer;
+  }
+.pagination {
+    padding: 14px;
+    margin: 5px;
+  }
 
-/* estilo para el contenedor bitacoras */
+  .tarjet{
+    margin: 30px;
+    margin-top: 50px;
+    border-color: black;
+    border-width: 2px;
+    padding: 15px;
+    background-color:rgb(211, 245, 197) ;
+  }
+
+  .fila3{
+    margin-top: 10px;
+  }
+/* estilo para el contenedor bitacoras 
 
 .bitacoraDatos {
     position: relative;
@@ -23,7 +45,7 @@
 }
 
 
-/* flexbox para barra de busqueda */
+
 
 .VisitanteBusqueda {
     position: relative;
@@ -40,7 +62,7 @@
 }
 
 
-/* estilo a los datos de la barra */
+
 
 .tipoVisitante{
     position: absolute;
@@ -55,7 +77,6 @@
 }
 
 
-/* estilo para barra de busqueda y mostrar datos */
 
 .inputVisitante {
     position: absolute;
@@ -79,7 +100,7 @@
     font-size: 15px;
 }
 
-/* estilo a bitacora de trabajadores */
+
 
 .titleDatos {
     position: relative;
@@ -87,8 +108,6 @@
     left: 30px;
 }
 
-
-/* estilo para texto de formularios */
 
 .nombreVisitante{
     position: relative;
@@ -132,7 +151,7 @@
 }
 
 
-/* estilo de botones */
+
 
 .botonCancelar {
     position: absolute;
@@ -175,17 +194,8 @@
     left: 110px;
     top: 50px;
 }
-.cursor:hover {
-    cursor: pointer;
-  }
-.pagination {
-    padding: 14px;
-    margin: 5px;
-  }
-.buttons {
-    display: flex;
-    justify-content: center;
-  }
+
+
   .inputAgendados {
     position: relative;
     height: 30px;
@@ -194,3 +204,5 @@
     outline: 0px;
     font-size: 15px;
 }
+
+*/

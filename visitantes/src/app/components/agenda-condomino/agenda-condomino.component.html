@@ -1,55 +1,51 @@
 <!--  Numero paginas-->
 <div class="buttons">
   <span *ngFor="let p of listOfPages" [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}"
-        (click)="updatePage(p)" class="cursor pagination">
+    (click)="updatePage(p)" class="cursor pagination">
     {{p}}
   </span>
-  
-  </div>
-<div class="contenido">
-  <div *ngFor="let visitante of visitantes">
-<div class="bitacoraDatos">
-  
-    <!-- titulo contenedor -->
-    <div class="titleDatos">
-      <h2>Visitante</h2>
-    </div>
-    
-      <!-- form de nombre -->
-      <div class="nombreVisitante">
-        <h3>Nombre:</h3>
-        
-        <input required autocomplete="off" type="text" placeholder="Nombre" class="inputAgendados" name="buscaSalidaName" [(ngModel)]="visitante.nombreVisitante">
-      </div>
-      <!-- form de hora de entrada-->
-      <div class="horaEntrada">
-        <h3>Fecha </h3>
-        <input required autocomplete="off" type="date" placeholder="Fecha agendada" class="inputAgendados" name="fechaVisita" [(ngModel)]="visitante.fechaLlegada">
-      </div>
-      <!-- form de hora de salida-->
-      <div class="tipoVehiculo">
-        <h3>Tipo de vehículo </h3>
-        <input required autocomplete="off" type="text" placeholder="Tipo de vehiculo " class="inputAgendados" name="tipoVehiculo" [(ngModel)]="visitante.vehiculoVisitante">
-      </div>
-      <!-- form de Caseta-->
-      <div class="HoraEn">
-        <h3>Hora </h3>
-        <input required autocomplete="off" type="time" placeholder="Hora" class="inputAgendados"name="fechaVisita" [(ngModel)]="visitante.horaLlegada">
-      </div>
-      <!-- boton para enviar datos del eliminar y realizar registro de la salida-->
-      <div class="botonesSalida">
-        <!-- boton Editar -->
-        <div class="buttonEditar">
-          <button class="botonEditar">Editar</button>
-        </div>
-        <!-- boton eliminar -->
-        <div class="buttonCancelar">
-          <button class="botonCancelar">Cancelar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
 
+</div>
+<div class="container">
+
+  <div class="tarjet row border border-dark border-4 rounded" *ngFor="let visitante of visitantes">
+    <h2>Visitante</h2>
+    <div class="row fila1">
+      <div class="col-5">
+        <label class="form-label" for="buscaSalidaName">Nombre:</label>
+        <input required autocomplete="off" type="text" placeholder="Nombre" class="inputAgendados form-control"
+          name="buscaSalidaName" id="buscaSalidaName" [(ngModel)]="visitante.nombreVisitante">
+      </div>
+      <div class="col-5">
+        <label class="form-label" for="tipoVehiculo">Tipo de vehículo:</label>
+        <input required autocomplete="off" type="text" placeholder="Tipo de vehiculo " class="inputAgendados form-control"
+          name="tipoVehiculo" id="tipoVehiculo" [(ngModel)]="visitante.vehiculoVisitante">
+      </div>
+    </div>
+
+    <div class="row fila2">
+      <div class="col-5">
+        <label class="form-label" for="fechaVisita">Fecha:</label>
+        <input required autocomplete="off" type="date" placeholder="Fecha agendada" class="inputAgendados form-control"
+        name="fechaVisita" id="fechaVisita" [(ngModel)]="visitante.fechaLlegada">
+      </div>
+      <div class="col-5">
+        <label class="form-label" for="fechaVisita">Hora:</label>
+        <input required autocomplete="off" type="time" placeholder="Hora" class="inputAgendados form-control" id="fechaVisita" name="fechaVisita"
+          [(ngModel)]="visitante.horaLlegada">
+      </div>
+    </div>
+
+    <div class="row fila3">
+      <div class="col-6"></div>
+      <div class="col-3">
+        <button class="botonCancelar btn btn-danger btn-block">Cancelar</button>
+      </div>
+      <div class="col-3">
+        <button class="botonEditar btn btn-primary btn-block">Editar</button>
+      </div>
+    </div>
+
+  </div>
   
 </div>

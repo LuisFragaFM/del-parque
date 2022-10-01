@@ -19,72 +19,40 @@
 
         <div class="input-group-text bg-dark mt-4">
           <div class="p-2">
-            <img
-              src="../assets/Silueta2.PNG"
-              alt="icon username"
-              style="height: 2rem"
-            />
+            <img src="../assets/Silueta2.PNG" alt="icon username" style="height: 2rem" />
           </div>
           <!-- Ingreso de correo electronico -->
-          <input
-            class="form-control"
-            id="email"
-            (keydown)="validaMail(regexMail, login.value)"
-            type="text"
-            placeholder="Ingresa Correo"
-            #login
-            required
-          />
+          <input class="form-control" id="email" (keydown)="validaMail(regexMail, login.value)" type="text"
+            placeholder="Ingresa Correo" #login required />
         </div>
-        <!--Alerta de datos -->
+        <!--Alerta de datos 
         <div id="alertMail" class="alert alert-danger" *ngIf="!validacionMail">
           Agregue una dirección de correo valida
-        </div>
+        </div> -->
         <div class="input-group-text bg-dark mt-2">
           <div class="p-1">
-            <img
-              src="../assets/Silueta3.PNG"
-              alt="icon password"
-              style="height: 2rem"
-            />
+            <img src="../assets/Silueta3.PNG" alt="icon password" style="height: 2rem" />
           </div>
           <!-- Ingreso de datos en contrase;a -->
-          <input
-            class="form-control"
-            id="password"
-            (keydown)="validaPassword(regexPssw, password.value)"
-            type="password"
-            placeholder="Ingresa Contraseña"
-            #password
-            required
-          />
+          <input class="form-control" id="password" (keydown)="validaPassword(regexPssw, password.value)"
+            type="password" placeholder="Ingresa Contraseña" #password required />
         </div>
-        <!--Alerta de datos -->
-        <div
-          id="alertPassw"
-          class="alert alert-danger"
-          *ngIf="!validacionContra"
-        >
+        <!--Alerta de datos 
+        <div id="alertPassw" class="alert alert-danger" *ngIf="!validacionContra">
           La contraseña debe tener al entre 8 y 16 caracteres, al menos un
           dígito, al menos una minúscula y al menos una mayúscula. Puede tener
           otros símbolos.
         </div>
+        -->
         <div>
           <div>
-            <button
-              class="btn btn-dark w-100 mt-4"
-              (click)="apiLogin(login.value, password.value)"
-              [disabled]="!isValidForm()"
-            >
+            <!-- <button class="btn btn-dark w-100 mt-4" (click)="apiLogin(login.value, password.value)"
+              [disabled]="!isValidForm()">-->
+            <button class="btn btn-dark w-100 mt-4" (click)="apiLogin(login.value, password.value)">
               Entrar
             </button>
           </div>
-          <input
-            type="checkbox"
-            name="remember-me"
-            [(ngModel)]="rememberMe"
-            id="remember-me"
-          />
+          <input type="checkbox" name="remember-me" [(ngModel)]="rememberMe" id="remember-me" />
           <label for="remember-me">Recordar Contraseña</label>
         </div>
       </div>

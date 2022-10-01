@@ -1,23 +1,50 @@
-/* titulo */
-
-.title {
-    position: relative;
-    top: 60px;
-    left: 50px;
-}
+  h2{
+    margin: 20px;
+  }
 
 
-/* blur */
-
-.contenido {
+  .container {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    height: 710px;
-    width: 1170px;
-}
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+  }
+  .div_file {
+    text-align: center;
+    padding: 3%;
+    border: thin solid black;
+  }
 
+  #inputTag {
+    display: none;
+  }
 
-/* imagen de usuario */
+  #insert{
+    cursor: pointer;
+  }
+
+  .imagenUser {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  @media only screen and (max-width: 999px){
+    img{
+        width: 100px;
+    }
+  }
+
+  @media only screen and (max-width: 499px){
+
+    img{
+        width: 80px;
+    }
+  }
+
+/* imagen de usuario 
 
 .imagenUser {
     position: absolute;
@@ -26,9 +53,9 @@
     left: 75px;
     top: 380px;
 }
+*/
 
-
-/* mostrar datos*/
+/* mostrar datos
 
 .inputDatosAltas {
     position: absolute;
@@ -41,75 +68,16 @@
     outline: 0px;
     font-size: 15px;
 }
-
+*/
 
 /* campo de los datosa mostrar */
 
-.nombreDatos {
-    position: absolute;
-    font-size: 20px;
-    top: 120px;
-    left: 90px;
-    width: 600px;
-}
-
-.direccionDatos {
-    position: absolute;
-    font-size: 20px;
-    top: 195px;
-    left: 90px;
-    width: 600px;
-}
-
-.emergenciaDatos {
-    position: absolute;
-    font-size: 20px;
-    top: 285px;
-    left: 90px;
-    width: 600px;
-}
-
-.telefonoDatos {
-    position: absolute;
-    font-size: 20px;
-    top: 120px;
-    left: 650px;
-    width: 600px;
-}
-
-.correoDatos {
-    position: absolute;
-    font-size: 20px;
-    top: 195px;
-    left: 650px;
-    width: 600px;
-}
-
-.numcasaDatos{
-    position: absolute;
-    font-size: 20px;
-    top: 280px;
-    left: 650px;
-    width: 600px;
-}
 
 
 /* dise;o del boton */
 
-.botonGuardar {
-    position: absolute;
-    height: 35px;
-    width: 200px;
-    top: 350px;
-    left: 850px;
-    background-color: rgb(110, 148, 221);
-    color: white;
-    border-radius: 40px;
-    font-size: 25px;
-}
 
-
-/* estado de pago */
+/* estado de pago 
 
 .estadoPago {
     position: absolute;
@@ -123,7 +91,11 @@
     top: 45px;
     left: 300px;
 }
+*/
 
+button{
+    margin-top: 30px;
+}
 .cursor {
     cursor: pointer;
   }
