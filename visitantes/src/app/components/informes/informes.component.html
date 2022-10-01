@@ -1,26 +1,81 @@
-<!-- contenedor de informes de inquilinos -->
+<div class="container">
+    <div class="tarjet row border border-dark border-4 rounded">
+        <h2>Informes</h2>
+        <div class="col">
+            <label class="form-label" for="buscaPagosName">Busqueda de inquilino: </label>
+            <input required autocomplete="off" id="buscaPagosName" type="text" placeholder="Buscar Inquilino"
+                class="inputBarra form-control" name="buscaPagosName " [(ngModel)]="name">
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-5">
+                <label class="form-label" for="periodoDate">Perido de: </label>
+                <input required autocomplete="off" type="date" placeholder="DD/MM/AAAA" id="periodoDate"
+                    class="Periodo form-control" name="periodoDate">
+
+            </div>
+            <div class="col-5">
+                <label class="form-label" for="periodoDate">Hasta: </label>
+                <input required autocomplete="off" type="date" placeholder="DD/MM/AAAA" id="periodoDate"
+                    class="Periodo form-control" name="periodoDate">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-3"></div>
+            <div class="col-3">
+                <button class="boton btn btn-primary btn-block" (click)="findInquilino()">Buscar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="tarjet row border border-dark border-4 rounded align-items-center" >
+        <div class="col-5"><div class="imagenUser">
+            <label class="form-label" for="busquedaInquilino">Nombre:</label>
+            <input required autocomplete="off" type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino form-control" id="busquedaInquilino" name="busquedaInquilino"
+                   [(ngModel)]="condomino.name" readonly="readonly">
+        </div></div>
+        <div class="col-5 text-center">
+            <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="180px">
+            
+        </div>
+        <div class="row ">
+            <div class="col-5">
+            <button class="boton btn btn-primary btn-block">Descargar</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--
+ contenedor de informes de inquilinos 
 <div class="contenido">
     <div class="containerInquilinos">
-        <!-- contenedor de titulo contenedor -->
+         contenedor de titulo contenedor 
         <div class="title1">
           <h1>INFORMES</h1>
         </div>
-        <!-- titulo de seccion-->
+         titulo de seccion
         <div class="infoTxt">
           <h2>BUSQUEDA DE INQUILINO</h2>
         </div>
-        <!-- form de nombre -->
+         form de nombre 
         <div class="nombre">
           <h3>Nombre<br><br></h3>
           <input required autocomplete="off" type="text" placeholder="Buscar Inquilino" class="inputBarra" name="buscaPagosName" [(ngModel)]="name">
         </div>
-        <!-- form de telefono 
+         form de telefono 
         <div class="telefono">
           <h3>Número de teléfono<br><br></h3>
           <input required autocomplete="off" type="text" placeholder="Buscar por numero de teléfono" class="inputBarra" name="buscaPagosTel"
                  [(ngModel)]="phone">
-        </div>-->
-        <!-- boton para enviar datos del formulario y realizar busqueda-->
+        </div>
+         boton para enviar datos del formulario y realizar busqueda
         <div class="button">
           <button class="boton" (click)="findInquilino()">Buscar</button>
         </div>
@@ -31,33 +86,34 @@
                 <input required autocomplete="off" type="date" placeholder="DD/MM/AAAA" class="Periodo" name="periodoDate">
             </div>
         </div>
-        <!-- Seleccionar fecha final -->
+         Seleccionar fecha final 
         <div class="hasta">
             <div class="hastaTxt">
                 <h3>Hasta: <br><br> </h3>
                 <input required autocomplete="off" type="date" placeholder="DD/MM/AAAA" class="hasta" name="hastaDate">
             </div>
         </div>
-        <!-- boton para enviar datos del formulario y realizar busqueda-->
+         boton para enviar datos del formulario y realizar busqueda
         <div class="button">
             <button class="boton"  (click)="findInquilino()">BUSCAR</button>
         </div>
     </div>
-    <!-- contenedor descargar datos inquilino -->
+     contenedor descargar datos inquilino 
     <div class="containerDescargar">
-        <!-- Imagen de programa -->
+         Imagen de programa 
         <div class="imagenUser">
             <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="180px">
         </div>
-        <!-- nombre de busqueda para descargar datos -->
+         nombre de busqueda para descargar datos 
         <div class="nombreBar">
             <h3>Nombre<br><br></h3>
             <input required autocomplete="off" type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino" name="busquedaInquilino"
                    [(ngModel)]="condomino.name" readonly="readonly">
         </div>
-        <!-- boton para enviar datos del formulario y realizar la descarga -->
+         boton para enviar datos del formulario y realizar la descarga 
         <div class="buttonDescarga">
             <button class="boton">Descargar</button>
         </div>
     </div>
 </div>
+-->
