@@ -1,6 +1,5 @@
 package com.example.delparque.controllers;
 
-import com.example.delparque.dto.LoggedUser;
 import com.example.delparque.service.FilesStorageService;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
@@ -20,21 +19,18 @@ import java.util.Map;
 public class FilesController {
 
     private final FilesStorageService filesStorageService;
-    private final SessionHelper sessionHelper;
 
-    public FilesController(FilesStorageService filesStorageService, SessionHelper sessionHelper) {
+    public FilesController(FilesStorageService filesStorageService) {
         this.filesStorageService = filesStorageService;
-        this.sessionHelper = sessionHelper;
     }
 
-    @PostMapping("uploads")
+    @PostMapping("uploads/{condominoId}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<Map<String, Object>> uploadFile(@RequestParam("file") MultipartFile file,
-                                                          Principal principal) {
+                                                          @PathVariable String condominoId) {
         Map<String, Object> response = new HashMap<>();
-        LoggedUser loggedUser = sessionHelper.getLoggedUser(principal);
         try {
-            filesStorageService.save(file, loggedUser.getUserId());
+            filesStorageService.save(file, condominoId);
 
             response.put("message", "Archivo subido exitosamente");
 
@@ -55,9 +51,9 @@ public class FilesController {
                 .contentType(MediaType.IMAGE_JPEG).body(file);
     }
 
-    @GetMapping("/filename")
-    public Map<String, String> getFileName(Principal principal) {
-        LoggedUser loggedUser = sessionHelper.getLoggedUser(principal);
-        return Map.of("filename", filesStorageService.getFilenameByLoggedUser(loggedUser));
+    @GetMapping("/filename/{userId}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    public Map<String, String> getFileName(@PathVariable String userId) {
+        return Map.of("filename", filesStorageService.getFilenameByUserId(userId));
     }
 }

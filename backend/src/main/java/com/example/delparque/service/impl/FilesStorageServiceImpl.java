@@ -1,6 +1,5 @@
 package com.example.delparque.service.impl;
 
-import com.example.delparque.dto.LoggedUser;
 import com.example.delparque.model.UserImage;
 import com.example.delparque.repository.UserImageRepository;
 import com.example.delparque.service.FilesStorageService;
@@ -94,8 +93,8 @@ public class FilesStorageServiceImpl implements FilesStorageService {
     }
 
     @Override
-    public String getFilenameByLoggedUser(LoggedUser loggedUser) {
-        return userImageRepository.findByUserId(loggedUser.getUserId()).orElse(new UserImage())
+    public String getFilenameByUserId(String userId) {
+        return userImageRepository.findByUserId(userId).orElse(new UserImage())
                 .getFilename();
     }
 }

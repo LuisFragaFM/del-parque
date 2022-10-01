@@ -24,10 +24,12 @@ export class SessionService {
     if (this.user) {
       return of(this.user);
     }
+
     return this.http.get<User>(`${environment.baseUrl}/loggedUser`)
       .pipe(map(user => {
         if (this.rememberMe) {
           localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('auth', this.authorizationHeader!);
         }
         this.user = user;
         return this.user;
@@ -35,20 +37,15 @@ export class SessionService {
   }
 
   get authorizationHeader(): string | null {
+    if (localStorage.getItem('auth')) {
+      this._authorizationHeader = localStorage.getItem('auth');
+    }
     return this._authorizationHeader;
   }
 
   setCredentials(email: string, password: string, rememberMe: boolean = false): void {
     this.rememberMe = rememberMe;
     this._authorizationHeader = btoa(email + ':' + password);
-
-    if (rememberMe) {
-      localStorage.setItem('auth', this._authorizationHeader);
-    }
-
-    if (localStorage.getItem('auth')) {
-      this._authorizationHeader = localStorage.getItem('auth');
-    }
   }
 
   logout(): void {

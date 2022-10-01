@@ -46,7 +46,7 @@ public class VisitantesServiceImpl implements VisitantesService {
                 " LIMIT " + pageable.getPageSize() +
                 " OFFSET " + pageable.getOffset(), mapSqlParameterSource, trabajadoresViewMapper);
 
-        return new PageImpl<>(visitantes, pageable, 10);
+        return new PageImpl<>(visitantes, pageable, pageable.getPageSize());
     }
 
     @Override

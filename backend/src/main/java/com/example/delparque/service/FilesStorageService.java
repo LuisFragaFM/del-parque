@@ -18,5 +18,5 @@ public interface FilesStorageService {
 
     Stream<Path> loadAll();
 
-    String getFilenameByLoggedUser(LoggedUser loggedUser);
+    String getFilenameByUserId(String userId);
 }

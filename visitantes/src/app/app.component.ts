@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { User } from './models/user';
 import { SessionService } from './services/session.service';
 import { UsuariosService } from './services/usuarios.service';
-import { validaInput } from 'src/tools/validation';
+import { validaInput } from 'src/app/tools/validation';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -40,19 +40,12 @@ export class AppComponent {
       (user) => {
         this.failedLogin = false;
         this.user = user;
-        console.log(this.user);
       },
       (error) => {
         this.failedLogin = true;
         console.log(error);
       }
     );
-  }
-
-  register() {
-    this.usuariosService.register(this.user!).subscribe((user) => {
-      this.user = user;
-    });
   }
 
   // funcion para validacion

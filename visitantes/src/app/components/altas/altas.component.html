@@ -50,7 +50,7 @@
           <label id="insert" for="inputTag">
             Insertar foto
             <i class="fa fa-2x fa-camera"></i>
-            <input id="inputTag" type="file" (change)="submit($event)" accept="image/*" required />
+            <input id="inputTag" type="file" (change)="showImage($event)" accept="image/*" required />
             <span id="imageName"></span>
           </label>
 
@@ -73,7 +73,7 @@
     </div>
     <div class="row mt-3">
       <div class="col-5">
-        <img [src]="uri" alt="" class="imagenUser">
+        <img [src]="uri" alt="" class="imagenUser" *ngIf="uri">
       </div>
       <div class="col-4">
         <button class="botonGuardar btn btn-success btn-block" type="submit">
@@ -85,12 +85,12 @@
   </form>
   <!--contenedor modificar condomino
   <div class="containerModificar">
-     contenedor de titulo contenedor 
+     contenedor de titulo contenedor
     <div class="title">
       <h1>ALTA DE CONDÓMINO</h1>
     </div>
     <form (ngSubmit)="save()">
-       Imagen de programa 
+       Imagen de programa
       <div class="imagenUser">
         <h3>Foto del condómino<br /><br /></h3>
         <img
@@ -100,7 +100,7 @@
           width="200px"
         />
       </div>
-       form de nombre 
+       form de nombre
       <div class="nombreDatos">
         <h3>Nombre:<br /><br /></h3>
         <input
@@ -114,12 +114,12 @@
           name="muestraCondominoName"
           [(ngModel)]="condomino.name"
         />
-        Alerta de datos 
+        Alerta de datos
         <div id="alertName" class="alert alert-danger" *ngIf="!altaName">
           Favor de agregar solamente letras en este campo
         </div>
       </div>
-       form de direccion 
+       form de direccion
       <div class="direccionDatos">
         <h3>Dirección:<br /><br /></h3>
         <input
@@ -132,7 +132,7 @@
           [(ngModel)]="condomino.direccion"
         />
       </div>
-       form de numero emergencia 
+       form de numero emergencia
       <div class="emergenciaDatos">
         <h3>Número de emergencia:<br /><br /></h3>
         <input
@@ -148,7 +148,7 @@
           name="muestraCondominoEmergencia"
           [(ngModel)]="condomino.numeroEmergencia"
         />
-        Alerta de datos 
+        Alerta de datos
         <div
           id="alertEmergency"
           class="alert alert-danger"
@@ -171,7 +171,7 @@
           name="muestraCondominoTelefono"
           [(ngModel)]="condomino.numeroTelefono"
         />
-        Alerta de datos 
+        Alerta de datos
         <div
           id="alertTelefono"
           class="alert alert-danger"
@@ -180,7 +180,7 @@
           Favor de agregar un número de telefono valido
         </div>
       </div>
-       form de correo 
+       form de correo
       <div class="correoDatos">
         <h3>Correo Electrónico:<br /><br /></h3>
         <input
@@ -194,7 +194,7 @@
           name="muestraCondominoCorreo"
           [(ngModel)]="condomino.correoElectronico"
         />
-        Alerta de datos 
+        Alerta de datos
         <div
           id="alertEmail"
           class="alert alert-danger"
@@ -217,12 +217,12 @@
           [(ngModel)]="condomino.numeroCasa"
         />
       </div>
-       boton guardar 
+       boton guardar
       <button class="botonGuardar" type="submit" [disabled]="!isValidForm()">
         Guardar
       </button>
     </form>
-     Estado de pago 
+     Estado de pago
     <div class="estadoPago">
       <h3>Pago:<br /><br /></h3>
       <div

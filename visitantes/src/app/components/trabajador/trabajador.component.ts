@@ -3,7 +3,7 @@ import { Trabajador } from '../../models/trabajador';
 import { TrabajadoresService } from '../../services/trabajadores.service';
 import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
-import { validaInput } from 'src/tools/validation';
+import { validaInput } from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
 
 @Component({

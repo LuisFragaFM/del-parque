@@ -28,6 +28,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     }
 
     if (error?.error?.code) {
+      console.log('hola')
       errorMessage = error.error.message;
       Swal.fire({
         title: error.error.message,
@@ -48,9 +49,6 @@ export class AuthInterceptorService implements HttpInterceptor {
         headers: req.headers.set('Authorization', `Basic ${this.sessionService.authorizationHeader}`)
       });
       return next.handle(req2).pipe(catchError(error => {
-        if (localStorage.getItem('auth')) {
-          localStorage.removeItem('auth');
-        }
         return AuthInterceptorService.handleError(error);
       }));
     }

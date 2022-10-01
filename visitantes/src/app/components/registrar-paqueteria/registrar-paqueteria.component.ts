@@ -4,7 +4,7 @@ import { Paquete } from '../../models/paquete';
 import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
 import Swal from 'sweetalert2';
-import { validaInput } from 'src/tools/validation';
+import { validaInput } from 'src/app/tools/validation';
 
 @Component({
   selector: 'app-registrar-paqueteria',

@@ -12,48 +12,41 @@ import {environment} from "../../../environments/environment";
 })
 export class PagosComponent implements OnInit {
   name: string | undefined;
-  phone: string | undefined;
   condomino: Condomino = {} as Condomino;
   condominos: Condomino[] = [];
   image: any;
   environment = environment.baseUrl;
-  uri!: string;
+  uri: any = '';
+  files!: FileList;
 
   constructor(private condominosService: CondominosService, private uploadFilesService: UploadFilesService) {
   }
 
   ngOnInit(): void {
-    this.findImage();
   }
 
   findInquilinoByName() {
     this.condominosService.findByName(this.name!).subscribe(condominos => {
-      console.log(condominos);
       this.condominos = condominos;
     });
   }
 
-  findInquilinoByTelephone() {
-    this.condominosService.findByTelefono(this.phone!).subscribe(condomino => {
-      this.condomino = condomino;
-    });
-  }
-
   modify() {
-    if (this.condomino.id) {
-      this.condominosService.save(this.condomino).subscribe(condomino => {
-        Swal.fire({
-          title: `El condomino de ${condomino.name} fue guardado correctamente`,
-          icon: 'success',
-          showDenyButton: false,
-          showCancelButton: false,
-          confirmButtonText: `Cerrar`
-        }).then(() => {
-          this.condomino = {} as Condomino;
-        });
-        this.condomino = condomino;
+    this.condominosService.save(this.condomino).subscribe(condomino => {
+      Swal.fire({
+        title: `El condomino de ${condomino.name} fue guardado correctamente`,
+        icon: 'success',
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: `Cerrar`
+      }).then(() => {
+        if (this.files[0]) {
+          this.uploadFilesService.upload(this.files[0], condomino.id).subscribe(() => {
+          });
+        }
       });
-    }
+      this.condomino = {} as Condomino;
+    });
   }
 
   delete() {
@@ -90,20 +83,20 @@ export class PagosComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = undefined;
-    this.phone = undefined;
+    this.uploadFilesService.loadFilename(this.condomino.id).subscribe(({filename}) => {
+      this.uri = this.environment + '/file/' + filename;
+    });
   }
 
-  submit(event: Event) {
+  changeImage(event: Event): void {
     const target = event.target as HTMLInputElement;
-    const files = target.files as FileList;
-    this.uploadFilesService.upload(files[0]).subscribe(() => {
-      this.findImage();
-    });
-  }
+    this.files = target.files as FileList;
 
-  findImage() {
-    this.uploadFilesService.loadFilename().subscribe(({filename}) => {
-      this.uri = this.environment + "/file/" + filename;
-    });
+    const reader = new FileReader();
+    reader.readAsDataURL(this.files[0]);
+
+    reader.onload = (_event) => {
+      this.uri = reader.result;
+    }
   }
 }
