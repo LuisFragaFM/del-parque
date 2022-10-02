@@ -1,4 +1,5 @@
 export interface Paquete {
+  entregado: boolean;
   id: string;
   nombreEmpresa: string;
   numeroGuia: string;

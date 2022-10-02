@@ -50,33 +50,28 @@ export class PagosComponent implements OnInit {
   }
 
   delete() {
-    if (this.condomino.id) {
+    Swal.fire({
+      title: `Estas seguro que deseas borrar este condomino?`,
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonText: `Si`,
+      cancelButtonText: `No`
+    }).then((value) => {
+      if (value.isConfirmed) {
+        this.condominosService.delete(this.condomino.id).subscribe(() => {
+          Swal.fire({
+            title: `El condomino de ${this.condomino.name} fue borrado correctamente`,
+            icon: 'success',
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: `Cerrar`
+          }).then(() => {
+            this.condomino = {} as Condomino;
 
-      Swal.fire({
-        title: `Estas seguro que deseas borrar este condomino?`,
-        icon: 'warning',
-        showDenyButton: true,
-        confirmButtonText: `Si`,
-        cancelButtonText: `No`
-      }).then((value) => {
-        if (value.isConfirmed) {
-          this.condominosService.delete(this.condomino.id).subscribe(() => {
-            Swal.fire({
-              title: `El condomino de ${this.condomino.name} fue borrado correctamente`,
-              icon: 'success',
-              showDenyButton: false,
-              showCancelButton: false,
-              confirmButtonText: `Cerrar`
-            }).then(() => {
-              this.condomino = {} as Condomino;
-
-            });
           });
-        }
-
-      });
-
-    }
+        });
+      }
+    });
   }
 
   selectInquilino(condomino: Condomino) {

@@ -54,4 +54,8 @@ public class Visitante {
 
     @Column(name = "id_condomino")
     private String idCondomino;
+
+    private boolean autorizada;
+
+    private boolean salio;
 }

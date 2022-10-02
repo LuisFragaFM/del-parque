@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Paquete {
+public class Package {
     @Id
     private String id;
 
@@ -61,4 +61,6 @@ public class Paquete {
 
     @Column(name = "hora_entrega")
     private String horaEntrega;
+
+    private boolean entregado;
 }

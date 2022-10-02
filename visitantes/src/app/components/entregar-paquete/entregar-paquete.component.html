@@ -14,123 +14,44 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label" for="recibidorfor">Recibido por: </label>
-        <input id="recibidorfor" required autocomplete="off" type="text" placeholder="Persona que recibe" class="form-control"
-        [(ngModel)]="paquete.recibeGuardia">
+        <input id="recibidorfor" required autocomplete="off" type="text" placeholder="Persona que recibe"
+               class="form-control"
+               [(ngModel)]="paquete.recibeInquilino">
       </div>
       <div class="col-5">
         <label class="form-label" for="entregadofor">Entregado por: </label>
-        <input  id="entregadofor" required autocomplete="off" type="text" placeholder="Persona que entrega" class="form-control" 
-        [(ngModel)]="paquete.entregaGuardia">
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-5">
-        <label class="form-label" for="fechaentrega">Fecha de entrega: </label>
-        <input id="fechaentrega" required autocomplete="off" type="text" placeholder="Fecha de entrega" class="form-control" 
-        [(ngModel)]="paquete.fechaLlegada">
-      </div>
-      <div class="col-5">
-        <label class="form-label" for="horaentrega">Hora de entrega: </label>
-        <input id="horaentrega" required autocomplete="off" type="text" placeholder="Hora de entrega" class="form-control" 
-        [(ngModel)]="paquete.horaLlegada">
+        <input id="entregadofor" required autocomplete="off" type="text" placeholder="Persona que entrega"
+               class="form-control"
+               [(ngModel)]="paquete.entregaGuardia">
       </div>
     </div>
     <div class="row mt-3  ">
       <div class="col-5">
-        <label class="form-label" for="guarda_Paquete">Caseta Llegada</label>
-        <input class="form-control" required autocomplete="off" type="text" placeholder="Guardar paquete en" id="guarda_Paquete"
-                       [(ngModel)]="paquete.casetaRecibida">
-
+        <label class="form-label" for="caseta">Caseta Entrega</label>
+        <select class="form-control" required autocomplete="on" name="Caseta" id="caseta"
+                [(ngModel)]="paquete.casetaEntrega">
+          <option value="Caseta 1">
+            <h2>Caseta 1</h2>
+          </option>
+          <option value="Caseta 2">
+            <h2>Caseta 2</h2>
+          </option>
+        </select>
       </div>
+      <label class="form-label" for="guia">Numero de guia</label>
+      <input class="form-control"
+             disabled
+             autocomplete="off"
+             type="text"
+             placeholder="Guardar paquete en"
+             id="guia"
+             [(ngModel)]="paquete.numeroGuia">
       <div class="col-5 ">
-        
-        <button class="botonModificar btn btn-lg btn-primary">Entregar</button>
+
+        <button class="botonModificar btn btn-lg btn-primary" (click)="save(paquete)">Entregar</button>
       </div>
-      
+
     </div>
 
   </div>
 </div>
-
-
-<!--
-<div class="titleDatos">
-  <h2>ENTREGA PAQUETE</h2>
-</div>
-<div *ngFor="let paquete of paquetes">
-   contenedor de inquinos 
-  <div class="contenido">
-     contenedor para flexbox 
-    <div class="PaqueteBusqueda">
-       Datos del Visitante
-      <div class="bitacoraDatos">
-         titulo contenedor 
-        <div class="titleDatos">
-          <h2>Paquete</h2>
-        </div>
-         formulario recibido 
-        <section>
-          <div class="form">
-            <div class="input">
-              <label for="recibe_Paquete">Recibido por:</label>
-              <input required autocomplete="off" type="text" placeholder="Persona que recibe" id="recibe_Paquete"
-                     [(ngModel)]="paquete.recibeGuardia">
-            </div>
-          </div>
-        </section>
-         formulario fecha 
-        <section>
-          <div class="form2">
-            <div class="input">
-              <label for="fecha_entrega">Fecha de entrega:</label>
-              <div class="dateForm">
-                <input required autocomplete="off" type="date" id="fecha_entrega" [(ngModel)]="paquete.fechaLlegada">
-              </div>
-            </div>
-          </div>
-        </section>
-         formulario Nombre del entregado 
-        <section>
-          <div class="form3">
-            <div class="input">
-              <label for="entregaPaquete">Entregado por:</label>
-              <div class="entregaForm">
-                <input required autocomplete="off" type="text" placeholder="Persona que entrega" id="entregaPaquete"
-                       [(ngModel)]="paquete.entregaGuardia">
-              </div>
-            </div>
-          </div>
-        </section>
-         formulario horas Entregado 
-        <section>
-          <div class="form4">
-            <div class="input">
-              <label for="hora_entrega">Hora de entrega:</label>
-              <div class="entregaHora">
-                <input required autocomplete="off" type="time" id="hora_entrega" [(ngModel)]="paquete.horaLlegada">
-              </div>
-            </div>
-          </div>
-        </section>
-         formulario caseta 
-        <section>
-          <div class="form5">
-            <div class="input">
-              <label for="guarda_Paquete">Caseta Llegada</label>
-              <div class="entregaCaseta">
-                <input required autocomplete="off" type="text" placeholder="Guardar paquete en" id="guarda_Paquete"
-                       [(ngModel)]="paquete.casetaRecibida">
-              </div>
-            </div>
-          </div>
-        </section>
-         boton para enviar datos del eliminar y realizar registro del paquete
-        <div class="botonesRegistro">
-           boton Guardar 
-          <button (click)="save(paquete)">Entregar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
--->

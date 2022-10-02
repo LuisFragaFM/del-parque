@@ -38,7 +38,8 @@ CREATE TABLE paquetes
     caseta_entrega   varchar(120),
     nombre_condomino varchar(40),
     numero_casa      varchar(15),
-    calle            varchar(120)
+    calle            varchar(120),
+    entregado        boolean
 );
 
 CREATE TABLE visitantes
@@ -55,6 +56,8 @@ CREATE TABLE visitantes
     autorizacion       varchar(120),
     caseta_llegada     varchar(120),
     caseta_salida      varchar(120),
+    autorizada         boolean,
+    salio              boolean,
     id_condomino       varchar(40) references condominos
 );
 

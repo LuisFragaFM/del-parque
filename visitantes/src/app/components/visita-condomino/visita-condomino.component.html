@@ -60,8 +60,13 @@
       </div>
       <div class="col-5">
         <label class="form-label" for="autoriza">Autorizada por</label>
-        <input id="autoriza" class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-          (keyup)="findInquilinoByName()" [(ngModel)]="name">
+        <input id="autoriza" class="form-control"
+               required
+               disabled
+               autocomplete="off"
+               type="text"
+               placeholder="Escriba aqui"
+          (keyup)="findInquilinoByName()" [(ngModel)]="visitante.autorizacion">
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">
             <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
@@ -73,7 +78,7 @@
 
     <div class="row">
       <div class="col-5">
-        <label class="form-label" for="hora">Hora</label> 
+        <label class="form-label" for="hora">Hora</label>
         <input class="form-control" id="hora" required autocomplete="off" type="time" placeholder="Escriba aqui" [(ngModel)]="visitante.horaLlegada">
       </div>
       <div class="col-5"></div>
@@ -85,7 +90,7 @@
       <div class="col-3 align-self-end">
         <button class="botonAgendar btn btn-success btn-block" (click)="save()">Agendar</button>
       </div>
-     
+
     </div>
 
   </div>

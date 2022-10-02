@@ -1,14 +1,14 @@
 package com.example.delparque.service;
 
-import com.example.delparque.dto.Paquete;
+import com.example.delparque.dto.Package;
 import org.springframework.data.domain.Page;
 
 public interface PackageService {
-    Paquete save(Paquete paquete);
+    Package save(Package aPackage);
 
-    Page<Paquete> findAll(Integer page);
+    Page<Package> findAll(Integer page);
 
-    Paquete findById(String id);
+    Package findById(String id);
 
     void delete(String id);
 }

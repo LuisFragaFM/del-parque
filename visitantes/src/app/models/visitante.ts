@@ -1,4 +1,5 @@
 export interface Visitante {
+  autorizada: boolean;
   id: string;
   nombreVisitante: string;
   tarjetonVisitante: string;

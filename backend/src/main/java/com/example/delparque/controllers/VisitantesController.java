@@ -17,10 +17,15 @@ public class VisitantesController {
         this.visitantesService = visitantesService;
     }
 
-    @GetMapping()
+    @GetMapping("/unAuthorized")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Page<Visitante> findAll(@RequestParam Integer page) {
-        return visitantesService.findAll(page);
+    public Page<Visitante> findAllUnauthorized(@RequestParam Integer page) {
+        return visitantesService.findAllUnauthorized(page);
+    }
+    @GetMapping("/noLeft")
+    @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
+    public Page<Visitante> findAllNoLeft(@RequestParam Integer page) {
+        return visitantesService.findAllNoLeft(page);
     }
 
     @GetMapping("{id}")

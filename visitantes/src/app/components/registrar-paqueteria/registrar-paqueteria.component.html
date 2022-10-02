@@ -11,7 +11,7 @@
               <!--Alerta de datos (nombre)-->
           <div id="alertEmpresa" class="row alert alert-danger" *ngIf="!validacionEmpresa">
             Ingrese el nombre de la empresa
-          </div> 
+          </div>
       </div>
       <div class="col-5">
         <!-- Numero de guia del paquete -->
@@ -22,7 +22,7 @@
         <div id="alertGuia" class="row alert alert-danger" *ngIf="!validacionGuia">
           Ingrese la guia del paquete
         </div>
-        
+
       </div>
     </div>
   </section>
@@ -60,10 +60,10 @@
     <div class="row g-3 mt-3 row justify-content-around">
       <div class="col-5">
         <!-- se escribe por quien fue recibido el paquete -->
-        <label class="form-label" for="recibido">Recibido por:</label>
+        <label class="form-label" for="recibido">Guardia que recibe:</label>
         <input class="form-control" (keyup)="validaReci(regexName, residenteRecibe.value)" required #residenteRecibe
           autocomplete="off" type="text" placeholder="Escriba aqui" id="recibido"
-          [(ngModel)]="paquete.recibeInquilino" />
+          [(ngModel)]="paquete.recibeGuardia" />
         <!--Alerta de datos (recibe Inquilino)-->
         <div id="alertRecibo" class="alert alert-danger" *ngIf="!validacionRecibo">
           Ingrese el nombre de la persona que recibe
@@ -71,7 +71,7 @@
       </div>
       <div class="col-5">
         <label class="form-label" for="fecha">Fecha</label>
-            <input class="form-control" (change)="validaFecha(regexDate, fechaRecibe.value)" required #fechaRecibe
+            <input class="form-control" required #fechaRecibe
               autocomplete="off" type="date" id="fecha" [(ngModel)]="paquete.fechaLlegada" />
             <!--Alerta de datos (recibe Inquilino)-->
             <div id="alertFecha" class="alert alert-danger" *ngIf="!fechaRecibo">

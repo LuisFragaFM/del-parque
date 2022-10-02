@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Paquete {
+public class Package {
     private String id;
     private String nombreEmpresa;
     private String numeroGuia;
@@ -27,4 +27,5 @@ public class Paquete {
     private String calle;
     private String horaEntrega;
     private String horaLlegada;
+    private boolean entregado;
 }
