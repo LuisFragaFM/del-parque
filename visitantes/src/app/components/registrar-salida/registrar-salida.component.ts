@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {VisitantesService} from "../../services/visitantes.service";
 
 @Component({
   selector: 'app-registrar-salida',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrarSalidaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private visitantesService: VisitantesService) {
+  }
 
   ngOnInit(): void {
+    this.visitantesService.getVisitantesNoLeft(0).subscribe(({content: visitantes}) => {
+      console.log(visitantes);
+    });
   }
 
 }

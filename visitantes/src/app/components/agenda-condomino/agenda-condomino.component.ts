@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
   styleUrls: ['./agenda-condomino.component.css']
 })
 export class AgendaCondominoComponent implements OnInit {
-  
+
   // datos usados para realizar la busqueda
   name: string | undefined;
   visitante: Visitante = {} as Visitante;
@@ -20,11 +20,11 @@ export class AgendaCondominoComponent implements OnInit {
 
   ngOnInit(): void {
     //Paginacion
-    this.visitantesService.getVisitantes(1).subscribe((visitantes)=>{
+    this.visitantesService.getVisitantesUnauthorized(1).subscribe((visitantes)=>{
 
       this.visitantes = visitantes.content;
     });
-    this.visitantesService.getVisitantes(this.page).subscribe(visitantes => {
+    this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
       const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
       for (let i = 0; i < totalOfPages; i++) {
@@ -47,10 +47,10 @@ export class AgendaCondominoComponent implements OnInit {
     }
 
   }
-  
+
   updatePage(page: number) {
     this.page = page - 1;
-    this.visitantesService.getVisitantes(this.page).subscribe(visitantes => {
+    this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
     })
   }

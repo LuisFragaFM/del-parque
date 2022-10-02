@@ -4,7 +4,6 @@ import {Paquete} from "../../models/paquete"; //Modelo de paquete
 import {PaquetesService} from "../../services/paquetes.service"; //Servicio de paquete
 import Swal from "sweetalert2";
 
-
 @Component({
   selector: 'app-entregar-paquete',
   templateUrl: './entregar-paquete.component.html',
@@ -32,7 +31,9 @@ export class EntregarPaqueteComponent implements OnInit {
 
   // Notificaciones de usuario
   save(paquete: Paquete) {
-
+    paquete.fechaEntrega = this.formatDate();
+    paquete.horaEntrega = this.formatAMPM();
+    paquete.entregado = true;
     this.paquetesService.save(paquete).subscribe(entregaPaquete => {
       Swal.fire({
         title: `El paquete fue recibido por ${entregaPaquete.recibeInquilino} y entregado por ${entregaPaquete.entregaGuardia}`,
@@ -42,6 +43,7 @@ export class EntregarPaqueteComponent implements OnInit {
         confirmButtonText: `Cerrar`
       }).then(() => {
         entregaPaquete = {} as Paquete;
+        this.updatePage(this.page);
       });
     });
   }
@@ -51,5 +53,30 @@ export class EntregarPaqueteComponent implements OnInit {
     this.paquetesService.getPaquetes(this.page).subscribe(paquetes => {
       this.paquetes = paquetes.content;
     })
+  }
+
+  formatDate() {
+    const d = new Date()
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    let year = d.getFullYear();
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+
+  formatAMPM() {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes: number | string = date.getMinutes();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    return hours + ':' + minutes + ' ' + ampm;
   }
 }

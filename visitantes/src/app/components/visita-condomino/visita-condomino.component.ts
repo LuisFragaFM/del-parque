@@ -4,6 +4,7 @@ import {Visitante} from "../../models/visitante";
 import {CondominosService} from "../../services/condominos.service";
 import {Condomino} from "../../models/condomino";
 import Swal from "sweetalert2";
+import {SessionService} from "../../services/session.service";
 
 @Component({
   selector: 'app-visita-condomino',
@@ -16,9 +17,16 @@ export class VisitaCondominoComponent implements OnInit {
   name: string | undefined;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-  constructor(private visitantesService: VisitantesService, private condominosService: CondominosService) {
+
+  constructor(private visitantesService: VisitantesService,
+              private condominosService: CondominosService,
+              private sessionService: SessionService) {
   }
+
   ngOnInit(): void {
+    this.sessionService.getUser().subscribe(user => {
+      this.visitante.autorizacion = user.nombre;
+    })
   }
 
   save() {
@@ -29,7 +37,8 @@ export class VisitaCondominoComponent implements OnInit {
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonText: `Cerrar`
-      }).then(() => {});
+      }).then(() => {
+      });
     });
   }
 

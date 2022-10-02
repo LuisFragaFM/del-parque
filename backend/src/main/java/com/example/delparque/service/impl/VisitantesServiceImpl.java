@@ -35,8 +35,23 @@ public class VisitantesServiceImpl implements VisitantesService {
     }
 
     @Override
-    public Page<Visitante> findAll(Integer page) {
-        String query = "SELECT * FROM visitantes";
+    public Page<Visitante> findAllUnauthorized(Integer page) {
+        String query = "SELECT * FROM visitantes v WHERE v.autorizada = false";
+
+        Pageable pageable = PageRequest.of(page, 10);
+        BeanPropertyRowMapper<Visitante> trabajadoresViewMapper = new BeanPropertyRowMapper<>(Visitante.class);
+        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+
+        List<Visitante> visitantes = namedParameterJdbcTemplate.query(query +
+                " LIMIT " + pageable.getPageSize() +
+                " OFFSET " + pageable.getOffset(), mapSqlParameterSource, trabajadoresViewMapper);
+
+        return new PageImpl<>(visitantes, pageable, pageable.getPageSize());
+    }
+
+    @Override
+    public Page<Visitante> findAllNoLeft(Integer page) {
+        String query = "SELECT * FROM visitantes v WHERE v.salio = false";
 
         Pageable pageable = PageRequest.of(page, 10);
         BeanPropertyRowMapper<Visitante> trabajadoresViewMapper = new BeanPropertyRowMapper<>(Visitante.class);

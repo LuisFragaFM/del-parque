@@ -19,6 +19,8 @@ public class VisitanteMapper {
                 .tarjetonVisitante(visitante.getTarjetonVisitante())
                 .vehiculoVisitante(visitante.getVehiculoVisitante())
                 .placasVehiculo(visitante.getPlacasVehiculo())
+                .autorizada(visitante.isAutorizada())
+                .salio(visitante.isSalio())
                 .build();
     }
 
@@ -37,6 +39,8 @@ public class VisitanteMapper {
                 .tarjetonVisitante(visitante.getTarjetonVisitante())
                 .vehiculoVisitante(visitante.getVehiculoVisitante())
                 .placasVehiculo(visitante.getPlacasVehiculo())
+                .autorizada(visitante.isAutorizada())
+                .salio(visitante.isSalio())
                 .build();
     }
 }

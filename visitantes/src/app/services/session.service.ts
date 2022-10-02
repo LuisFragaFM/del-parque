@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, of} from "rxjs";
+import {map, Observable, of} from "rxjs";
 import {User} from "../models/user";
 import {environment} from "../../environments/environment";
 
@@ -16,7 +16,7 @@ export class SessionService {
   constructor(private http: HttpClient) {
   }
 
-  getUser() {
+  getUser(): Observable<User> {
     if (localStorage.getItem('user')) {
       return of(JSON.parse(localStorage.getItem('user')!));
     }

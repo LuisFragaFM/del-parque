@@ -23,4 +23,6 @@ public class Visitante {
     private String casetaLlegada;
     private String casetaSalida;
     private String idCondomino;
+    private boolean autorizada;
+    private boolean salio;
 }

@@ -1,19 +1,24 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Visitante} from "../models/visitante";
-import { VisitantePage } from '../models/visitante-page';
+import {VisitantePage} from '../models/visitante-page';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VisitantesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getVisitantes(page: number = 0): Observable<VisitantePage> {
-    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes?page=${page}`);
+  getVisitantesUnauthorized(page: number = 0): Observable<VisitantePage> {
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/unAuthorized?page=${page}`);
+  }
+
+  getVisitantesNoLeft(page: number = 0): Observable<VisitantePage> {
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/noLeft?page=${page}`);
   }
 
   findById(id: string): Observable<Visitante> {

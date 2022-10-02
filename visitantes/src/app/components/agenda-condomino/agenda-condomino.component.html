@@ -1,7 +1,7 @@
 <!--  Numero paginas-->
 <div class="buttons">
   <span *ngFor="let p of listOfPages" [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}"
-    (click)="updatePage(p)" class="cursor pagination">
+        (click)="updatePage(p)" class="cursor pagination">
     {{p}}
   </span>
 
@@ -14,12 +14,13 @@
       <div class="col-5">
         <label class="form-label" for="buscaSalidaName">Nombre:</label>
         <input required autocomplete="off" type="text" placeholder="Nombre" class="inputAgendados form-control"
-          name="buscaSalidaName" id="buscaSalidaName" [(ngModel)]="visitante.nombreVisitante">
+               name="buscaSalidaName" id="buscaSalidaName" [(ngModel)]="visitante.nombreVisitante">
       </div>
       <div class="col-5">
         <label class="form-label" for="tipoVehiculo">Tipo de vehículo:</label>
-        <input required autocomplete="off" type="text" placeholder="Tipo de vehiculo " class="inputAgendados form-control"
-          name="tipoVehiculo" id="tipoVehiculo" [(ngModel)]="visitante.vehiculoVisitante">
+        <input required autocomplete="off" type="text" placeholder="Tipo de vehiculo "
+               class="inputAgendados form-control"
+               name="tipoVehiculo" id="tipoVehiculo" [(ngModel)]="visitante.vehiculoVisitante">
       </div>
     </div>
 
@@ -27,12 +28,13 @@
       <div class="col-5">
         <label class="form-label" for="fechaVisita">Fecha:</label>
         <input required autocomplete="off" type="date" placeholder="Fecha agendada" class="inputAgendados form-control"
-        name="fechaVisita" id="fechaVisita" [(ngModel)]="visitante.fechaLlegada">
+               name="fechaVisita" id="fechaVisita" [(ngModel)]="visitante.fechaLlegada">
       </div>
       <div class="col-5">
-        <label class="form-label" for="fechaVisita">Hora:</label>
-        <input required autocomplete="off" type="time" placeholder="Hora" class="inputAgendados form-control" id="fechaVisita" name="fechaVisita"
-          [(ngModel)]="visitante.horaLlegada">
+        <label class="form-label" for="horaVisita">Hora:</label>
+        <input required autocomplete="off" type="time" placeholder="Hora" class="inputAgendados form-control"
+               id="horaVisita" name="fechaVisita"
+               [(ngModel)]="visitante.horaLlegada">
       </div>
     </div>
 
@@ -47,5 +49,5 @@
     </div>
 
   </div>
-  
+
 </div>

@@ -1,6 +1,6 @@
 package com.example.delparque.controllers;
 
-import com.example.delparque.dto.Paquete;
+import com.example.delparque.dto.Package;
 import com.example.delparque.service.PackageService;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,20 +18,20 @@ public class PackagesController {
 
     @GetMapping()
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Page<Paquete> findAll(@RequestParam Integer page) {
+    public Page<Package> findAll(@RequestParam Integer page) {
         return packageService.findAll(page);
     }
 
     @GetMapping("{id}")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Paquete findById(@PathVariable String id) {
+    public Package findById(@PathVariable String id) {
         return packageService.findById(id);
     }
 
     @PostMapping()
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Paquete save(@RequestBody Paquete paquete) {
-        return packageService.save(paquete);
+    public Package save(@RequestBody Package aPackage) {
+        return packageService.save(aPackage);
     }
 
     @DeleteMapping("{id}")

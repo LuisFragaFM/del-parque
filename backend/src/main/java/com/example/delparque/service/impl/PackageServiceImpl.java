@@ -1,6 +1,6 @@
 package com.example.delparque.service.impl;
 
-import com.example.delparque.dto.Paquete;
+import com.example.delparque.dto.Package;
 import com.example.delparque.repository.PaquetesRepository;
 import com.example.delparque.service.PackageService;
 import com.example.delparque.service.mappers.PackageMapper;
@@ -28,33 +28,32 @@ public class PackageServiceImpl implements PackageService {
     }
 
     @Override
-    public Paquete save(Paquete paquete) {
-        if (paquete.getId() == null) {
-            paquete.setId(UUID.randomUUID().toString());
+    public Package save(Package aPackage) {
+        if (aPackage.getId() == null) {
+            aPackage.setId(UUID.randomUUID().toString());
         }
 
-        return PackageMapper.entityToDto(paquetesRepository.save(PackageMapper.dtoToEntity(paquete)));
+        return PackageMapper.entityToDto(paquetesRepository.save(PackageMapper.dtoToEntity(aPackage)));
     }
 
     @Override
-    public Page<Paquete> findAll(Integer page) {
+    public Page<Package> findAll(Integer page) {
+        String query = "SELECT * FROM paquetes p WHERE p.entregado = false";
 
-        String query = "SELECT * FROM paquetes";
-
-        BeanPropertyRowMapper<Paquete> paquetesViewMapper = new BeanPropertyRowMapper<>(Paquete.class);
+        BeanPropertyRowMapper<Package> paquetesViewMapper = new BeanPropertyRowMapper<>(Package.class);
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
 
         Pageable pageable = PageRequest.of(page, 10);
 
-        List<Paquete> paquetes = namedParameterJdbcTemplate.query(query +
+        List<Package> aPackages = namedParameterJdbcTemplate.query(query +
                 " LIMIT " + pageable.getPageSize() +
                 " OFFSET " + pageable.getOffset(), mapSqlParameterSource, paquetesViewMapper);
 
-        return new PageImpl<>(paquetes, pageable, pageable.getPageSize());
+        return new PageImpl<>(aPackages, pageable, pageable.getPageSize());
     }
 
     @Override
-    public Paquete findById(String id) {
+    public Package findById(String id) {
         return paquetesRepository.findById(id).map(PackageMapper::entityToDto).orElse(null);
     }
 
