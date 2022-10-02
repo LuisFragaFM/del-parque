@@ -1,4 +1,55 @@
-/* titulos */
+.container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+  }
+
+  .tarjet{
+    margin: 30px;
+    margin-top: 50px;
+    border-color: black;
+    border-width: 2px;
+    padding: 15px;
+    background-color:rgb(211, 245, 197) ;
+  }
+
+  .busqueda{
+    background-color: rgb(159, 211, 176);
+    overflow: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    border-radius: 5px;
+    width: auto;
+    height: 40px;
+  }
+  .cursor
+  {
+    padding-left: 8px;
+  }
+  
+  .cursorb
+  {
+    padding-left: 8px;
+  }
+  
+  :hover.cursorb{
+    background-color: rgb(31, 146, 70);
+    font-weight: bold;
+  }
+
+  button{
+    margin-top: 30px;
+  }
+  .cursor {
+    cursor: pointer;
+  }
+  .cursorb {
+    cursor: pointer;
+  }
+/* titulos 
 
 .title1 {
     position: relative;
@@ -13,17 +64,17 @@
 }
 
 
-/* blur */
+/* blur 
 
 .contenido {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
     height: 900px;
-    /*width: 1170px;*/
+    /*width: 1170px;
 }
 
 
-/* Contenedores principales */
+/* Contenedores principales 
 
 .containerInquilinos {
     position: relative;
@@ -48,7 +99,7 @@
 
 
 
-/* Titulo seccion */
+/* Titulo seccion 
 
 .infoTxt {
     position: relative;
@@ -59,7 +110,7 @@
 }
 
 
-/* titulo de barra de busqueda nombre */
+/* titulo de barra de busqueda nombre 
 
 .nombre {
     position: relative;
@@ -70,7 +121,7 @@
 }
 
 
-/* titulo de barra de busqueda titulo */
+/* titulo de barra de busqueda titulo 
 
 .telefono {
     position: relative;
@@ -87,7 +138,7 @@
 
 
 
-/* Titulo seccion */
+/* Titulo seccion 
 
 .infoTxt {
     position: relative;
@@ -98,7 +149,7 @@
 }
 
 
-/* formatode estilo de la barra de los forms */
+/* formatode estilo de la barra de los forms 
 
 .inputBarra {
     position: relative;
@@ -116,7 +167,7 @@
 
 
 
-/* Fechas de entrada y salida */
+/* Fechas de entrada y salida 
 
 .periodoTxt {
     position: absolute;
@@ -136,7 +187,7 @@
 
 
 
-/* dise;o del boton */
+/* dise;o del boton 
 
 .boton {
     position: absolute;
@@ -151,7 +202,7 @@
 }
 
 
-/* Imagen de usuario */
+/* Imagen de usuario 
 
 .imagenUser {
     position: relative;
@@ -178,3 +229,4 @@
     top: -50px;
     width: 600px;
 }
+*/

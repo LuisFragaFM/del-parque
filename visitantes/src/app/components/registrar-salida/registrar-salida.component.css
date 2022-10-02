@@ -1,4 +1,34 @@
-/* blur */
+.container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+    padding: 5px;
+  }
+
+  .buscador{
+    background-color: rgb(211, 245, 197);
+    padding: 0;
+    margin: 30px;
+
+  }
+  
+  .tarjet{
+    margin: 30px;
+    margin-top: 50px;
+    border-color: black;
+    border-width: 2px;
+    padding: 15px;
+    background-color:rgb(211, 245, 197) ;
+  }
+  
+
+  button{
+    margin-top: 30px;
+  }
+/* blur 
 
 .contenido {
     background: rgba(255, 255, 255, 0.5);
@@ -9,7 +39,7 @@
 }
 
 
-/* estilo para el contenedor bitacoras */
+/* estilo para el contenedor bitacoras 
 
 .bitacoraDatos {
     position: relative;
@@ -23,7 +53,7 @@
 }
 
 
-/* flexbox para barra de busqueda */
+/* flexbox para barra de busqueda 
 
 .VisitanteBusqueda {
     position: relative;
@@ -40,7 +70,7 @@
 }
 
 
-/* estilo a los datos de la barra */
+/* estilo a los datos de la barra 
 
 .tipoVisitante{
     position: absolute;
@@ -55,7 +85,7 @@
 }
 
 
-/* estilo para barra de busqueda y mostrar datos */
+/* estilo para barra de busqueda y mostrar datos 
 
 .inputVisitante {
     position: absolute;
@@ -79,7 +109,7 @@
     font-size: 15px;
 }
 
-/* estilo a bitacora de trabajadores */
+/* estilo a bitacora de trabajadores 
 
 .titleDatos {
     position: relative;
@@ -88,7 +118,7 @@
 }
 
 
-/* estilo para texto de formularios */
+/* estilo para texto de formularios 
 
 .nombreVisitante{
     position: relative;
@@ -132,7 +162,7 @@
 }
 
 
-/* estilo de botones */
+/* estilo de botones 
 
 .botonEliminar {
     position: absolute;
@@ -157,4 +187,4 @@
     border-radius: 40px;
     font-size: 20px;
 }
-  
+  */

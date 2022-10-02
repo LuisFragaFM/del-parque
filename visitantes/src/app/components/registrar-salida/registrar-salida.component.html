@@ -1,11 +1,74 @@
-<!-- contenedor de inquinos -->
+<div class="container">
+  
+  <div class="buscador row rounded">
+    <div class="col-5">
+      <h3>Tipo de visita:</h3>
+      <select name="id_salida" id="id_salida" class="inputVisitante form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option value="">Tipo de vista</option>
+        <option value="1">Trabajador de obra</option>
+        <option value="2">Trabajador del hogar</option>
+        <option value="3">Visita agendada</option>
+        <option value="4">Visita no agendada</option>
+      </select>
+    </div>
+    <div class="col-5">
+      <h3>Buscar:</h3>
+      <input required autocomplete="off" type="text" placeholder="Buscar" class="inputBuscar form-control " name="buscaSalida">
+    
+    </div>
+  </div>
+
+  <div class="tarjet row border border-dark border-4 rounded" >
+    <h2>Visitante</h2>
+    <div class="row fila1 mt-3">
+      <div class="col-5">
+        <label class="form-label" for="buscaSalidaName">Nombre:</label>
+        <input required autocomplete="off" type="text" placeholder="Nombre" class="inputAgendados form-control"
+          name="buscaSalidaName" id="buscaSalidaName">
+      </div>
+      <div class="col-5">
+        <label class="form-label" for="buscaHorasSalida">Hora de salida:</label>
+        <input required autocomplete="off" type="time" placeholder="Hora" class="inputSalidas form-control" id="buscaHorasSalida" name="buscaHorasSalida">
+      </div>
+    </div>
+
+    <div class="row fila2 mt-3">
+      <div class="col-5">
+        <label class="form-label" for="buscaHorasEntrada">Hora de entrada:</label>
+        <input required autocomplete="off" type="time" placeholder="Hora" id="buscaHorasEntrada" class="inputSalidas form-control" name="buscaHorasEntrada">
+        
+      </div>
+      <div class="col-5">
+        <label class="form-label" for="Caseta">Caseta:</label>
+        <select class="inputSalidas form-select form-select-lg" name="Caseta" id="Caseta">
+          <option value="Caseta 1"><h3>Caseta 1</h3></option>
+          <option value="Caseta 2"><h3>Caseta 2</h3></option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row fila3 mt-3">
+      <div class="col-6"></div>
+      <div class="col-3">
+        <button class="botonEliminar btn btn-danger btn-block">Eliminar</button>
+      </div>
+      <div class="col-3">
+        <button class="botonGuardar btn btn-primary btn-block">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+
+<!--
 <div class="contenido">
-  <!-- contenedor para flexbox -->
+   contenedor para flexbox 
   <div class="VisitanteBusqueda">
     <div class="tipoVisitante">
-      <!-- seleccionar tipo de visitante -->
+       seleccionar tipo de visitante 
       <h3>Tipo de visita:</h3>
-      <!-- seleccionar visitante -->
+       seleccionar visitante 
       <select name="id_salida" id="id_salida" class="inputVisitante">
         <option value="">Tipo de vista</option>
         <option value="1">Trabajador de obra</option>
@@ -14,34 +77,34 @@
         <option value="4">Visita no agendada</option>
       </select>
     </div>
-    <!-- buscar visitante -->
+     buscar visitante 
     <div class="buscaVisitante">
       <h3>Buscar:</h3>
       <input required autocomplete="off" type="text" placeholder="Buscar" class="inputBuscar" name="buscaSalida">
     </div>
 
-    <!-- Datos del Visitante-->
+     Datos del Visitante
     <div class="bitacoraDatos">
-      <!-- titulo contenedor -->
+       titulo contenedor 
       <div class="titleDatos">
         <h2>Visitante</h2>
       </div>
-      <!-- form de nombre -->
+       form de nombre 
       <div class="nombreVisitante">
         <h3>Nombre:</h3>
         <input required autocomplete="off" type="text" placeholder="Nombre" class="inputSalidas" name="buscaSalidaName">
       </div>
-      <!-- form de hora de entrada-->
+       form de hora de entrada
       <div class="horaEntrada">
         <h3>Hora de Entrada </h3>
         <input required autocomplete="off" type="time" placeholder="Hora" class="inputSalidas" name="buscaHorasEntrada">
       </div>
-      <!-- form de hora de salida-->
+       form de hora de salida
       <div class="horaSalida">
         <h3>Hora de Salida </h3>
         <input required autocomplete="off" type="time" placeholder="Hora" class="inputSalidas" name="buscaHorasSalida">
       </div>
-      <!-- form de Caseta-->
+       form de Caseta
       <div class="Caseta">
         <h3>Caseta</h3>
         <select class="inputSalidas" name="Caseta" id="Caseta">
@@ -49,13 +112,13 @@
           <option value="Caseta 2"><h3>Caseta 2</h3></option>
         </select>
       </div>
-      <!-- boton para enviar datos del eliminar y realizar registro de la salida-->
+       boton para enviar datos del eliminar y realizar registro de la salida
       <div class="botonesSalida">
-        <!-- boton Guardar -->
+         boton Guardar 
         <div class="buttonGuardar">
           <button class="botonGuardar">Guardar</button>
         </div>
-        <!-- boton eliminar -->
+         boton eliminar 
         <div class="buttonEliminar">
           <button class="botonEliminar">Eliminar</button>
         </div>
@@ -63,3 +126,4 @@
     </div>
   </div>
 </div>
+-->
