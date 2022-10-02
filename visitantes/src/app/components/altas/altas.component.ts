@@ -39,11 +39,12 @@ export class AltasComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
-        this.uploadFilesService.upload(this.files[0], condomino.id).subscribe(() => {
-        });
+        
       });
-      this.condomino = {} as Condomino;
+      this.uploadFilesService.upload(this.files[0], condomino.id).subscribe(() => {this.condomino = {} as Condomino;
       this.files = {} as FileList;
+      });
+      
     });
   }
 
