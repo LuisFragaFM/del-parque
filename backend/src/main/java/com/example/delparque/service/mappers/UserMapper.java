@@ -7,7 +7,7 @@ public class UserMapper {
         return User.builder()
                 .id(user.getId())
                 .email(user.getEmail())
-                .nombre(user.getNombre())
+                .name(user.getName())
                 .password(user.getPassword())
                 .build();
     }
@@ -16,7 +16,7 @@ public class UserMapper {
         return com.example.delparque.model.User.builder()
                 .id(user.getId())
                 .email(user.getEmail())
-                .nombre(user.getNombre())
+                .name(user.getName())
                 .password(user.getPassword())
                 .build();
     }

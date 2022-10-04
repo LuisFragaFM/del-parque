@@ -27,8 +27,9 @@
       <div class="col-5">
         <label class="form-label" for="muestraPagosTelefono">Teléfono:</label>
         <input required autocomplete="off" type="text" placeholder="Teléfono" class="inputDatos form-control"
+               id="muestraPagosTelefono"
                name="muestraPagosTelefono"
-               [(ngModel)]="condomino.numeroTelefono">
+               [(ngModel)]="condomino.telephoneNumber">
       </div>
     </div>
 
@@ -36,14 +37,15 @@
       <div class="col-5">
         <label class="form-label" for="muestraPagosDireccion">Calle:</label>
         <input required autocomplete="off" type="text" placeholder="Dirección" class="inputDatos form-control"
+               id="muestraPagosDireccion"
                name="muestraPagosDireccion"
-               [(ngModel)]="condomino.calle">
+               [(ngModel)]="condomino.street">
       </div>
       <div class="col-5">
         <label class="form-label" for="muestraPagosCorreo">Correo Electrónico:</label>
         <input required autocomplete="off" type="text" placeholder="Correo Electrónico" class="inputDatos form-control"
                id="muestraPagosCorreo" name="muestraPagosCorreo"
-               [(ngModel)]="condomino.correoElectronico">
+               [(ngModel)]="email">
       </div>
     </div>
 
@@ -52,13 +54,13 @@
         <label class="form-label" for="muestraPagosEmergencia">Numero de emergencia:</label>
         <input required autocomplete="off" type="text" placeholder="Teléfono de emergencia"
                class="inputDatos form-control" id="muestraPagosEmergencia" name="muestraPagosEmergencia"
-               [(ngModel)]="condomino.numeroEmergencia">
+               [(ngModel)]="condomino.emergencyNumber">
       </div>
       <div class="col-5">
         <label class="form-label" for="numcasa">Numero de casa:</label>
         <input required autocomplete="off" type="number" minlength="10" maxlength="10" placeholder="Numero de casa"
                class="inputDatosAltas form-control" id="numcasa" name="muestraCondominonumcasa"
-               [(ngModel)]="condomino.numeroCasa"/>
+               [(ngModel)]="condomino.houseNumber"/>
       </div>
     </div>
     <div class="row mt-3">
@@ -75,12 +77,12 @@
 
       </div>
       <div class="col-5 text-center">
-        <div *ngIf="!condomino.estadoPago" (click)="condomino.estadoPago = 1" class="cursor">
+        <div *ngIf="!condomino.paidStatus" (click)="condomino.paidStatus = true" class="cursor">
           <label class="form-label" for="noPagadoImg"> No Pagado</label>
           <img src="../../../assets/sadFace.png" alt="no pagado" id="noPagadoImg" width="160px"/>
 
         </div>
-        <div *ngIf="condomino.estadoPago" (click)="condomino.estadoPago = 0" class="cursor">
+        <div *ngIf="condomino.paidStatus" (click)="condomino.paidStatus = false" class="cursor">
           <label class="form-label" for="pagoImg"> Pagado</label>
           <img src="../../../assets/happyFace.png" alt="pago" id="pagoImg" width="150px"/>
         </div>

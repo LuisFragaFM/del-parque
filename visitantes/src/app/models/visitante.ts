@@ -1,16 +1,16 @@
 export interface Visitante {
-  autorizada: boolean;
+  authorized: boolean;
   id: string;
-  nombreVisitante: string;
-  tarjetonVisitante: string;
-  vehiculoVisitante: string;
-  placasVehiculo: string;
-  fechaLlegada: string;
-  fechaSalida: string;
-  horaLlegada: string;
-  horaSalida: string;
-  autorizacion: string;
-  casetaLlegada: string;
-  casetaSalida: string;
-  idCondomino: string;
+  name: string;
+  card: string;
+  vehicle: string;
+  licensePlates: string;
+  arrivalDate: string;
+  departureDate: string;
+  checkIn: string;
+  departureTime: string;
+  authorization: string;
+  arrivalBooth: string;
+  departureBooth: string;
+  condominoId: string;
 }

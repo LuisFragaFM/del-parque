@@ -17,7 +17,7 @@ public interface UsersService {
 
     void updatePasswordForRecoverPassword(String token, ResetPassword resetPassword);
 
-    User register(com.example.delparque.dto.User user);
+    User register(String email, String role, String name);
 
     com.example.delparque.dto.User buildUserForEmail(String email);
 

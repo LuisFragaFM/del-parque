@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "users")
 @Builder
 @Data
 @NoArgsConstructor
@@ -22,7 +22,7 @@ public class User {
 
     private String email;
 
-    private String nombre;
+    private String name;
 
     private String password;
 

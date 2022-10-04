@@ -22,28 +22,28 @@
         <div class="direccionDatos">
           <h3>Dirección:<br><br></h3>
           <input required type="text" placeholder="Dirección" class="inputDatosAltas" name="muestraCondominoDireccion"
-                 [(ngModel)]="condomino.direccion">
+                 [(ngModel)]="condomino.direction">
         </div>
         <!-- form de numero emergencia -->
         <div class="emergenciaDatos">
           <h3>Número de emergencia:<br><br></h3>
           <input required type="text" minlength="10" maxlength="10" placeholder="Teléfono de Emergencia" class="inputDatosAltas"
                  name="muestraCondominoEmergencia"
-                 [(ngModel)]="condomino.numeroEmergencia">
+                 [(ngModel)]="condomino.emergencyNumber">
         </div>
         <!-- form de telefono-->
         <div class="telefonoDatos">
           <h3>Telefono:<br><br></h3>
           <input  required type="number" minlength="10" maxlength="10" placeholder="Telefono" class="inputDatosAltas"
                  name="muestraCondominoTelefono"
-                 [(ngModel)]="condomino.numeroTelefono">
+                 [(ngModel)]="condomino.telephoneNumber">
         </div>
         <!-- form de correo -->
         <div class="correoDatos">
           <h3>Correo Electronico:<br><br></h3>
           <input required type="email" pattern="[^ @]*@[^ @]*" placeholder="Correo Electrónico" class="inputDatosAltas"
                  name="muestraCondominoCorreo"
-                 [(ngModel)]="condomino.correoElectronico">
+                 [(ngModel)]="email">
         </div>
         <!-- boton guardar -->
         <button class="botonGuardar" type="submit">Guardar</button>

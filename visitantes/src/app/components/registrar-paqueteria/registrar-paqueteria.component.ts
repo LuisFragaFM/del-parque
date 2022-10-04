@@ -66,8 +66,8 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     this.condominos = [];
     this.name = condomino.name;
     this.paquete.nombreCondomino = condomino.name;
-    this.paquete.calle = condomino.calle;
-    this.paquete.numeroCasa = condomino.numeroCasa;
+    this.paquete.calle = condomino.street;
+    this.paquete.numeroCasa = condomino.houseNumber;
   }
 
   // funcion para validacion

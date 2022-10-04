@@ -18,6 +18,7 @@ export class PagosComponent implements OnInit {
   environment = environment.baseUrl;
   uri: any = '';
   files!: FileList;
+  email!: string;
 
   constructor(private condominosService: CondominosService, private uploadFilesService: UploadFilesService) {
   }

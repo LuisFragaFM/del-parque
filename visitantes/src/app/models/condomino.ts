@@ -1,11 +1,13 @@
 export interface Condomino {
   id: string;
   name: string;
-  calle: string;
-  numeroCasa: string;
-  numeroTelefono: string;
-  direccion: string;
-  correoElectronico: string;
-  numeroEmergencia: string;
-  estadoPago: number;
+  street: string;
+  houseNumber: string;
+  telephoneNumber: string;
+  direction: string;
+  emergencyNumber: string;
+  paidStatus: boolean;
+  userId: string;
+  email: string;
+  role: string;
 }

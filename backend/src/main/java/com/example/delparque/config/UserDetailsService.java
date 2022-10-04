@@ -36,7 +36,7 @@ public class UserDetailsService {
         User user = usersService.findUserByEmailAndPassword(email, password);
 
         attributes.put("email", email);
-        attributes.put("name", user.getNombre());
+        attributes.put("name", user.getName());
         attributes.put("userId", user.getId());
 
         rolesRepository.findRolesByUser(user.getId()).forEach(role ->
@@ -45,7 +45,7 @@ public class UserDetailsService {
         LoggedUser loggedUser = LoggedUser.builder()
                 .claims(attributes)
                 .grantedAuthorities(authorities)
-                .name(user.getNombre())
+                .name(user.getName())
                 .build();
 
         return new UsernamePasswordAuthenticationToken(loggedUser, user, authorities);

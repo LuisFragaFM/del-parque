@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface RolesRepository extends JpaRepository<RolesByUser, String> {
 
-    @Query("SELECT r.role FROM RolesByUser r WHERE r.idUsuario = :user")
+    @Query("SELECT r.role FROM RolesByUser r WHERE r.userId = :user")
     List<String> findRolesByUser(String user);
 
-    void deleteRolesPorUsuarioByIdUsuarioAndRole(String userId, String role);
+    void deleteByUserIdAndRole(String userId, String role);
 }

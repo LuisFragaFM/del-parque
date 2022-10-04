@@ -10,8 +10,11 @@ import Swal from 'sweetalert2';
 })
 export class AltasModificacionesComponent implements OnInit {
   condomino: Condomino = {} as Condomino;
+  email!: string;
+
   constructor(private condominosService: CondominosService) {
   }
+
   ngOnInit(): void {
   }
 

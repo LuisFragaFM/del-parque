@@ -24,13 +24,15 @@ export class AltasComponent implements OnInit {
   uri!: any;
   files!: FileList;
 
-  constructor(private condominosService: CondominosService, private uploadFilesService: UploadFilesService) {
+  constructor(private condominosService: CondominosService,
+              private uploadFilesService: UploadFilesService) {
   }
 
   ngOnInit(): void {
   }
 
   save() {
+    this.condomino.role = 'ROLE_RESIDENT';
     this.condominosService.save(this.condomino).subscribe((condomino) => {
       Swal.fire({
         title: `El condomino ${condomino.name} fue guardado correctamente`,
@@ -39,12 +41,12 @@ export class AltasComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
-        
+        this.uploadFilesService.upload(this.files[0], condomino.id).subscribe(() => {
+          this.condomino = {} as Condomino;
+          this.files = {} as FileList;
+          this.uri = '';
+        });
       });
-      this.uploadFilesService.upload(this.files[0], condomino.id).subscribe(() => {this.condomino = {} as Condomino;
-      this.files = {} as FileList;
-      });
-      
     });
   }
 

@@ -1,14 +1,14 @@
 CREATE TABLE condominos
 (
-    id                 varchar(40) primary key,
-    nombre             varchar(120),
-    calle              varchar(120),
-    numero_casa        varchar(10),
-    numero_telefono    varchar(40),
-    direccion          varchar(120),
-    correo_electronico varchar(140),
-    numero_emergencia  varchar(40),
-    estado_pago        boolean
+    id               varchar(40) primary key,
+    name             varchar(120),
+    street           varchar(120),
+    house_number     varchar(10),
+    telephone_number varchar(40),
+    direction        varchar(120),
+    emergency_number varchar(40),
+    paid_status      boolean,
+    user_id          varchar(40) references users
 );
 
 CREATE TABLE trabajadores
@@ -44,43 +44,43 @@ CREATE TABLE paquetes
 
 CREATE TABLE visitantes
 (
-    id                 varchar(40) primary key,
-    nombre_visitante   varchar(140),
-    tarjeton_visitante varchar(140),
-    vehiculo_visitante varchar(140),
-    placas_vehiculo    varchar(120),
-    fecha_llegada      date,
-    fecha_salida       date,
-    hora_llegada       varchar(40),
-    hora_salida        varchar(40),
-    autorizacion       varchar(120),
-    caseta_llegada     varchar(120),
-    caseta_salida      varchar(120),
-    autorizada         boolean,
-    salio              boolean,
-    id_condomino       varchar(40) references condominos
+    id              varchar(40) primary key,
+    name            varchar(140),
+    card            varchar(140),
+    vehicle         varchar(140),
+    license_plates  varchar(120),
+    arrival_date    date,
+    departure_date  date,
+    check_in        varchar(40),
+    departure_time  varchar(40),
+    authorization   varchar(120),
+    arrival_booth   varchar(120),
+    departure_booth varchar(120),
+    authorized      boolean,
+    gone_out        boolean,
+    condomino_id    varchar(40) references condominos
 );
 
-CREATE TABLE usuarios
+CREATE TABLE users
 (
     id                   varchar(40) primary key,
-    email                varchar(100),
+    email                varchar(100) unique,
     password             varchar(100),
-    nombre               varchar(40),
+    name                 varchar(40),
     reset_password_token varchar(40)
 );
 
 CREATE TABLE roles_usuario
 (
-    id         varchar(40) primary key,
-    role       varchar(40),
-    id_usuario varchar(40) references usuarios
+    id      varchar(40) primary key,
+    role    varchar(40),
+    user_id varchar(40) references users
 );
 
 CREATE TABLE user_image
 (
     id       varchar(40) primary key,
-    user_id  varchar(40) references usuarios,
+    user_id  varchar(40) references users,
     uri      varchar(140),
     filename varchar(140)
 );

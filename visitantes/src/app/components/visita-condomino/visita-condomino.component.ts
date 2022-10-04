@@ -25,14 +25,14 @@ export class VisitaCondominoComponent implements OnInit {
 
   ngOnInit(): void {
     this.sessionService.getUser().subscribe(user => {
-      this.visitante.autorizacion = user.nombre;
+      this.visitante.authorization = user.name;
     })
   }
 
   save() {
     this.visitantesService.save(this.visitante).subscribe(visitante => {
       Swal.fire({
-        title: `La visita de ${visitante.nombreVisitante} fue agendada`,
+        title: `La visita de ${visitante.name} fue agendada`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
@@ -53,6 +53,6 @@ export class VisitaCondominoComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.name;
-    this.visitante.autorizacion = condomino.name;
+    this.visitante.authorization = condomino.name;
   }
 }

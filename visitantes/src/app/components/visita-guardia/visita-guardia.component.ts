@@ -31,7 +31,7 @@ export class VisitaGuardiaComponent implements OnInit {
   save() {
     this.visitantesService.save(this.visitante).subscribe(visitante => {
       Swal.fire({
-        title: `La visita de ${visitante.nombreVisitante} fue agendada`,
+        title: `La visita de ${visitante.name} fue agendada`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,

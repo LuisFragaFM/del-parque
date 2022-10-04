@@ -52,7 +52,7 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
 
     @Override
     public Trabajador findByName(String name) {
-        return TrabajadorMapper.entityToDto(trabajadoresRepository.findTrabajadorBynombreTrabajador(name));
+        return TrabajadorMapper.entityToDto(trabajadoresRepository.findBynombreTrabajador(name));
     }
 
     @Override

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
-import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-agenda-condomino',
@@ -16,14 +15,16 @@ export class AgendaCondominoComponent implements OnInit {
   visitantes: Visitante[] = [];
   page: number = 0;
   listOfPages: number[] = [];
-  constructor(private visitantesService: VisitantesService) { }
+
+  constructor(private visitantesService: VisitantesService) {
+  }
 
   ngOnInit(): void {
     //Paginacion
-    this.visitantesService.getVisitantesUnauthorized(1).subscribe((visitantes)=>{
-
-      this.visitantes = visitantes.content;
+    this.visitantesService.getVisitantesUnauthorized(1).subscribe(({content: visitantes}) => {
+      this.visitantes = visitantes;
     });
+
     this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
       const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
@@ -50,8 +51,8 @@ export class AgendaCondominoComponent implements OnInit {
 
   updatePage(page: number) {
     this.page = page - 1;
-    this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
-      this.visitantes = visitantes.content;
+    this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(({content: visitantes}) => {
+      this.visitantes = visitantes;
     })
   }
 

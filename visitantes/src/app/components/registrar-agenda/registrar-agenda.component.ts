@@ -50,12 +50,12 @@ export class RegistrarAgendaComponent implements OnInit {
   }
 
   modify(visitante: Visitante) {
-    visitante.autorizada = true;
-    visitante.autorizacion = this.user.nombre;
+    visitante.authorized = true;
+    visitante.authorization = this.user.name;
 
     this.visitantesService.save(visitante).subscribe(visitante => {
       Swal.fire({
-        title: `El visitante ${visitante.nombreVisitante} fue registrado correctamente`,
+        title: `El visitante ${visitante.name} fue registrado correctamente`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
@@ -79,7 +79,7 @@ export class RegistrarAgendaComponent implements OnInit {
         if (value.isConfirmed) {
           this.visitantesService.delete(this.visitante.id).subscribe(() => {
             Swal.fire({
-              title: `El visitante de ${this.visitante.nombreVisitante} fue borrado correctamente`,
+              title: `El visitante de ${this.visitante.name} fue borrado correctamente`,
               icon: 'success',
               showDenyButton: false,
               showCancelButton: false,
