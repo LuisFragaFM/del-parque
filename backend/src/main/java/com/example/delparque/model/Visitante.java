@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "visitantes")
@@ -20,42 +21,40 @@ public class Visitante {
     @Id
     private String id;
 
-    @Column(name = "nombre_visitante")
-    private String nombreVisitante;
+    private String name;
 
-    @Column(name = "tarjeton_visitante")
-    private String tarjetonVisitante;
+    @Column(name = "license_plates")
+    private String licensePlates;
 
-    @Column(name = "vehiculo_visitante")
-    private String vehiculoVisitante;
+    private String vehicle;
 
-    @Column(name = "placas_vehiculo")
-    private String placasVehiculo;
+    private String card;
 
-    @Column(name = "fecha_llegada")
-    private String fechaLlegada;
+    @Column(name = "arrival_date")
+    private LocalDate arrivalDate;
 
-    @Column(name = "fecha_salida")
-    private String fechaSalida;
+    @Column(name = "departure_date")
+    private LocalDate  departureDate;
 
-    @Column(name = "hora_llegada")
-    private String horaLlegada;
+    @Column(name = "check_in")
+    private String checkIn;
 
-    @Column(name = "hora_salida")
-    private String horaSalida;
+    @Column(name = "departure_time")
+    private String departureTime;
 
-    private String autorizacion;
+    private String authorization;
 
-    @Column(name = "caseta_llegada")
-    private String casetaLlegada;
+    @Column(name = "departure_booth")
+    private String departureBooth;
 
-    @Column(name = "caseta_salida")
-    private String casetaSalida;
+    @Column(name = "arrival_booth")
+    private String arrivalBooth;
 
-    @Column(name = "id_condomino")
-    private String idCondomino;
+    @Column(name = "condomino_id")
+    private String condominoId;
 
-    private boolean autorizada;
+    private boolean authorized;
 
-    private boolean salio;
+    @Column(name = "gone_out")
+    private boolean goneOut;
 }

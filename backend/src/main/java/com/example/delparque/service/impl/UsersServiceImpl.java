@@ -1,5 +1,6 @@
 package com.example.delparque.service.impl;
 
+import com.example.delparque.config.Default;
 import com.example.delparque.config.EmailSender;
 import com.example.delparque.dto.ResetPassword;
 import com.example.delparque.exception.DelParqueSystemException;
@@ -31,6 +32,7 @@ public class UsersServiceImpl implements UsersService {
 
     private final JavaMailSender mailSender;
     private final EmailSender emailSender;
+    private final Default def;
     private final UsersRepository usersRepository;
     private final RolesRepository rolesRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -38,12 +40,15 @@ public class UsersServiceImpl implements UsersService {
     public UsersServiceImpl(UsersRepository usersRepository,
                             RolesRepository rolesRepository,
                             BCryptPasswordEncoder bCryptPasswordEncoder,
-                            JavaMailSender mailSender, EmailSender emailSender) {
+                            JavaMailSender mailSender,
+                            EmailSender emailSender,
+                            Default def) {
         this.usersRepository = usersRepository;
         this.rolesRepository = rolesRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.mailSender = mailSender;
         this.emailSender = emailSender;
+        this.def = def;
     }
 
     @Override
@@ -77,11 +82,12 @@ public class UsersServiceImpl implements UsersService {
         helper.setFrom(emailSender.getUsername(), "Fraccionamiento DelParque");
         helper.setTo(user.getEmail());
 
-        String resetPasswordLink = Utility.getSiteURL(httpServletRequest) + "/reset_password?token=" + user.getResetPasswordToken();
+        String resetPasswordLink =
+                Utility.getSiteURL(httpServletRequest) + "/reset_password?token=" + user.getResetPasswordToken();
 
         String subject = "Here's the link to reset your password";
 
-        String content = "<p>Hello " + user.getNombre() + "</p>"
+        String content = "<p>Hello " + user.getName() + "</p>"
                 + "<p>You have requested to reset your password.</p>"
                 + "<p>Click the link below to change your password:</p>"
                 + "<p><a href=\"" + resetPasswordLink + "\">Change my password</a></p>"
@@ -107,19 +113,31 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public User register(com.example.delparque.dto.User user) {
-        Optional<User> optionalUser = usersRepository.findByEmail(user.getEmail());
-
-        user.setId(UUID.randomUUID().toString());
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    public User register(String email, String role, String name) {
+        Optional<User> optionalUser = usersRepository.findByEmail(email);
 
         optionalUser.ifPresent(value -> {
-            if (value.getEmail().equals(user.getEmail())) {
+            if (value.getEmail().equals(email)) {
                 throw new DelParqueSystemException("email ocupado por otro usuario", "DUPLICATE_EMAIL");
             }
         });
 
+        com.example.delparque.dto.User user = new com.example.delparque.dto.User();
+
+        String userId = UUID.randomUUID().toString();
+
+        user.setId(userId);
+        user.setEmail(email);
+        user.setPassword(bCryptPasswordEncoder.encode(def.getPassword()));
+        user.setName(name);
+
+        RolesByUser rolesByUser = new RolesByUser();
+        rolesByUser.setUserId(userId);
+        rolesByUser.setRole(role);
+        rolesByUser.setId(UUID.randomUUID().toString());
+
         usersRepository.save(UserMapper.dtoToEntity(user));
+        rolesRepository.save(rolesByUser);
 
         return UserMapper.dtoToEntity(user);
     }
@@ -131,7 +149,7 @@ public class UsersServiceImpl implements UsersService {
         return com.example.delparque.dto.User.builder()
                 .id(user.getId())
                 .email(user.getEmail())
-                .nombre(user.getNombre())
+                .name(user.getName())
                 .roles(rolesRepository.findRolesByUser(user.getId()))
                 .build();
     }
@@ -148,7 +166,7 @@ public class UsersServiceImpl implements UsersService {
     @Transactional
     public List<String> removeRole(String userId, String role) {
 
-        rolesRepository.deleteRolesPorUsuarioByIdUsuarioAndRole(userId, role);
+        rolesRepository.deleteByUserIdAndRole(userId, role);
 
         return rolesRepository.findRolesByUser(userId);
     }
@@ -160,7 +178,7 @@ public class UsersServiceImpl implements UsersService {
 
         roleByUser.setId(UUID.randomUUID().toString());
         roleByUser.setRole(role);
-        roleByUser.setIdUsuario(userId);
+        roleByUser.setUserId(userId);
 
         rolesRepository.save(roleByUser);
 

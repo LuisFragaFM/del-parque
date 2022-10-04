@@ -20,3 +20,6 @@ spring:
 email:
   username: ${EMAIL_USERNAME}
   password: ${EMAIL_PASSWORD}
+
+default:
+  password: Password1

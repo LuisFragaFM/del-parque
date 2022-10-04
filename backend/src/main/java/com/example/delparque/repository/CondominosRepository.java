@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CondominosRepository extends JpaRepository<Condomino, String> {
-    @Query(value = "select * from condominos c where c.nombre like %:name%", nativeQuery = true)
+    @Query(value = "select * from condominos c where c.name like %:name%", nativeQuery = true)
     List<Condomino> findByName(String name);
 }

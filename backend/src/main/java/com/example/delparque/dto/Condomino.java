@@ -12,11 +12,13 @@ import lombok.NoArgsConstructor;
 public class Condomino {
     private String id;
     private String name;
-    private String calle;
-    private String numeroCasa;
-    private String numeroTelefono;
-    private String direccion;
-    private String correoElectronico;
-    private String numeroEmergencia;
-    private String estadoPago;
+    private String street;
+    private String houseNumber;
+    private String telephoneNumber;
+    private String direction;
+    private String email;
+    private String emergencyNumber;
+    private boolean paidStatus;
+    private String userId;
+    private String role;
 }

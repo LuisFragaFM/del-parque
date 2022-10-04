@@ -20,24 +20,24 @@ public class Condomino {
     @Id
     private String id;
 
-    private String nombre;
+    private String name;
 
-    private String calle;
+    private String street;
 
-    @Column(name = "numero_casa")
-    private String numeroCasa;
+    @Column(name = "house_number")
+    private String houseNumber;
 
-    @Column(name = "numero_telefono")
-    private String numeroTelefono;
+    @Column(name = "telephone_number")
+    private String telephoneNumber;
 
-    private String direccion;
+    private String direction;
 
-    @Column(name = "correo_electronico")
-    private String correoElectronico;
+    @Column(name = "emergency_number")
+    private String emergencyNumber;
 
-    @Column(name = "numero_emergencia")
-    private String numeroEmergencia;
+    @Column(name = "paid_status")
+    private boolean paidStatus;
 
-    @Column(name = "estado_pago")
-    private String estadoPago;
+    @Column(name = "user_id")
+    private String userId;
 }

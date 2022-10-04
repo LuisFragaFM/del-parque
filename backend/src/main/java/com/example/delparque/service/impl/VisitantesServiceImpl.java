@@ -36,23 +36,19 @@ public class VisitantesServiceImpl implements VisitantesService {
 
     @Override
     public Page<Visitante> findAllUnauthorized(Integer page) {
-        String query = "SELECT * FROM visitantes v WHERE v.autorizada = false";
+        String query = "SELECT * FROM visitantes v WHERE v.authorized = false";
 
-        Pageable pageable = PageRequest.of(page, 10);
-        BeanPropertyRowMapper<Visitante> trabajadoresViewMapper = new BeanPropertyRowMapper<>(Visitante.class);
-        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
-
-        List<Visitante> visitantes = namedParameterJdbcTemplate.query(query +
-                " LIMIT " + pageable.getPageSize() +
-                " OFFSET " + pageable.getOffset(), mapSqlParameterSource, trabajadoresViewMapper);
-
-        return new PageImpl<>(visitantes, pageable, pageable.getPageSize());
+        return getVisitantes(page, query);
     }
 
     @Override
     public Page<Visitante> findAllNoLeft(Integer page) {
-        String query = "SELECT * FROM visitantes v WHERE v.salio = false";
+        String query = "SELECT * FROM visitantes v WHERE v.gone_out = false AND v.authorized = true";
 
+        return getVisitantes(page, query);
+    }
+
+    private Page<Visitante> getVisitantes(Integer page, String query) {
         Pageable pageable = PageRequest.of(page, 10);
         BeanPropertyRowMapper<Visitante> trabajadoresViewMapper = new BeanPropertyRowMapper<>(Visitante.class);
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
@@ -81,6 +77,6 @@ public class VisitantesServiceImpl implements VisitantesService {
     @Override
     public Visitante findByName(String name) {
         return VisitanteMapper.entityToDto(visitantesRepository
-                .findByNombreVisitante(name).orElse(new com.example.delparque.model.Visitante()));
+                .findByName(name).orElse(new com.example.delparque.model.Visitante()));
     }
 }

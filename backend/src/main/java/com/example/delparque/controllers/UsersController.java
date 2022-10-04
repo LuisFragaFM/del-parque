@@ -3,10 +3,7 @@ package com.example.delparque.controllers;
 import com.example.delparque.dto.ResetPassword;
 import com.example.delparque.dto.User;
 import com.example.delparque.service.UsersService;
-import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,22 +28,6 @@ public class UsersController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public List<User> getAllUsers() {
         return usersService.getAllUsers();
-    }
-
-    @PostMapping("/api/users/register")
-    public ResponseEntity<com.example.delparque.model.User> register(@RequestBody User user) {
-        com.example.delparque.model.User register = usersService.register(user);
-
-        HttpHeaders httpHeaders = new HttpHeaders();
-        String auth = register.getEmail() + ":" + register.getPassword();
-
-        httpHeaders.set(HttpHeaders.AUTHORIZATION, "Basic " + new String(Base64.encodeBase64(auth.getBytes())));
-
-        register.setPassword(null);
-
-        return ResponseEntity.ok()
-                .headers(httpHeaders)
-                .body(register);
     }
 
     @PostMapping("/forgot_password")

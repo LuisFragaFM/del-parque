@@ -20,24 +20,24 @@
     <div class="nombreVisitante">
       <h3>Nombre:</h3>
       <input required type="text" placeholder="Nombre" class="inputAgendados" name="buscaSalidaName"
-        [(ngModel)]="visitante.nombreVisitante" disabled>
+             [(ngModel)]="visitante.name" disabled>
     </div>
     <!-- form de hora de entrada-->
     <div class="Fecha">
       <h3>Fecha </h3>
       <input required type="date" placeholder="Fecha agendada" class="inputAgendados" name="buscaHorasEntrada"
-        [(ngModel)]="visitante.fechaLlegada" disabled>
+             [(ngModel)]="visitante.arrivalDate" disabled>
     </div>
     <!-- form de hora de salida-->
     <div class="horaLlegada">
       <h3>Hora</h3>
       <input required type="time" placeholder="Hora" class="inputAgendados" name="buscaHorasSalida"
-        [(ngModel)]="visitante.horaLlegada" disabled>
+             [(ngModel)]="visitante.checkIn" disabled>
     </div>
     <!-- form de Caseta-->
     <div class="Caseta">
       <h3>Caseta</h3>
-      <select class="inputAgendados" name="Caseta" id="Caseta" [(ngModel)]="visitante.casetaLlegada">
+      <select class="inputAgendados" name="Caseta" id="Caseta" [(ngModel)]="visitante.arrivalBooth">
         <option value="Caseta 1">
           <h3>Caseta 1</h3>
         </option>

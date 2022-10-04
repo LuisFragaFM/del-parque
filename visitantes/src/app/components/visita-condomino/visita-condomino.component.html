@@ -10,7 +10,7 @@
       <div class="col-5">
         <label class="form-label">Nombre</label>
         <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-          [(ngModel)]="visitante.nombreVisitante">
+          [(ngModel)]="visitante.name">
         <input id="flexCheckDefault" class="BotonVehiculo form-check-input" type="checkbox" name="Vehiculo"
           [(ngModel)]="isChecked">
         <label class="form-check-label" for="flexCheckDefault">
@@ -23,7 +23,7 @@
         <div *ngIf="isChecked">
           <label class="form-label" for="type_car">Tipo de Vehículo</label>
           <input id="type_car" class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-            [(ngModel)]="visitante.vehiculoVisitante">
+            [(ngModel)]="visitante.vehicle">
 
         </div>
       </div>
@@ -35,14 +35,14 @@
         <div *ngIf="isChecked">
           <label class="form-label">Tarjeton</label>
           <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-            [(ngModel)]="visitante.tarjetonVisitante">
+            [(ngModel)]="visitante.card">
         </div>
       </div>
       <div class="col-5">
         <div *ngIf="isChecked">
           <label class="form-label" for="placas">Placas</label>
           <input class="form-control" id="placas" required autocomplete="off" type="text" placeholder="Escriba aqui"
-            [(ngModel)]="visitante.placasVehiculo">
+            [(ngModel)]="visitante.licensePlates">
         </div>
       </div>
 
@@ -56,7 +56,7 @@
       <div class="col-5">
         <label for="fecha" class="form-label">Fecha</label>
         <input class="form-control" id="fecha" required autocomplete="off" type="date" placeholder="Escriba aqui"
-          [(ngModel)]="visitante.fechaLlegada">
+          [(ngModel)]="visitante.arrivalDate">
       </div>
       <div class="col-5">
         <label class="form-label" for="autoriza">Autorizada por</label>
@@ -66,7 +66,7 @@
                autocomplete="off"
                type="text"
                placeholder="Escriba aqui"
-          (keyup)="findInquilinoByName()" [(ngModel)]="visitante.autorizacion">
+          (keyup)="findInquilinoByName()" [(ngModel)]="visitante.authorization">
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">
             <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
@@ -79,7 +79,7 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label" for="hora">Hora</label>
-        <input class="form-control" id="hora" required autocomplete="off" type="time" placeholder="Escriba aqui" [(ngModel)]="visitante.horaLlegada">
+        <input class="form-control" id="hora" required autocomplete="off" type="time" placeholder="Escriba aqui" [(ngModel)]="visitante.checkIn">
       </div>
       <div class="col-5"></div>
     </div>

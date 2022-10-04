@@ -1,7 +1,7 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Package;
-import com.example.delparque.repository.PaquetesRepository;
+import com.example.delparque.repository.PackagesRepository;
 import com.example.delparque.service.PackageService;
 import com.example.delparque.service.mappers.PackageMapper;
 import org.springframework.data.domain.Page;
@@ -19,11 +19,11 @@ import java.util.UUID;
 @Service
 public class PackageServiceImpl implements PackageService {
 
-    private final PaquetesRepository paquetesRepository;
+    private final PackagesRepository packagesRepository;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    PackageServiceImpl(PaquetesRepository paquetesRepository, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-        this.paquetesRepository = paquetesRepository;
+    PackageServiceImpl(PackagesRepository packagesRepository, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+        this.packagesRepository = packagesRepository;
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
@@ -33,7 +33,7 @@ public class PackageServiceImpl implements PackageService {
             aPackage.setId(UUID.randomUUID().toString());
         }
 
-        return PackageMapper.entityToDto(paquetesRepository.save(PackageMapper.dtoToEntity(aPackage)));
+        return PackageMapper.entityToDto(packagesRepository.save(PackageMapper.dtoToEntity(aPackage)));
     }
 
     @Override
@@ -54,11 +54,11 @@ public class PackageServiceImpl implements PackageService {
 
     @Override
     public Package findById(String id) {
-        return paquetesRepository.findById(id).map(PackageMapper::entityToDto).orElse(null);
+        return packagesRepository.findById(id).map(PackageMapper::entityToDto).orElse(null);
     }
 
     @Override
     public void delete(String id) {
-        paquetesRepository.deleteById(id);
+        packagesRepository.deleteById(id);
     }
 }

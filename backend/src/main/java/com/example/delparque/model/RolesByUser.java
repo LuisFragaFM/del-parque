@@ -21,5 +21,5 @@ public class RolesByUser {
 
     private String role;
 
-    private String idUsuario;
+    private String userId;
 }
