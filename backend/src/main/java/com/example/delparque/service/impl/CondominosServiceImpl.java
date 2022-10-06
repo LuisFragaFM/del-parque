@@ -55,6 +55,11 @@ public class CondominosServiceImpl implements CondominosService {
                 " LIMIT " + pageable.getPageSize() +
                 " OFFSET " + pageable.getOffset(), mapSqlParameterSource, condominoViewMapper);
 
+        condominos.forEach(condomino -> {
+            User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
+            condomino.setEmail(user.getEmail());
+        });
+
         return new PageImpl<>(condominos, pageable, pageable.getPageSize());
     }
 
@@ -79,7 +84,13 @@ public class CondominosServiceImpl implements CondominosService {
 
     @Override
     public Condomino findById(String id) {
-        return condominosRepository.findById(id).map(CondominoMapper::entityToDto).orElse(null);
+        return condominosRepository.findById(id).map(condomino -> {
+            Condomino condominoDto = CondominoMapper.entityToDto(condomino);
+
+            User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
+            condominoDto.setEmail(user.getEmail());
+            return condominoDto;
+        }).orElse(new Condomino());
     }
 
     @Override
