@@ -3,7 +3,9 @@ import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
 import {CondominosService} from "../../services/condominos.service";
 import {Condomino} from "../../models/condomino";
+import {SessionService} from "../../services/session.service";
 import Swal from "sweetalert2";
+
 
 @Component({
   selector: 'app-visita-guardia',
@@ -16,9 +18,13 @@ export class VisitaGuardiaComponent implements OnInit {
   visitante: Visitante = {} as Visitante;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-  constructor(private visitantesService: VisitantesService , private condominosService: CondominosService) { }
+  constructor(private visitantesService: VisitantesService , private condominosService: CondominosService,
+              private sessionService: SessionService) { }
 
   ngOnInit(): void {
+    this.sessionService.getUser().subscribe(user => {
+      this.visitante.authorization = user.name;
+    })
   }
 
   findInquilinoByName() {
@@ -44,5 +50,6 @@ export class VisitaGuardiaComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.name;
+    this.visitante.authorization = condomino.name;
   }
 }

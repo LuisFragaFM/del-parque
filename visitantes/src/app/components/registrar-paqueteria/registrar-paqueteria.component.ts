@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PaquetesService } from '../../services/paquetes.service';
 import { Paquete } from '../../models/paquete';
+import {VisitantesService} from "../../services/visitantes.service";
+import {Visitante} from "../../models/visitante";
 import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
 import Swal from 'sweetalert2';
 import { validaInput } from 'src/app/tools/validation';
+import {SessionService} from "../../services/session.service";
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -13,6 +16,7 @@ import { validaInput } from 'src/app/tools/validation';
 })
 export class RegistrarPaqueteriaComponent implements OnInit {
   paquete: Paquete = {} as Paquete;
+  visitante: Visitante = {} as Visitante;
   numberOfPages: number = 1;
   name: string | undefined;
   condominos: Condomino[] = [];
@@ -30,11 +34,15 @@ export class RegistrarPaqueteriaComponent implements OnInit {
 
   constructor(
     private paquetesService: PaquetesService,
-    private condominosService: CondominosService
+    private condominosService: CondominosService,
+    private sessionService: SessionService
   ) {}
 
   ngOnInit(): void {
     this.paquetesService.getPaquetes(0).subscribe((paquetes) => {});
+    this.sessionService.getUser().subscribe(user => {
+      this.visitante.authorization = user.name;
+    })
   }
 
   findInquilinoByName() {
@@ -68,6 +76,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     this.paquete.nombreCondomino = condomino.name;
     this.paquete.calle = condomino.street;
     this.paquete.numeroCasa = condomino.houseNumber;
+    this.visitante.authorization = condomino.name;
   }
 
   // funcion para validacion

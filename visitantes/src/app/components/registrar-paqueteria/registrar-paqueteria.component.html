@@ -61,9 +61,9 @@
       <div class="col-5">
         <!-- se escribe por quien fue recibido el paquete -->
         <label class="form-label" for="recibido">Guardia que recibe:</label>
-        <input class="form-control" (keyup)="validaReci(regexName, residenteRecibe.value)" required #residenteRecibe
+        <input class="form-control" (keyup)="validaReci(regexName, residenteRecibe.value)" required disabled #residenteRecibe
           autocomplete="off" type="text" placeholder="Escriba aqui" id="recibido"
-          [(ngModel)]="paquete.recibeGuardia" />
+          [(ngModel)]="visitante.authorization" />
         <!--Alerta de datos (recibe Inquilino)-->
         <div id="alertRecibo" class="alert alert-danger" *ngIf="!validacionRecibo">
           Ingrese el nombre de la persona que recibe

@@ -32,11 +32,11 @@
 
     <div class="row">
       <div class="col-5">
-        <div *ngIf="isChecked">
-          <label class="form-label">Tarjeton</label>
-          <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-            [(ngModel)]="visitante.card">
-        </div>
+        
+        <label class="form-label">Tarjeton</label>
+        <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
+          [(ngModel)]="visitante.card">
+      
       </div>
       <div class="col-5">
         <div *ngIf="isChecked">
