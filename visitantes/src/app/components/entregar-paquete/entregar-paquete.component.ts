@@ -3,6 +3,8 @@ import {Component, OnInit} from '@angular/core';
 import {Paquete} from "../../models/paquete"; //Modelo de paquete
 import {PaquetesService} from "../../services/paquetes.service"; //Servicio de paquete
 import Swal from "sweetalert2";
+import {SessionService} from "../../services/session.service";
+import {Visitante} from "../../models/visitante";
 
 @Component({
   selector: 'app-entregar-paquete',
@@ -11,11 +13,13 @@ import Swal from "sweetalert2";
 })
 export class EntregarPaqueteComponent implements OnInit {
   // datos para realizar la paginacion
+  visitante: Visitante = {} as Visitante;
   paquetes: Paquete[] = [];
   page: number = 0;
   listOfPages: number[] = [];
 
-  constructor(private paquetesService: PaquetesService) {
+  constructor(private paquetesService: PaquetesService,
+              private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
@@ -25,6 +29,9 @@ export class EntregarPaqueteComponent implements OnInit {
       for (let i = 0; i < totalOfPages; i++) {
         this.listOfPages.push(i + 1);
       }
+    });
+    this.sessionService.getUser().subscribe(user => {
+      this.visitante.authorization = user.name;
     })
 
   }
