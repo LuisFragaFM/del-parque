@@ -45,11 +45,10 @@
 
     <div class="row">
       <div class="col-5">
-        <div *ngIf="isChecked">
-          <label class="form-label">Tarjeton</label>
-          <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-                 [(ngModel)]="visitante.card">
-        </div>
+        
+        <label class="form-label">Tarjeton</label>
+        <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
+                [(ngModel)]="visitante.card">
       </div>
       <div class="col-5">
         <div *ngIf="isChecked">
@@ -102,8 +101,8 @@
       </div>
       <div class="col-5">
         <label class="form-label" for="autoriza">Autorizada por</label>
-        <input id="autoriza" class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-               (keyup)="findInquilinoByName()" [(ngModel)]="name">
+        <input id="autoriza" class="form-control" required disabled autocomplete="off" type="text" placeholder="Escriba aqui"
+               (keyup)="findInquilinoByName()" [(ngModel)]="visitante.authorization">
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">
             <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
