@@ -83,8 +83,8 @@
           <input required autocomplete="off" type="text" class="barra form-control" id="barra"
                  name="asdasd" [(ngModel)]="condomino.houseNumber" disabled>
           <label class="form-label" for="calle">Calle</label>
-          <input required autocomplete="off" type="text" class="barra form-control" name="asdasd" id="calle"
-                 [(ngModel)]="condomino.direction" disabled>
+          <input required disabled autocomplete="off" type="text" class="barra form-control" name="asdasd" id="calle"
+                 [(ngModel)]="condomino.street" >
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@
     <div class="row">
       <div class="col-5">
         <label for="fecha" class="form-label">Fecha</label>
-        <input class="form-control" id="fecha" required autocomplete="off" type="date" placeholder="Escriba aqui"
+        <input class="form-control" id="fecha" required disabled autocomplete="off" type="text" placeholder="Escriba aqui"
                [(ngModel)]="visitante.arrivalDate">
       </div>
       <div class="col-5">
@@ -115,12 +115,12 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label" for="hora">Hora</label>
-        <input class="form-control" id="hora" required autocomplete="off" type="time" placeholder="Escriba aqui"
+        <input class="form-control" id="hora" required disabled autocomplete="off" type="text" placeholder="Escriba aqui"
                [(ngModel)]="visitante.checkIn">
       </div>
       <div class="col-5 ">
         <label class="form-label" for="caseta">Caseta recibida:</label>
-        <select class="form-control" required autocomplete="on" name="Caseta" id="caseta"
+        <select class="form-control" required  autocomplete="on" name="Caseta" id="caseta"
                 [(ngModel)]="visitante.arrivalBooth">
           <option value="Caseta 1">
             <h2>Caseta 1</h2>
