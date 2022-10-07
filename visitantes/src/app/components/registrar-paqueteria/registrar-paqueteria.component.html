@@ -71,8 +71,8 @@
       </div>
       <div class="col-5">
         <label class="form-label" for="fecha">Fecha</label>
-            <input class="form-control" required #fechaRecibe
-              autocomplete="off" type="date" id="fecha" [(ngModel)]="paquete.fechaLlegada" />
+            <input class="form-control" required disabled #fechaRecibe
+              autocomplete="off" type="text" id="fecha" [(ngModel)]="paquete.fechaLlegada" />
             <!--Alerta de datos (recibe Inquilino)-->
             <div id="alertFecha" class="alert alert-danger" *ngIf="!fechaRecibo">
               Ingrese la fecha correcto
@@ -83,7 +83,7 @@
     <div class="row g-3 mt-3 row justify-content-around">
       <div class="col-5">
         <label class="form-label" for="hora">Hora</label>
-        <input class="form-control" required autocomplete="off" type="time" id="hora"
+        <input class="form-control" required disabled autocomplete="off" type="text" id="hora"
           [(ngModel)]="paquete.horaLlegada" />
       </div>
 
@@ -103,7 +103,7 @@
     <section>
       <div class="row">
         <div class="col text-end">
-          <button class="btn btn-success" (click)="save()" [disabled]="!isValidForm()">
+          <button class="btn btn-success" (click)="save()"  [disabled]="!isValidForm()">
             Registrar
           </button>
         </div>

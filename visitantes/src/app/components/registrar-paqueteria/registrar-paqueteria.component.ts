@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PaquetesService } from '../../services/paquetes.service';
 import { Paquete } from '../../models/paquete';
-import {VisitantesService} from "../../services/visitantes.service";
-import {Visitante} from "../../models/visitante";
 import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
 import Swal from 'sweetalert2';
 import { validaInput } from 'src/app/tools/validation';
 import {SessionService} from "../../services/session.service";
+import {Visitante} from "../../models/visitante";
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -76,7 +75,8 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     this.paquete.nombreCondomino = condomino.name;
     this.paquete.calle = condomino.street;
     this.paquete.numeroCasa = condomino.houseNumber;
-    //this.visitante.authorization = condomino.name;
+    this.paquete.fechaLlegada = this.formatDate();
+    this.paquete.horaLlegada= this.formatAMPM();
   }
 
   // funcion para validacion
@@ -104,5 +104,29 @@ export class RegistrarPaqueteriaComponent implements OnInit {
       this.validacionRecibo &&
       this.fechaRecibo
     );
+  }
+  formatDate() {
+    const d = new Date()
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    let year = d.getFullYear();
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+
+  formatAMPM() {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes: number | string = date.getMinutes();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    return hours + ':' + minutes + ' ' + ampm;
   }
 }
