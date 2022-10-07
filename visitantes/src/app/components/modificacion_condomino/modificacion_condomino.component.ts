@@ -6,11 +6,11 @@ import {UploadFilesService} from "../../services/upload-files.service";
 import {environment} from "../../../environments/environment";
 
 @Component({
-  selector: 'app-pagos',
-  templateUrl: './pagos.component.html',
-  styleUrls: ['./pagos.component.css']
+  selector: 'app-modificacion_condomino',
+  templateUrl: './modificacion_condomino.component.html',
+  styleUrls: ['./modificacion_condomino.component.css']
 })
-export class PagosComponent implements OnInit {
+export class Modificacion_CondominoComponent implements OnInit {
   name: string | undefined;
   condomino: Condomino = {} as Condomino;
   condominos: Condomino[] = [];

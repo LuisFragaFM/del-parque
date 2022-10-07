@@ -7,7 +7,7 @@ import {BajasComponent} from './components/bajas/bajas.component';
 import {BitacoraTrabajadoresComponent} from './components/bitacora-trabajadores/bitacora-trabajadores.component';
 import {EntregarPaqueteComponent} from './components/entregar-paquete/entregar-paquete.component';
 import {InformesComponent} from './components/informes/informes.component';
-import {PagosComponent} from './components/pagos/pagos.component';
+import {Modificacion_CondominoComponent} from './components/modificacion_condomino/modificacion_condomino.component';
 import {RegistrarAgendaComponent} from './components/registrar-agenda/registrar-agenda.component';
 import {RegistrarPaqueteriaComponent} from './components/registrar-paqueteria/registrar-paqueteria.component';
 import {RegistrarSalidaComponent} from './components/registrar-salida/registrar-salida.component';
@@ -35,7 +35,7 @@ import {RolePipe} from './pipes/role.pipe';
     BitacoraTrabajadoresComponent,
     EntregarPaqueteComponent,
     InformesComponent,
-    PagosComponent,
+    Modificacion_CondominoComponent,
     RegistrarAgendaComponent,
     RegistrarPaqueteriaComponent,
     RegistrarSalidaComponent,
