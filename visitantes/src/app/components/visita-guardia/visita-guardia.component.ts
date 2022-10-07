@@ -50,6 +50,6 @@ export class VisitaGuardiaComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.name;
-    this.visitante.authorization = condomino.name;
+    //this.visitante.authorization = condomino.name;
   }
 }
