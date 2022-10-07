@@ -4,7 +4,7 @@ import {Condomino} from "../../models/condomino";
 import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-pagos',
+  selector: 'app-modificacion_condomino',
   templateUrl: './informes.component.html',
   styleUrls: ['./informes.component.css']
 })

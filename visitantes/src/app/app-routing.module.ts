@@ -6,7 +6,7 @@ import {TrabajadorComponent} from './components/trabajador/trabajador.component'
 import {RegistrarSalidaComponent} from './components/registrar-salida/registrar-salida.component';
 import {RegistrarPaqueteriaComponent} from './components/registrar-paqueteria/registrar-paqueteria.component';
 import {RegistrarAgendaComponent} from './components/registrar-agenda/registrar-agenda.component';
-import {PagosComponent} from './components/pagos/pagos.component';
+import {Modificacion_CondominoComponent} from './components/modificacion_condomino/modificacion_condomino.component';
 import {InformesComponent} from './components/informes/informes.component';
 import {EntregarPaqueteComponent} from './components/entregar-paquete/entregar-paquete.component';
 import {BitacoraTrabajadoresComponent} from './components/bitacora-trabajadores/bitacora-trabajadores.component';
@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'salida', component: RegistrarSalidaComponent},
   {path: 'registro-paq', component: RegistrarPaqueteriaComponent},
   {path: 'registro-a', component: RegistrarAgendaComponent},
-  {path: 'pagos', component: PagosComponent},
+  {path: 'modificacion_condomino', component: Modificacion_CondominoComponent},
   {path: 'informes', component: InformesComponent},
   {path: 'entregar-paq', component: EntregarPaqueteComponent},
   {path: 'bitacora-tra', component: BitacoraTrabajadoresComponent},
