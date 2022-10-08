@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {BajasComponent} from './components/bajas/bajas.component';
 import {BitacoraTrabajadoresComponent} from './components/bitacora-trabajadores/bitacora-trabajadores.component';
 import {EntregarPaqueteComponent} from './components/entregar-paquete/entregar-paquete.component';
 import {InformesComponent} from './components/informes/informes.component';
@@ -13,7 +12,6 @@ import {RegistrarPaqueteriaComponent} from './components/registrar-paqueteria/re
 import {RegistrarSalidaComponent} from './components/registrar-salida/registrar-salida.component';
 import {TrabajadorComponent} from './components/trabajador/trabajador.component';
 import {VisitaGuardiaComponent} from './components/visita-guardia/visita-guardia.component';
-import {AltasModificacionesComponent} from './components/altas-modificaciones/altas-modificaciones.component';
 import {AgendaCondominoComponent} from './components/agenda-condomino/agenda-condomino.component';
 import {VisitaCondominoComponent} from './components/visita-condomino/visita-condomino.component';
 import {EncabezadoComponent} from './components/encabezado/encabezado.component';
@@ -23,7 +21,6 @@ import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
-import {ModificacionesComponent} from './components/modificaciones/modificaciones.component';
 import {AltasComponent} from './components/altas/altas.component';
 import {UsuariosComponent} from './components/usuarios/usuarios.component';
 import {RolePipe} from './pipes/role.pipe';
@@ -31,7 +28,6 @@ import {RolePipe} from './pipes/role.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    BajasComponent,
     BitacoraTrabajadoresComponent,
     EntregarPaqueteComponent,
     InformesComponent,
@@ -41,13 +37,11 @@ import {RolePipe} from './pipes/role.pipe';
     RegistrarSalidaComponent,
     TrabajadorComponent,
     VisitaGuardiaComponent,
-    AltasModificacionesComponent,
     AgendaCondominoComponent,
     VisitaCondominoComponent,
     EncabezadoComponent,
     PiePaginaComponent,
     MenuGlobalComponent,
-    ModificacionesComponent,
     AltasComponent,
     UsuariosComponent,
     RolePipe,

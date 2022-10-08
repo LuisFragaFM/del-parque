@@ -10,10 +10,8 @@ import {Modificacion_CondominoComponent} from './components/modificacion_condomi
 import {InformesComponent} from './components/informes/informes.component';
 import {EntregarPaqueteComponent} from './components/entregar-paquete/entregar-paquete.component';
 import {BitacoraTrabajadoresComponent} from './components/bitacora-trabajadores/bitacora-trabajadores.component';
-import {BajasComponent} from './components/bajas/bajas.component';
 import {AgendaCondominoComponent} from './components/agenda-condomino/agenda-condomino.component';
 import {AltasComponent} from './components/altas/altas.component';
-import {ModificacionesComponent} from './components/modificaciones/modificaciones.component';
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 
 const routes: Routes = [
@@ -27,10 +25,8 @@ const routes: Routes = [
   {path: 'informes', component: InformesComponent},
   {path: 'entregar-paq', component: EntregarPaqueteComponent},
   {path: 'bitacora-tra', component: BitacoraTrabajadoresComponent},
-  {path: 'bajas', component: BajasComponent},
   {path: 'altas', component: AltasComponent},
   {path: 'agenda-cond', component: AgendaCondominoComponent},
-  {path: 'modificaciones', component: ModificacionesComponent},
   {path: 'usuarios', component: UsuariosComponent}
 ];
 
