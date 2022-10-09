@@ -34,7 +34,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.paquetesService.getPaquetes(0).subscribe((paquetes) => {});
+    this.paquetesService.getPaquetes(0).subscribe(() => {});
   }
 
   findInquilinoByName() {
@@ -47,10 +47,10 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   }
 
   save() {
+    this.paquete.condominoId = this.condomino.id;
     this.paquetesService.save(this.paquete).subscribe((paquete) => {
-      this.paquete = {} as Paquete;
       Swal.fire({
-        title: `El paquete para la casa ${paquete.numeroCasa} en la calle ${paquete.calle} fue guardado correctamente`,
+        title: `El paquete para la casa ${this.paquete.houseNumber} en la calle ${this.paquete.houseStreet} fue guardado correctamente`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
@@ -65,9 +65,9 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.name;
-    this.paquete.nombreCondomino = condomino.name;
-    this.paquete.calle = condomino.street;
-    this.paquete.numeroCasa = condomino.houseNumber;
+    console.log(condomino)
+    this.paquete.houseStreet = condomino.street;
+    this.paquete.houseNumber = condomino.houseNumber;
   }
 
   // funcion para validacion

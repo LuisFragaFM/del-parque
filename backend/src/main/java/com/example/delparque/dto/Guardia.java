@@ -9,15 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Condomino {
+public class Guardia {
     private String id;
     private String name;
-    private String street;
-    private String houseNumber;
     private String email;
     private String telephoneNumber;
     private String emergencyNumber;
-    private boolean paidStatus;
     private String userId;
     private String role;
 }

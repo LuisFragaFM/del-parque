@@ -4,10 +4,9 @@ export interface Condomino {
   street: string;
   houseNumber: string;
   telephoneNumber: string;
-  direction: string;
+  email: string;
   emergencyNumber: string;
   paidStatus: boolean;
   userId: string;
-  email: string;
   role: string;
 }

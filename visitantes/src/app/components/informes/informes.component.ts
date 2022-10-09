@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CondominosService} from "../../services/condominos.service";
 import {Condomino} from "../../models/condomino";
-import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-pagos',

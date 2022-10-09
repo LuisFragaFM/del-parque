@@ -26,6 +26,12 @@ public class User {
 
     private String password;
 
+    @Column(name = "telephone_number")
+    private String telephoneNumber;
+
+    @Column(name = "emergency_number")
+    private String emergencyNumber;
+
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
 }

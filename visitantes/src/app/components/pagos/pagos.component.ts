@@ -18,7 +18,6 @@ export class PagosComponent implements OnInit {
   environment = environment.baseUrl;
   uri: any = '';
   files!: FileList;
-  email!: string;
 
   constructor(private condominosService: CondominosService, private uploadFilesService: UploadFilesService) {
   }
@@ -79,6 +78,7 @@ export class PagosComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = undefined;
+    console.log(condomino)
     this.uploadFilesService.loadFilename(this.condomino.id).subscribe(({filename}) => {
       this.uri = this.environment + '/file/' + filename;
     });

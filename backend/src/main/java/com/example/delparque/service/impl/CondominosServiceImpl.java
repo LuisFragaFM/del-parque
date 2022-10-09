@@ -12,9 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,17 +23,13 @@ import java.util.stream.Collectors;
 public class CondominosServiceImpl implements CondominosService {
 
     private final CondominosRepository condominosRepository;
-    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private final UsersRepository usersRepository;
     private final UsersService usersService;
 
-
     CondominosServiceImpl(CondominosRepository condominosRepository,
-                          NamedParameterJdbcTemplate namedParameterJdbcTemplate,
                           UsersRepository usersRepository,
                           UsersService usersService) {
         this.condominosRepository = condominosRepository;
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.usersRepository = usersRepository;
         this.usersService = usersService;
     }
@@ -44,18 +37,14 @@ public class CondominosServiceImpl implements CondominosService {
     @Override
     public Page<Condomino> findAll(Integer page) {
 
-        String query = "SELECT * FROM condominos";
-
-        BeanPropertyRowMapper<Condomino> condominoViewMapper = new BeanPropertyRowMapper<>(Condomino.class);
-        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
-
         Pageable pageable = PageRequest.of(page, 10);
 
-        List<Condomino> condominos = namedParameterJdbcTemplate.query(query +
-                " LIMIT " + pageable.getPageSize() +
-                " OFFSET " + pageable.getOffset(), mapSqlParameterSource, condominoViewMapper);
-
-        return new PageImpl<>(condominos, pageable, pageable.getPageSize());
+        return new PageImpl<>(
+                condominosRepository.findAll().stream()
+                        .map(this::addExtraInfo)
+                        .collect(Collectors.toList()),
+                pageable, pageable.getPageSize()
+        );
     }
 
     @Override
@@ -79,18 +68,28 @@ public class CondominosServiceImpl implements CondominosService {
 
     @Override
     public Condomino findById(String id) {
-        return condominosRepository.findById(id).map(CondominoMapper::entityToDto).orElse(null);
+        return condominosRepository.findById(id).map(this::addExtraInfo).orElse(null);
     }
 
     @Override
     public List<Condomino> findByName(String name) {
-        return condominosRepository.findByName(name)
-                .stream().map(CondominoMapper::entityToDto)
-                .collect(Collectors.toList());
+        return condominosRepository.findAllByName(name).stream()
+                .map(this::addExtraInfo).collect(Collectors.toList());
     }
 
     @Override
     public void delete(String id) {
         condominosRepository.deleteById(id);
+    }
+
+    private Condomino addExtraInfo(com.example.delparque.model.Condomino condomino) {
+        Condomino c = CondominoMapper.entityToDto(condomino);
+        User user = usersRepository.findById(c.getUserId()).orElseThrow();
+
+        c.setName(user.getName());
+        c.setEmail(user.getEmail());
+        c.setEmergencyNumber(user.getEmergencyNumber());
+        c.setTelephoneNumber(user.getTelephoneNumber());
+        return c;
     }
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResetPassword {
-    private String newPassword;
+public class WorkDay {
+    private String id;
+    private String dayName;
 }

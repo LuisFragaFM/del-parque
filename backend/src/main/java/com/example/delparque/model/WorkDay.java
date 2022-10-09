@@ -11,24 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "trabajadores")
+@Table(name = "work_days")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Trabajador {
+public class WorkDay {
     @Id
     private String id;
 
-    private String type;
+    @Column(name = "day_name")
+    private String dayName;
 
-    private String name;
-
-    @Column(name = "condomino_id")
-    private String condominoId;
-
-    private String schedule;
-
-    @Column(name = "telephone_number")
-    private String telephoneNumber;
+    @Column(name = "trabajador_id")
+    private String trabajadorId;
 }

@@ -31,12 +31,12 @@ export class EntregarPaqueteComponent implements OnInit {
 
   // Notificaciones de usuario
   save(paquete: Paquete) {
-    paquete.fechaEntrega = this.formatDate();
-    paquete.horaEntrega = this.formatAMPM();
-    paquete.entregado = true;
+    paquete.deliveryDate = this.formatDate();
+    paquete.deliveryTime = this.formatAMPM();
+    paquete.delivery = true;
     this.paquetesService.save(paquete).subscribe(entregaPaquete => {
       Swal.fire({
-        title: `El paquete fue recibido por ${entregaPaquete.recibeInquilino} y entregado por ${entregaPaquete.entregaGuardia}`,
+        title: `El paquete fue recibido por ${entregaPaquete.receivesResident} y entregado por ${entregaPaquete.deliveryGuard}`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,

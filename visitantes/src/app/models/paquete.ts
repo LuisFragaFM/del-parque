@@ -1,18 +1,18 @@
 export interface Paquete {
-  entregado: boolean;
   id: string;
-  nombreEmpresa: string;
-  numeroGuia: string;
-  recibeGuardia: string;
-  fechaLlegada: string;
-  casetaRecibida: string;
-  casetaEntrega: string;
-  recibeInquilino: string;
-  entregaGuardia: string;
-  fechaEntrega: string;
-  nombreCondomino: string;
-  numeroCasa: string;
-  calle: string;
-  horaEntrega: string;
-  horaLlegada: string;
+  houseNumber: string;
+  houseStreet: string;
+  condominoId: string;
+  companyName: string;
+  guideNumber: string;
+  receivesGuard: string;
+  deliveryDate: string;
+  arrivalDate: string;
+  receivesBooth: string;
+  deliveryBooth: string;
+  receivesResident: string;
+  deliveryGuard: string;
+  deliveryTime: string;
+  arrivalTime: string;
+  delivery: boolean;
 }

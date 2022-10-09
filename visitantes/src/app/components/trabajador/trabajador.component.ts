@@ -40,7 +40,7 @@ export class TrabajadorComponent implements OnInit {
   save(): void {
     this.trabajadoresService.save(this.trabajador).subscribe((trabajador) => {
       Swal.fire({
-        title: `El trabajador ${trabajador.nombreTrabajador} fue guardado correctamente`,
+        title: `El trabajador ${trabajador.name} fue guardado correctamente`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
@@ -55,7 +55,7 @@ export class TrabajadorComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.name;
-    this.trabajador.nombreCondomino = condomino.name;
+    this.trabajador.condominoId = condomino.id;
   }
 
   // funcion para validacion

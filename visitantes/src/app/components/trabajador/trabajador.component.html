@@ -6,7 +6,7 @@
       <div class="col-6">
         <label class="form-label" for="tipo-trabajador">Tipo de trabajador</label>
         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="TipoTrabajador"
-          id="tipo-trabajador" [(ngModel)]="trabajador.tipo">
+          id="tipo-trabajador" [(ngModel)]="trabajador.type">
           <option value="Trabajador diario">
             <h2>Trabajador diario</h2>
           </option>
@@ -21,7 +21,7 @@
           <label class="form-label" for="nombre-trabajador">Nombre</label>
           <input class="form-control" (keydown)="validaTrabajador(regexName, nombreTrabajador.value)" required
             #nombreTrabajador autocomplete="off" type="text" placeholder="Escriba aqui" name="nombre-trabajador"
-            id="nombre-trabajador" [(ngModel)]="trabajador.nombreTrabajador" />
+            id="nombre-trabajador" [(ngModel)]="trabajador.name" />
           <!--Alerta de datos -->
           <div id="alertName" class="alert alert-danger" *ngIf="!trabajadorName">
             Favor de agregar solamente letras en este campo
@@ -46,9 +46,9 @@
 
       <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
-          <label class="form-label" for="dias-trabajo">Días de trabajo</label>
-          <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-            name="dias-trabajo" id="dias-trabajo" [(ngModel)]="trabajador.diasTrabajo" />
+<!--          <label class="form-label" for="dias-trabajo">Días de trabajo</label>-->
+<!--          <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"-->
+<!--            name="dias-trabajo" id="dias-trabajo" [(ngModel)]="trabajador.diasTrabajo" />-->
         </div>
       </div>
 
@@ -57,7 +57,7 @@
           <!--Hora de llegada a residencial -->
           <label class="form-label" for="hora-llegada">Hora llegada</label>
           <input class="form-control" #hora="ngModel" required autocomplete="off" type="time" placeholder="Escriba aqui"
-            name="hora-llegada" id="hora-llegada" [(ngModel)]="trabajador.horario" />
+            name="hora-llegada" id="hora-llegada" [(ngModel)]="trabajador.schedule" />
           <div *ngIf="hora.touched" class="alert alert-info">
             Favor de agregar un dato en este campo
           </div>
@@ -69,7 +69,7 @@
           <label for="telefono-trabajador">Teléfono</label>
           <input class="form-control" (keydown)="validaTel(regexTel, telefono.value)" #telefono required
             autocomplete="off" type="text" placeholder="Escriba aqui" name="telefono-trabajador"
-            id="telefono-trabajador" [(ngModel)]="trabajador.telefono" />
+            id="telefono-trabajador" [(ngModel)]="trabajador.telephoneNumber" />
           <!--Alerta de datos -->
           <div id="alertTel" class="alert alert-danger" *ngIf="!validacionTel">
             Inserte el número de telefono de 7 a 14 digitos

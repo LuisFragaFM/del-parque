@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RestController
 @RequestMapping("api/visitantes")
@@ -17,15 +18,15 @@ public class VisitantesController {
         this.visitantesService = visitantesService;
     }
 
-    @GetMapping("/unAuthorized")
+    @GetMapping("/un-authorized")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Page<Visitante> findAllUnauthorized(@RequestParam Integer page) {
-        return visitantesService.findAllUnauthorized(page);
+    public Page<Visitante> findAllByAuthorized(@RequestParam Integer page) {
+        return visitantesService.findAllByAuthorized(page);
     }
-    @GetMapping("/noLeft")
+    @GetMapping("/gone-out")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Page<Visitante> findAllNoLeft(@RequestParam Integer page) {
-        return visitantesService.findAllNoLeft(page);
+    public Page<Visitante> findAllByAuthorizedAndGoneOut(@RequestParam Integer page) {
+        return visitantesService.findAllByAuthorizedAndGoneOut(page);
     }
 
     @GetMapping("{id}")
@@ -34,9 +35,9 @@ public class VisitantesController {
         return visitantesService.findById(id);
     }
 
-    @GetMapping("{name}")
+    @GetMapping("/name/{name}")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Visitante findByName(@PathVariable String name) {
+    public List<Visitante> findByName(@PathVariable String name) {
         return visitantesService.findByName(name);
     }
 

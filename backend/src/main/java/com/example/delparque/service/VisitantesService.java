@@ -3,10 +3,12 @@ package com.example.delparque.service;
 import com.example.delparque.dto.Visitante;
 import org.springframework.data.domain.Page;
 
-public interface VisitantesService {
-    Page<Visitante> findAllUnauthorized(Integer page);
+import java.util.List;
 
-    Page<Visitante> findAllNoLeft(Integer page);
+public interface VisitantesService {
+    Page<Visitante> findAllByAuthorized(Integer page);
+
+    Page<Visitante> findAllByAuthorizedAndGoneOut(Integer page);
 
     Visitante findById(String id);
 
@@ -14,5 +16,5 @@ public interface VisitantesService {
 
     void delete(String id);
 
-    Visitante findByName(String name);
+    List<Visitante> findByName(String name);
 }

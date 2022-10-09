@@ -4,20 +4,20 @@
     <div class="row g-3 mt-3 row justify-content-around">
       <div class="col-5">
         <label class="form-label" for="nombre_paqueteria">Nombre / Empresa</label>
-            <!-- se ingresan los datos de la empresa que envia el paquete -->
-            <input class="form-control col-12" (change)="validaName(regexName, empresa.value)" required #empresa
-              autocomplete="off" type="text" placeholder="Escriba aqui" id="nombre_paqueteria"
-              [(ngModel)]="paquete.nombreEmpresa" />
-              <!--Alerta de datos (nombre)-->
-          <div id="alertEmpresa" class="row alert alert-danger" *ngIf="!validacionEmpresa">
-            Ingrese el nombre de la empresa
-          </div>
+        <!-- se ingresan los datos de la empresa que envia el paquete -->
+        <input class="form-control col-12" (change)="validaName(regexName, empresa.value)" required #empresa
+               autocomplete="off" type="text" placeholder="Escriba aqui" id="nombre_paqueteria"
+               [(ngModel)]="paquete.companyName"/>
+        <!--Alerta de datos (nombre)-->
+        <div id="alertEmpresa" class="row alert alert-danger" *ngIf="!validacionEmpresa">
+          Ingrese el nombre de la empresa
+        </div>
       </div>
       <div class="col-5">
         <!-- Numero de guia del paquete -->
         <label class="form-label" for="guia">Número de Guía</label>
         <input class="form-control col-12" (change)="validaGuia(regexName, guia.value)" required #guia
-          autocomplete="off" type="text" placeholder="Escriba aqui" id="guia" [(ngModel)]="paquete.numeroGuia" />
+               autocomplete="off" type="text" placeholder="Escriba aqui" id="guia" [(ngModel)]="paquete.guideNumber"/>
         <!--Alerta de datos (numero de guia)-->
         <div id="alertGuia" class="row alert alert-danger" *ngIf="!validacionGuia">
           Ingrese la guia del paquete
@@ -33,7 +33,7 @@
       <div class="col-5">
         <label class="form-label" for="nombre_condomino">Nombre</label>
         <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
-          id="nombre_condomino" (keyup)="findInquilinoByName()" [(ngModel)]="name" list="nombre_condominos" />
+               id="nombre_condomino" (keyup)="findInquilinoByName()" [(ngModel)]="name" list="nombre_condominos"/>
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">
             <div (click)="selectInquilino(c)" class="cursor">{{ c.name }}</div>
@@ -45,11 +45,13 @@
         <!-- Se ingresa el numero de la casa a la que va el paquete -->
         <div class="input" *ngIf="condomino.id">
           <label class="form-label" for="calle">Número de la casa</label>
-          <input class="form-control" required autocomplete="off" type="text" id="casa" [(ngModel)]="paquete.numeroCasa"
-            disabled />
+          <input class="form-control" required autocomplete="off" type="text" id="casa"
+                 [(ngModel)]="paquete.houseNumber"
+                 disabled/>
           <label class="form-label" for="calle">Calle</label>
-          <input class="form-control" required autocomplete="off" type="text" id="calle" [(ngModel)]="paquete.calle"
-            disabled />
+          <input class="form-control" required autocomplete="off" type="text" id="calle"
+                 [(ngModel)]="paquete.houseStreet"
+                 disabled/>
         </div>
       </div>
     </div>
@@ -62,8 +64,8 @@
         <!-- se escribe por quien fue recibido el paquete -->
         <label class="form-label" for="recibido">Guardia que recibe:</label>
         <input class="form-control" (keyup)="validaReci(regexName, residenteRecibe.value)" required #residenteRecibe
-          autocomplete="off" type="text" placeholder="Escriba aqui" id="recibido"
-          [(ngModel)]="paquete.recibeGuardia" />
+               autocomplete="off" type="text" placeholder="Escriba aqui" id="recibido"
+               [(ngModel)]="paquete.receivesGuard"/>
         <!--Alerta de datos (recibe Inquilino)-->
         <div id="alertRecibo" class="alert alert-danger" *ngIf="!validacionRecibo">
           Ingrese el nombre de la persona que recibe
@@ -71,12 +73,12 @@
       </div>
       <div class="col-5">
         <label class="form-label" for="fecha">Fecha</label>
-            <input class="form-control" required #fechaRecibe
-              autocomplete="off" type="date" id="fecha" [(ngModel)]="paquete.fechaLlegada" />
-            <!--Alerta de datos (recibe Inquilino)-->
-            <div id="alertFecha" class="alert alert-danger" *ngIf="!fechaRecibo">
-              Ingrese la fecha correcto
-            </div>
+        <input class="form-control" required
+               autocomplete="off" type="date" id="fecha" [(ngModel)]="paquete.arrivalDate"/>
+        <!--Alerta de datos (recibe Inquilino)-->
+        <div id="alertFecha" class="alert alert-danger" *ngIf="!fechaRecibo">
+          Ingrese la fecha correcto
+        </div>
       </div>
     </div>
 
@@ -84,13 +86,13 @@
       <div class="col-5">
         <label class="form-label" for="hora">Hora</label>
         <input class="form-control" required autocomplete="off" type="time" id="hora"
-          [(ngModel)]="paquete.horaLlegada" />
+               [(ngModel)]="paquete.arrivalTime"/>
       </div>
 
       <div class="col-5">
         <label class="form-label" for="caseta">Caseta recibida:</label>
         <select class="form-control" required autocomplete="on" name="Caseta" id="caseta"
-          [(ngModel)]="paquete.casetaRecibida">
+                [(ngModel)]="paquete.receivesBooth">
           <option value="Caseta 1">
             <h2>Caseta 1</h2>
           </option>

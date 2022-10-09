@@ -16,20 +16,20 @@
         <label class="form-label" for="recibidorfor">Recibido por: </label>
         <input id="recibidorfor" required autocomplete="off" type="text" placeholder="Persona que recibe"
                class="form-control"
-               [(ngModel)]="paquete.recibeInquilino">
+               [(ngModel)]="paquete.receivesResident">
       </div>
       <div class="col-5">
         <label class="form-label" for="entregadofor">Entregado por: </label>
         <input id="entregadofor" required autocomplete="off" type="text" placeholder="Persona que entrega"
                class="form-control"
-               [(ngModel)]="paquete.entregaGuardia">
+               [(ngModel)]="paquete.deliveryGuard">
       </div>
     </div>
     <div class="row mt-3  ">
       <div class="col-5">
         <label class="form-label" for="caseta">Caseta Entrega</label>
         <select class="form-control" required autocomplete="on" name="Caseta" id="caseta"
-                [(ngModel)]="paquete.casetaEntrega">
+                [(ngModel)]="paquete.deliveryBooth">
           <option value="Caseta 1">
             <h2>Caseta 1</h2>
           </option>
@@ -45,7 +45,7 @@
              type="text"
              placeholder="Guardar paquete en"
              id="guia"
-             [(ngModel)]="paquete.numeroGuia">
+             [(ngModel)]="paquete.guideNumber">
       <div class="col-5 ">
 
         <button class="botonModificar btn btn-lg btn-primary" (click)="save(paquete)">Entregar</button>
