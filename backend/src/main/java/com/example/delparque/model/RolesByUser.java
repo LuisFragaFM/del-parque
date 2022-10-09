@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "roles_usuario")
+@Table(name = "roles_by_user")
 @Builder
 @Data
 @NoArgsConstructor

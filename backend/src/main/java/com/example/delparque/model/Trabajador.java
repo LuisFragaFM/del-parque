@@ -20,18 +20,15 @@ public class Trabajador {
     @Id
     private String id;
 
-    private String tipo;
+    private String type;
 
-    @Column(name = "nombre_trabajador")
-    private String nombreTrabajador;
+    private String name;
 
-    @Column(name = "nombre_condomino")
-    private String nombreCondomino;
+    @Column(name = "condomino_id")
+    private String condominoId;
 
-    private String horario;
+    private String schedule;
 
-    private String telefono;
-
-    @Column(name = "dias_trabajo")
-    private String diasTrabajo;
+    @Column(name = "telephone_number")
+    private String telephoneNumber;
 }

@@ -9,7 +9,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.security.Principal;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,7 @@ public class FilesController {
 
     private final FilesStorageService filesStorageService;
 
-    public FilesController(FilesStorageService filesStorageService) {
+    FilesController(FilesStorageService filesStorageService) {
         this.filesStorageService = filesStorageService;
     }
 
@@ -54,6 +53,6 @@ public class FilesController {
     @GetMapping("/filename/{userId}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public Map<String, String> getFileName(@PathVariable String userId) {
-        return Map.of("filename", filesStorageService.getFilenameByUserId(userId));
+        return Map.of("filename", filesStorageService.getFilenameByUserId(userId).getFilename());
     }
 }

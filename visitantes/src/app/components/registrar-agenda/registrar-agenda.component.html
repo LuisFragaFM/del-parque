@@ -1,6 +1,6 @@
 <div class="buttons">
   <span *ngFor="let p of listOfPages" (click)="updatePage(p)" class="cursor pagination"
-    [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}">
+        [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}">
     {{p}}
   </span>
 </div>
@@ -16,52 +16,49 @@
         <h2>Datos Agenda</h2>
       </div>
 
-    <!-- form de nombre -->
-    <div class="nombreVisitante">
-      <h3>Nombre:</h3>
-      <input required type="text" placeholder="Nombre" class="inputAgendados" name="buscaSalidaName"
-             [(ngModel)]="visitante.name" disabled>
-    </div>
-    <!-- form de hora de entrada-->
-    <div class="Fecha">
-      <h3>Fecha </h3>
-      <input required type="date" placeholder="Fecha agendada" class="inputAgendados" name="buscaHorasEntrada"
-             [(ngModel)]="visitante.arrivalDate" disabled>
-    </div>
-    <!-- form de hora de salida-->
-    <div class="horaLlegada">
-      <h3>Hora</h3>
-      <input required type="time" placeholder="Hora" class="inputAgendados" name="buscaHorasSalida"
-             [(ngModel)]="visitante.checkIn" disabled>
-    </div>
-    <!-- form de Caseta-->
-    <div class="Caseta">
-      <h3>Caseta</h3>
-      <select class="inputAgendados" name="Caseta" id="Caseta" [(ngModel)]="visitante.arrivalBooth">
-        <option value="Caseta 1">
-          <h3>Caseta 1</h3>
-        </option>
-        <option value="Caseta 2">
-          <h3>Caseta 2</h3>
-        </option>
-      </select>
-
-
-
-    </div>
-    <!-- boton para enviar datos del eliminar y realizar registro de la salida-->
-    <div class="botonesRegistro">
-      <!-- boton Guardar -->
-      <div class="buttonRegistro">
-        <button class="botonRegistro" (click)="modify(visitante)">Registro</button>
+      <!-- form de nombre -->
+      <div class="nombreVisitante">
+        <h3>Nombre:</h3>
+        <input required type="text" placeholder="Nombre" class="inputAgendados" name="buscaSalidaName"
+               [(ngModel)]="visitante.name" disabled>
       </div>
-      <!-- boton eliminar -->
-      <div class="buttonEliminar">
-        <button class="botonEliminar" (click)="delete()">Incumplido</button>
+      <!-- form de hora de entrada-->
+      <div class="Fecha">
+        <h3>Fecha </h3>
+        <input required type="date" placeholder="Fecha agendada" class="inputAgendados" name="buscaHorasEntrada"
+               [(ngModel)]="visitante.arrivalDate" disabled>
       </div>
-    </div>
+      <!-- form de hora de salida-->
+      <div class="horaLlegada">
+        <h3>Hora</h3>
+        <input required type="time" placeholder="Hora" class="inputAgendados" name="buscaHorasSalida"
+               [(ngModel)]="visitante.checkIn" disabled>
+      </div>
+      <!-- form de Caseta-->
+      <div class="Caseta">
+        <h3>Caseta</h3>
+        <select class="inputAgendados" name="Caseta" id="Caseta" [(ngModel)]="visitante.arrivalBooth" disabled>
+          <option value="Caseta 1">
+            <h3>Caseta 1</h3>
+          </option>
+          <option value="Caseta 2">
+            <h3>Caseta 2</h3>
+          </option>
+        </select>
+
+      </div>
+      <!-- boton para enviar datos del eliminar y realizar registro de la salida-->
+      <div class="botonesRegistro">
+        <!-- boton Guardar -->
+        <div class="buttonRegistro">
+          <button class="botonRegistro" (click)="modify(visitante)">Registro</button>
+        </div>
+        <!-- boton eliminar -->
+        <div class="buttonEliminar">
+          <button class="botonEliminar" (click)="delete()">Incumplido</button>
+        </div>
+      </div>
     </div>
   </div>
-
 
 </div>

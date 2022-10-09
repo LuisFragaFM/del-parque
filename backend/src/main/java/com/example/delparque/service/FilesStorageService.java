@@ -1,6 +1,6 @@
 package com.example.delparque.service;
 
-import com.example.delparque.dto.LoggedUser;
+import com.example.delparque.model.UserImage;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,5 +18,5 @@ public interface FilesStorageService {
 
     Stream<Path> loadAll();
 
-    String getFilenameByUserId(String userId);
+    UserImage getFilenameByUserId(String userId);
 }

@@ -13,7 +13,6 @@ import java.util.Map;
 @Builder
 @Value
 public class LoggedUser implements OidcUser {
-
     OidcIdToken oidcIdToken;
     OidcUserInfo oidcUserInfo;
     Collection<? extends GrantedAuthority> grantedAuthorities;

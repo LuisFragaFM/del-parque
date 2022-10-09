@@ -3,9 +3,9 @@ import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
 import {CondominosService} from "../../services/condominos.service";
 import {Condomino} from "../../models/condomino";
-import {SessionService} from "../../services/session.service";
 import Swal from "sweetalert2";
-
+import {SessionService} from "../../services/session.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-visita-guardia',
@@ -14,29 +14,35 @@ import Swal from "sweetalert2";
 })
 export class VisitaGuardiaComponent implements OnInit {
   isChecked: boolean = true;
-  name: string | undefined;
+  name!: string;
+  autoriza!: User;
   visitante: Visitante = {} as Visitante;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-  constructor(private visitantesService: VisitantesService , private condominosService: CondominosService,
-              private sessionService: SessionService) { }
+
+  constructor(private visitantesService: VisitantesService,
+              private condominosService: CondominosService,
+              private sessionService: SessionService) {
+  }
 
   ngOnInit(): void {
     this.sessionService.getUser().subscribe(user => {
-      this.visitante.authorization = user.name;
+      this.autoriza = user;
     })
-    this.visitante.checkIn= this.formatAMPM();
-    this.visitante.arrivalDate=this.formatDate();
+
   }
 
   findInquilinoByName() {
     this.condominosService.findByName(this.name!).subscribe(condominos => {
-      console.log(condominos);
       this.condominos = condominos;
     });
   }
 
   save() {
+    if (!this.condomino.id) {
+      return;
+    }
+
     this.visitante.condominoId = this.condomino.id;
     this.visitantesService.save(this.visitante).subscribe(visitante => {
       Swal.fire({
@@ -45,14 +51,18 @@ export class VisitaGuardiaComponent implements OnInit {
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonText: `Cerrar`
-      }).then(() => {});
+      }).then(() => {
+        this.visitante = {} as Visitante;
+      });
     });
   }
 
   selectInquilino(condomino: Condomino) {
     this.condomino = condomino;
-    this.condominos = [];
     this.name = condomino.name;
+    this.visitante.condominoId = condomino.id;
+    this.visitante.authorization = this.autoriza.id;
+    this.condominos = [];
     this.visitante.checkIn= this.formatAMPM();
     this.visitante.arrivalDate=this.formatDate();
 

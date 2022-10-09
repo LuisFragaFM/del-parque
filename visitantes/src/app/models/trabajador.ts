@@ -1,10 +1,9 @@
 export interface Trabajador {
   id: string;
-  tipo: string;
-  nombreTrabajador: string;
-  nombreCondomino: string;
-  horario: string;
-  telefono: string;
-  diasTrabajo: string;
-  content: any;
+  type: string;
+  name: string;
+  condominoId: string;
+  condominoName: string
+  schedule: string;
+  telephoneNumber: string;
 }
