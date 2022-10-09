@@ -51,7 +51,7 @@ export class RegistrarAgendaComponent implements OnInit {
 
   modify(visitante: Visitante) {
     visitante.authorized = true;
-    visitante.authorization = this.user.name;
+    visitante.authorization = this.user.id;
 
     this.visitantesService.save(visitante).subscribe(visitante => {
       Swal.fire({

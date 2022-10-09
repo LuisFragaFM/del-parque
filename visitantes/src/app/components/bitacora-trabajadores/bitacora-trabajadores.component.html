@@ -1,6 +1,6 @@
 <div class="buttons">
   <span *ngFor="let p of listOfPages" (click)="updatePage(p)" class="cursor pagination"
-    [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}">
+        [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}">
     {{p}}
   </span>
 </div>
@@ -13,83 +13,41 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label" for="nombre_trabajador">Nombre del trabajador</label>
-        <input id="nombre_trabajador" required autocomplete="off" type="text" placeholder="Nombre de trabajador" class="inputBitacora form-control" name="buscaTrabajadorName"
-          [(ngModel)]="trabajador.nombreTrabajador">
+        <input id="nombre_trabajador" required autocomplete="off" type="text" placeholder="Nombre de trabajador"
+               class="inputBitacora form-control" name="buscaTrabajadorName"
+               [(ngModel)]="trabajador.name">
       </div>
       <div class="col-5">
         <label class="form-label" for="hora_trabajador">Hora</label>
-        <input  id="hora_trabajador" required autocomplete="off" type="time" placeholder="Hora" class="inputBitacora form-control" name="buscaTrabajadorHoras"
-          [(ngModel)]="trabajador.horario">
+        <input id="hora_trabajador" required autocomplete="off" type="time" placeholder="Hora"
+               class="inputBitacora form-control" name="buscaTrabajadorHoras"
+               [(ngModel)]="trabajador.schedule">
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-5">
-        <label class="form-label" for="dia_trabajador">Dias de trabajo</label>
-        <input id="dia_trabajador" required autocomplete="off" type="text" placeholder="Días de trabajo" class="inputBitacora form-control" name="buscaTrabajadorDias"
-          [(ngModel)]="trabajador.diasTrabajo">
+                <label class="form-label" for="dia_trabajador">Dias de trabajo</label>
+        <!--        <input id="dia_trabajador" required autocomplete="off" type="text" placeholder="Días de trabajo" class="inputBitacora form-control" name="buscaTrabajadorDias"-->
+        <!--          [(ngModel)]="trabajador.diasTrabajo">-->
       </div>
       <div class="col-5">
         <label class="form-label" for="condomino_trabajador">Nombre del Condómino</label>
-        <input id="condomino_trabajador" required autocomplete="off" type="text" placeholder="Nombre del Condómino" class="inputBitacora form-control" name="buscaNameCondomino"
-          [(ngModel)]="trabajador.nombreCondomino">
+        <input id="condomino_trabajador" required autocomplete="off" type="text"
+               placeholder="Nombre del Condómino"
+               class="inputBitacora form-control" name="buscaNameCondomino"
+               disabled
+               [value]="trabajador.condominoName">
       </div>
     </div>
-    <div class="row ">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="botonEliminar btn btn-danger ">Eliminar</button>
-        <button class="botonModificar btn btn-primary">Modificar</button>
+    <div class="row align-items-end mt-3  justify-content-end text-end">
+      <div class="col-4">
+        <button class="botonEliminar btn btn-block btn-danger ">Eliminar</button>
+      </div>
+      <div class="col-4 justify-content-end">
+
+        <button class="botonModificar btn btn-block btn-primary">Modificar</button>
       </div>
     </div>
 
   </div>
-
-
-
-
-
-  <!--
-   Paginaciob de datos 
-  <div *ngFor="let trabajador of trabajadores">
-    <div class="bitacoraDatos">
-       titulo contenedor 
-
-       form de nombre 
-      <div class="nombreTrabajador">
-        <h3>Nombre del trabajador:</h3>
-         <input required type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"> 
-        <input required autocomplete="off" type="text" placeholder="Nombre de trabajador" class="inputBitacora" name="buscaTrabajadorName"
-          [(ngModel)]="trabajador.nombreTrabajador">
-      </div>
-       form de dias de trabajo
-      <div class="diasTrabajo">
-        <h3>Días de trabajo</h3>
-        <input required autocomplete="off" type="text" placeholder="Días de trabajo" class="inputBitacora" name="buscaTrabajadorDias"
-          [(ngModel)]="trabajador.diasTrabajo">
-      </div>
-       form de hora de trabajo
-      <div class="horaTrabajo">
-        <h3>Hora </h3>
-        <input required autocomplete="off" type="time" placeholder="Hora" class="inputBitacora" name="buscaTrabajadorHoras"
-          [(ngModel)]="trabajador.horario">
-      </div>
-       form de nombre condomino
-      <div class="nombreCondomino">
-        <h3>Nombre del Condómino</h3>
-        <input required autocomplete="off" type="text" placeholder="Nombre del Condómino" class="inputBitacora" name="buscaNameCondomino"
-          [(ngModel)]="trabajador.nombreCondomino">
-      </div>
-       boton para enviar datos del eliminar y realizar modificar
-      <div class="botonesBitacora">
-         boton modificar 
-        <div class="buttonModificar">
-          <button class="botonModificar">Modificar</button>
-        </div>
-         boton eliminar 
-        <div class="buttonEliminar">
-          <button class="botonEliminar">Eliminar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
 </div>

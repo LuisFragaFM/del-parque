@@ -1,6 +1,10 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Visitante;
+import com.example.delparque.model.Condomino;
+import com.example.delparque.model.User;
+import com.example.delparque.repository.CondominosRepository;
+import com.example.delparque.repository.UsersRepository;
 import com.example.delparque.repository.VisitantesRepository;
 import com.example.delparque.service.VisitantesService;
 import com.example.delparque.service.mappers.VisitanteMapper;
@@ -8,56 +12,53 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class VisitantesServiceImpl implements VisitantesService {
 
     private final VisitantesRepository visitantesRepository;
-    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
+    private final UsersRepository usersRepository;
+    private final CondominosRepository condominosRepository;
 
     VisitantesServiceImpl(VisitantesRepository visitantesRepository,
-                          NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+                          UsersRepository usersRepository,
+                          CondominosRepository condominosRepository) {
         this.visitantesRepository = visitantesRepository;
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+        this.usersRepository = usersRepository;
+        this.condominosRepository = condominosRepository;
     }
 
     @Override
     public Visitante findById(String id) {
-        return visitantesRepository.findById(id).map(VisitanteMapper::entityToDto).orElse(null);
+        return visitantesRepository.findById(id)
+                .map(this::addExtraInfo).orElse(null);
     }
 
     @Override
-    public Page<Visitante> findAllUnauthorized(Integer page) {
-        String query = "SELECT * FROM visitantes v WHERE v.authorized = false";
-
-        return getVisitantes(page, query);
-    }
-
-    @Override
-    public Page<Visitante> findAllNoLeft(Integer page) {
-        String query = "SELECT * FROM visitantes v WHERE v.gone_out = false AND v.authorized = true";
-
-        return getVisitantes(page, query);
-    }
-
-    private Page<Visitante> getVisitantes(Integer page, String query) {
+    public Page<Visitante> findAllByAuthorized(Integer page) {
         Pageable pageable = PageRequest.of(page, 10);
-        BeanPropertyRowMapper<Visitante> trabajadoresViewMapper = new BeanPropertyRowMapper<>(Visitante.class);
-        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
 
-        List<Visitante> visitantes = namedParameterJdbcTemplate.query(query +
-                " LIMIT " + pageable.getPageSize() +
-                " OFFSET " + pageable.getOffset(), mapSqlParameterSource, trabajadoresViewMapper);
+        return new PageImpl<>(
+                visitantesRepository.findAllByAuthorizedIs(true).stream()
+                        .map(this::addExtraInfo).collect(Collectors.toList()),
+                pageable, pageable.getPageSize()
+        );
+    }
 
-        return new PageImpl<>(visitantes, pageable, pageable.getPageSize());
+    @Override
+    public Page<Visitante> findAllByAuthorizedAndGoneOut(Integer page) {
+        Pageable pageable = PageRequest.of(page, 10);
+
+        return new PageImpl<>(
+                visitantesRepository.findAllByAuthorizedIsAndGoneOutIs(true, false).stream()
+                        .map(this::addExtraInfo).collect(Collectors.toList()),
+                pageable, pageable.getPageSize()
+        );
     }
 
     @Override
@@ -75,8 +76,19 @@ public class VisitantesServiceImpl implements VisitantesService {
     }
 
     @Override
-    public Visitante findByName(String name) {
-        return VisitanteMapper.entityToDto(visitantesRepository
-                .findByName(name).orElse(new com.example.delparque.model.Visitante()));
+    public List<Visitante> findByName(String name) {
+        return visitantesRepository.findByName(name).stream()
+                .map(this::addExtraInfo)
+                .collect(Collectors.toList());
+    }
+
+    private Visitante addExtraInfo(com.example.delparque.model.Visitante v) {
+        Visitante visitante = VisitanteMapper.entityToDto(v);
+
+        Condomino condomino = condominosRepository.findById(visitante.getCondominoId()).orElseThrow();
+        User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
+
+        visitante.setCondominoName(user.getName());
+        return visitante;
     }
 }

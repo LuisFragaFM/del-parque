@@ -22,7 +22,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
     private final Path root = Paths.get("uploads");
     private final UserImageRepository userImageRepository;
 
-    public FilesStorageServiceImpl(UserImageRepository userImageRepository) {
+    FilesStorageServiceImpl(UserImageRepository userImageRepository) {
         this.userImageRepository = userImageRepository;
     }
 
@@ -93,8 +93,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
     }
 
     @Override
-    public String getFilenameByUserId(String userId) {
-        return userImageRepository.findByUserId(userId).orElse(new UserImage())
-                .getFilename();
+    public UserImage getFilenameByUserId(String userId) {
+        return userImageRepository.findByUserId(userId).orElseThrow();
     }
 }

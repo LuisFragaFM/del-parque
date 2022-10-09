@@ -20,20 +20,10 @@ public class Condomino {
     @Id
     private String id;
 
-    private String name;
-
     private String street;
 
     @Column(name = "house_number")
     private String houseNumber;
-
-    @Column(name = "telephone_number")
-    private String telephoneNumber;
-
-    private String direction;
-
-    @Column(name = "emergency_number")
-    private String emergencyNumber;
 
     @Column(name = "paid_status")
     private boolean paidStatus;

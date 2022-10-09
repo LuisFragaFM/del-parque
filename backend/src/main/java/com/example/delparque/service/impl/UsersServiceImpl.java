@@ -37,7 +37,7 @@ public class UsersServiceImpl implements UsersService {
     private final RolesRepository rolesRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UsersServiceImpl(UsersRepository usersRepository,
+    UsersServiceImpl(UsersRepository usersRepository,
                             RolesRepository rolesRepository,
                             BCryptPasswordEncoder bCryptPasswordEncoder,
                             JavaMailSender mailSender,

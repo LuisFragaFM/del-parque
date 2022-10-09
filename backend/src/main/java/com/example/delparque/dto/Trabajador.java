@@ -5,16 +5,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Trabajador {
     private String id;
-    private String tipo;
-    private String nombreTrabajador;
-    private String nombreCondomino;
-    private String horario;
-    private String telefono;
-    private String diasTrabajo;
+    private String type;
+    private String name;
+    private String condominoId;
+    private String condominoName;
+    private String schedule;
+    private String telephoneNumber;
+    private List<WorkDay> workDays;
 }

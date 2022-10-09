@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/trabajadores")
 public class TrabajadoresController {
@@ -28,10 +30,10 @@ public class TrabajadoresController {
         return trabajadoresService.findById(id);
     }
 
-    @GetMapping("/nombre")
+    @GetMapping("/name/{name}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public Trabajador findByNombreTrabajador(@RequestParam(name = "nombre") String nombre) {
-        return trabajadoresService.findByName(nombre);
+    public List<Trabajador> findByName(@PathVariable String name) {
+        return trabajadoresService.findByName(name);
     }
 
     @PostMapping()
