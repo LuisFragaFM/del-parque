@@ -35,7 +35,7 @@ public class UserDetailsService {
 
         User user = usersService.findUserByEmailAndPassword(email, password);
 
-        attributes.put("email", email);
+        attributes.put("email", user.getEmail());
         attributes.put("name", user.getName());
         attributes.put("userId", user.getId());
 

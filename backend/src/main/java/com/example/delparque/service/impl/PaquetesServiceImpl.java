@@ -1,5 +1,6 @@
 package com.example.delparque.service.impl;
 
+import com.example.delparque.dto.CondominoInfo;
 import com.example.delparque.dto.Paquete;
 import com.example.delparque.model.Condomino;
 import com.example.delparque.repository.CondominosRepository;
@@ -61,8 +62,13 @@ public class PaquetesServiceImpl implements PaquetesService {
         Paquete paquete = PaqueteMapper.entityToDto(p);
         Condomino condomino = condominosRepository.findById(paquete.getCondomino().getCondominoId()).orElseThrow();
 
-        paquete.getCondomino().setHouseStreet(condomino.getStreet());
-        paquete.getCondomino().setHouseNumber(condomino.getHouseNumber());
+        CondominoInfo condominoInfo = CondominoInfo.builder()
+                .condominoId(p.getCondominoId())
+                .houseStreet(condomino.getStreet())
+                .houseNumber(condomino.getHouseNumber())
+                .build();
+
+        paquete.setCondomino(condominoInfo);
         return paquete;
     }
 }

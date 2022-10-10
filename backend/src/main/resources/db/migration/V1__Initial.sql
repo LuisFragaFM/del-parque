@@ -14,7 +14,7 @@ CREATE TABLE roles_by_user
     id      varchar(40) primary key,
     role    varchar(40),
     user_id varchar(40),
-    foreign key (user_id) references users (id)
+    foreign key (user_id) references users (id) on delete cascade on update cascade
 );
 
 CREATE TABLE user_image
@@ -23,7 +23,7 @@ CREATE TABLE user_image
     uri      varchar(140),
     filename varchar(140),
     user_id  varchar(40),
-    foreign key (user_id) references users (id)
+    foreign key (user_id) references users (id) on delete cascade on update cascade
 );
 
 CREATE TABLE condominos
@@ -33,7 +33,7 @@ CREATE TABLE condominos
     house_number varchar(10),
     paid_status  boolean,
     user_id      varchar(40),
-    foreign key (user_id) references users (id)
+    foreign key (user_id) references users (id) on delete cascade on update cascade
 );
 
 CREATE TABLE trabajadores
@@ -44,7 +44,7 @@ CREATE TABLE trabajadores
     schedule         varchar(40),
     telephone_number varchar(40),
     condomino_id     varchar(40),
-    foreign key (condomino_id) references condominos (id)
+    foreign key (condomino_id) references condominos (id) on delete cascade on update cascade
 );
 
 CREATE TABLE work_days
@@ -52,14 +52,14 @@ CREATE TABLE work_days
     id            varchar(40) primary key,
     day_name      varchar(40),
     trabajador_id varchar(40),
-    foreign key (trabajador_id) references trabajadores (id)
+    foreign key (trabajador_id) references trabajadores (id) on delete cascade on update cascade
 );
 
 CREATE TABLE guardias
 (
     id      varchar(40) primary key,
     user_id varchar(40),
-    foreign key (user_id) references users (id)
+    foreign key (user_id) references users (id) on delete cascade on update cascade
 );
 
 CREATE TABLE paquetes
@@ -78,7 +78,7 @@ CREATE TABLE paquetes
     delivery_booth    varchar(120),
     delivery          boolean,
     condomino_id      varchar(40),
-    foreign key (condomino_id) references condominos (id)
+    foreign key (condomino_id) references condominos (id) on delete cascade on update cascade
 );
 
 CREATE TABLE visitantes
@@ -98,6 +98,6 @@ CREATE TABLE visitantes
     authorized      boolean,
     gone_out        boolean,
     condomino_id    varchar(40),
-    foreign key (authorization) references guardias (id),
-    foreign key (condomino_id) references condominos (id)
+    foreign key (authorization) references guardias (id) on delete cascade on update cascade,
+    foreign key (condomino_id) references condominos (id) on delete cascade on update cascade
 );
