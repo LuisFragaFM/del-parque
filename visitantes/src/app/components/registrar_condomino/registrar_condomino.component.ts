@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {CondominosService} from '../../services/condominos.service';
-import {Condomino} from '../../models/condomino';
-import {validaInput} from 'src/app/tools/validation';
+import { Component, OnInit } from '@angular/core';
+import { CondominosService } from '../../services/condominos.service';
+import { Condomino } from '../../models/condomino';
+import { validaInput } from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
-import {UploadFilesService} from "../../services/upload-files.service";
+import { UploadFilesService } from '../../services/upload-files.service';
 
 @Component({
   selector: 'app-registrar_condomino',
@@ -24,12 +24,12 @@ export class RegistrarCondominoComponent implements OnInit {
   uri!: any;
   files!: FileList;
 
-  constructor(private condominosService: CondominosService,
-              private uploadFilesService: UploadFilesService) {
-  }
+  constructor(
+    private condominosService: CondominosService,
+    private uploadFilesService: UploadFilesService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   save() {
     this.condomino.role = 'ROLE_RESIDENT';
@@ -41,11 +41,13 @@ export class RegistrarCondominoComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
-        this.uploadFilesService.upload(this.files[0], condomino.id).subscribe(() => {
-          this.condomino = {} as Condomino;
-          this.files = {} as FileList;
-          this.uri = '';
-        });
+        this.uploadFilesService
+          .upload(this.files[0], condomino.id)
+          .subscribe(() => {
+            this.condomino = {} as Condomino;
+            this.files = {} as FileList;
+            this.uri = '';
+          });
       });
     });
   }
@@ -59,8 +61,7 @@ export class RegistrarCondominoComponent implements OnInit {
 
     reader.onload = (_event) => {
       this.uri = reader.result;
-    }
-
+    };
   }
 
   // funcion para validacion
@@ -89,5 +90,4 @@ export class RegistrarCondominoComponent implements OnInit {
       this.altaMail
     );
   }
-
 }
