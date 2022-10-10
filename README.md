@@ -50,7 +50,7 @@ npm start
 **La siguiente imagen muestra la ubicacion del archivo**
 ![image](https://user-images.githubusercontent.com/44887537/194635732-acc51da9-e66b-4902-b792-a46bf762c6ac.png)
 ---
-Contribudores
+Contribuidores
 - Juarez Martinez Uriel
 - Villagrán Saucedo Gabriel Aldair
 - Gomez Vargas Jose Maria
