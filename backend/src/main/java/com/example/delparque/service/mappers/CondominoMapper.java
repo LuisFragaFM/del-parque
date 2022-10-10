@@ -9,9 +9,7 @@ public class CondominoMapper {
                 .id(condomino.getId())
                 .street(condomino.getStreet())
                 .houseNumber(condomino.getHouseNumber())
-                .userId(condomino.getUserId())
                 .paidStatus(condomino.isPaidStatus())
-                .userId(condomino.getUserId())
                 .build();
     }
 
@@ -20,9 +18,8 @@ public class CondominoMapper {
                 .id(condomino.getId())
                 .street(condomino.getStreet())
                 .houseNumber(condomino.getHouseNumber())
-                .userId(condomino.getUserId())
                 .paidStatus(condomino.isPaidStatus())
-                .userId(condomino.getUserId())
+                .userId(condomino.getUser().getId())
                 .build();
     }
 }

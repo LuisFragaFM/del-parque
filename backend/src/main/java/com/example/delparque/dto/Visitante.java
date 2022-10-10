@@ -27,8 +27,7 @@ public class Visitante {
     private String authorization;
     private String departureBooth;
     private String arrivalBooth;
-    private String condominoId;
-    private String condominoName;
+    private CondominoInfo condomino;
     private boolean authorized;
     private boolean goneOut;
 }

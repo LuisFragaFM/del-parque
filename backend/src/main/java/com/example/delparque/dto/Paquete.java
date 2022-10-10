@@ -23,9 +23,7 @@ public class Paquete {
     private String deliveryBooth;
     private String receivesResident;
     private String deliveryGuard;
-    private String condominoId;
-    private String houseNumber;
-    private String houseStreet;
+    private CondominoInfo condomino;
     private String deliveryTime;
     private String arrivalTime;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Guardia {
-    private String id;
-    private UserView user;
+public class CondominoInfo {
+    private String condominoId;
+    private String houseNumber;
+    private String houseStreet;
+    private String owner;
 }

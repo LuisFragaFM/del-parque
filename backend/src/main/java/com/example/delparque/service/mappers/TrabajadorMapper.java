@@ -10,7 +10,6 @@ public class TrabajadorMapper {
                 .name(trabajador.getName())
                 .telephoneNumber(trabajador.getTelephoneNumber())
                 .type(trabajador.getType())
-                .condominoId(trabajador.getCondominoId())
                 .build();
     }
 
@@ -21,7 +20,7 @@ public class TrabajadorMapper {
                 .name(trabajador.getName())
                 .telephoneNumber(trabajador.getTelephoneNumber())
                 .type(trabajador.getType())
-                .condominoId(trabajador.getCondominoId())
+                .condominoId(trabajador.getCondominoInfo().getCondominoId())
                 .build();
     }
 }

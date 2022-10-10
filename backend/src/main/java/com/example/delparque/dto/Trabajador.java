@@ -15,8 +15,7 @@ public class Trabajador {
     private String id;
     private String type;
     private String name;
-    private String condominoId;
-    private String condominoName;
+    private CondominoInfo condominoInfo;
     private String schedule;
     private String telephoneNumber;
     private List<WorkDay> workDays;

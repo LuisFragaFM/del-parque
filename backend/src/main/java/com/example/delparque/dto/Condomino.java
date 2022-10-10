@@ -11,13 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Condomino {
     private String id;
-    private String name;
     private String street;
     private String houseNumber;
-    private String email;
-    private String telephoneNumber;
-    private String emergencyNumber;
+    private UserView user;
     private boolean paidStatus;
-    private String userId;
     private String role;
 }

@@ -53,15 +53,13 @@ public class CondominosServiceImpl implements CondominosService {
             condomino.setId(UUID.randomUUID().toString());
         }
 
-        Optional<User> byEmail = usersRepository.findByEmail(condomino.getEmail());
+        Optional<User> byEmail = usersRepository.findByEmail(condomino.getUser().getEmail());
 
         if (byEmail.isPresent()) {
             throw new DelParqueSystemException("El correo electronico le pertenece a otro condomino", "DUPLICATE_EMAIL");
         }
 
-        User register = usersService.register(condomino.getEmail(), condomino.getRole(), condomino.getName());
-
-        condomino.setUserId(register.getId());
+        usersService.register(condomino.getUser());
 
         return CondominoMapper.entityToDto(condominosRepository.save(CondominoMapper.dtoToEntity(condomino)));
     }
@@ -84,12 +82,12 @@ public class CondominosServiceImpl implements CondominosService {
 
     private Condomino addExtraInfo(com.example.delparque.model.Condomino condomino) {
         Condomino c = CondominoMapper.entityToDto(condomino);
-        User user = usersRepository.findById(c.getUserId()).orElseThrow();
+        User user = usersRepository.findById(c.getUser().getId()).orElseThrow();
 
-        c.setName(user.getName());
-        c.setEmail(user.getEmail());
-        c.setEmergencyNumber(user.getEmergencyNumber());
-        c.setTelephoneNumber(user.getTelephoneNumber());
+        c.getUser().setName(user.getName());
+        c.getUser().setEmail(user.getEmail());
+        c.getUser().setEmergencyNumber(user.getEmergencyNumber());
+        c.getUser().setTelephoneNumber(user.getTelephoneNumber());
         return c;
     }
 }

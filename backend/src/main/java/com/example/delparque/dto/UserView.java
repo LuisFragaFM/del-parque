@@ -9,7 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Guardia {
+public class UserView {
     private String id;
-    private UserView user;
+    private String email;
+    private String name;
+    private String telephoneNumber;
+    private String emergencyNumber;
+    private String role;
 }

@@ -113,33 +113,32 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public User register(String email, String role, String name) {
-        Optional<User> optionalUser = usersRepository.findByEmail(email);
+    public void register(com.example.delparque.dto.UserView u) {
+        Optional<User> optionalUser = usersRepository.findByEmail(u.getEmail());
 
         optionalUser.ifPresent(value -> {
-            if (value.getEmail().equals(email)) {
+            if (value.getEmail().equals(u.getEmail())) {
                 throw new DelParqueSystemException("email ocupado por otro usuario", "DUPLICATE_EMAIL");
             }
         });
 
-        com.example.delparque.dto.User user = new com.example.delparque.dto.User();
-
         String userId = UUID.randomUUID().toString();
 
-        user.setId(userId);
-        user.setEmail(email);
-        user.setPassword(bCryptPasswordEncoder.encode(def.getPassword()));
-        user.setName(name);
+        User user = User.builder()
+                .id(userId)
+                .password(bCryptPasswordEncoder.encode(def.getPassword()))
+                .telephoneNumber(u.getTelephoneNumber())
+                .emergencyNumber(u.getEmergencyNumber())
+                .email(u.getEmail())
+                .build();
 
         RolesByUser rolesByUser = new RolesByUser();
         rolesByUser.setUserId(userId);
-        rolesByUser.setRole(role);
+        rolesByUser.setRole(u.getRole());
         rolesByUser.setId(UUID.randomUUID().toString());
 
-        usersRepository.save(UserMapper.dtoToEntity(user));
+        usersRepository.save(user);
         rolesRepository.save(rolesByUser);
-
-        return UserMapper.dtoToEntity(user);
     }
 
     @Override

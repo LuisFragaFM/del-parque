@@ -18,7 +18,6 @@ public class PaqueteMapper {
                 .deliveryTime(paquete.getDeliveryTime())
                 .arrivalTime(paquete.getArrivalTime())
                 .delivery(paquete.isDelivery())
-                .condominoId(paquete.getCondominoId())
                 .build();
     }
 
@@ -37,7 +36,7 @@ public class PaqueteMapper {
                 .deliveryTime(paquete.getDeliveryTime())
                 .arrivalTime(paquete.getArrivalTime())
                 .delivery(paquete.isDelivery())
-                .condominoId(paquete.getCondominoId())
+                .condominoId(paquete.getCondomino().getCondominoId())
                 .build();
     }
 }

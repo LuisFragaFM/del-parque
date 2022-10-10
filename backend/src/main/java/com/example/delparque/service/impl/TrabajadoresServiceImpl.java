@@ -96,7 +96,7 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
         Condomino condomino = condominosRepository.findById(t.getCondominoId()).orElseThrow();
         User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
 
-        trabajador.setCondominoName(user.getName());
+        trabajador.getCondominoInfo().setOwner(user.getName());
         return trabajador;
     }
 }
