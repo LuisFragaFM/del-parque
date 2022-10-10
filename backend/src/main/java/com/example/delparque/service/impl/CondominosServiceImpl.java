@@ -51,15 +51,14 @@ public class CondominosServiceImpl implements CondominosService {
     public Condomino save(Condomino condomino) {
         if (condomino.getId() == null) {
             condomino.setId(UUID.randomUUID().toString());
+
+            Optional<User> byEmail = usersRepository.findByEmail(condomino.getUser().getEmail());
+
+            if (byEmail.isPresent()) {
+                throw new DelParqueSystemException("El correo electronico le pertenece a otro condomino", "DUPLICATE_EMAIL");
+            }
+            usersService.register(condomino.getUser());
         }
-
-        Optional<User> byEmail = usersRepository.findByEmail(condomino.getUser().getEmail());
-
-        if (byEmail.isPresent()) {
-            throw new DelParqueSystemException("El correo electronico le pertenece a otro condomino", "DUPLICATE_EMAIL");
-        }
-
-        usersService.register(condomino.getUser());
 
         return CondominoMapper.entityToDto(condominosRepository.save(CondominoMapper.dtoToEntity(condomino)));
     }
