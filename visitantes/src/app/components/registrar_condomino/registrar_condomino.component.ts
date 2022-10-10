@@ -6,11 +6,11 @@ import Swal from 'sweetalert2';
 import {UploadFilesService} from "../../services/upload-files.service";
 
 @Component({
-  selector: 'app-altas',
-  templateUrl: './altas.component.html',
-  styleUrls: ['./altas.component.css'],
+  selector: 'app-registrar_condomino',
+  templateUrl: './registrar_condomino.component.html',
+  styleUrls: ['./registrar_condomino.component.css'],
 })
-export class AltasComponent implements OnInit {
+export class RegistrarCondominoComponent implements OnInit {
   condomino: Condomino = {} as Condomino;
   //Variable para validar nombre y activar boton
   altaName: boolean = true;

@@ -3,17 +3,17 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {BitacoraTrabajadoresComponent} from './components/bitacora-trabajadores/bitacora-trabajadores.component';
+import {ListaTrabajadoresComponent} from './components/lista_trabajadores/lista_trabajadores.component';
 import {EntregarPaqueteComponent} from './components/entregar-paquete/entregar-paquete.component';
-import {InformesComponent} from './components/informes/informes.component';
+import {ReportesComponent} from './components/reportes/reportes.component';
 import {Modificacion_CondominoComponent} from './components/modificacion_condomino/modificacion_condomino.component';
-import {RegistrarAgendaComponent} from './components/registrar-agenda/registrar-agenda.component';
+import {VisitasRegistradasAdminComponent} from './components/visitas_registradas_admin/visitas_registradas_admin.component';
 import {RegistrarPaqueteriaComponent} from './components/registrar-paqueteria/registrar-paqueteria.component';
 import {RegistrarSalidaComponent} from './components/registrar-salida/registrar-salida.component';
-import {TrabajadorComponent} from './components/trabajador/trabajador.component';
-import {VisitaGuardiaComponent} from './components/visita-guardia/visita-guardia.component';
-import {AgendaCondominoComponent} from './components/agenda-condomino/agenda-condomino.component';
-import {VisitaCondominoComponent} from './components/visita-condomino/visita-condomino.component';
+import {RegistrarTrabajadorComponent} from './components/registrar_trabajador/registrar_trabajador.component';
+import {RegistrarVisitasGuardiaComponent} from './components/registrar_visitas_guardia/registrar_visitas_guardia.component';
+import {VisitasAgendadasCondominoComponent} from './components/visitas_agendadas_condomino/visitas_agendadas_condomino.component';
+import {AgendarVisitaCondominoComponent} from './components/agendar_visita_condomino/agendar_visita_condomino.component';
 import {EncabezadoComponent} from './components/encabezado/encabezado.component';
 import {PiePaginaComponent} from './components/pie-pagina/pie-pagina.component';
 import {MenuGlobalComponent} from './components/menu-global/menu-global.component';
@@ -21,28 +21,28 @@ import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
-import {AltasComponent} from './components/altas/altas.component';
+import {RegistrarCondominoComponent} from './components/registrar_condomino/registrar_condomino.component';
 import {UsuariosComponent} from './components/usuarios/usuarios.component';
 import {RolePipe} from './pipes/role.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BitacoraTrabajadoresComponent,
+    ListaTrabajadoresComponent,
     EntregarPaqueteComponent,
-    InformesComponent,
+    ReportesComponent,
     Modificacion_CondominoComponent,
-    RegistrarAgendaComponent,
+    VisitasRegistradasAdminComponent,
     RegistrarPaqueteriaComponent,
     RegistrarSalidaComponent,
-    TrabajadorComponent,
-    VisitaGuardiaComponent,
-    AgendaCondominoComponent,
-    VisitaCondominoComponent,
+    RegistrarTrabajadorComponent,
+    RegistrarVisitasGuardiaComponent,
+    VisitasAgendadasCondominoComponent,
+    AgendarVisitaCondominoComponent,
     EncabezadoComponent,
     PiePaginaComponent,
     MenuGlobalComponent,
-    AltasComponent,
+    RegistrarCondominoComponent,
     UsuariosComponent,
     RolePipe,
   ],
