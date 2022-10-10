@@ -7,11 +7,11 @@ import Swal from "sweetalert2";
 import {SessionService} from "../../services/session.service";
 
 @Component({
-  selector: 'app-visita-condomino',
-  templateUrl: './visita-condomino.component.html',
-  styleUrls: ['./visita-condomino.component.css']
+  selector: 'app-agendar_visita_condomino',
+  templateUrl: './agendar_visita_condomino.component.html',
+  styleUrls: ['./agendar_visita_condomino.component.css']
 })
-export class VisitaCondominoComponent implements OnInit {
+export class AgendarVisitaCondominoComponent implements OnInit {
   isChecked: boolean = true;
   visitante: Visitante = {} as Visitante;
   name: string | undefined;

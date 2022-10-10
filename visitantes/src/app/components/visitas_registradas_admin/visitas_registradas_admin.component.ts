@@ -6,11 +6,11 @@ import Swal from "sweetalert2";
 import {User} from 'src/app/models/user';
 
 @Component({
-  selector: 'app-registrar-agenda',
-  templateUrl: './registrar-agenda.component.html',
-  styleUrls: ['./registrar-agenda.component.css']
+  selector: 'app-visitas_registradas_admin',
+  templateUrl: './visitas_registradas_admin.component.html',
+  styleUrls: ['./visitas_registradas_admin.component.css']
 })
-export class RegistrarAgendaComponent implements OnInit {
+export class VisitasRegistradasAdminComponent implements OnInit {
 
   // datos usados para realizar la busqueda
   name: string | undefined;

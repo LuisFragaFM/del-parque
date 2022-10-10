@@ -4,11 +4,11 @@ import {TrabajadoresService} from "../../services/trabajadores.service";
 import {Trabajador} from "../../models/trabajador";
 
 @Component({
-  selector: 'app-bitacora-trabajadores',
-  templateUrl: './bitacora-trabajadores.component.html',
-  styleUrls: ['./bitacora-trabajadores.component.css']
+  selector: 'app-lista_trabajadores',
+  templateUrl: './lista_trabajadores.component.html',
+  styleUrls: ['./lista_trabajadores.component.css']
 })
-export class BitacoraTrabajadoresComponent implements OnInit {
+export class ListaTrabajadoresComponent implements OnInit {
   // datos usados para realizar la busqueda
   name: string | undefined;
   trabajador: Trabajador = {} as Trabajador;
