@@ -45,12 +45,12 @@ npm start
 - src
 - main
 - java
-- *se debe de ejecutar DelParqueApplication para inicializar el backend*
+- *se debe de ejecutar el archivo DelParqueApplication para inicializar el backend*
 
 **La siguiente imagen muestra la ubicacion del archivo**
 ![image](https://user-images.githubusercontent.com/44887537/194635732-acc51da9-e66b-4902-b792-a46bf762c6ac.png)
 ---
-Contribuidores
+Desarrolladoresdel proyecto
 - Juarez Martinez Uriel
 - Gomez Vargas Jose Maria
 - Villagrán Saucedo Gabriel Aldair
