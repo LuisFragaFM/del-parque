@@ -8,11 +8,11 @@ import {SessionService} from "../../services/session.service";
 import {User} from "../../models/user";
 
 @Component({
-  selector: 'app-visita-guardia',
-  templateUrl: './visita-guardia.component.html',
-  styleUrls: ['./visita-guardia.component.css']
+  selector: 'app-registrar_visitas_guardia',
+  templateUrl: './registrar_visitas_guardia.component.html',
+  styleUrls: ['./registrar_visitas_guardia.component.css']
 })
-export class VisitaGuardiaComponent implements OnInit {
+export class RegistrarVisitasGuardiaComponent implements OnInit {
   isChecked: boolean = true;
   name!: string;
   autoriza!: User;

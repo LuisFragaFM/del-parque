@@ -7,11 +7,11 @@ import { validaInput } from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-trabajador',
-  templateUrl: './trabajador.component.html',
-  styleUrls: ['./trabajador.component.css'],
+  selector: 'app-registrar_trabajador',
+  templateUrl: './registrar_trabajador.component.html',
+  styleUrls: ['./registrar_trabajador.component.css'],
 })
-export class TrabajadorComponent implements OnInit {
+export class RegistrarTrabajadorComponent implements OnInit {
   trabajador: Trabajador = {} as Trabajador;
   name: string | undefined;
   condominos: Condomino[] = [];

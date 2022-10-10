@@ -3,11 +3,11 @@ import {CondominosService} from "../../services/condominos.service";
 import {Condomino} from "../../models/condomino";
 
 @Component({
-  selector: 'app-modificacion_condomino',
-  templateUrl: './informes.component.html',
-  styleUrls: ['./informes.component.css']
+  selector: 'app-reportes',
+  templateUrl: './reportes.component.html',
+  styleUrls: ['./reportes.component.css']
 })
-export class InformesComponent implements OnInit {
+export class ReportesComponent implements OnInit {
 
   name: string | undefined;
   phone: string | undefined;

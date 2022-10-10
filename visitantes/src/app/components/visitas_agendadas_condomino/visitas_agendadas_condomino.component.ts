@@ -3,11 +3,11 @@ import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
 
 @Component({
-  selector: 'app-agenda-condomino',
-  templateUrl: './agenda-condomino.component.html',
-  styleUrls: ['./agenda-condomino.component.css']
+  selector: 'app-visitas_agendadas_condomino',
+  templateUrl: './visitas_agendadas_condomino.component.html',
+  styleUrls: ['./visitas_agendadas_condomino.component.css']
 })
-export class AgendaCondominoComponent implements OnInit {
+export class VisitasAgendadasCondominoComponent implements OnInit {
 
   // datos usados para realizar la busqueda
   name: string | undefined;
