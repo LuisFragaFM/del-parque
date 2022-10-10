@@ -1,8 +1,8 @@
+import { CondominoInfo } from "./condominoInfo";
+
 export interface Paquete {
   id: string;
-  houseNumber: string;
-  houseStreet: string;
-  condominoId: string;
+  condomino: CondominoInfo;
   companyName: string;
   guideNumber: string;
   receivesGuard: string;
