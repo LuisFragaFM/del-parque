@@ -17,5 +17,4 @@ public class UserView {
     private String name;
     private String telephoneNumber;
     private String emergencyNumber;
-    private List<String> roles;
 }

@@ -135,7 +135,6 @@ public class UsersServiceImpl implements UsersService {
                 .build();
 
         usersRepository.save(user);
-        u.getRoles().forEach(role -> setRoles(role, u.getId()));
     }
 
     @Override
