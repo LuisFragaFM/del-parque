@@ -52,7 +52,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
                 userImage.setUserId(userId);
             }
 
-            userImage.setUri("backend/uploads/" + fileName);
+            userImage.setUri("uploads/" + fileName);
             userImage.setFilename(fileName);
 
             userImageRepository.save(userImage);
