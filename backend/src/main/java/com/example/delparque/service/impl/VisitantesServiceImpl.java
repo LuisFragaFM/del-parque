@@ -1,5 +1,6 @@
 package com.example.delparque.service.impl;
 
+import com.example.delparque.dto.CondominoInfo;
 import com.example.delparque.dto.Visitante;
 import com.example.delparque.model.Condomino;
 import com.example.delparque.model.User;
@@ -88,7 +89,11 @@ public class VisitantesServiceImpl implements VisitantesService {
         Condomino condomino = condominosRepository.findById(visitante.getCondomino().getCondominoId()).orElseThrow();
         User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
 
-        visitante.getCondomino().setOwner(user.getName());
+        CondominoInfo condominoInfo = CondominoInfo.builder()
+                .owner(user.getName())
+                .build();
+
+        visitante.setCondomino(condominoInfo);
         return visitante;
     }
 }

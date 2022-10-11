@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @Data
 @NoArgsConstructor
@@ -15,5 +17,5 @@ public class UserView {
     private String name;
     private String telephoneNumber;
     private String emergencyNumber;
-    private String role;
+    private List<String> roles;
 }

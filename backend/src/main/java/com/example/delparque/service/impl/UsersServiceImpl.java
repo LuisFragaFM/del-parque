@@ -38,11 +38,11 @@ public class UsersServiceImpl implements UsersService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     UsersServiceImpl(UsersRepository usersRepository,
-                            RolesRepository rolesRepository,
-                            BCryptPasswordEncoder bCryptPasswordEncoder,
-                            JavaMailSender mailSender,
-                            EmailSender emailSender,
-                            Default def) {
+                     RolesRepository rolesRepository,
+                     BCryptPasswordEncoder bCryptPasswordEncoder,
+                     JavaMailSender mailSender,
+                     EmailSender emailSender,
+                     Default def) {
         this.usersRepository = usersRepository;
         this.rolesRepository = rolesRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -53,8 +53,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public User findUserByEmailAndPassword(String email, String password) {
-        User user = usersRepository.findByEmail(email).orElseThrow(() ->
-                new UsernameNotFoundException("Wrong credentials"));
+        User user = usersRepository.findByEmail(email).orElseThrow();
 
         if (bCryptPasswordEncoder.matches(password, user.getPassword())) {
             return user;
@@ -115,31 +114,26 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public void register(com.example.delparque.dto.UserView u) {
         Optional<User> optionalUser = usersRepository.findByEmail(u.getEmail());
-
         optionalUser.ifPresent(value -> {
-            if (value.getEmail().equals(u.getEmail())) {
+            if (value.getEmail().equals(u.getEmail()) && !u.getId().equals(value.getEmail())) {
                 throw new DelParqueSystemException("email ocupado por otro usuario", "DUPLICATE_EMAIL");
             }
         });
 
-        String userId = UUID.randomUUID().toString();
+        String userId = u.getId() == null ? UUID.randomUUID().toString() : u.getId();
 
         User user = User.builder()
                 .id(userId)
                 .name(u.getName())
+                .email(u.getEmail())
                 .password(bCryptPasswordEncoder.encode(def.getPassword()))
                 .telephoneNumber(u.getTelephoneNumber())
                 .emergencyNumber(u.getEmergencyNumber())
-                .email(u.getEmail())
                 .build();
 
-        RolesByUser rolesByUser = new RolesByUser();
-        rolesByUser.setUserId(userId);
-        rolesByUser.setRole(u.getRole());
-        rolesByUser.setId(UUID.randomUUID().toString());
+        u.getRoles().forEach(role -> setRoles(role, userId));
 
         usersRepository.save(user);
-        rolesRepository.save(rolesByUser);
     }
 
     @Override
@@ -183,5 +177,13 @@ public class UsersServiceImpl implements UsersService {
         rolesRepository.save(roleByUser);
 
         return rolesRepository.findRolesByUser(userId);
+    }
+
+    private void setRoles(String role, String userId) {
+        RolesByUser rolesByUser = new RolesByUser();
+        rolesByUser.setId(UUID.randomUUID().toString());
+        rolesByUser.setUserId(userId);
+        rolesByUser.setRole(role);
+        rolesRepository.save(rolesByUser);
     }
 }

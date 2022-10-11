@@ -1,5 +1,6 @@
 package com.example.delparque.service.impl;
 
+import com.example.delparque.dto.CondominoInfo;
 import com.example.delparque.dto.Trabajador;
 import com.example.delparque.dto.WorkDay;
 import com.example.delparque.model.Condomino;
@@ -81,14 +82,16 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
         trabajadoresRepository.deleteById(id);
     }
 
-    private void saveWorkDays(WorkDay w, String id) {
-        if (w.getId() == null) {
-            w.setId(UUID.randomUUID().toString());
-        }
+    private void saveWorkDays(String day, String trabajadorId) {
+        WorkDay workDay = WorkDay.builder()
+                .id(UUID.randomUUID().toString())
+                .dayName(day)
+                .build();
 
-        com.example.delparque.model.WorkDay workDay = WorkDayMapper.dtoToEntity(w);
-        workDay.setTrabajadorId(id);
-        workDaysRepository.save(workDay);
+        com.example.delparque.model.WorkDay w = WorkDayMapper.dtoToEntity(workDay);
+        w.setTrabajadorId(trabajadorId);
+
+        workDaysRepository.save(w);
     }
 
     private Trabajador addExtraInfo(com.example.delparque.model.Trabajador t) {
@@ -96,7 +99,16 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
         Condomino condomino = condominosRepository.findById(t.getCondominoId()).orElseThrow();
         User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
 
-        trabajador.getCondominoInfo().setOwner(user.getName());
+        CondominoInfo condominoInfo = CondominoInfo.builder()
+                .condominoId(condomino.getId())
+                .houseNumber(condomino.getHouseNumber())
+                .houseStreet(condomino.getStreet())
+                .owner(user.getName())
+                .build();
+
+        trabajador.setCondominoInfo(condominoInfo);
+
+        trabajador.setWorkDays(workDaysRepository.findWorkDays(trabajador.getId()));
         return trabajador;
     }
 }

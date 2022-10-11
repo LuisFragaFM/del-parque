@@ -1,7 +1,7 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Condomino;
-import com.example.delparque.exception.DelParqueSystemException;
+import com.example.delparque.dto.UserView;
 import com.example.delparque.model.User;
 import com.example.delparque.repository.CondominosRepository;
 import com.example.delparque.repository.UsersRepository;
@@ -15,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -51,16 +50,11 @@ public class CondominosServiceImpl implements CondominosService {
     public Condomino save(Condomino condomino) {
         if (condomino.getId() == null) {
             condomino.setId(UUID.randomUUID().toString());
-
-            Optional<User> byEmail = usersRepository.findByEmail(condomino.getUser().getEmail());
-
-            if (byEmail.isPresent()) {
-                throw new DelParqueSystemException("El correo electronico le pertenece a otro condomino", "DUPLICATE_EMAIL");
-            }
-            usersService.register(condomino.getUser());
         }
 
-        return CondominoMapper.entityToDto(condominosRepository.save(CondominoMapper.dtoToEntity(condomino)));
+        usersService.register(condomino.getUser());
+        condominosRepository.save(CondominoMapper.dtoToEntity(condomino));
+        return addExtraInfo(CondominoMapper.dtoToEntity(condomino));
     }
 
     @Override
@@ -79,14 +73,19 @@ public class CondominosServiceImpl implements CondominosService {
         condominosRepository.deleteById(id);
     }
 
-    private Condomino addExtraInfo(com.example.delparque.model.Condomino condomino) {
-        Condomino c = CondominoMapper.entityToDto(condomino);
-        User user = usersRepository.findById(c.getUser().getId()).orElseThrow();
+    private Condomino addExtraInfo(com.example.delparque.model.Condomino c) {
+        Condomino condomino = CondominoMapper.entityToDto(c);
+        User user = usersRepository.findById(c.getUserId()).orElseThrow();
 
-        c.getUser().setName(user.getName());
-        c.getUser().setEmail(user.getEmail());
-        c.getUser().setEmergencyNumber(user.getEmergencyNumber());
-        c.getUser().setTelephoneNumber(user.getTelephoneNumber());
-        return c;
+        UserView userView = UserView.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .emergencyNumber(user.getEmergencyNumber())
+                .telephoneNumber(user.getTelephoneNumber())
+                .build();
+
+        condomino.setUser(userView);
+        return condomino;
     }
 }
