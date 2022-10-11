@@ -48,10 +48,12 @@ export class RegistrarCondominoComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then();
-      this.uploadFilesService
-        .upload(this.files[0], condomino.user.id)
-        .subscribe(() => {
-        });
+      if(this.files[0]) {
+        this.uploadFilesService
+          .upload(this.files[0], condomino.user.id)
+          .subscribe(() => {
+          });
+      }
       this.condomino = {} as Condomino;
       this.files = {} as FileList;
       this.uri = '';
