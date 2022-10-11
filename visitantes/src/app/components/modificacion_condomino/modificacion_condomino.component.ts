@@ -41,7 +41,7 @@ export class Modificacion_CondominoComponent implements OnInit {
         confirmButtonText: `Cerrar`
       }).then(() => {
         if (this.files[0]) {
-          this.uploadFilesService.upload(this.files[0], condomino.id).subscribe(() => {
+          this.uploadFilesService.upload(this.files[0], condomino.user.id).subscribe(() => {
           });
         }
       });
@@ -78,8 +78,7 @@ export class Modificacion_CondominoComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = undefined;
-    console.log(condomino)
-    this.uploadFilesService.loadFilename(this.condomino.id).subscribe(({filename}) => {
+    this.uploadFilesService.loadFilename(this.condomino.user.id).subscribe(({filename}) => {
       this.uri = this.environment + '/file/' + filename;
     });
   }

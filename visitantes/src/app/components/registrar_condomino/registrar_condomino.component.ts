@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CondominosService } from '../../services/condominos.service';
-import { Condomino } from '../../models/condomino';
-import { validaInput } from 'src/app/tools/validation';
+import {Component, OnInit} from '@angular/core';
+import {CondominosService} from '../../services/condominos.service';
+import {Condomino} from '../../models/condomino';
+import {validaInput} from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
-import { UploadFilesService } from '../../services/upload-files.service';
-import { UserView } from 'src/app/models/userview';
+import {UploadFilesService} from '../../services/upload-files.service';
+import {UserView} from 'src/app/models/userview';
 
 @Component({
   selector: 'app-registrar_condomino',
@@ -13,6 +13,7 @@ import { UserView } from 'src/app/models/userview';
 })
 export class RegistrarCondominoComponent implements OnInit {
   condomino: Condomino = {} as Condomino;
+
   //Variable para validar nombre y activar boton
   altaName: boolean = true;
   altaTelEmergencia: boolean = true;
@@ -28,15 +29,16 @@ export class RegistrarCondominoComponent implements OnInit {
   constructor(
     private condominosService: CondominosService,
     private uploadFilesService: UploadFilesService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.condomino.user = {} as UserView;
+    this.condomino.user.roles = [];
   }
 
   save() {
-    this.condomino.user.role = 'ROLE_RESIDENT';
-    console.log(this.condomino);
+    this.condomino.user.roles[0] = 'ROLE_RESIDENT';
     this.condominosService.save(this.condomino).subscribe((condomino) => {
       Swal.fire({
         title: `El condomino ${condomino.user.name} fue guardado correctamente`,
@@ -44,15 +46,14 @@ export class RegistrarCondominoComponent implements OnInit {
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
-      }).then(() => {
-        this.uploadFilesService
-          .upload(this.files[0], condomino.id)
-          .subscribe(() => {
-            this.condomino = {} as Condomino;
-            this.files = {} as FileList;
-            this.uri = '';
-          });
-      });
+      }).then();
+      this.uploadFilesService
+        .upload(this.files[0], condomino.user.id)
+        .subscribe(() => {
+        });
+      this.condomino = {} as Condomino;
+      this.files = {} as FileList;
+      this.uri = '';
     });
   }
 

@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 @Service
 public class FilesStorageServiceImpl implements FilesStorageService {
-    private final Path root = Paths.get("uploads");
+    private final Path root = Paths.get("backend/uploads");
     private final UserImageRepository userImageRepository;
 
     FilesStorageServiceImpl(UserImageRepository userImageRepository) {
@@ -52,7 +52,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
                 userImage.setUserId(userId);
             }
 
-            userImage.setUri("/uploads/" + fileName);
+            userImage.setUri("backend/uploads/" + fileName);
             userImage.setFilename(fileName);
 
             userImageRepository.save(userImage);
@@ -94,6 +94,6 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 
     @Override
     public UserImage getFilenameByUserId(String userId) {
-        return userImageRepository.findByUserId(userId).orElseThrow();
+        return userImageRepository.findByUserId(userId).orElse(null);
     }
 }

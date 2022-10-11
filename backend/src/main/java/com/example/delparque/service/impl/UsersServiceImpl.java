@@ -113,17 +113,20 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public void register(com.example.delparque.dto.UserView u) {
+
+        if (u.getId() == null) {
+            u.setId(UUID.randomUUID().toString());
+        }
+
         Optional<User> optionalUser = usersRepository.findByEmail(u.getEmail());
         optionalUser.ifPresent(value -> {
-            if (value.getEmail().equals(u.getEmail()) && !u.getId().equals(value.getEmail())) {
+            if (value.getEmail().equals(u.getEmail()) && !u.getId().equals(value.getId())) {
                 throw new DelParqueSystemException("email ocupado por otro usuario", "DUPLICATE_EMAIL");
             }
         });
 
-        String userId = u.getId() == null ? UUID.randomUUID().toString() : u.getId();
-
         User user = User.builder()
-                .id(userId)
+                .id(u.getId())
                 .name(u.getName())
                 .email(u.getEmail())
                 .password(bCryptPasswordEncoder.encode(def.getPassword()))
@@ -131,9 +134,8 @@ public class UsersServiceImpl implements UsersService {
                 .emergencyNumber(u.getEmergencyNumber())
                 .build();
 
-        u.getRoles().forEach(role -> setRoles(role, userId));
-
         usersRepository.save(user);
+        u.getRoles().forEach(role -> setRoles(role, u.getId()));
     }
 
     @Override

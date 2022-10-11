@@ -51,7 +51,7 @@ public class FilesController {
     }
 
     @GetMapping("/filename/{userId}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_RESIDENT')")
     public Map<String, String> getFileName(@PathVariable String userId) {
         return Map.of("filename", filesStorageService.getFilenameByUserId(userId).getFilename());
     }
