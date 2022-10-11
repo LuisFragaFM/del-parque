@@ -5,6 +5,7 @@ import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
 import { validaInput } from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
+import { UserView } from 'src/app/models/userview';
 
 @Component({
   selector: 'app-registrar_trabajador',
@@ -28,7 +29,8 @@ export class RegistrarTrabajadorComponent implements OnInit {
     private condominosService: CondominosService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   findInquilinoByName() {
     this.condominosService.findByName(this.name!).subscribe((condominos) => {
@@ -54,7 +56,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
   selectInquilino(condomino: Condomino) {
     this.condomino = condomino;
     this.condominos = [];
-    this.name = condomino.name;
+    this.name = condomino.user.name;
     this.trabajador.condominoId = condomino.id;
   }
 
