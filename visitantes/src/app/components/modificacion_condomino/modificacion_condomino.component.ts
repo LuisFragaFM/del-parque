@@ -34,7 +34,7 @@ export class Modificacion_CondominoComponent implements OnInit {
   modify() {
     this.condominosService.save(this.condomino).subscribe(condomino => {
       Swal.fire({
-        title: `El condomino de ${condomino.name} fue guardado correctamente`,
+        title: `El condomino de ${condomino.user.name} fue guardado correctamente`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
@@ -60,7 +60,7 @@ export class Modificacion_CondominoComponent implements OnInit {
       if (value.isConfirmed) {
         this.condominosService.delete(this.condomino.id).subscribe(() => {
           Swal.fire({
-            title: `El condomino de ${this.condomino.name} fue borrado correctamente`,
+            title: `El condomino de ${this.condomino.user.name} fue borrado correctamente`,
             icon: 'success',
             showDenyButton: false,
             showCancelButton: false,

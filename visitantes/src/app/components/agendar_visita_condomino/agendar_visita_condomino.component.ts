@@ -52,7 +52,7 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   selectInquilino(condomino: Condomino) {
     this.condomino = condomino;
     this.condominos = [];
-    this.name = condomino.name;
-    this.visitante.authorization = condomino.name;
+    // this.name = condomino.name;
+    // this.visitante.authorization = condomino.name;
   }
 }

@@ -126,6 +126,7 @@ public class UsersServiceImpl implements UsersService {
 
         User user = User.builder()
                 .id(userId)
+                .name(u.getName())
                 .password(bCryptPasswordEncoder.encode(def.getPassword()))
                 .telephoneNumber(u.getTelephoneNumber())
                 .emergencyNumber(u.getEmergencyNumber())

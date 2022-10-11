@@ -54,10 +54,10 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   }
 
   save() {
-    this.paquete.condominoId = this.condomino.id;
+    this.paquete.condomino.condominoId = this.condomino.id;
     this.paquetesService.save(this.paquete).subscribe((paquete) => {
       Swal.fire({
-        title: `El paquete para la casa ${this.paquete.houseNumber} en la calle ${this.paquete.houseStreet} fue guardado correctamente`,
+        title: `El paquete para la casa ${this.paquete.condomino.houseNumber} en la calle ${this.paquete.condomino.houseStreet} fue guardado correctamente`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
@@ -71,9 +71,9 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   selectInquilino(condomino: Condomino) {
     this.condomino = condomino;
     this.condominos = [];
-    this.name = condomino.name;
-    this.paquete.houseStreet = condomino.street;
-    this.paquete.houseNumber = condomino.houseNumber;
+    this.name = condomino.user.name;
+    this.paquete.condomino.houseStreet = condomino.street;
+    this.paquete.condomino.houseNumber = condomino.houseNumber;
   }
 
   // funcion para validacion

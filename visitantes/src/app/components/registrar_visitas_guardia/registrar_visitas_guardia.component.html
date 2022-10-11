@@ -71,7 +71,7 @@
                id="nombre_condomino" (keyup)="findInquilinoByName()" [(ngModel)]="name" list="nombre_condominos">
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">
-            <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
+            <div (click)="selectInquilino(c)" class="cursor">{{c.user.name}}</div>
           </div>
         </div>
       </div>

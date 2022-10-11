@@ -4,6 +4,7 @@ import { Condomino } from '../../models/condomino';
 import { validaInput } from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
 import { UploadFilesService } from '../../services/upload-files.service';
+import { UserView } from 'src/app/models/userview';
 
 @Component({
   selector: 'app-registrar_condomino',
@@ -29,13 +30,16 @@ export class RegistrarCondominoComponent implements OnInit {
     private uploadFilesService: UploadFilesService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.condomino.user = {} as UserView;
+  }
 
   save() {
-    this.condomino.role = 'ROLE_RESIDENT';
+    this.condomino.user.role = 'ROLE_RESIDENT';
+    console.log(this.condomino);
     this.condominosService.save(this.condomino).subscribe((condomino) => {
       Swal.fire({
-        title: `El condomino ${condomino.name} fue guardado correctamente`,
+        title: `El condomino ${condomino.user.name} fue guardado correctamente`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,

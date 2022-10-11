@@ -4,102 +4,44 @@
     <div class="row mt-3">
       <div class="col-5">
         <label class="form-label" for="nombrecondomino">Nombre: </label>
-        <input
-          required
-          (keydown)="validaResidente(regexName, altaResidente.value)"
-          #altaResidente
-          autocomplete="off"
-          type="text"
-          placeholder="Nombre Inquilino"
-          id="nombrecondomino"
-          class="inputDatosAltas form-control"
-          name="muestraCondominoName"
-          [(ngModel)]="condomino.name"
-        />
+        <input required (keydown)="validaResidente(regexName, altaResidente.value)" #altaResidente autocomplete="off"
+          type="text" placeholder="Nombre Inquilino" id="nombrecondomino" class="inputDatosAltas form-control"
+          name="muestraCondominoName" [(ngModel)]="condomino.user.name" />
       </div>
       <div class="col-5">
         <label class="form-label" for="numerocondomino">Teléfono:</label>
-        <input
-          required
-          (keydown)="validaTel(regexTel, altaTel.value)"
-          #altaTel
-          autocomplete="off"
-          type="text"
-          placeholder="Telefono"
-          id="numerocondomino"
-          class="inputDatosAltas form-control"
-          name="muestraCondominoTelefono"
-          [(ngModel)]="condomino.telephoneNumber"
-        />
+        <input required (keydown)="validaTel(regexTel, altaTel.value)" #altaTel autocomplete="off" type="text"
+          placeholder="Telefono" id="numerocondomino" class="inputDatosAltas form-control"
+          name="muestraCondominoTelefono" [(ngModel)]="condomino.user.telephoneNumber" />
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="col-5">
         <label class="form-label" for="direcondomino">Calle:</label>
-        <input
-          required
-          autocomplete="off"
-          type="text"
-          placeholder="Calle"
-          class="inputDatosAltas form-control"
-          name="muestraCondominoDireccion"
-          id="direcondomino"
-          [(ngModel)]="condomino.street"
-        />
+        <input required autocomplete="off" type="text" placeholder="Calle" class="inputDatosAltas form-control"
+          name="muestraCondominoDireccion" id="direcondomino" [(ngModel)]="condomino.street" />
       </div>
       <div class="col-5">
-        <label class="form-label" for="emailcondomino"
-          >Correo Electrónico:</label
-        >
-        <input
-          required
-          (keydown)="validaCorreo(regexMail, altaCorreo.value)"
-          #altaCorreo
-          autocomplete="off"
-          type="email"
-          placeholder="Correo electronico"
-          id="emailcondomino"
-          class="inputDatosAltas form-control"
-          name="muestraCondominoCorreo"
-          [(ngModel)]="condomino.email"
-        />
+        <label class="form-label" for="emailcondomino">Correo Electrónico:</label>
+        <input required (keydown)="validaCorreo(regexMail, altaCorreo.value)" #altaCorreo autocomplete="off"
+          type="email" placeholder="Correo electronico" id="emailcondomino" class="inputDatosAltas form-control"
+          name="muestraCondominoCorreo" [(ngModel)]="condomino.user.email" />
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-5">
-        <label class="form-label" for="numemergencia"
-          >Numero de emergencia:</label
-        >
-        <input
-          required
-          (keydown)="validaEmergencia(regexTel, altaEmergencia.value)"
-          #altaEmergencia
-          autocomplete="off"
-          type="text"
-          minlength="10"
-          maxlength="10"
-          placeholder="Telefono de emergencia"
-          class="inputDatosAltas form-control"
-          name="muestraCondominoEmergencia"
-          id="numemergencia"
-          [(ngModel)]="condomino.emergencyNumber"
-        />
+        <label class="form-label" for="numemergencia">Numero de emergencia:</label>
+        <input required (keydown)="validaEmergencia(regexTel, altaEmergencia.value)" #altaEmergencia autocomplete="off"
+          type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia"
+          class="inputDatosAltas form-control" name="muestraCondominoEmergencia" id="numemergencia"
+          [(ngModel)]="condomino.user.emergencyNumber" />
       </div>
       <div class="col-5">
         <label class="form-label" for="numcasa">Numero de casa:</label>
-        <input
-          required
-          autocomplete="off"
-          type="number"
-          minlength="10"
-          maxlength="10"
-          placeholder="Numero de casa"
-          class="inputDatosAltas form-control"
-          id="numcasa"
-          name="muestraCondominonumcasa"
-          [(ngModel)]="condomino.houseNumber"
-        />
+        <input required autocomplete="off" type="number" minlength="10" maxlength="10" placeholder="Numero de casa"
+          class="inputDatosAltas form-control" id="numcasa" name="muestraCondominonumcasa"
+          [(ngModel)]="condomino.houseNumber" />
       </div>
     </div>
     <div class="row mt-3">
@@ -108,43 +50,19 @@
           <label id="insert" for="inputTag">
             Insertar foto
             <i class="fa fa-2x fa-camera"></i>
-            <input
-              id="inputTag"
-              type="file"
-              (change)="showImage($event)"
-              accept="image/*"
-              required
-            />
+            <input id="inputTag" type="file" (change)="showImage($event)" accept="image/*" required />
             <span id="imageName"></span>
           </label>
         </div>
       </div>
       <div class="col-5 text-center">
-        <div
-          *ngIf="!condomino.paidStatus"
-          (click)="condomino.paidStatus = true"
-          class="cursor"
-        >
+        <div *ngIf="!condomino.paidStatus" (click)="condomino.paidStatus = true" class="cursor">
           <label class="form-label" for="noPagadoImg"> No Pagado</label>
-          <img
-            src="../../../assets/sadFace.png"
-            alt="no pagado"
-            id="noPagadoImg"
-            width="160px"
-          />
+          <img src="../../../assets/sadFace.png" alt="no pagado" id="noPagadoImg" width="160px" />
         </div>
-        <div
-          *ngIf="condomino.paidStatus"
-          (click)="condomino.paidStatus = false"
-          class="cursor"
-        >
+        <div *ngIf="condomino.paidStatus" (click)="condomino.paidStatus = false" class="cursor">
           <label class="form-label" for="pagoImg"> Pagado</label>
-          <img
-            src="../../../assets/happyFace.png"
-            alt="pago"
-            id="pagoImg"
-            width="150px"
-          />
+          <img src="../../../assets/happyFace.png" alt="pago" id="pagoImg" width="150px" />
         </div>
       </div>
     </div>

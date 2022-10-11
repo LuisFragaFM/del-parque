@@ -6,5 +6,4 @@ export interface Condomino {
   houseNumber: string;
   paidStatus: boolean;
   user: UserView;
-  role: string;
 }

@@ -8,7 +8,7 @@
              (keyup)="findInquilinoByName()" [(ngModel)]="name">
       <div class="busqueda" *ngIf="condominos.length > 0">
         <div *ngFor="let c of condominos">
-          <div (click)="selectInquilino(c)" class="cursorb">{{ c.name }}</div>
+          <div (click)="selectInquilino(c)" class="cursorb">{{ c.user.name }}</div>
         </div>
       </div>
     </div>
@@ -22,14 +22,14 @@
         <label class="form-label" for="muestraPagosName">Nombre: </label>
         <input required autocomplete="off" type="text" placeholder="Buscar Inquilino" class="inputDatos form-control"
                id="muestraPagosName" name="muestraPagosName"
-               [(ngModel)]="condomino.name">
+               [(ngModel)]="condomino.user.name">
       </div>
       <div class="col-5">
         <label class="form-label" for="muestraPagosTelefono">Teléfono:</label>
         <input required autocomplete="off" type="text" placeholder="Teléfono" class="inputDatos form-control"
                id="muestraPagosTelefono"
                name="muestraPagosTelefono"
-               [(ngModel)]="condomino.telephoneNumber">
+               [(ngModel)]="condomino.user.telephoneNumber">
       </div>
     </div>
 
@@ -45,7 +45,7 @@
         <label class="form-label" for="muestraPagosCorreo">Correo Electrónico:</label>
         <input required autocomplete="off" type="text" placeholder="Correo Electrónico" class="inputDatos form-control"
                id="muestraPagosCorreo" name="muestraPagosCorreo"
-               [(ngModel)]="condomino.email">
+               [(ngModel)]="condomino.user.email">
       </div>
     </div>
 
@@ -54,7 +54,7 @@
         <label class="form-label" for="muestraPagosEmergencia">Numero de emergencia:</label>
         <input required autocomplete="off" type="text" placeholder="Teléfono de emergencia"
                class="inputDatos form-control" id="muestraPagosEmergencia" name="muestraPagosEmergencia"
-               [(ngModel)]="condomino.emergencyNumber">
+               [(ngModel)]="condomino.user.emergencyNumber">
       </div>
       <div class="col-5">
         <label class="form-label" for="numcasa">Numero de casa:</label>

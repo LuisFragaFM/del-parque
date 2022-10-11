@@ -36,7 +36,7 @@
                id="nombre_condomino" (keyup)="findInquilinoByName()" [(ngModel)]="name" list="nombre_condominos"/>
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">
-            <div (click)="selectInquilino(c)" class="cursor">{{ c.name }}</div>
+            <div (click)="selectInquilino(c)" class="cursor">{{ c.user.name }}</div>
           </div>
         </div>
       </div>
@@ -46,11 +46,11 @@
         <div class="input" *ngIf="condomino.id">
           <label class="form-label" for="calle">Número de la casa</label>
           <input class="form-control" required autocomplete="off" type="text" id="casa"
-                 [(ngModel)]="paquete.houseNumber"
+                 [(ngModel)]="paquete.condomino.houseNumber"
                  disabled/>
           <label class="form-label" for="calle">Calle</label>
           <input class="form-control" required autocomplete="off" type="text" id="calle"
-                 [(ngModel)]="paquete.houseStreet"
+                 [(ngModel)]="paquete.condomino.houseStreet"
                  disabled/>
         </div>
       </div>

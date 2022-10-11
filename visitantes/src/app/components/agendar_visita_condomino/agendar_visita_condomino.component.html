@@ -69,7 +69,7 @@
           (keyup)="findInquilinoByName()" [(ngModel)]="visitante.authorization">
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">
-            <div (click)="selectInquilino(c)" class="cursor">{{c.name}}</div>
+            <div (click)="selectInquilino(c)" class="cursor">{{c.user.name}}</div>
           </div>
         </div>
       </div>
