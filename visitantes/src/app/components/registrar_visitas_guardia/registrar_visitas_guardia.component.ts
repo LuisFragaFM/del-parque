@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {VisitantesService} from "../../services/visitantes.service";
-import {Visitante} from "../../models/visitante";
-import {CondominosService} from "../../services/condominos.service";
-import {Condomino} from "../../models/condomino";
-import Swal from "sweetalert2";
-import {SessionService} from "../../services/session.service";
-import {User} from "../../models/user";
+import { Component, OnInit } from '@angular/core';
+import { VisitantesService } from '../../services/visitantes.service';
+import { Visitante } from '../../models/visitante';
+import { CondominosService } from '../../services/condominos.service';
+import { Condomino } from '../../models/condomino';
+import Swal from 'sweetalert2';
+import { SessionService } from '../../services/session.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-registrar_visitas_guardia',
   templateUrl: './registrar_visitas_guardia.component.html',
-  styleUrls: ['./registrar_visitas_guardia.component.css']
+  styleUrls: ['./registrar_visitas_guardia.component.css'],
 })
 export class RegistrarVisitasGuardiaComponent implements OnInit {
   isChecked: boolean = true;
@@ -20,20 +20,20 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
 
-  constructor(private visitantesService: VisitantesService,
-              private condominosService: CondominosService,
-              private sessionService: SessionService) {
-  }
+  constructor(
+    private visitantesService: VisitantesService,
+    private condominosService: CondominosService,
+    private sessionService: SessionService
+  ) {}
 
   ngOnInit(): void {
-    this.sessionService.getUser().subscribe(user => {
-      this.autoriza = user;
-    })
-
+    this.sessionService.getUser().subscribe((user) => {
+      this.visitante.authorization = user.name;
+    });
   }
 
   findInquilinoByName() {
-    this.condominosService.findByName(this.name!).subscribe(condominos => {
+    this.condominosService.findByName(this.name!).subscribe((condominos) => {
       this.condominos = condominos;
     });
   }
@@ -44,13 +44,13 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
     }
 
     this.visitante.condomino.condominoId = this.condomino.id;
-    this.visitantesService.save(this.visitante).subscribe(visitante => {
+    this.visitantesService.save(this.visitante).subscribe((visitante) => {
       Swal.fire({
         title: `La visita de ${visitante.name} fue agendada`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
-        confirmButtonText: `Cerrar`
+        confirmButtonText: `Cerrar`,
       }).then(() => {
         this.visitante = {} as Visitante;
       });
@@ -63,21 +63,18 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
     this.visitante.condomino.condominoId = condomino.id;
     this.visitante.authorization = this.autoriza.id;
     this.condominos = [];
-    this.visitante.checkIn= this.formatAMPM();
-    this.visitante.arrivalDate=this.formatDate();
-
+    this.visitante.checkIn = this.formatAMPM();
+    this.visitante.arrivalDate = this.formatDate();
   }
 
   formatDate() {
-    const d = new Date()
+    const d = new Date();
     let month = '' + (d.getMonth() + 1);
     let day = '' + d.getDate();
     let year = d.getFullYear();
 
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2)
-      day = '0' + day;
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
   }
