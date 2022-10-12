@@ -5,6 +5,7 @@ import {CondominosService} from "../../services/condominos.service";
 import {Condomino} from "../../models/condomino";
 import Swal from "sweetalert2";
 import {SessionService} from "../../services/session.service";
+import { CondominoInfo } from 'src/app/models/condominoInfo';
 
 @Component({
   selector: 'app-agendar_visita_condomino',
@@ -24,12 +25,15 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.visitante.condomino= {} as CondominoInfo;
     this.sessionService.getUser().subscribe(user => {
       this.visitante.authorization = user.name;
     })
   }
 
   save() {
+    console.log(this.visitante);
+    
     this.visitantesService.save(this.visitante).subscribe(visitante => {
       Swal.fire({
         title: `La visita de ${visitante.name} fue agendada`,
@@ -52,7 +56,8 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   selectInquilino(condomino: Condomino) {
     this.condomino = condomino;
     this.condominos = [];
-    // this.name = condomino.name;
-    // this.visitante.authorization = condomino.name;
+
+    this.name = condomino.user.name;
+    this.visitante.authorization = condomino.user.id;
   }
 }
