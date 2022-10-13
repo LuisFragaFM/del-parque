@@ -82,25 +82,13 @@
         <!-- Se ingresa el numero de la casa a la que va el paquete -->
         <div class="input" *ngIf="condomino.id">
           <label class="form-label" for="calle">Número de la casa</label>
-          <input
-            class="form-control"
-            required
-            autocomplete="off"
-            type="text"
-            id="casa"
-            [(ngModel)]="paquete.condomino.houseNumber"
-            disabled
-          />
+          <input class="form-control" required autocomplete="off" type="text" id="casa"
+                 [(ngModel)]="condomino.houseNumber"
+                 disabled/>
           <label class="form-label" for="calle">Calle</label>
-          <input
-            class="form-control"
-            required
-            autocomplete="off"
-            type="text"
-            id="calle"
-            [(ngModel)]="paquete.condomino.houseStreet"
-            disabled
-          />
+          <input class="form-control" required autocomplete="off" type="text" id="calle"
+                 [(ngModel)]="condomino.street"
+                 disabled/>
         </div>
       </div>
     </div>
