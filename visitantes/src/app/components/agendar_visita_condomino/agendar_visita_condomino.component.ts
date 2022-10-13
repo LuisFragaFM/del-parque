@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {VisitantesService} from "../../services/visitantes.service";
-import {Visitante} from "../../models/visitante";
-import {CondominosService} from "../../services/condominos.service";
-import {Condomino} from "../../models/condomino";
-import Swal from "sweetalert2";
-import {SessionService} from "../../services/session.service";
-import { CondominoInfo } from 'src/app/models/condominoInfo';
+import { Component, OnInit } from '@angular/core';
+import { VisitantesService } from '../../services/visitantes.service';
+import { Visitante } from '../../models/visitante';
+import { CondominosService } from '../../services/condominos.service';
+import { Condomino } from '../../models/condomino';
+import Swal from 'sweetalert2';
+import { SessionService } from '../../services/session.service';
+import { validaInput } from 'src/app/tools/validation';
 
 @Component({
   selector: 'app-agendar_visita_condomino',
   templateUrl: './agendar_visita_condomino.component.html',
-  styleUrls: ['./agendar_visita_condomino.component.css']
+  styleUrls: ['./agendar_visita_condomino.component.css'],
 })
 export class AgendarVisitaCondominoComponent implements OnInit {
   isChecked: boolean = true;
@@ -18,36 +18,39 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   name: string | undefined;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
+  //Variable para validar nombre y activar boton
+  visitaName: boolean = true;
+  //Validacion de fechas
+  regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
 
-  constructor(private visitantesService: VisitantesService,
-              private condominosService: CondominosService,
-              private sessionService: SessionService) {
-  }
+  constructor(
+    private visitantesService: VisitantesService,
+    private condominosService: CondominosService,
+    private sessionService: SessionService
+  ) {}
 
   ngOnInit(): void {
     this.visitante.condomino= {} as CondominoInfo;
+    this.sessionService.getUser().subscribe((user) => {
     this.sessionService.getUser().subscribe(user => {
       this.visitante.authorization = user.name;
-    })
+    });
   }
 
   save() {
-    console.log(this.visitante);
-    
-    this.visitantesService.save(this.visitante).subscribe(visitante => {
+    this.visitantesService.save(this.visitante).subscribe((visitante) => {
       Swal.fire({
         title: `La visita de ${visitante.name} fue agendada`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
-        confirmButtonText: `Cerrar`
-      }).then(() => {
-      });
+        confirmButtonText: `Cerrar`,
+      }).then(() => {});
     });
   }
 
   findInquilinoByName() {
-    this.condominosService.findByName(this.name!).subscribe(condominos => {
+    this.condominosService.findByName(this.name!).subscribe((condominos) => {
       console.log(condominos);
       this.condominos = condominos;
     });
@@ -56,7 +59,16 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   selectInquilino(condomino: Condomino) {
     this.condomino = condomino;
     this.condominos = [];
-
+  }
+  
+  // funcion para validacion
+  validaVisita(regex: any, name: string) {
+    this.visitaName = validaInput(regex, name);
+     return this.visitaName;
+  }
+  
+  // deshabilitar o habilitar boton
+  isValidForm(): boolean {
     this.name = condomino.user.name;
     this.visitante.authorization = condomino.user.id;
   }

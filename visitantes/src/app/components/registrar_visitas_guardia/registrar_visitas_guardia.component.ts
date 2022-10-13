@@ -6,7 +6,7 @@ import { Condomino } from '../../models/condomino';
 import Swal from 'sweetalert2';
 import { SessionService } from '../../services/session.service';
 import { User } from '../../models/user';
-
+import { validaInput } from 'src/app/tools/validation';
 @Component({
   selector: 'app-registrar_visitas_guardia',
   templateUrl: './registrar_visitas_guardia.component.html',
@@ -19,7 +19,10 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   visitante: Visitante = {} as Visitante;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-
+  //Variable para validar nombre y activar boton
+  visitaName: boolean = true;
+  //Validacion de fechas
+  regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
   constructor(
     private visitantesService: VisitantesService,
     private condominosService: CondominosService,
@@ -88,5 +91,13 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
     hours = hours ? hours : 12; // the hour '0' should be '12'
     minutes = minutes < 10 ? '0' + minutes : minutes;
     return hours + ':' + minutes + ' ' + ampm;
+  }
+  // funcion para validacion
+  validaNombre(regex: any, name: string) {
+    this.visitaName = validaInput(regex, name);
+  }
+  // deshabilitar o habilitar boton
+  isValidForm(): boolean {
+    return this.visitaName;
   }
 }

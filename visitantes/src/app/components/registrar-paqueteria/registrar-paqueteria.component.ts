@@ -5,8 +5,8 @@ import { CondominosService } from '../../services/condominos.service';
 import { Condomino } from '../../models/condomino';
 import Swal from 'sweetalert2';
 import { validaInput } from 'src/app/tools/validation';
-import {SessionService} from "../../services/session.service";
-import {Visitante} from "../../models/visitante";
+import { SessionService } from '../../services/session.service';
+import { Visitante } from '../../models/visitante';
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -39,9 +39,9 @@ export class RegistrarPaqueteriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.paquetesService.getPaquetes(0).subscribe((paquetes) => {});
-    this.sessionService.getUser().subscribe(user => {
+    this.sessionService.getUser().subscribe((user) => {
       this.visitante.authorization = user.name;
-    })
+    });
   }
 
   findInquilinoByName() {
@@ -103,15 +103,13 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     );
   }
   formatDate() {
-    const d = new Date()
+    const d = new Date();
     let month = '' + (d.getMonth() + 1);
     let day = '' + d.getDate();
     let year = d.getFullYear();
 
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2)
-      day = '0' + day;
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
   }

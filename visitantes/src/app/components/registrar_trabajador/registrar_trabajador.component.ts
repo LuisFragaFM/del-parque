@@ -29,8 +29,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
     private condominosService: CondominosService
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   findInquilinoByName() {
     this.condominosService.findByName(this.name!).subscribe((condominos) => {

@@ -98,9 +98,6 @@
             id="hora-llegada"
             [(ngModel)]="trabajador.schedule"
           />
-          <!-- <div *ngIf="hora.touched" class="alert alert-info">
-            Favor de agregar un dato en este campo
-          </div> -->
         </div>
       </div>
 
@@ -127,11 +124,7 @@
       </div>
       <div class="row g-2 mt-6 mb-3 justify-content-center align-items-center">
         <div class="col-4 text-end">
-          <button
-            class="boton btn btn-success btn-block"
-            (click)="save()"
-            
-          >
+          <button class="boton btn btn-success btn-block" (click)="save()">
             Guardar
           </button>
         </div>

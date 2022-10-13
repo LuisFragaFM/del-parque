@@ -27,12 +27,18 @@
         <label class="form-label">Nombre</label>
         <input
           class="form-control"
+          (keydown)="validaNombre(regexName, nombreVisita.value)"
+          #nombreVisita
           required
           autocomplete="off"
           type="text"
           placeholder="Escriba aqui"
           [(ngModel)]="visitante.name"
         />
+        <!--Alerta de datos -->
+        <div id="alertName" class="alert alert-danger" *ngIf="!visitaName">
+          Favor de agregar solamente letras en este campo
+        </div>
         <input
           id="flexCheckDefault"
           class="BotonVehiculo form-check-input"
