@@ -98,6 +98,6 @@ CREATE TABLE visitantes
     authorized      boolean,
     gone_out        boolean,
     condomino_id    varchar(40),
-    foreign key (authorization) references guardias (id) on delete cascade on update cascade,
+    foreign key (authorization) references users (id) on delete cascade on update cascade,
     foreign key (condomino_id) references condominos (id) on delete cascade on update cascade
 );
