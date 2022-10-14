@@ -6,7 +6,7 @@ import {Condomino} from "../../models/condomino";
 import Swal from "sweetalert2";
 import {SessionService} from "../../services/session.service";
 import {CondominoInfo} from "../../models/condominoInfo";
-import { validaInput } from 'src/app/tools/validation';
+import {validaInput} from 'src/app/tools/validation';
 
 @Component({
   selector: 'app-agendar_visita_condomino',
@@ -28,10 +28,11 @@ export class AgendarVisitaCondominoComponent implements OnInit {
     private visitantesService: VisitantesService,
     private condominosService: CondominosService,
     private sessionService: SessionService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
-    this.visitante.condomino= {} as CondominoInfo;
+    this.visitante.condomino = {} as CondominoInfo;
     this.sessionService.getUser().subscribe(user => {
       this.visitante.authorization = user.name;
     })
@@ -51,7 +52,8 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   }
 
   findInquilinoByName() {
-    this.condominosService.findByName(this.name!).subscribe((condominos) => {this.condominos = condominos;
+    this.condominosService.findByName(this.name!).subscribe((condominos) => {
+      this.condominos = condominos;
     });
   }
 
@@ -67,6 +69,6 @@ export class AgendarVisitaCondominoComponent implements OnInit {
 
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
-     return this.visitaName;
+    return this.visitaName;
   }
 }
