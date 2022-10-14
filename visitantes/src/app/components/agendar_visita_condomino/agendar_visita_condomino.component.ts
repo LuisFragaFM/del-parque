@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { VisitantesService } from '../../services/visitantes.service';
-import { Visitante } from '../../models/visitante';
-import { CondominosService } from '../../services/condominos.service';
-import { Condomino } from '../../models/condomino';
-import Swal from 'sweetalert2';
-import { SessionService } from '../../services/session.service';
+import {Component, OnInit} from '@angular/core';
+import {VisitantesService} from "../../services/visitantes.service";
+import {Visitante} from "../../models/visitante";
+import {CondominosService} from "../../services/condominos.service";
+import {Condomino} from "../../models/condomino";
+import Swal from "sweetalert2";
+import {SessionService} from "../../services/session.service";
+import {CondominoInfo} from "../../models/condominoInfo";
 import { validaInput } from 'src/app/tools/validation';
 
 @Component({
@@ -31,10 +32,9 @@ export class AgendarVisitaCondominoComponent implements OnInit {
 
   ngOnInit(): void {
     this.visitante.condomino= {} as CondominoInfo;
-    this.sessionService.getUser().subscribe((user) => {
     this.sessionService.getUser().subscribe(user => {
       this.visitante.authorization = user.name;
-    });
+    })
   }
 
   save() {
@@ -44,15 +44,14 @@ export class AgendarVisitaCondominoComponent implements OnInit {
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
-        confirmButtonText: `Cerrar`,
-      }).then(() => {});
+        confirmButtonText: `Cerrar`
+      }).then(() => {
+      });
     });
   }
 
   findInquilinoByName() {
-    this.condominosService.findByName(this.name!).subscribe((condominos) => {
-      console.log(condominos);
-      this.condominos = condominos;
+    this.condominosService.findByName(this.name!).subscribe((condominos) => {this.condominos = condominos;
     });
   }
 
@@ -60,16 +59,14 @@ export class AgendarVisitaCondominoComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
   }
-  
+
   // funcion para validacion
   validaVisita(regex: any, name: string) {
     this.visitaName = validaInput(regex, name);
-     return this.visitaName;
   }
-  
+
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
-    this.name = condomino.user.name;
-    this.visitante.authorization = condomino.user.id;
+     return this.visitaName;
   }
 }
