@@ -28,8 +28,7 @@ export class AgendarVisitaCondominoComponent implements OnInit {
     private visitantesService: VisitantesService,
     private condominosService: CondominosService,
     private sessionService: SessionService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.visitante.condomino = {} as CondominoInfo;
