@@ -20,18 +20,18 @@
     </div>
   </div>
 
-  <div class="tarjet row border border-dark border-4 rounded">
-    <h2>Visitante</h2>
+  <div *ngFor="let visitante of visitantes" class="tarjet row border border-dark border-4 rounded">
+    <h2>Visitante: {{visitante.name}}</h2>
     <div class="row fila1 mt-3">
       <div class="col-5">
         <label class="form-label" for="buscaSalidaName">Nombre:</label>
         <input required autocomplete="off" type="text" placeholder="Nombre" class="inputAgendados form-control"
-               name="buscaSalidaName" id="buscaSalidaName">
+               name="buscaSalidaName" id="buscaSalidaName" [(ngModel)]="visitante.name">
       </div>
       <div class="col-5">
         <label class="form-label" for="buscaHorasSalida">Hora de salida:</label>
         <input required autocomplete="off" type="time" placeholder="Hora" class="inputSalidas form-control"
-               id="buscaHorasSalida" name="buscaHorasSalida">
+               id="buscaHorasSalida" name="buscaHorasSalida" [(ngModel)]="visitante.departureTime">
       </div>
     </div>
 
@@ -39,7 +39,7 @@
       <div class="col-5">
         <label class="form-label" for="buscaHorasEntrada">Hora de entrada:</label>
         <input required autocomplete="off" type="time" placeholder="Hora" id="buscaHorasEntrada"
-               class="inputSalidas form-control" name="buscaHorasEntrada">
+               class="inputSalidas form-control" name="buscaHorasEntrada" [(ngModel)]="visitante.checkIn">
 
       </div>
       <div class="col-5">
@@ -52,7 +52,7 @@
     </div>
 
     <div class="row fila3 mt-3">
-     
+
       <div class="d-grid gap-2  d-md-flex justify-content-md-end mx-auto">
         <button class="botonEliminar btn btn-danger ">Eliminar</button>
         <button class="botonGuardar btn btn-primary ">Guardar</button>

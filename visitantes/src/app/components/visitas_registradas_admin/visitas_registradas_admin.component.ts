@@ -20,23 +20,20 @@ export class VisitasRegistradasAdminComponent implements OnInit {
   listOfPages: number[] = [];
   id: string | undefined;
   user: User = {} as User;
+  isLoading: boolean = true;
 
   constructor(private visitantesService: VisitantesService,
               private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
-    this.visitantesService.getVisitantesUnauthorized(1).subscribe(({content: visitantes}) => {
-      console.log(visitantes)
-      this.visitantes = visitantes;
-    });
-
     this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
       const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
       for (let i = 0; i < totalOfPages; i++) {
-        this.listOfPages.push(i + 1);
+        this.listOfPages.push(i);
       }
+      this.isLoading = false;
     })
     this.sessionService.getUser().subscribe(user => {
       this.user = user;
@@ -44,8 +41,7 @@ export class VisitasRegistradasAdminComponent implements OnInit {
   }
 
   updatePage(page: number) {
-    this.page = page - 1;
-    this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
+    this.visitantesService.getVisitantesUnauthorized(page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
     })
   }

@@ -41,7 +41,7 @@ public class PaquetesServiceImpl implements PaquetesService {
         Pageable pageable = PageRequest.of(page, 10);
 
         return new PageImpl<>(
-                paquetesRepository.findAll().stream()
+                paquetesRepository.findAllByDeliveryIs(false).stream()
                         .map(this::addExtraInfo)
                         .collect(Collectors.toList()),
                 pageable, pageable.getPageSize()
@@ -60,7 +60,7 @@ public class PaquetesServiceImpl implements PaquetesService {
 
     private Paquete addExtraInfo(com.example.delparque.model.Paquete p) {
         Paquete paquete = PaqueteMapper.entityToDto(p);
-        Condomino condomino = condominosRepository.findById(paquete.getCondomino().getUserId()).orElseThrow();
+        Condomino condomino = condominosRepository.findById(p.getCondominoId()).orElseThrow();
 
         CondominoInfo condominoInfo = CondominoInfo.builder()
                 .userId(p.getCondominoId())

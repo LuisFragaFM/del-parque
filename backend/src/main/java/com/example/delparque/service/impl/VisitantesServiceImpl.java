@@ -44,11 +44,11 @@ public class VisitantesServiceImpl implements VisitantesService {
     }
 
     @Override
-    public Page<Visitante> findAllByAuthorizedAndGoneOut(Integer page) {
+    public Page<Visitante> findAllByGoneOut(Integer page) {
         Pageable pageable = PageRequest.of(page, 10);
 
         return new PageImpl<>(
-                visitantesRepository.findAllByAuthorizedIsAndGoneOutIs(true, false).stream()
+                visitantesRepository.findAllByGoneOutIs(false).stream()
                         .map(VisitanteMapper::entityToDto)
                         .collect(Collectors.toList()),
                 pageable, pageable.getPageSize()
@@ -57,6 +57,7 @@ public class VisitantesServiceImpl implements VisitantesService {
 
     @Override
     public Visitante save(Visitante visitante) {
+        System.out.println(visitante);
         if (visitante.getId() == null) {
             visitante.setId(UUID.randomUUID().toString());
         }

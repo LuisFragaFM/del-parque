@@ -40,14 +40,14 @@ section {
   display: flex;
   justify-content: space-between;
 }
+
 .busqueda {
   background-color: rgb(159, 211, 176);
   overflow: scroll;
   overflow-x: hidden;
   position: absolute;
   border-radius: 5px;
-  width: auto;
-  height: 40px;
+  padding: 4px 8px;
 }
 
 .cursor {

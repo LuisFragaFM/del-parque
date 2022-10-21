@@ -40,6 +40,7 @@ public class VisitanteMapper {
                 .departureTime(visitante.getDepartureTime())
                 .authorization(visitante.getAuthorization())
                 .goneOut(visitante.isGoneOut())
+                .userId(visitante.getCondomino().getUserId())
                 .build();
     }
 }

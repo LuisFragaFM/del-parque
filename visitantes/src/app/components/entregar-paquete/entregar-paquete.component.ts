@@ -17,17 +17,20 @@ export class EntregarPaqueteComponent implements OnInit {
   paquetes: Paquete[] = [];
   page: number = 0;
   listOfPages: number[] = [];
+  isLoading: boolean = true;
 
   constructor(private paquetesService: PaquetesService,
               private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
-    this.paquetesService.getPaquetes().subscribe(paquetes => {
+    this.paquetesService.getPaquetes().subscribe((paquetes) => {
+      this.isLoading = false;
       this.paquetes = paquetes.content;
+      console.log(paquetes)
       const totalOfPages = 10
       for (let i = 0; i < totalOfPages; i++) {
-        this.listOfPages.push(i + 1);
+        this.listOfPages.push(i);
       }
     });
     this.sessionService.getUser().subscribe(user => {
@@ -56,9 +59,9 @@ export class EntregarPaqueteComponent implements OnInit {
   }
 
   updatePage(page: number) {
-    this.page = page - 1;
-    this.paquetesService.getPaquetes(this.page).subscribe(paquetes => {
-      this.paquetes = paquetes.content;
+    this.paquetesService.getPaquetes(page).subscribe(({content: paquetes}) => {
+      this.paquetes = paquetes;
+      this.isLoading = false;
     })
   }
 

@@ -31,7 +31,7 @@ public class CondominosController {
     }
 
     @GetMapping("name/{name}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD', 'ROLE_RESIDENT')")
     public List<Condomino> findByName(@PathVariable String name) {
         return condominosService.findByName(name);
     }

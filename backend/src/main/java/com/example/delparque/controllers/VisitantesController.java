@@ -7,7 +7,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.List;
 
 @RestController
 @RequestMapping("api/visitantes")
@@ -30,20 +29,14 @@ public class VisitantesController {
     }
     @GetMapping("/gone-out")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Page<Visitante> findAllByAuthorizedAndGoneOut(@RequestParam Integer page) {
-        return visitantesService.findAllByAuthorizedAndGoneOut(page);
+    public Page<Visitante> findAllByGoneOut(@RequestParam Integer page) {
+        return visitantesService.findAllByGoneOut(page);
     }
 
     @GetMapping("{id}")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
     public Visitante findById(@PathVariable String id) {
         return visitantesService.findById(id);
-    }
-
-    @GetMapping("/name/{name}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD')")
-    public List<Visitante> findByName(@PathVariable String name) {
-        return visitantesService.findByName(name);
     }
 
     @PostMapping()

@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { VisitantesService } from '../../services/visitantes.service';
-import { Visitante } from '../../models/visitante';
-import { CondominosService } from '../../services/condominos.service';
-import { Condomino } from '../../models/condomino';
+import {Component, OnInit} from '@angular/core';
+import {VisitantesService} from '../../services/visitantes.service';
+import {Visitante} from '../../models/visitante';
+import {CondominosService} from '../../services/condominos.service';
+import {Condomino} from '../../models/condomino';
 import Swal from 'sweetalert2';
-import { SessionService } from '../../services/session.service';
-import { User } from '../../models/user';
-import { validaInput } from 'src/app/tools/validation';
+import {SessionService} from '../../services/session.service';
+import {User} from '../../models/user';
+import {validaInput} from 'src/app/tools/validation';
+import {CondominoInfo} from "../../models/condominoInfo";
+
 @Component({
   selector: 'app-registrar_visitas_guardia',
   templateUrl: './registrar_visitas_guardia.component.html',
@@ -23,15 +25,21 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   visitaName: boolean = true;
   //Validacion de fechas
   regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
+  error: boolean = false;
+  nameAuth!: string;
+
   constructor(
     private visitantesService: VisitantesService,
     private condominosService: CondominosService,
     private sessionService: SessionService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
+    this.visitante.condomino = {} as CondominoInfo;
     this.sessionService.getUser().subscribe((user) => {
-      this.visitante.authorization = user.name;
+      this.autoriza = user;
+      this.nameAuth = this.autoriza.name;
     });
   }
 
@@ -43,10 +51,10 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
 
   save() {
     if (!this.condomino.id) {
+      this.error = true;
       return;
     }
 
-    this.visitante.condomino.userId = this.condomino.id;
     this.visitantesService.save(this.visitante).subscribe((visitante) => {
       Swal.fire({
         title: `La visita de ${visitante.name} fue agendada`,
@@ -63,7 +71,7 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   selectInquilino(condomino: Condomino) {
     this.condomino = condomino;
     this.name = condomino.user.name;
-    this.visitante.condomino.userId = condomino.id;
+    this.visitante.condomino.userId = condomino.user.id;
     this.visitante.authorization = this.autoriza.id;
     this.condominos = [];
     this.visitante.checkIn = this.formatAMPM();
@@ -92,10 +100,12 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     return hours + ':' + minutes + ' ' + ampm;
   }
+
   // funcion para validacion
   validaNombre(regex: any, name: string) {
     this.visitaName = validaInput(regex, name);
   }
+
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
     return this.visitaName;

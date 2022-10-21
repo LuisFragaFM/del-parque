@@ -15,5 +15,5 @@ public interface VisitantesRepository extends JpaRepository<Visitante, String> {
 
     List<Visitante> findAllByAuthorizedIsAndUserId(boolean authorized, String userId);
 
-    List<Visitante> findAllByAuthorizedIsAndGoneOutIs(boolean authorized, boolean goneOut);
+    List<Visitante> findAllByGoneOutIs(boolean goneOut);
 }

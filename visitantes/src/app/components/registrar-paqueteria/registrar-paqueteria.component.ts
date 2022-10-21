@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import {validaInput} from 'src/app/tools/validation';
 import {SessionService} from '../../services/session.service';
 import {Visitante} from '../../models/visitante';
+import {CondominoInfo} from "../../models/condominoInfo";
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -16,8 +17,7 @@ import {Visitante} from '../../models/visitante';
 export class RegistrarPaqueteriaComponent implements OnInit {
   paquete: Paquete = {} as Paquete;
   visitante: Visitante = {} as Visitante;
-  numberOfPages: number = 1;
-  name: string | undefined;
+  name!: string;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
   //Variable para validar nombre y activar boton
@@ -26,10 +26,11 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   validacionRecibo: boolean = true;
   fechaRecibo: boolean = true;
   //Validacion de fechas
-  regexName: any = /^[A-Za-z0-9_@./#&+-\s]+$/; //empresa
+  regexName: any = /^[A-Za-z0-9_@./#&+\s]+$/; //empresa
   regexRecibe: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //recibe paquete
   regexDate: any =
     /^(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|1[1-2])\1\d{4}$/; //fecha
+  error: boolean = false;
 
   constructor(
     private paquetesService: PaquetesService,
@@ -39,28 +40,24 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.paquetesService.getPaquetes(0).subscribe((paquetes) => {
-    });
+    this.paquete.condomino = {} as CondominoInfo;
     this.sessionService.getUser().subscribe((user) => {
       this.visitante.authorization = user.name;
     });
   }
 
   findInquilinoByName() {
-    if (this.name == '') {
-      this.condominos = [];
-    }
-    this.condominosService.findByName(this.name!).subscribe((condominos) => {
+    this.condominosService.findByName(this.name).subscribe((condominos) => {
       this.condominos = condominos;
     });
   }
 
   save() {
-    this.paquete.condomino.userId = this.condomino.id;
-    this.paquetesService.save(this.paquete).subscribe((paquete) => {
-      if (!this.paquete.condomino.userId) {
-        return
-      }
+    if (!this.paquete.condomino.userId) {
+      this.error = true;
+      return;
+    }
+    this.paquetesService.save(this.paquete).subscribe(() => {
       Swal.fire({
         title: `El paquete para la casa ${this.paquete.condomino.houseNumber} en la calle ${this.paquete.condomino.houseStreet} fue guardado correctamente`,
         icon: 'success',
@@ -77,6 +74,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.user.name;
+    this.paquete.condomino.userId = this.condomino.id;
     this.paquete.condomino.houseStreet = condomino.street;
     this.paquete.condomino.houseNumber = condomino.houseNumber;
   }
