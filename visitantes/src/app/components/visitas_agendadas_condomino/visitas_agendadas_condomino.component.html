@@ -8,6 +8,10 @@
 </div>
 <div class="container">
 
+  <div *ngIf="visitantes.length <= 0 ">
+    No existen visitas agendadas
+  </div>
+
   <div class="tarjet row border border-dark border-4 rounded" *ngFor="let visitante of visitantes">
     <h2>Visitante</h2>
     <div class="row fila1">
@@ -39,7 +43,7 @@
     </div>
 
     <div class="row fila3">
-      
+
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button class="botonCancelar btn btn-danger ">Cancelar</button>
         <button class="botonEditar btn btn-primary ">Editar</button>

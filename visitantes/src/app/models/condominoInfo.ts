@@ -1,5 +1,5 @@
 export interface CondominoInfo {
-    condominoId:	string;
+    userId:	string;
     houseNumber:	string;
     houseStreet:	string;
     owner:	string;

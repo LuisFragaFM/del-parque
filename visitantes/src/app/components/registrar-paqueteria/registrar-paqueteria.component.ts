@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { PaquetesService } from '../../services/paquetes.service';
-import { Paquete } from '../../models/paquete';
-import { CondominosService } from '../../services/condominos.service';
-import { Condomino } from '../../models/condomino';
+import {Component, OnInit} from '@angular/core';
+import {PaquetesService} from '../../services/paquetes.service';
+import {Paquete} from '../../models/paquete';
+import {CondominosService} from '../../services/condominos.service';
+import {Condomino} from '../../models/condomino';
 import Swal from 'sweetalert2';
-import { validaInput } from 'src/app/tools/validation';
-import { SessionService } from '../../services/session.service';
-import { Visitante } from '../../models/visitante';
+import {validaInput} from 'src/app/tools/validation';
+import {SessionService} from '../../services/session.service';
+import {Visitante} from '../../models/visitante';
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -35,10 +35,12 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     private paquetesService: PaquetesService,
     private condominosService: CondominosService,
     private sessionService: SessionService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
-    this.paquetesService.getPaquetes(0).subscribe((paquetes) => {});
+    this.paquetesService.getPaquetes(0).subscribe((paquetes) => {
+    });
     this.sessionService.getUser().subscribe((user) => {
       this.visitante.authorization = user.name;
     });
@@ -54,8 +56,11 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   }
 
   save() {
-    this.paquete.condomino.condominoId = this.condomino.id;
+    this.paquete.condomino.userId = this.condomino.id;
     this.paquetesService.save(this.paquete).subscribe((paquete) => {
+      if (!this.paquete.condomino.userId) {
+        return
+      }
       Swal.fire({
         title: `El paquete para la casa ${this.paquete.condomino.houseNumber} en la calle ${this.paquete.condomino.houseStreet} fue guardado correctamente`,
         icon: 'success',
@@ -102,6 +107,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
       this.fechaRecibo
     );
   }
+
   formatDate() {
     const d = new Date();
     let month = '' + (d.getMonth() + 1);

@@ -100,7 +100,7 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
         User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
 
         CondominoInfo condominoInfo = CondominoInfo.builder()
-                .condominoId(condomino.getId())
+                .userId(condomino.getId())
                 .houseNumber(condomino.getHouseNumber())
                 .houseStreet(condomino.getStreet())
                 .owner(user.getName())

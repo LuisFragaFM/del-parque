@@ -27,7 +27,8 @@
         <label class="form-label">Nombre</label>
         <input
           class="form-control"
-          (keydown)="validaNombre(regexName, nombreVisita.value)"
+          (keydown)="validaNombre(regexName, nombreVisita.value);"
+          (keyup)="findInquilinoByName()"
           #nombreVisita
           required
           autocomplete="off"

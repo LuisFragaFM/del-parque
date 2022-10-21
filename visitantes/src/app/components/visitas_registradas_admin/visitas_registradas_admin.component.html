@@ -7,6 +7,13 @@
 
 <!-- contenedor de inquinos -->
 <div class="contenido">
+
+  <div *ngIf="visitantes.length <= 0">
+    No hay datos registrados
+  </div>
+
+  <span class="spinner-border"></span>
+
   <!-- contenedor para flexbox -->
 
   <div *ngFor="let visitante of visitantes">

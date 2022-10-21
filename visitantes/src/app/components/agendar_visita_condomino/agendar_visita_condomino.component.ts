@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import {SessionService} from "../../services/session.service";
 import {CondominoInfo} from "../../models/condominoInfo";
 import {validaInput} from 'src/app/tools/validation';
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-agendar_visita_condomino',
@@ -23,6 +24,7 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   visitaName: boolean = true;
   //Validacion de fechas
   regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
+  user!: User;
 
   constructor(
     private visitantesService: VisitantesService,
@@ -33,7 +35,9 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   ngOnInit(): void {
     this.visitante.condomino = {} as CondominoInfo;
     this.sessionService.getUser().subscribe(user => {
-      this.visitante.authorization = user.name;
+      this.user = user;
+      this.visitante.authorization = user.id;
+      this.visitante.condomino.userId = user.id;
     })
   }
 

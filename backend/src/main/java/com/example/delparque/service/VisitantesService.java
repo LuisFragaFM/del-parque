@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface VisitantesService {
-    Page<Visitante> findAllByAuthorized(Integer page);
+    Page<Visitante> findAllByAuthorized(Integer page, String userId);
 
     Page<Visitante> findAllByAuthorizedAndGoneOut(Integer page);
 

@@ -46,7 +46,7 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
       return;
     }
 
-    this.visitante.condomino.condominoId = this.condomino.id;
+    this.visitante.condomino.userId = this.condomino.id;
     this.visitantesService.save(this.visitante).subscribe((visitante) => {
       Swal.fire({
         title: `La visita de ${visitante.name} fue agendada`,
@@ -63,7 +63,7 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   selectInquilino(condomino: Condomino) {
     this.condomino = condomino;
     this.name = condomino.user.name;
-    this.visitante.condomino.condominoId = condomino.id;
+    this.visitante.condomino.userId = condomino.id;
     this.visitante.authorization = this.autoriza.id;
     this.condominos = [];
     this.visitante.checkIn = this.formatAMPM();

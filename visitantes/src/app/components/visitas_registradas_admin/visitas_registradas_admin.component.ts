@@ -26,8 +26,9 @@ export class VisitasRegistradasAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.visitantesService.getVisitantesUnauthorized(1).subscribe((visitantes) => {
-      this.visitantes = visitantes.content;
+    this.visitantesService.getVisitantesUnauthorized(1).subscribe(({content: visitantes}) => {
+      console.log(visitantes)
+      this.visitantes = visitantes;
     });
 
     this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {

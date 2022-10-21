@@ -28,7 +28,7 @@ public class VisitanteMapper {
                 .id(visitante.getId())
                 .departureBooth(visitante.getDepartureBooth())
                 .authorized(visitante.isAuthorized())
-                .condominoId(visitante.getCondomino().getCondominoId())
+                .userId(visitante.getCondomino().getUserId())
                 .arrivalBooth(visitante.getArrivalBooth())
                 .arrivalDate(visitante.getArrivalDate())
                 .checkIn(visitante.getCheckIn())

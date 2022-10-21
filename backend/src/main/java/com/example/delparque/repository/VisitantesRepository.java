@@ -13,7 +13,7 @@ public interface VisitantesRepository extends JpaRepository<Visitante, String> {
     @Query(value = "select v.* from visitantes v where v.name like concat('%', :name, '%')", nativeQuery = true)
     List<Visitante> findByName(String name);
 
-    List<Visitante> findAllByAuthorizedIs(boolean authorized);
+    List<Visitante> findAllByAuthorizedIsAndUserId(boolean authorized, String userId);
 
     List<Visitante> findAllByAuthorizedIsAndGoneOutIs(boolean authorized, boolean goneOut);
 }

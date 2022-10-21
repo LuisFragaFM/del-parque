@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CondominoInfo {
-    private String condominoId;
+    private String userId;
     private String houseNumber;
     private String houseStreet;
     private String owner;

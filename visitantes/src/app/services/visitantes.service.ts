@@ -14,11 +14,11 @@ export class VisitantesService {
   }
 
   getVisitantesUnauthorized(page: number = 0): Observable<VisitantePage> {
-    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/unAuthorized?page=${page}`);
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/un-authorized?page=${page}`);
   }
 
   getVisitantesNoLeft(page: number = 0): Observable<VisitantePage> {
-    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/noLeft?page=${page}`);
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/no-left?page=${page}`);
   }
 
   findById(id: string): Observable<Visitante> {

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -13,15 +14,19 @@ import java.util.List;
 public class VisitantesController {
 
     private final VisitantesService visitantesService;
+    private final SessionHelper sessionHelper;
 
-    VisitantesController(VisitantesService visitantesService) {
+    VisitantesController(VisitantesService visitantesService, SessionHelper sessionHelper) {
         this.visitantesService = visitantesService;
+        this.sessionHelper = sessionHelper;
     }
 
     @GetMapping("/un-authorized")
-    @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Page<Visitante> findAllByAuthorized(@RequestParam Integer page) {
-        return visitantesService.findAllByAuthorized(page);
+    @PreAuthorize("hasAnyRole('ROLE_RESIDENT')")
+    public Page<Visitante> findAllByAuthorized(@RequestParam Integer page, Principal principal) {
+        String userId = sessionHelper.getUserIdForLoggedUser(principal);
+
+        return visitantesService.findAllByAuthorized(page, userId);
     }
     @GetMapping("/gone-out")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
@@ -36,7 +41,7 @@ public class VisitantesController {
     }
 
     @GetMapping("/name/{name}")
-    @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD')")
     public List<Visitante> findByName(@PathVariable String name) {
         return visitantesService.findByName(name);
     }

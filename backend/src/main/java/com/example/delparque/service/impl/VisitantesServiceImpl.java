@@ -1,11 +1,6 @@
 package com.example.delparque.service.impl;
 
-import com.example.delparque.dto.CondominoInfo;
 import com.example.delparque.dto.Visitante;
-import com.example.delparque.model.Condomino;
-import com.example.delparque.model.User;
-import com.example.delparque.repository.CondominosRepository;
-import com.example.delparque.repository.UsersRepository;
 import com.example.delparque.repository.VisitantesRepository;
 import com.example.delparque.service.VisitantesService;
 import com.example.delparque.service.mappers.VisitanteMapper;
@@ -23,30 +18,27 @@ import java.util.stream.Collectors;
 public class VisitantesServiceImpl implements VisitantesService {
 
     private final VisitantesRepository visitantesRepository;
-    private final UsersRepository usersRepository;
-    private final CondominosRepository condominosRepository;
 
-    VisitantesServiceImpl(VisitantesRepository visitantesRepository,
-                          UsersRepository usersRepository,
-                          CondominosRepository condominosRepository) {
+    VisitantesServiceImpl(VisitantesRepository visitantesRepository) {
         this.visitantesRepository = visitantesRepository;
-        this.usersRepository = usersRepository;
-        this.condominosRepository = condominosRepository;
+
     }
 
     @Override
     public Visitante findById(String id) {
         return visitantesRepository.findById(id)
-                .map(this::addExtraInfo).orElse(null);
+                .map(VisitanteMapper::entityToDto)
+                .orElse(null);
     }
 
     @Override
-    public Page<Visitante> findAllByAuthorized(Integer page) {
+    public Page<Visitante> findAllByAuthorized(Integer page, String userId) {
         Pageable pageable = PageRequest.of(page, 10);
 
         return new PageImpl<>(
-                visitantesRepository.findAllByAuthorizedIs(true).stream()
-                        .map(this::addExtraInfo).collect(Collectors.toList()),
+                visitantesRepository.findAllByAuthorizedIsAndUserId(false, userId).stream()
+                        .map(VisitanteMapper::entityToDto)
+                        .collect(Collectors.toList()),
                 pageable, pageable.getPageSize()
         );
     }
@@ -57,7 +49,8 @@ public class VisitantesServiceImpl implements VisitantesService {
 
         return new PageImpl<>(
                 visitantesRepository.findAllByAuthorizedIsAndGoneOutIs(true, false).stream()
-                        .map(this::addExtraInfo).collect(Collectors.toList()),
+                        .map(VisitanteMapper::entityToDto)
+                        .collect(Collectors.toList()),
                 pageable, pageable.getPageSize()
         );
     }
@@ -79,21 +72,7 @@ public class VisitantesServiceImpl implements VisitantesService {
     @Override
     public List<Visitante> findByName(String name) {
         return visitantesRepository.findByName(name).stream()
-                .map(this::addExtraInfo)
+                .map(VisitanteMapper::entityToDto)
                 .collect(Collectors.toList());
-    }
-
-    private Visitante addExtraInfo(com.example.delparque.model.Visitante v) {
-        Visitante visitante = VisitanteMapper.entityToDto(v);
-
-        Condomino condomino = condominosRepository.findById(visitante.getCondomino().getCondominoId()).orElseThrow();
-        User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
-
-        CondominoInfo condominoInfo = CondominoInfo.builder()
-                .owner(user.getName())
-                .build();
-
-        visitante.setCondomino(condominoInfo);
-        return visitante;
     }
 }

@@ -50,8 +50,8 @@ public class Visitante {
     @Column(name = "arrival_booth")
     private String arrivalBooth;
 
-    @Column(name = "condomino_id")
-    private String condominoId;
+    @Column(name = "user_id")
+    private String userId;
 
     private boolean authorized;
 

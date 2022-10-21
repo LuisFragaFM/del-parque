@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
         <!-- Paqueteria -->
-        <li class="nav-item dropdown" *ngIf="hasRoles(['ROLE_ADMIN'])">
+        <li class="nav-item dropdown" *ngIf="hasRoles(['ROLE_ADMIN', 'ROLE_GUARD'])">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Paqueteria
           </a>
@@ -28,23 +28,32 @@
           </ul>
         </li>
         <!-- Condomino -->
-        <li class="nav-item dropdown" *ngIf="hasRoles(['ROLE_ADMIN'])">
+        <li class="nav-item dropdown" *ngIf="hasRoles(['ROLE_ADMIN', 'ROLE_GUARD', 'ROLE_RESIDENT'])">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Condomino
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" routerLink="agendar_visita_condomino">Agendar Visitas</a></li>
-            <li><a class="dropdown-item" routerLink="registrar_condomino">Registrar Condomino</a></li>
-            <li><a class="dropdown-item" routerLink="visitas_agendadas">Visitas Agendadas</a></li>
-            <li><a class="dropdown-item" routerLink="modificacion_condomino">Modificación de Condominos</a></li>
-            <li><a class="dropdown-item" routerLink="registrar_visitas">Registrar Visitas</a></li>
-            <li><a class="dropdown-item" routerLink="registrar_salida">Registrar Salida</a></li>
-            <li><a class="dropdown-item" routerLink="reportes">Reportes</a></li>
-            <li><a class="dropdown-item" routerLink="visitas_registradas">Visitas Registradas</a></li>
+            <li *ngIf="hasRoles(['ROLE_RESIDENT'])"><a class="dropdown-item" routerLink="agendar_visita_condomino">Agendar
+              Visitas</a></li>
+            <li *ngIf="hasRoles(['ROLE_ADMIN'])"><a class="dropdown-item" routerLink="registrar_condomino">Registrar
+              Condomino</a></li>
+            <li *ngIf="hasRoles(['ROLE_ADMIN', 'ROLE_RESIDENT'])"><a class="dropdown-item" routerLink="visitas_agendadas">Visitas
+              Agendadas</a></li>
+            <li *ngIf="hasRoles(['ROLE_ADMIN'])"><a class="dropdown-item" routerLink="modificacion_condomino">Modificación
+              de Condominos</a></li>
+            <li *ngIf="hasRoles(['ROLE_ADMIN','ROLE_GUARD'])"><a class="dropdown-item" routerLink="registrar_visitas">Registrar
+              Visitas</a></li>
+            <li *ngIf="hasRoles(['ROLE_ADMIN','ROLE_GUARD'])"><a class="dropdown-item" routerLink="registrar_salida">Registrar
+              Salida</a></li>
+            <li *ngIf="hasRoles(['ROLE_ADMIN'])"><a class="dropdown-item" routerLink="reportes">Reportes</a></li>
+            <li *ngIf="hasRoles(['ROLE_ADMIN','ROLE_GUARD'])"><a class="dropdown-item" routerLink="visitas_registradas">Visitas
+              Registradas</a></li>
           </ul>
+          <
         </li>
+        <
 
-        <li *ngIf="hasRoles(['ROLE_ADMIN'])">
+        <li *ngIf="hasRoles(['ROL<E_ADMIN'])">
           <a class="nav-link" routerLink="usuarios" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Usuarios
           </a>

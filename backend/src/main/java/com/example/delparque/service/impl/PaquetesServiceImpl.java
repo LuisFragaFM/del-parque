@@ -60,10 +60,10 @@ public class PaquetesServiceImpl implements PaquetesService {
 
     private Paquete addExtraInfo(com.example.delparque.model.Paquete p) {
         Paquete paquete = PaqueteMapper.entityToDto(p);
-        Condomino condomino = condominosRepository.findById(paquete.getCondomino().getCondominoId()).orElseThrow();
+        Condomino condomino = condominosRepository.findById(paquete.getCondomino().getUserId()).orElseThrow();
 
         CondominoInfo condominoInfo = CondominoInfo.builder()
-                .condominoId(p.getCondominoId())
+                .userId(p.getCondominoId())
                 .houseStreet(condomino.getStreet())
                 .houseNumber(condomino.getHouseNumber())
                 .build();

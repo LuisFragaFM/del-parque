@@ -105,7 +105,7 @@
           type="text"
           placeholder="Escriba aqui"
           (keyup)="findInquilinoByName()"
-          [(ngModel)]="visitante.authorization"
+          [(ngModel)]="user.name"
         />
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">

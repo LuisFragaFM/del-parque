@@ -21,17 +21,17 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
 
   ngOnInit(): void {
     //Paginacion
-    this.visitantesService.getVisitantesUnauthorized(1).subscribe(({content: visitantes}) => {
+    this.visitantesService.getVisitantesUnauthorized(0).subscribe(({content: visitantes}) => {
       this.visitantes = visitantes;
     });
 
-    this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
-      this.visitantes = visitantes.content;
-      const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
-      for (let i = 0; i < totalOfPages; i++) {
-        this.listOfPages.push(i + 1);
-      }
-    })
+    // this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
+    //   this.visitantes = visitantes.content;
+    //   const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
+    //   for (let i = 0; i < totalOfPages; i++) {
+    //     this.listOfPages.push(i + 1);
+    //   }
+    // })
   }
 
   // busqueda de visitante
