@@ -21,6 +21,7 @@ import {
 } from './components/visitas_agendadas_condomino/visitas_agendadas_condomino.component';
 import {RegistrarCondominoComponent} from './components/registrar_condomino/registrar_condomino.component';
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
+import { RegistrarGuardiaComponent } from './components/registrar-guardia/registrar-guardia.component';
 
 const routes: Routes = [
   {path: 'registrar_visitas', component: RegistrarVisitasGuardiaComponent},
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path: 'lista_trabajadores', component: ListaTrabajadoresComponent},
   {path: 'registrar_condomino', component: RegistrarCondominoComponent},
   {path: 'visitas_agendadas', component: VisitasAgendadasCondominoComponent},
-  {path: 'usuarios', component: UsuariosComponent}
+  {path: 'usuarios', component: UsuariosComponent},
+  {path: 'registrar_guardia', component: RegistrarGuardiaComponent}
 ];
 
 @NgModule({
