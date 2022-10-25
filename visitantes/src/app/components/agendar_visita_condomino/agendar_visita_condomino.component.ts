@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
 import {CondominosService} from "../../services/condominos.service";
@@ -8,14 +8,16 @@ import {SessionService} from "../../services/session.service";
 import {CondominoInfo} from "../../models/condominoInfo";
 import {validaInput} from 'src/app/tools/validation';
 import {User} from "../../models/user";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-agendar_visita_condomino',
   templateUrl: './agendar_visita_condomino.component.html',
   styleUrls: ['./agendar_visita_condomino.component.css'],
 })
-export class AgendarVisitaCondominoComponent implements OnInit {
+export class AgendarVisitaCondominoComponent implements OnInit, OnDestroy {
   isChecked: boolean = true;
+  id: string = '';
   visitante: Visitante = {} as Visitante;
   name: string | undefined;
   condominos: Condomino[] = [];
@@ -29,10 +31,25 @@ export class AgendarVisitaCondominoComponent implements OnInit {
   constructor(
     private visitantesService: VisitantesService,
     private condominosService: CondominosService,
-    private sessionService: SessionService
-  ) { }
+    private sessionService: SessionService,
+    private route: ActivatedRoute
+  ) {
+  }
+
+  ngOnDestroy(): void {
+    this.visitante = {} as Visitante;
+  }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.children[0]?.paramMap?.get('id') || '';
+
+    if (this.id) {
+      this.visitantesService.findById(this.id).subscribe(visitante => {
+        console.log(visitante)
+        this.visitante = visitante;
+      })
+    }
+
     this.visitante.condomino = {} as CondominoInfo;
     this.sessionService.getUser().subscribe(user => {
       this.user = user;

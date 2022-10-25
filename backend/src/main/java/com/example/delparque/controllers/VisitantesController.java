@@ -34,7 +34,7 @@ public class VisitantesController {
     }
 
     @GetMapping("{id}")
-    @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN', 'ROLE_RESIDENT')")
     public Visitante findById(@PathVariable String id) {
         return visitantesService.findById(id);
     }
