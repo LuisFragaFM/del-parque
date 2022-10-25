@@ -24,6 +24,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {RegistrarCondominoComponent} from './components/registrar_condomino/registrar_condomino.component';
 import {UsuariosComponent} from './components/usuarios/usuarios.component';
 import {RolePipe} from './pipes/role.pipe';
+import { RegistrarGuardiaComponent } from './components/registrar-guardia/registrar-guardia.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {RolePipe} from './pipes/role.pipe';
     RegistrarCondominoComponent,
     UsuariosComponent,
     RolePipe,
+    RegistrarGuardiaComponent,
   ],
   imports: [
     BrowserModule,
