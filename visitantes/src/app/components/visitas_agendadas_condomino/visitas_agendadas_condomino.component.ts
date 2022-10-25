@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-visitas_agendadas_condomino',
@@ -25,13 +26,6 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
       this.visitantes = visitantes;
     });
 
-    // this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
-    //   this.visitantes = visitantes.content;
-    //   const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
-    //   for (let i = 0; i < totalOfPages; i++) {
-    //     this.listOfPages.push(i + 1);
-    //   }
-    // })
   }
 
   // busqueda de visitante
@@ -56,4 +50,29 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
     })
   }
 
+  delete(id: string) {
+    Swal.fire({
+      title: `Estas seguro que quieres eliminar esta visita?`,
+      icon: 'warning',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: `Si`,
+      denyButtonText: 'No'
+    }).then((response) => {
+      if (response.isConfirmed) {
+        this.visitantesService.delete(id).subscribe(() => {
+          Swal.fire({
+            title: `Eliminado correctamente`,
+            icon: 'success',
+            showDenyButton: false,
+            showCancelButton: false,
+          }).then(() => {
+            this.visitantesService.getVisitantesUnauthorized(0).subscribe(({content: visitantes}) => {
+              this.visitantes = visitantes;
+            });
+          });
+        });
+      }
+    });
+  }
 }

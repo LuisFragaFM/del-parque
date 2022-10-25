@@ -45,7 +45,7 @@
     <div class="row fila3">
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="botonCancelar btn btn-danger ">Cancelar</button>
+        <button class="botonCancelar btn btn-danger " (click)="delete(visitante.id)">Cancelar</button>
         <a class="botonEditar btn btn-primary " [routerLink]="['/agendar_visita_condomino', visitante.id]">Editar</a>
       </div>
     </div>
