@@ -13,8 +13,12 @@ export class VisitantesService {
   constructor(private http: HttpClient) {
   }
 
+  getVisitantesUnauthorizedCondomino(page: number = 0): Observable<VisitantePage> {
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/un-authorized/condomino?page=${page}`);
+  }
+
   getVisitantesUnauthorized(page: number = 0): Observable<VisitantePage> {
-    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/un-authorized?page=${page}`);
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/un-authorized/?page=${page}`);
   }
 
   getVisitantesByGoneOut(page: number = 0): Observable<VisitantePage> {

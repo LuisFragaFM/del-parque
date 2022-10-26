@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -45,6 +46,18 @@ public class VisitantesServiceImpl implements VisitantesService {
 
         return new PageImpl<>(
                 visitantesRepository.findAllByAuthorizedIsAndUserId(false, userId).stream()
+                        .map(this::addExtraInfo)
+                        .collect(Collectors.toList()),
+                pageable, pageable.getPageSize()
+        );
+    }
+
+    @Override
+    public Page<Visitante> findAllByAuthorized(Integer page) {
+        Pageable pageable = PageRequest.of(page, 10);
+
+        return new PageImpl<>(
+                visitantesRepository.findAllByAuthorizedIsAndArrivalDateIs(false, LocalDate.now()).stream()
                         .map(this::addExtraInfo)
                         .collect(Collectors.toList()),
                 pageable, pageable.getPageSize()

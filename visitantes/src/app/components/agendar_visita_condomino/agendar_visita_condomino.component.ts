@@ -17,6 +17,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AgendarVisitaCondominoComponent implements OnInit, OnDestroy {
   isChecked: boolean = true;
+  date: Date = new Date();
   id: string = '';
   visitante: Visitante = {} as Visitante;
   name: string | undefined;

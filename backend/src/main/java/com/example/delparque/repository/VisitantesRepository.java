@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -14,6 +15,8 @@ public interface VisitantesRepository extends JpaRepository<Visitante, String> {
     List<Visitante> findByName(String name);
 
     List<Visitante> findAllByAuthorizedIsAndUserId(boolean authorized, String userId);
+
+    List<Visitante> findAllByAuthorizedIsAndArrivalDateIs(boolean authorized, LocalDate arrivalDate);
 
     List<Visitante> findAllByGoneOutIs(boolean goneOut);
 }

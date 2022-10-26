@@ -20,13 +20,21 @@ public class VisitantesController {
         this.sessionHelper = sessionHelper;
     }
 
-    @GetMapping("/un-authorized")
+    @GetMapping("/un-authorized/condomino")
     @PreAuthorize("hasAnyRole('ROLE_RESIDENT')")
-    public Page<Visitante> findAllByAuthorized(@RequestParam Integer page, Principal principal) {
+    public Page<Visitante> findAllByAuthorizedCondomino(@RequestParam Integer page, Principal principal) {
         String userId = sessionHelper.getUserIdForLoggedUser(principal);
 
         return visitantesService.findAllByAuthorized(page, userId);
     }
+
+    @GetMapping("/un-authorized/")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD')")
+    public Page<Visitante> findAllByAuthorized(@RequestParam Integer page) {
+        return visitantesService.findAllByAuthorized(page);
+    }
+
+
     @GetMapping("/gone-out")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
     public Page<Visitante> findAllByGoneOut(@RequestParam Integer page) {

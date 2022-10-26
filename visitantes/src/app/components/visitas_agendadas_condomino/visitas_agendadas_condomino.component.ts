@@ -22,7 +22,7 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
 
   ngOnInit(): void {
     //Paginacion
-    this.visitantesService.getVisitantesUnauthorized(0).subscribe(({content: visitantes}) => {
+    this.visitantesService.getVisitantesUnauthorizedCondomino(0).subscribe(({content: visitantes}) => {
       this.visitantes = visitantes;
     });
 
@@ -45,7 +45,7 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
 
   updatePage(page: number) {
     this.page = page - 1;
-    this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(({content: visitantes}) => {
+    this.visitantesService.getVisitantesUnauthorizedCondomino(this.page).subscribe(({content: visitantes}) => {
       this.visitantes = visitantes;
     })
   }
@@ -67,7 +67,7 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
             showDenyButton: false,
             showCancelButton: false,
           }).then(() => {
-            this.visitantesService.getVisitantesUnauthorized(0).subscribe(({content: visitantes}) => {
+            this.visitantesService.getVisitantesUnauthorizedCondomino(0).subscribe(({content: visitantes}) => {
               this.visitantes = visitantes;
             });
           });
