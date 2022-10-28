@@ -71,10 +71,11 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
         if (trabajador.getId() == null) {
             trabajador.setId(UUID.randomUUID().toString());
         }
+        com.example.delparque.model.Trabajador save = trabajadoresRepository.save(TrabajadorMapper.dtoToEntity(trabajador));
 
         trabajador.getWorkDays().forEach(workDay -> saveWorkDays(workDay, trabajador.getId()));
 
-        return TrabajadorMapper.entityToDto(trabajadoresRepository.save(TrabajadorMapper.dtoToEntity(trabajador)));
+        return TrabajadorMapper.entityToDto(save);
     }
 
     @Override

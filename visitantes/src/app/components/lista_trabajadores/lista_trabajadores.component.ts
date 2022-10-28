@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // imports para realizar la busqueda y notificaciones
 import {TrabajadoresService} from "../../services/trabajadores.service";
 import {Trabajador} from "../../models/trabajador";
@@ -22,6 +22,7 @@ export class ListaTrabajadoresComponent implements OnInit {
   ngOnInit(): void {
     //Paginacion
     this.trabajadoresService.getTrabajadores(this.page).subscribe(trabajadores => {
+      console.log(trabajadores)
       this.trabajadores = trabajadores.content;
       const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
       for (let i = 0; i < totalOfPages; i++) {
@@ -34,7 +35,7 @@ export class ListaTrabajadoresComponent implements OnInit {
   // busqueda de trabajador
   findTrabajador() {
     if (this.name) {
-      this.trabajadoresService.findByNombre(this.name).subscribe(trabajador=> {
+      this.trabajadoresService.findByNombre(this.name).subscribe(trabajador => {
         this.trabajador = trabajador;
       });
     } else {

@@ -6,6 +6,7 @@ import { Condomino } from '../../models/condomino';
 import { validaInput } from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
 import { UserView } from 'src/app/models/userview';
+import {CondominoInfo} from "../../models/condominoInfo";
 
 @Component({
   selector: 'app-registrar_trabajador',
@@ -29,7 +30,10 @@ export class RegistrarTrabajadorComponent implements OnInit {
     private condominosService: CondominosService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.trabajador.workDays = [];
+    this.trabajador.condominoInfo = {} as CondominoInfo;
+  }
 
   findInquilinoByName() {
     this.condominosService.findByName(this.name!).subscribe((condominos) => {
@@ -39,6 +43,10 @@ export class RegistrarTrabajadorComponent implements OnInit {
   }
 
   save(): void {
+    if(!this.trabajador.condominoInfo.userId) {
+      return;
+    }
+
     this.trabajadoresService.save(this.trabajador).subscribe((trabajador) => {
       Swal.fire({
         title: `El trabajador ${trabajador.name} fue guardado correctamente`,
@@ -56,13 +64,12 @@ export class RegistrarTrabajadorComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.user.name;
-    this.trabajador.condominoId = condomino.id;
+    this.trabajador.condominoInfo.userId = condomino.id;
   }
 
   // funcion para validacion
   validaTrabajador(regex: any, name: string) {
     this.trabajadorName = validaInput(regex, name);
-    console.log(this.trabajadorName);
   }
 
   validaTel(regex: any, trabajadorTel: string) {
@@ -72,5 +79,9 @@ export class RegistrarTrabajadorComponent implements OnInit {
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
     return this.trabajadorName && this.validacionTel;
+  }
+
+  addDay(day: string) {
+    this.trabajador.workDays.push(day);
   }
 }

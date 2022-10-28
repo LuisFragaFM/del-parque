@@ -5,7 +5,7 @@
     <div class="row g-3 mt-3 justify-content-center align-items-center">
       <div class="col-6">
         <label class="form-label" for="tipo-trabajador"
-          >Tipo de trabajador</label
+        >Tipo de trabajador</label
         >
         <select
           class="form-select form-select-lg mb-3"
@@ -52,7 +52,7 @@
         <div class="col-6">
           <!--Nombre condomino -->
           <label class="form-label" for="nombre-condomino"
-            >Nombre del condómino</label
+          >Nombre del condómino</label
           >
           <input
             class="form-control"
@@ -77,6 +77,16 @@
 
       <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
+          <label class="form-label" for="nombre-condomino">Dias de trabajo</label>
+          <div class="d-flex flex-column">
+            <span>Lunes<input type="checkbox" name="Lunes" value="MONDAY" (click)="addDay('monday')" ></span>
+            <span>Martes<input type="checkbox" name="Martes" value="TUESDAY" (click)="addDay('tuesday')"></span>
+            <span>Miercoles<input type="checkbox" name="Miercoles" value="WEDNESDAY" (click)="addDay('wednesday')" ></span>
+            <span>Jueves<input type="checkbox" name="Thursday" value="THURSDAY" (click)="addDay('thursday')" ></span>
+            <span>Viernes<input type="checkbox" name="Friday" value="FRIDAY" (click)="addDay('friday')"></span>
+            <span>Sadado<<input type="checkbox" name="Saturday" value="SATURDAY" (click)="addDay('saturday')"></span>
+            <span>Domingo<<input type="checkbox" name="Sunday" value="SUNDAY"(click)="addDay('sunday')" ></span>
+          </div>
           <!--          <label class="form-label" for="dias-trabajo">Días de trabajo</label>-->
           <!--          <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"-->
           <!--            name="dias-trabajo" id="dias-trabajo" [(ngModel)]="trabajador.diasTrabajo" />-->
