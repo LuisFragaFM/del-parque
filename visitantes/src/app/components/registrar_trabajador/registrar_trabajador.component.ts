@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Trabajador } from '../../models/trabajador';
-import { TrabajadoresService } from '../../services/trabajadores.service';
-import { CondominosService } from '../../services/condominos.service';
-import { Condomino } from '../../models/condomino';
-import { validaInput } from 'src/app/tools/validation';
+import {Component, OnInit} from '@angular/core';
+import {Trabajador} from '../../models/trabajador';
+import {TrabajadoresService} from '../../services/trabajadores.service';
+import {CondominosService} from '../../services/condominos.service';
+import {Condomino} from '../../models/condomino';
+import {validaInput} from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
-import { UserView } from 'src/app/models/userview';
 import {CondominoInfo} from "../../models/condominoInfo";
 
 @Component({
@@ -15,6 +14,7 @@ import {CondominoInfo} from "../../models/condominoInfo";
 })
 export class RegistrarTrabajadorComponent implements OnInit {
   trabajador: Trabajador = {} as Trabajador;
+  workDays = new Map();
   name: string | undefined;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
@@ -28,7 +28,8 @@ export class RegistrarTrabajadorComponent implements OnInit {
   constructor(
     private trabajadoresService: TrabajadoresService,
     private condominosService: CondominosService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.trabajador.workDays = [];
@@ -43,9 +44,11 @@ export class RegistrarTrabajadorComponent implements OnInit {
   }
 
   save(): void {
-    if(!this.trabajador.condominoInfo.userId) {
+    if (!this.trabajador.condominoInfo.userId) {
       return;
     }
+
+    this.workDays.forEach(value => this.trabajador.workDays.push(value))
 
     this.trabajadoresService.save(this.trabajador).subscribe((trabajador) => {
       Swal.fire({
@@ -82,6 +85,10 @@ export class RegistrarTrabajadorComponent implements OnInit {
   }
 
   addDay(day: string) {
-    this.trabajador.workDays.push(day);
+    if (this.workDays.get(day)) {
+      this.workDays.delete(day);
+    } else {
+      this.workDays.set(day, day);
+    }
   }
 }
