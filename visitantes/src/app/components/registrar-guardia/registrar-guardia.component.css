@@ -1,0 +1,54 @@
+h2{
+    margin: 20px;
+  }
+
+
+  .container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+  }
+  .div_file {
+    text-align: center;
+    padding: 3%;
+    border: thin solid black;
+  }
+
+  #inputTag {
+    display: none;
+  }
+
+  #insert{
+    cursor: pointer;
+  }
+
+  .imagenUser {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  @media only screen and (max-width: 999px){
+    img{
+        width: 100px;
+    }
+  }
+
+  @media only screen and (max-width: 499px){
+
+    img{
+        width: 80px;
+    }
+  }
+
+  button{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 40px;
+}
+.cursor {
+    cursor: pointer;
+  }
