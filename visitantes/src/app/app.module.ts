@@ -25,6 +25,7 @@ import {RegistrarCondominoComponent} from './components/registrar_condomino/regi
 import {UsuariosComponent} from './components/usuarios/usuarios.component';
 import {RolePipe} from './pipes/role.pipe';
 import { RegistrarGuardiaComponent } from './components/registrar-guardia/registrar-guardia.component';
+import { DayPipe } from './pipes/day.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { RegistrarGuardiaComponent } from './components/registrar-guardia/regist
     UsuariosComponent,
     RolePipe,
     RegistrarGuardiaComponent,
+    DayPipe,
   ],
   imports: [
     BrowserModule,

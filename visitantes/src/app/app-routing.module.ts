@@ -21,7 +21,7 @@ import {
 } from './components/visitas_agendadas_condomino/visitas_agendadas_condomino.component';
 import {RegistrarCondominoComponent} from './components/registrar_condomino/registrar_condomino.component';
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
-import { RegistrarGuardiaComponent } from './components/registrar-guardia/registrar-guardia.component';
+import {RegistrarGuardiaComponent} from './components/registrar-guardia/registrar-guardia.component';
 
 const routes: Routes = [
   {path: 'registrar_visitas', component: RegistrarVisitasGuardiaComponent},
@@ -33,7 +33,14 @@ const routes: Routes = [
       }
     ]
   },
-  {path: 'registrar_trabajador', component: RegistrarTrabajadorComponent},
+  {
+    path: 'registrar_trabajador', component: RegistrarTrabajadorComponent,
+    children: [
+      {
+        path: ':id', component: RegistrarTrabajadorComponent,
+      }
+    ]
+  },
   {path: 'registrar_salida', component: RegistrarSalidaComponent},
   {path: 'registro-paq', component: RegistrarPaqueteriaComponent},
   {path: 'visitas_registradas', component: VisitasRegistradasAdminComponent},

@@ -18,5 +18,5 @@ public class Trabajador {
     private CondominoInfo condominoInfo;
     private String schedule;
     private String telephoneNumber;
-    private List<String> workDays;
+    private List<WorkDay> workDays;
 }

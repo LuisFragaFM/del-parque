@@ -46,7 +46,6 @@ export class AgendarVisitaCondominoComponent implements OnInit, OnDestroy {
 
     if (this.id) {
       this.visitantesService.findById(this.id).subscribe(visitante => {
-        console.log(visitante)
         this.visitante = visitante;
       })
     }

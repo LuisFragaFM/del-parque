@@ -26,9 +26,12 @@
     </div>
     <div class="row mt-3">
       <div class="col-5">
-                <label class="form-label" for="dia_trabajador">Dias de trabajo</label>
-        <!--        <input id="dia_trabajador" required autocomplete="off" type="text" placeholder="Días de trabajo" class="inputBitacora form-control" name="buscaTrabajadorDias"-->
-        <!--          [(ngModel)]="trabajador.diasTrabajo">-->
+        <label class="form-label" for="dia_trabajador">Dias de trabajo</label>
+        <span *ngFor="let day of trabajador.workDays"
+              id="dia_trabajador"
+              class="inputBitacora form-control">
+                  {{day.dayName | day}}
+                </span>
       </div>
       <div class="col-5">
         <label class="form-label" for="condomino_trabajador">Nombre del Condómino</label>
@@ -41,11 +44,14 @@
     </div>
     <div class="row align-items-end mt-3  justify-content-end text-end">
       <div class="col-4">
-        <button class="botonEliminar btn btn-block btn-danger ">Eliminar</button>
+        <button class="botonEliminar btn btn-block btn-danger" (click)="delete(trabajador.id)">Eliminar</button>
       </div>
       <div class="col-4 justify-content-end">
 
-        <button class="botonModificar btn btn-block btn-primary">Modificar</button>
+        <button class="botonModificar btn btn-block btn-primary"
+                [routerLink]="['/registrar_trabajador', trabajador.id]">
+          Modificar
+        </button>
       </div>
     </div>
 

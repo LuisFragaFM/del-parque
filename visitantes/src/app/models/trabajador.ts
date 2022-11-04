@@ -1,4 +1,5 @@
 import {CondominoInfo} from "./condominoInfo";
+import {WorkDay} from "./WorkDay";
 
 export interface Trabajador {
   id: string;
@@ -7,5 +8,5 @@ export interface Trabajador {
   condominoInfo: CondominoInfo;
   schedule: string;
   telephoneNumber: string;
-  workDays: string[];
+  workDays: WorkDay[];
 }

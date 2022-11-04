@@ -6,6 +6,8 @@ import {Condomino} from '../../models/condomino';
 import {validaInput} from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
 import {CondominoInfo} from "../../models/condominoInfo";
+import {ActivatedRoute} from "@angular/router";
+import {WorkDay} from "../../models/WorkDay";
 
 @Component({
   selector: 'app-registrar_trabajador',
@@ -14,7 +16,7 @@ import {CondominoInfo} from "../../models/condominoInfo";
 })
 export class RegistrarTrabajadorComponent implements OnInit {
   trabajador: Trabajador = {} as Trabajador;
-  workDays = new Map();
+  workDays: Map<string, WorkDay> = new Map();
   name: string | undefined;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
@@ -24,21 +26,31 @@ export class RegistrarTrabajadorComponent implements OnInit {
   //Validacion de fechas
   regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
   regexTel: any = /^\+?[1-9][0-9]{5,12}$/; //recibe paquete
+  id: string = '';
 
   constructor(
     private trabajadoresService: TrabajadoresService,
-    private condominosService: CondominosService
+    private condominosService: CondominosService,
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
     this.trabajador.workDays = [];
+    this.id = this.route.snapshot.children[0]?.paramMap?.get('id') || '';
+
+    if (this.id) {
+      this.trabajadoresService.findById(this.id).subscribe(trabajador => {
+        this.trabajador = trabajador;
+      })
+    }
+
+    this.trabajador.workDays = [];
     this.trabajador.condominoInfo = {} as CondominoInfo;
   }
 
   findInquilinoByName() {
-    this.condominosService.findByName(this.name!).subscribe((condominos) => {
-      console.log(condominos);
+    this.condominosService.findByName(this.trabajador.condominoInfo.owner).subscribe((condominos) => {
       this.condominos = condominos;
     });
   }
@@ -85,10 +97,17 @@ export class RegistrarTrabajadorComponent implements OnInit {
   }
 
   addDay(day: string) {
+
     if (this.workDays.get(day)) {
       this.workDays.delete(day);
     } else {
-      this.workDays.set(day, day);
+      const workDay: WorkDay = {dayName: day}
+      this.workDays.set(day, workDay);
     }
   }
+
+  hasDay(day: string) {
+    return this.trabajador.workDays.find(d => d.dayName === day);
+  }
+
 }

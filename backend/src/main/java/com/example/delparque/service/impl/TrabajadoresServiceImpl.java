@@ -73,7 +73,8 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
         }
         com.example.delparque.model.Trabajador save = trabajadoresRepository.save(TrabajadorMapper.dtoToEntity(trabajador));
 
-        trabajador.getWorkDays().forEach(workDay -> saveWorkDays(workDay, trabajador.getId()));
+
+        saveWorkDays(trabajador.getWorkDays(), trabajador.getId());
 
         return TrabajadorMapper.entityToDto(save);
     }
@@ -83,16 +84,19 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
         trabajadoresRepository.deleteById(id);
     }
 
-    private void saveWorkDays(String day, String trabajadorId) {
-        WorkDay workDay = WorkDay.builder()
-                .id(UUID.randomUUID().toString())
-                .dayName(day)
-                .build();
+    private void saveWorkDays(List<WorkDay> workDays, String trabajadorId) {
 
-        com.example.delparque.model.WorkDay w = WorkDayMapper.dtoToEntity(workDay);
-        w.setTrabajadorId(trabajadorId);
+        workDays.forEach(workDay -> {
 
-        workDaysRepository.save(w);
+            if (workDay.getId() == null) {
+                workDay.setId(UUID.randomUUID().toString());
+            }
+
+            com.example.delparque.model.WorkDay w = WorkDayMapper.dtoToEntity(workDay);
+            w.setTrabajadorId(trabajadorId);
+
+            workDaysRepository.save(w);
+        });
     }
 
     private Trabajador addExtraInfo(com.example.delparque.model.Trabajador t) {
@@ -109,7 +113,8 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
 
         trabajador.setCondominoInfo(condominoInfo);
 
-        trabajador.setWorkDays(workDaysRepository.findWorkDays(trabajador.getId()));
+        trabajador.setWorkDays(workDaysRepository.findAllByTrabajadorId(trabajador.getId()).stream()
+                .map(WorkDayMapper::entityToDto).collect(Collectors.toList()));
         return trabajador;
     }
 }

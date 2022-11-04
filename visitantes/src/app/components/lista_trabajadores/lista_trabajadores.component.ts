@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 // imports para realizar la busqueda y notificaciones
 import {TrabajadoresService} from "../../services/trabajadores.service";
 import {Trabajador} from "../../models/trabajador";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-lista_trabajadores',
@@ -16,13 +17,13 @@ export class ListaTrabajadoresComponent implements OnInit {
   page: number = 0;
   listOfPages: number[] = [];
 
-  constructor(private trabajadoresService: TrabajadoresService) {
+  constructor(private trabajadoresService: TrabajadoresService,) {
   }
 
   ngOnInit(): void {
+
     //Paginacion
     this.trabajadoresService.getTrabajadores(this.page).subscribe(trabajadores => {
-      console.log(trabajadores)
       this.trabajadores = trabajadores.content;
       const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
       for (let i = 0; i < totalOfPages; i++) {
@@ -51,5 +52,9 @@ export class ListaTrabajadoresComponent implements OnInit {
     this.trabajadoresService.getTrabajadores(this.page).subscribe(trabajadores => {
       this.trabajadores = trabajadores.content;
     })
+  }
+
+  delete(id: string) {
+    this.trabajadoresService.delete(id).subscribe();
   }
 }
