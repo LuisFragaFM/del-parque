@@ -1,0 +1,124 @@
+.container {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 5px;
+  height: 100% !important;
+  max-width: auto;
+  height: fit-content;
+}
+
+.formulario {
+  margin: 10px;
+}
+
+button {
+  border-radius: 5px;
+  margin: 10px;
+
+}
+
+.busqueda {
+  background-color: rgb(159, 211, 176);
+  overflow: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+:hover.cursor {
+  background-color: rgb(31, 146, 70);
+  font-weight: bold;
+}
+
+/*
+.Opciones{
+  height: 30px;
+  width: 500px;
+
+}
+.BotonVehiculo{
+  height: 30px;
+  width: 30px;
+}
+.DatosTipo {
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: auto;
+  vertical-align: middle;
+  width: 1170px;
+  float: left;
+
+}
+
+.Datos h2{
+  font-size: 19px;
+  margin: 3px;
+}
+
+.DatosTipo h1 {
+  font-size: 25px;
+  margin: 10px;
+
+}
+
+.Titulo h1{
+  font-size: 20px;
+  margin: 10px;
+}
+.contenido div{
+  margin: 0 auto;
+  padding-left: 50px;
+  float: left;
+
+
+}
+.barra{
+  height: 18px;
+  width: 400px;
+
+}
+.Datos{
+  width: 1170px;
+  float: left;
+}
+.Datos div{
+  margin: 0 auto;
+  width: 550px;
+}
+.boton{
+  height: 50px;
+  width: 150px;
+  float: right;
+  background-color: rgb(110, 148, 221);
+  color: white;
+  border-radius: 40px;
+  margin-right: 25px;
+
+  font-size: 27px;
+}
+
+.boton2{
+  height: 25px;
+  width: 25px;
+  float: left;
+  background-color: rgb(110, 148, 221);
+  color: white;
+  border-radius: 40px;
+  margin-right: 0px;
+
+  font-size: 20px;
+}
+
+.BotDiv{
+  width: 1170px;
+  padding-top: 20px;
+
+}
+*/
