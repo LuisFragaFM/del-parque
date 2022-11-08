@@ -1,0 +1,100 @@
+.contenido {
+    width: auto;
+    height: auto;
+}
+
+.cuadro {
+    margin: 0 auto;
+    width: 600px;
+    height: 800px;
+}
+
+.sec_azul {
+    height: 270px;
+    background-color: rgb(174, 199, 232);
+}
+
+.sec_osc {
+    height: 530px;
+    background-color: black;
+    opacity: 0.95;
+}
+
+.titulo {
+    height: 40%;
+    width: 100%;
+    background-image: url("../assets/Nombre.PNG");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.img {
+    width: 600px;
+    height: 230px;
+    background-image: url("../assets/Silueta1.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 120px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 100px;
+    padding: 10px;
+    
+}
+
+.loginperso{
+    background-color: rgb(174, 199, 232 , 0.9);
+    
+}
+
+.img_2 {
+    width: 45px;
+    height: 45px;
+    background-image: url("../assets/Silueta2.PNG");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.img_3 {
+    width: 45px;
+    height: 45px;
+    background-image: url("../assets/Silueta3.PNG");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.barra {
+    height: 37px;
+    width: 250px;
+    border: 6px solid rgb(211, 245, 197);
+    border-radius: 10px;
+    margin-right: 100px;
+}
+
+.boton {
+    height: 50px;
+    width: 200px;
+    position: relative;
+    top: 160px;
+    left: 200px;
+    background-color: rgb(110, 148, 221);
+    color: white;
+    border-radius: 40px;
+    font-size: 28px;
+}
+
+.pie {
+    color: white;
+    text-align: center;
+    position: relative;
+    top: 250px;
+    font-size: 20px;
+}

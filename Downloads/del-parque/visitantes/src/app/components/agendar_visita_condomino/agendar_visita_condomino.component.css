@@ -1,0 +1,69 @@
+.container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+  }
+
+ .formulario{
+    margin: 10px;
+ }
+
+ button{
+    border-radius: 5 px;
+    margin: 10px;
+
+  }
+
+ .busqueda{
+    background-color: rgb(159, 211, 176);
+    overflow: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    border-radius: 5px;
+    width: auto;
+    height: 40px;
+  }
+
+  .cursor
+  {
+    padding-left: 8px;
+  }
+  
+  :hover.cursor{
+    background-color: rgb(31, 146, 70);
+    font-weight: bold;
+  }
+
+ 
+
+  /*
+.Title1{
+    margin: 30px;
+    
+}
+
+.Form{
+    display: flex;
+}
+
+input{
+     width: 400px;
+     margin-bottom: 20px;
+}
+
+.botonAgendar {
+    float: right;
+    height: 35px;
+    width: 200px;
+    top: 300px;
+    left: 850px;
+    background-color: rgb(110, 148, 221);
+    margin-right: 70px;
+    color: white;
+    border-radius: 40px;
+    font-size: 25px;
+}
+*/

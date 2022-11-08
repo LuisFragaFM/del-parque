@@ -1,0 +1,19 @@
+package com.example.delparque.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Condomino {
+    private String id;
+    private String street;
+    private String houseNumber;
+    private UserView user;
+    private boolean paidStatus;
+    private String role;
+}
