@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CondominosService} from "../../services/condominos.service";
 import {Condomino} from "../../models/condomino";
+import {ReporteService} from "../../services/reporte.service";
 
 @Component({
   selector: 'app-reportes',
@@ -13,7 +14,7 @@ export class ReportesComponent implements OnInit {
   phone: string | undefined;
   condomino: Condomino = {} as Condomino;
   condominos: Condomino[] = [];
-  constructor(private condominosService: CondominosService) {
+  constructor(private condominosService: CondominosService, private reporteService: ReporteService) {
   }
   ngOnInit(): void {
   }
@@ -33,5 +34,10 @@ export class ReportesComponent implements OnInit {
     }
   }
 
+  printReport(){
+    const encabezado = ["Nombre", "Vehiculo", "Placas", "Fecha llegada", "Fecha salida"]
+    const cuerpo = ["uriel", "mercedes", "HTTPS", "07/11/2022", "08/11/2022"]
+    this.reporteService.imprimir(encabezado, cuerpo, "reportetest", true);
+  }
 
 }
