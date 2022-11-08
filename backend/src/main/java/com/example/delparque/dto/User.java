@@ -18,5 +18,5 @@ public class User {
     private String telephoneNumber;
     private String emergencyNumber;
     private String password;
-    private List<String> roles;
+    private String role;
 }

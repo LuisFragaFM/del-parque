@@ -6,7 +6,6 @@ import com.example.delparque.dto.ResetPassword;
 import com.example.delparque.exception.DelParqueSystemException;
 import com.example.delparque.model.RolesByUser;
 import com.example.delparque.model.User;
-import com.example.delparque.repository.RolesRepository;
 import com.example.delparque.repository.UsersRepository;
 import com.example.delparque.service.UsersService;
 import com.example.delparque.service.mappers.UserMapper;
@@ -34,17 +33,14 @@ public class UsersServiceImpl implements UsersService {
     private final EmailSender emailSender;
     private final Default def;
     private final UsersRepository usersRepository;
-    private final RolesRepository rolesRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     UsersServiceImpl(UsersRepository usersRepository,
-                     RolesRepository rolesRepository,
                      BCryptPasswordEncoder bCryptPasswordEncoder,
                      JavaMailSender mailSender,
                      EmailSender emailSender,
                      Default def) {
         this.usersRepository = usersRepository;
-        this.rolesRepository = rolesRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.mailSender = mailSender;
         this.emailSender = emailSender;
@@ -112,29 +108,22 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void register(com.example.delparque.dto.UserView u) {
+    public com.example.delparque.dto.User register(com.example.delparque.dto.User user) {
 
-        if (u.getId() == null) {
-            u.setId(UUID.randomUUID().toString());
+        if (user.getId() == null) {
+            user.setId(UUID.randomUUID().toString());
         }
 
-        Optional<User> optionalUser = usersRepository.findByEmail(u.getEmail());
+        Optional<User> optionalUser = usersRepository.findByEmail(user.getEmail());
         optionalUser.ifPresent(value -> {
-            if (value.getEmail().equals(u.getEmail()) && !u.getId().equals(value.getId())) {
+            if (value.getEmail().equals(user.getEmail()) && !user.getId().equals(value.getId())) {
                 throw new DelParqueSystemException("email ocupado por otro usuario", "DUPLICATE_EMAIL");
             }
         });
 
-        User user = User.builder()
-                .id(u.getId())
-                .name(u.getName())
-                .email(u.getEmail())
-                .password(bCryptPasswordEncoder.encode(def.getPassword()))
-                .telephoneNumber(u.getTelephoneNumber())
-                .emergencyNumber(u.getEmergencyNumber())
-                .build();
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        usersRepository.save(user);
+        return UserMapper.entityToDto(usersRepository.save(UserMapper.dtoToEntity(user)));
     }
 
     @Override
@@ -145,46 +134,16 @@ public class UsersServiceImpl implements UsersService {
                 .id(user.getId())
                 .email(user.getEmail())
                 .name(user.getName())
-                .roles(rolesRepository.findRolesByUser(user.getId()))
+                .role(user.getRole())
                 .build();
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<com.example.delparque.dto.User> getAllUsers() {
-        return usersRepository.findAll().stream().map(UserMapper::entityToDto)
-                .peek(user -> user.setRoles(rolesRepository.findRolesByUser(user.getId())))
+        return usersRepository.findAll().stream()
+                .map(UserMapper::entityToDto)
                 .collect(Collectors.toList());
     }
 
-    @Override
-    @Transactional
-    public List<String> removeRole(String userId, String role) {
-
-        rolesRepository.deleteByUserIdAndRole(userId, role);
-
-        return rolesRepository.findRolesByUser(userId);
-    }
-
-    @Override
-    @Transactional
-    public List<String> addRole(String userId, String role) {
-        RolesByUser roleByUser = new RolesByUser();
-
-        roleByUser.setId(UUID.randomUUID().toString());
-        roleByUser.setRole(role);
-        roleByUser.setUserId(userId);
-
-        rolesRepository.save(roleByUser);
-
-        return rolesRepository.findRolesByUser(userId);
-    }
-
-    private void setRoles(String role, String userId) {
-        RolesByUser rolesByUser = new RolesByUser();
-        rolesByUser.setId(UUID.randomUUID().toString());
-        rolesByUser.setUserId(userId);
-        rolesByUser.setRole(role);
-        rolesRepository.save(rolesByUser);
-    }
 }

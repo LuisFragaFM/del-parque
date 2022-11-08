@@ -1,7 +1,6 @@
 package com.example.delparque.service.impl;
 
 import com.example.delparque.dto.Condomino;
-import com.example.delparque.dto.UserView;
 import com.example.delparque.model.User;
 import com.example.delparque.repository.CondominosRepository;
 import com.example.delparque.repository.UsersRepository;
@@ -77,7 +76,7 @@ public class CondominosServiceImpl implements CondominosService {
         Condomino condomino = CondominoMapper.entityToDto(c);
         User user = usersRepository.findById(c.getUserId()).orElseThrow();
 
-        UserView userView = UserView.builder()
+        com.example.delparque.dto.User u = com.example.delparque.dto.User.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
@@ -85,7 +84,7 @@ public class CondominosServiceImpl implements CondominosService {
                 .telephoneNumber(user.getTelephoneNumber())
                 .build();
 
-        condomino.setUser(userView);
+        condomino.setUser(u);
         return condomino;
     }
 }

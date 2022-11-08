@@ -15,7 +15,7 @@ export class MenuGlobalComponent implements OnInit {
   }
 
   hasRoles(roles: string []) {
-    return this.user.roles.some(r => roles.includes(r));
+    return roles.some(r => r === this.user.role);
   }
 
 }

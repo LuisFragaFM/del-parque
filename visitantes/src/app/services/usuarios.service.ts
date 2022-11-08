@@ -17,7 +17,7 @@ export class UsuariosService {
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>(`${environment.baseUrl}/users/register`, user);
+    return this.http.post<User>(`${environment.baseUrl}/register`, user);
   }
 
   addRole(userId: string, role: string): Observable<string[]> {

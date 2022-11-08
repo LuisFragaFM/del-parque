@@ -16,13 +16,9 @@ public interface UsersService {
 
     void updatePasswordForRecoverPassword(String token, ResetPassword resetPassword);
 
-    void register(com.example.delparque.dto.UserView user);
+    com.example.delparque.dto.User register(com.example.delparque.dto.User user);
 
     com.example.delparque.dto.User buildUserForEmail(String email);
 
     List<com.example.delparque.dto.User> getAllUsers();
-
-    List<String> removeRole(String userId, String role);
-
-    List<String> addRole(String userId, String role);
 }

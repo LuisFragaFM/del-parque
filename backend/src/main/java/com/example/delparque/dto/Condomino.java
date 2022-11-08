@@ -13,7 +13,7 @@ public class Condomino {
     private String id;
     private String street;
     private String houseNumber;
-    private UserView user;
+    private User user;
     private boolean paidStatus;
     private String role;
 }

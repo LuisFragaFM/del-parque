@@ -4,8 +4,8 @@ import {Condomino} from '../../models/condomino';
 import {validaInput} from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
 import {UploadFilesService} from '../../services/upload-files.service';
-import {UserView} from 'src/app/models/userview';
 import {UsuariosService} from "../../services/usuarios.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-registrar_condomino',
@@ -35,7 +35,7 @@ export class RegistrarCondominoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.condomino.user = {} as UserView;
+    this.condomino.user = {} as User;
   }
 
   save() {
@@ -48,7 +48,7 @@ export class RegistrarCondominoComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then();
-      if(this.files[0]) {
+      if (this.files[0]) {
         this.uploadFilesService
           .upload(this.files[0], condomino.user.id)
           .subscribe(() => {

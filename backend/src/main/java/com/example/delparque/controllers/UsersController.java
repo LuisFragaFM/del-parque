@@ -49,15 +49,9 @@ public class UsersController {
         return usersService.buildUserForEmail(email);
     }
 
-    @PatchMapping("/api/users/{userId}/{role}")
+    @GetMapping("/api/register")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public List<String> addRole(@PathVariable String userId, @PathVariable String role) {
-        return usersService.addRole(userId, role);
-    }
-
-    @DeleteMapping("/api/users/{userId}/{role}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public List<String> removeRole(@PathVariable String userId, @PathVariable String role) {
-        return usersService.removeRole(userId, role);
+    public User register(@RequestBody() User user) {
+        return usersService.register(user);
     }
 }

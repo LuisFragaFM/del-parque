@@ -4,8 +4,8 @@ import {Condomino} from "../../models/condomino";
 import Swal from "sweetalert2";
 import {UploadFilesService} from "../../services/upload-files.service";
 import {environment} from "../../../environments/environment";
-import {UserView} from "../../models/userview";
 import {UsuariosService} from "../../services/usuarios.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-modificacion_condomino',
@@ -27,7 +27,7 @@ export class Modificacion_CondominoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.condomino.user = {} as UserView;
+    this.condomino.user = {} as User;
   }
 
   findInquilinoByName() {

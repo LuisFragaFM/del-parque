@@ -4,17 +4,10 @@ CREATE TABLE users
     email                varchar(100) unique,
     password             varchar(100),
     name                 varchar(40),
+    role                 varchar(45),
     telephone_number     varchar(40),
     emergency_number     varchar(40),
     reset_password_token varchar(40)
-);
-
-CREATE TABLE roles_by_user
-(
-    id      varchar(40) primary key,
-    role    varchar(40),
-    user_id varchar(40),
-    foreign key (user_id) references users (id) on delete cascade on update cascade
 );
 
 CREATE TABLE user_image
@@ -53,13 +46,6 @@ CREATE TABLE work_days
     day_name      varchar(40),
     trabajador_id varchar(40),
     foreign key (trabajador_id) references trabajadores (id) on delete cascade on update cascade
-);
-
-CREATE TABLE guardias
-(
-    id      varchar(40) primary key,
-    user_id varchar(40),
-    foreign key (user_id) references users (id) on delete cascade on update cascade
 );
 
 CREATE TABLE paquetes

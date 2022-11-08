@@ -1,69 +1,60 @@
 <div class="container">
-    <h2>Registro Guardia</h2>
+  <h2>Registro Guardia</h2>
 
-    <form>
-        <div class="row mt-3">
-            <div class="col-5">
-              <label class="form-label" for="nombreguardia">Nombre: </label>
-              <input type="text" placeholder="Nombre Guradia" id="nombreguardia" class="inputDatosGuard form-control"
-                name="muestraGuardiaName"  />
-            </div>
-            <div class="col-5">
-              <label class="form-label" for="numeroguardia">Teléfono:</label>
-              <input placeholder="Telefono" id="numeroguardia" class="inputDatosGuard form-control"
-                name="muestraGuardiaTelefono"  />
-            </div>
-        </div>
+  <form>
+    <div class="row mt-3">
+      <div class="col-5">
+        <label class="form-label" for="nombreguardia">Nombre: </label>
+        <input type="text" placeholder="Nombre Guradia" id="nombreguardia" class="inputDatosGuard form-control"
+               [(ngModel)]="guardia.name"
+               name="muestraGuardiaName"/>
+      </div>
+      <div class="col-5">
+        <label class="form-label" for="numeroguardia">Teléfono:</label>
+        <input placeholder="Telefono" id="numeroguardia" class="inputDatosGuard form-control"
+               [(ngModel)]="guardia.telephoneNumber"
+               name="muestraGuardiaTelefono"/>
+      </div>
+    </div>
 
-        <div class="row mt-3">
-            <div class="col-5">
-                <label class="form-label" for="emailguardia">Correo Electrónico:</label>
-                <input type="email" placeholder="Correo electronico" id="emailguardia" class="inputDatosGuard form-control"
-                  name="muestraGuardiaCorreo" />
-            </div>
-            <div class="col-5">
-                <label class="form-label" for="numemergencia">Numero de emergencia:</label>
-                <input type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia"
-                  class="inputDatosGuard form-control" name="muestraGuardiaEmergencia" id="numemergencia" />
-              </div>
-        </div>
+    <div class="row mt-3">
+      <div class="col-5">
+        <label class="form-label" for="emailguardia">Correo Electrónico:</label>
+        <input type="email" placeholder="Correo electronico" id="emailguardia" class="inputDatosGuard form-control"
+               [(ngModel)]="guardia.email"
+               name="muestraGuardiaCorreo"/>
+      </div>
+      <div class="col-5">
+        <label class="form-label" for="numemergencia">Numero de emergencia:</label>
+        <input type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia"
+               [(ngModel)]="guardia.emergencyNumber"
+               class="inputDatosGuard form-control" name="muestraGuardiaEmergencia" id="numemergencia"/>
+      </div>
+    </div>
 
-        <div class="row mt-3">
-            <div class="col-5">
-                <label class="form-label" for="passwordguardia"> Contraseña:</label>
-                <input type="password" placeholder="Contraseña" id="passwordguardia" class="inputDatosGuard form-control"
-                  name="muestraGuardiaContraseña" />
-            </div>
-            <div class="col-5">
-                <label class="form-label" for="repasswordguardia">Repetir Contraseña :</label>
-                <input type="password"  placeholder="Repetir contraseña"
-                  class="inputDatosGuard form-control" name="muestraGuardiaRContraseña" id="repasswordguardia" />
-              </div>
+    <div class="row mt-3">
+      <div class="col-5">
+        <div class="div_file">
+          <label id="insert" for="inputTag">
+            Insertar foto
+            <i class="fa fa-2x fa-camera"></i>
+            <input id="inputTag" type="file" (change)="showImage($event)" accept="image/*" required/>
+            <span id="imageName"></span>
+          </label>
         </div>
+      </div>
+      <div class="col-5">
+        <img [src]="uri" alt="" class="imagenUser" *ngIf="uri"/>
+      </div>
+    </div>
 
-        <div class="row mt-3">
-            <div class="col-5">
-                <div class="div_file">
-                  <label id="insert" for="inputTag">
-                    Insertar foto
-                    <i class="fa fa-2x fa-camera"></i>
-                    <input id="inputTag" type="file" (change)="showImage($event)" accept="image/*" required />
-                    <span id="imageName"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="col-5">
-                <img [src]="uri" alt="" class="imagenUser" *ngIf="uri" />
-              </div>
-        </div>
-
-        <div class="row mt-3">
-            <div class="d-grid gap-2 justify-content-end mx-block">
-                <button class="botonGuardar btn btn-success" type="submit">
-                  Guardar
-                </button>
-              </div>
-        </div>
-    </form>
+    <div class="row mt-3">
+      <div class="d-grid gap-2 justify-content-end mx-block">
+        <button class="botonGuardar btn btn-success" type="submit" (click)="save()">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
 
 </div>

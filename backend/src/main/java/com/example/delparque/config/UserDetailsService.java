@@ -2,7 +2,6 @@ package com.example.delparque.config;
 
 import com.example.delparque.dto.LoggedUser;
 import com.example.delparque.model.User;
-import com.example.delparque.repository.RolesRepository;
 import com.example.delparque.service.UsersService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -21,11 +20,9 @@ import java.util.Set;
 public class UserDetailsService {
 
     private final UsersService usersService;
-    private final RolesRepository rolesRepository;
 
-    public UserDetailsService(UsersService usersService, RolesRepository rolesRepository) {
+    public UserDetailsService(UsersService usersService) {
         this.usersService = usersService;
-        this.rolesRepository = rolesRepository;
     }
 
     public Authentication loadUser(String email, String password) {
@@ -38,9 +35,9 @@ public class UserDetailsService {
         attributes.put("email", user.getEmail());
         attributes.put("name", user.getName());
         attributes.put("userId", user.getId());
+        attributes.put("role", user.getRole());
 
-        rolesRepository.findRolesByUser(user.getId()).forEach(role ->
-                authorities.add(new SimpleGrantedAuthority(role)));
+        authorities.add(new SimpleGrantedAuthority(user.getRole()));
 
         LoggedUser loggedUser = LoggedUser.builder()
                 .claims(attributes)
