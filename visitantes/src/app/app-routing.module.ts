@@ -24,12 +24,12 @@ import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 import {RegistrarGuardiaComponent} from './components/registrar-guardia/registrar-guardia.component';
 import {RoleAdminGuard} from "./guards/role-admin.guard";
 import {RoleResidentGuard} from "./guards/role-resident.guard";
-import {AdminGuardGuard} from "./guards/admin-guard.guard";
+import {RoleGuardGuard} from "./guards/role-guard.guard";
 
 const routes: Routes = [
   {
     path: 'registrar_visitas', component: RegistrarVisitasGuardiaComponent,
-    canLoad: [AdminGuardGuard]
+    canLoad: [RoleGuardGuard]
   },
   {
     path: 'agendar_visita_condomino', component: AgendarVisitaCondominoComponent,
@@ -47,19 +47,19 @@ const routes: Routes = [
         path: ':id', component: RegistrarTrabajadorComponent,
       }
     ],
-    canLoad: [AdminGuardGuard]
+    canLoad: [RoleGuardGuard]
   },
   {
     path: 'registrar_salida', component: RegistrarSalidaComponent,
-    canLoad: [AdminGuardGuard]
+    canLoad: [RoleGuardGuard]
   },
   {
     path: 'registro-paq', component: RegistrarPaqueteriaComponent,
-    canLoad: [AdminGuardGuard]
+    canLoad: [RoleGuardGuard]
   },
   {
     path: 'visitas_registradas', component: VisitasRegistradasAdminComponent,
-    canLoad: [AdminGuardGuard]
+    canLoad: [RoleGuardGuard]
   },
   {
     path: 'modificacion_condomino', component: Modificacion_CondominoComponent,
@@ -71,7 +71,7 @@ const routes: Routes = [
   },
   {
     path: 'entregar-paq', component: EntregarPaqueteComponent,
-    canLoad: [AdminGuardGuard]
+    canLoad: [RoleGuardGuard]
   },
   {
     path: 'lista_trabajadores', component: ListaTrabajadoresComponent,
@@ -87,7 +87,7 @@ const routes: Routes = [
   },
   {
     path: 'usuarios', component: UsuariosComponent,
-    canLoad: [AdminGuardGuard]
+    canLoad: [RoleGuardGuard]
   },
   {
     path: 'registrar_guardia', component: RegistrarGuardiaComponent,
