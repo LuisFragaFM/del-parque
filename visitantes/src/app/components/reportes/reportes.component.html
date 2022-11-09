@@ -1,13 +1,18 @@
 <div class="container">
     <div class="tarjet row border border-dark border-4 rounded">
-        <h2>Informes</h2>
+        <h2>Reportes</h2>
         <div class="col">
             <label class="form-label" for="buscaPagosName">Busqueda de inquilino: </label>
             <input required autocomplete="off" id="buscaPagosName" type="text" placeholder="Buscar Inquilino"
-                class="inputBarra form-control" name="buscaPagosName " [(ngModel)]="name">
+                class="inputBarra form-control" name="buscaPagosName " (keyup)="findInquilinoByName()" [(ngModel)]="name">
         </div>
+        <div class="busqueda" *ngIf="condominos.length > 0">
+            <div *ngFor="let c of condominos">
+              <div (click)="selectInquilino(c)" class="cursorb">{{ c.user.name }}</div>
+            </div>
+          </div>
 
-        <div class="row mt-3">
+        <!--<div class="row mt-3">
             <div class="col-5">
                 <label class="form-label" for="periodoDate">Perido de: </label>
                 <input required autocomplete="off" type="date" placeholder="DD/MM/AAAA" id="periodoDate"
@@ -25,9 +30,9 @@
         <div class="row">
             
             <div class="d-grid gap-2  d-md-flex justify-content-md-end mx-auto">
-                <button class="boton btn btn-primary " (click)="findInquilino()">Buscar</button>
+                <button class="boton btn btn-primary ">Buscar</button>
             </div>
-        </div>
+        </div>-->
 
     </div>
 
@@ -38,7 +43,7 @@
                    [(ngModel)]="condomino.user.name" readonly="readonly">
         </div></div>
         <div class="col-5 text-center">
-            <img src="https://www.pngmart.com/files/21/Account-User-PNG-Photo.png" alt="user" id="userImg" width="180px">
+            <img [src]="uri" alt="" class="imagenUser" *ngIf="uri">
             
         </div>
         <div class="row ">
