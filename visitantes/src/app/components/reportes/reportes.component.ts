@@ -5,6 +5,8 @@ import {ReporteService} from "../../services/reporte.service";
 import {UploadFilesService} from "../../services/upload-files.service";
 import {environment} from "../../../environments/environment";
 import {User} from "../../models/user";
+import {VisitantesService} from "../../services/visitantes.service";
+import {Visitante} from "../../models/visitante";
 
 @Component({
   selector: 'app-reportes',
@@ -17,32 +19,23 @@ export class ReportesComponent implements OnInit {
   phone: string | undefined;
   condomino: Condomino = {} as Condomino;
   condominos: Condomino[] = [];
+  visitante: Visitante = {} as Visitante;
+  visitantes: Visitante[] = [];
   image: any;
   environment = environment.baseUrl;
   uri: any = '';
   files!: FileList;
+
   constructor(private condominosService: CondominosService, 
     private reporteService: ReporteService,
-    private uploadFilesService: UploadFilesService) {
+    private uploadFilesService: UploadFilesService,
+    private visitantesService: VisitantesService) {
   }
   ngOnInit(): void {
     this.condomino.user = {} as User;
+    
   }
-  /*findInquilino() {
 
-
-    if (this.phone) {
-      this.condominosService.findByTelefono(this.phone).subscribe(condomino => {
-        this.condomino = condomino;
-
-
-      });
-    } else {
-      this.condominosService.findByName(this.name!).subscribe(condominos => {
-        this.condominos = condominos;
-      });
-    }
-  }*/
   findInquilinoByName() {
     this.condominosService.findByName(this.name!).subscribe(condominos => {
       this.condominos = condominos;
@@ -56,6 +49,11 @@ export class ReportesComponent implements OnInit {
     this.uploadFilesService.loadFilename(this.condomino.user.id).subscribe(({filename}) => {
       this.uri = this.environment + '/file/' + filename;
     });
+    this.visitantesService.findAll().subscribe( visitantes => {
+      this.visitantes = visitantes;
+      console.log(visitantes);
+    });
+    
   }
 
   changeImage(event: Event): void {
