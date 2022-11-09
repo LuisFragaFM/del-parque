@@ -29,7 +29,7 @@ export class VisitasRegistradasAdminComponent implements OnInit {
   ngOnInit(): void {
     this.visitantesService.getVisitantesUnauthorized(this.page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
-      const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
+      const totalOfPages = Math.trunc(visitantes.totalElements / visitantes.size);
       for (let i = 0; i < totalOfPages; i++) {
         this.listOfPages.push(i);
       }
@@ -41,8 +41,10 @@ export class VisitasRegistradasAdminComponent implements OnInit {
   }
 
   updatePage(page: number) {
+    this.isLoading = true;
     this.visitantesService.getVisitantesUnauthorized(page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
+      this.isLoading = false;
     })
   }
 

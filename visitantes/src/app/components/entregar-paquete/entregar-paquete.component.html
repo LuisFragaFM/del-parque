@@ -1,7 +1,7 @@
 <!--  Numero paginas-->
 <div class="buttons">
 <span *ngFor="let p of listOfPages" [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}"
-      (click)="updatePage(p)" class="cursor pagination">
+      (click)="updatePage(p - 1)" class="cursor pagination">
   {{p + 1}}
 </span>
 </div>
@@ -11,6 +11,7 @@
     <h2>ENTREGA DE PAQUETES</h2>
   </div>
   <i *ngIf="isLoading" class="spinner-border"></i>
+  <div *ngIf="!paquetes.length">No hay paquetes</div>
   <div class="tarjetaT mt-3 p-2 text-white bg-dark " *ngFor="let paquete of paquetes">
     <div class="row">
       <div class="col-5">

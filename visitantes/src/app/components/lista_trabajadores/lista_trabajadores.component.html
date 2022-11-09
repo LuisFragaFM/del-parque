@@ -9,6 +9,8 @@
   <div class="titleDatos">
     <h2>BITÁCORA DE TRABAJADORES</h2>
   </div>
+  <i *ngIf="isLoading" class="spinner-border"></i>
+  <div *ngIf="!trabajadores.length">No hay trabajadores registrados</div>
   <div class="tarjetaT  p-2 text-white bg-dark  " *ngFor="let trabajador of trabajadores">
     <div class="row">
       <div class="col-5">

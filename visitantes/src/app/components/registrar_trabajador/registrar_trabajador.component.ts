@@ -42,6 +42,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
     if (this.id) {
       this.trabajadoresService.findById(this.id).subscribe(trabajador => {
         this.trabajador = trabajador;
+        trabajador.workDays.forEach(wd => this.workDays.set(wd.dayName, wd));
       })
     }
 
@@ -60,6 +61,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
       return;
     }
 
+    this.trabajador.workDays = [];
     this.workDays.forEach(value => this.trabajador.workDays.push(value))
 
     this.trabajadoresService.save(this.trabajador).subscribe((trabajador) => {
@@ -70,9 +72,11 @@ export class RegistrarTrabajadorComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
-        this.trabajador = {} as Trabajador;
-        this.condomino = {} as Condomino;
-        this.name = '';
+        if (!this.id) {
+          this.trabajador = {} as Trabajador;
+          this.condomino = {} as Condomino;
+          this.name = '';
+        }
       });
     });
   }

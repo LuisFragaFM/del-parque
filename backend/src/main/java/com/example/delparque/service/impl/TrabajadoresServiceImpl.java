@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -70,6 +71,7 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     }
 
     @Override
+    @Transactional
     public Trabajador save(Trabajador trabajador) {
         if (trabajador.getId() == null) {
             trabajador.setId(UUID.randomUUID().toString());
@@ -88,6 +90,8 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     }
 
     private void saveWorkDays(List<WorkDay> workDays, String trabajadorId) {
+
+        workDaysRepository.deleteAllByTrabajadorId(trabajadorId);
 
         workDays.forEach(workDay -> {
 
