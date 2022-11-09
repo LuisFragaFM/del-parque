@@ -7,17 +7,14 @@ import {User} from "../models/user";
 @Injectable({
   providedIn: 'root'
 })
-export class UsuariosService {
+export class GuardiasService {
 
   constructor(private http: HttpClient) {
   }
 
-  getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.baseUrl}/users`);
-  }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>(`${environment.baseUrl}/register`, user);
+    return this.http.post<User>(`${environment.baseUrl}/guardias`, user);
   }
 
 }

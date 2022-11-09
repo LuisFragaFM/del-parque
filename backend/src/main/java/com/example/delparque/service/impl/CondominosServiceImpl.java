@@ -51,6 +51,7 @@ public class CondominosServiceImpl implements CondominosService {
             condomino.setId(UUID.randomUUID().toString());
         }
 
+        condomino.getUser().setRole("ROLE_RESIDENT");
         usersService.register(condomino.getUser());
         condominosRepository.save(CondominoMapper.dtoToEntity(condomino));
         return addExtraInfo(CondominoMapper.dtoToEntity(condomino));

@@ -4,7 +4,6 @@ import {Condomino} from '../../models/condomino';
 import {validaInput} from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
 import {UploadFilesService} from '../../services/upload-files.service';
-import {UsuariosService} from "../../services/usuarios.service";
 import {User} from "../../models/user";
 
 @Component({
@@ -30,7 +29,6 @@ export class RegistrarCondominoComponent implements OnInit {
   constructor(
     private condominosService: CondominosService,
     private uploadFilesService: UploadFilesService,
-    private usuariosService: UsuariosService
   ) {
   }
 
@@ -40,7 +38,6 @@ export class RegistrarCondominoComponent implements OnInit {
 
   save() {
     this.condominosService.save(this.condomino).subscribe((condomino) => {
-      this.usuariosService.addRole(condomino.user.id, "ROLE_RESIDENT").subscribe();
       Swal.fire({
         title: `El condomino ${condomino.user.name} fue guardado correctamente`,
         icon: 'success',

@@ -4,7 +4,6 @@ import com.example.delparque.config.Default;
 import com.example.delparque.config.EmailSender;
 import com.example.delparque.dto.ResetPassword;
 import com.example.delparque.exception.DelParqueSystemException;
-import com.example.delparque.model.RolesByUser;
 import com.example.delparque.model.User;
 import com.example.delparque.repository.UsersRepository;
 import com.example.delparque.service.UsersService;
@@ -121,7 +120,7 @@ public class UsersServiceImpl implements UsersService {
             }
         });
 
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(bCryptPasswordEncoder.encode(def.getPassword()));
 
         return UserMapper.entityToDto(usersRepository.save(UserMapper.dtoToEntity(user)));
     }
@@ -133,6 +132,8 @@ public class UsersServiceImpl implements UsersService {
         return com.example.delparque.dto.User.builder()
                 .id(user.getId())
                 .email(user.getEmail())
+                .telephoneNumber(user.getTelephoneNumber())
+                .emergencyNumber(user.getEmergencyNumber())
                 .name(user.getName())
                 .role(user.getRole())
                 .build();

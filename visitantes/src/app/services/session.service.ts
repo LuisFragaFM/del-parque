@@ -30,6 +30,9 @@ export class SessionService {
         if (this.rememberMe) {
           localStorage.setItem('user', JSON.stringify(user));
           localStorage.setItem('auth', this.authorizationHeader!);
+        } else {
+          sessionStorage.setItem('user', JSON.stringify(user));
+          sessionStorage.setItem('auth', this.authorizationHeader!);
         }
         this.user = user;
         return this.user;
@@ -37,8 +40,8 @@ export class SessionService {
   }
 
   get authorizationHeader(): string | null {
-    if (localStorage.getItem('auth')) {
-      this._authorizationHeader = localStorage.getItem('auth');
+    if (localStorage.getItem('auth') || sessionStorage.getItem('auth')) {
+      this._authorizationHeader = localStorage.getItem('auth') || sessionStorage.getItem('auth');
     }
     return this._authorizationHeader;
   }
@@ -52,6 +55,8 @@ export class SessionService {
     this._authorizationHeader = '';
     localStorage.removeItem('auth');
     localStorage.removeItem('user');
+    sessionStorage.removeItem('auth');
+    sessionStorage.removeItem('user');
     window.location.href = '/logout';
   }
 

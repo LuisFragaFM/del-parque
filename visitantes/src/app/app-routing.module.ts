@@ -22,16 +22,23 @@ import {
 import {RegistrarCondominoComponent} from './components/registrar_condomino/registrar_condomino.component';
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 import {RegistrarGuardiaComponent} from './components/registrar-guardia/registrar-guardia.component';
+import {RoleGuardGuard} from "./guards/role-guard.guard";
+import {RoleAdminGuard} from "./guards/role-admin.guard";
+import {RoleResidentGuard} from "./guards/role-resident.guard";
 
 const routes: Routes = [
-  {path: 'registrar_visitas', component: RegistrarVisitasGuardiaComponent},
+  {
+    path: 'registrar_visitas', component: RegistrarVisitasGuardiaComponent,
+    canActivate: [RoleGuardGuard, RoleAdminGuard]
+  },
   {
     path: 'agendar_visita_condomino', component: AgendarVisitaCondominoComponent,
     children: [
       {
         path: ':id', component: AgendarVisitaCondominoComponent,
       }
-    ]
+    ],
+    canActivate: [RoleResidentGuard]
   },
   {
     path: 'registrar_trabajador', component: RegistrarTrabajadorComponent,
@@ -39,19 +46,53 @@ const routes: Routes = [
       {
         path: ':id', component: RegistrarTrabajadorComponent,
       }
-    ]
+    ],
+    canActivate: [RoleGuardGuard, RoleAdminGuard]
   },
-  {path: 'registrar_salida', component: RegistrarSalidaComponent},
-  {path: 'registro-paq', component: RegistrarPaqueteriaComponent},
-  {path: 'visitas_registradas', component: VisitasRegistradasAdminComponent},
-  {path: 'modificacion_condomino', component: Modificacion_CondominoComponent},
-  {path: 'reportes', component: ReportesComponent},
-  {path: 'entregar-paq', component: EntregarPaqueteComponent},
-  {path: 'lista_trabajadores', component: ListaTrabajadoresComponent},
-  {path: 'registrar_condomino', component: RegistrarCondominoComponent},
-  {path: 'visitas_agendadas', component: VisitasAgendadasCondominoComponent},
-  {path: 'usuarios', component: UsuariosComponent},
-  {path: 'registrar_guardia', component: RegistrarGuardiaComponent}
+  {
+    path: 'registrar_salida', component: RegistrarSalidaComponent,
+    canActivate: [RoleGuardGuard, RoleAdminGuard]
+  },
+  {
+    path: 'registro-paq', component: RegistrarPaqueteriaComponent,
+    canActivate: [RoleGuardGuard, RoleAdminGuard]
+  },
+  {
+    path: 'visitas_registradas', component: VisitasRegistradasAdminComponent,
+    canActivate: [RoleGuardGuard, RoleAdminGuard]
+  },
+  {
+    path: 'modificacion_condomino', component: Modificacion_CondominoComponent,
+    canActivate: [RoleAdminGuard]
+  },
+  {
+    path: 'reportes', component: ReportesComponent,
+    canActivate: [RoleAdminGuard]
+  },
+  {
+    path: 'entregar-paq', component: EntregarPaqueteComponent,
+    canActivate: [RoleGuardGuard, RoleAdminGuard]
+  },
+  {
+    path: 'lista_trabajadores', component: ListaTrabajadoresComponent,
+    canActivate: [RoleAdminGuard]
+  },
+  {
+    path: 'registrar_condomino', component: RegistrarCondominoComponent,
+    canActivate: [RoleAdminGuard]
+  },
+  {
+    path: 'visitas_agendadas', component: VisitasAgendadasCondominoComponent,
+    canActivate: [RoleResidentGuard]
+  },
+  {
+    path: 'usuarios', component: UsuariosComponent,
+    canActivate: [RoleGuardGuard]
+  },
+  {
+    path: 'registrar_guardia', component: RegistrarGuardiaComponent,
+    canActivate: [RoleAdminGuard]
+  }
 ];
 
 @NgModule({

@@ -4,7 +4,6 @@ import {Condomino} from "../../models/condomino";
 import Swal from "sweetalert2";
 import {UploadFilesService} from "../../services/upload-files.service";
 import {environment} from "../../../environments/environment";
-import {UsuariosService} from "../../services/usuarios.service";
 import {User} from "../../models/user";
 
 @Component({
@@ -22,8 +21,7 @@ export class Modificacion_CondominoComponent implements OnInit {
   files!: FileList;
 
   constructor(private condominosService: CondominosService,
-              private uploadFilesService: UploadFilesService,
-              private usuariosService: UsuariosService) {
+              private uploadFilesService: UploadFilesService) {
   }
 
   ngOnInit(): void {
@@ -63,7 +61,6 @@ export class Modificacion_CondominoComponent implements OnInit {
       cancelButtonText: `No`
     }).then((value) => {
       if (value.isConfirmed) {
-        this.usuariosService.removeRole(this.condomino.user.id, "ROLE_RESIDENT").subscribe();
         this.condominosService.delete(this.condomino.id).subscribe(() => {
           Swal.fire({
             title: `El condomino de ${this.condomino.user.name} fue borrado correctamente`,
