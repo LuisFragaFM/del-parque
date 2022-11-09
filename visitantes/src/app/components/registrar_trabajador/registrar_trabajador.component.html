@@ -168,7 +168,7 @@
           <label for="telefono-trabajador">Teléfono</label>
           <input
             class="form-control"
-            (keydown)="validaTel(regexTel, telefono.value)"
+            (keyup)="validaTel(regexTel, telefono.value)"
             #telefono
             required
             autocomplete="off"
@@ -186,7 +186,7 @@
       </div>
       <div class="row g-2 mt-6 mb-3 justify-content-center align-items-center">
         <div class="col-4 text-end">
-          <button class="boton btn btn-success btn-block" (click)="save()">
+          <button class="boton btn btn-success btn-block" (click)="save()"  [disabled]="!isValidForm()">
             Guardar
           </button>
         </div>
