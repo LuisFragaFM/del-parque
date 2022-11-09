@@ -25,11 +25,8 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   validacionGuia: boolean = true;
   validacionRecibo: boolean = true;
   fechaRecibo: boolean = true;
-  //Validacion de fechas
-  regexName: any = /^[A-Za-z0-9_@./#&+\s]+$/; //empresa
-  regexRecibe: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //recibe paquete
-  regexDate: any =
-    /^(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|1[1-2])\1\d{4}$/; //fecha
+  //Validaciones
+  regexName: any = /[\S\s]+[\S]+/; //empresa
   error: boolean = false;
 
   constructor(
