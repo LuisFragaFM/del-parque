@@ -21,11 +21,10 @@ export class ListaTrabajadoresComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //Paginacion
     this.trabajadoresService.getTrabajadores(this.page).subscribe(trabajadores => {
       this.trabajadores = trabajadores.content;
-      const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
-      for (let i = 0; i < totalOfPages; i++) {
+      const totalOfPages = Math.trunc(trabajadores.totalElements / trabajadores.size);
+      for (let i = 0; i <= totalOfPages; i++) {
         this.listOfPages.push(i + 1);
       }
     })

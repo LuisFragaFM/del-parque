@@ -35,13 +35,16 @@ public class CondominosServiceImpl implements CondominosService {
     @Override
     public Page<Condomino> findAll(Integer page) {
 
+        List<Condomino> condominos = condominosRepository.findAll().stream()
+                .map(this::addExtraInfo).toList();
+
         Pageable pageable = PageRequest.of(page, 10);
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), condominos.size());
 
         return new PageImpl<>(
-                condominosRepository.findAll().stream()
-                        .map(this::addExtraInfo)
-                        .collect(Collectors.toList()),
-                pageable, pageable.getPageSize()
+                condominos.subList(start, end),
+                pageable, condominos.size()
         );
     }
 

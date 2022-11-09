@@ -43,13 +43,16 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     @Override
     public Page<Trabajador> findAll(Integer page) {
 
+        List<Trabajador> trabajadores = trabajadoresRepository.findAll().stream()
+                .map(this::addExtraInfo).toList();
+
         Pageable pageable = PageRequest.of(page, 10);
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), trabajadores.size());
 
         return new PageImpl<>(
-                trabajadoresRepository.findAll().stream()
-                        .map(this::addExtraInfo)
-                        .collect(Collectors.toList()),
-                pageable, pageable.getPageSize()
+                trabajadores.subList(start, end),
+                pageable, trabajadores.size()
         );
     }
 
