@@ -4,8 +4,7 @@ import {Condomino} from "../../models/condomino";
 import {ReporteService} from "../../services/reporte.service";
 import {UploadFilesService} from "../../services/upload-files.service";
 import {environment} from "../../../environments/environment";
-import {UserView} from "../../models/userview";
-import {UsuariosService} from "../../services/usuarios.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-reportes',
@@ -24,11 +23,10 @@ export class ReportesComponent implements OnInit {
   files!: FileList;
   constructor(private condominosService: CondominosService, 
     private reporteService: ReporteService,
-    private uploadFilesService: UploadFilesService,
-    private usuariosService: UsuariosService) {
+    private uploadFilesService: UploadFilesService) {
   }
   ngOnInit(): void {
-    this.condomino.user = {} as UserView;
+    this.condomino.user = {} as User;
   }
   /*findInquilino() {
 
