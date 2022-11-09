@@ -27,7 +27,6 @@ export class EntregarPaqueteComponent implements OnInit {
     this.paquetesService.getPaquetes().subscribe((paquetes) => {
       this.isLoading = false;
       this.paquetes = paquetes.content;
-      console.log(paquetes)
       const totalOfPages = 10
       for (let i = 0; i < totalOfPages; i++) {
         this.listOfPages.push(i);

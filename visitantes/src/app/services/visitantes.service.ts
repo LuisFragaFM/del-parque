@@ -13,6 +13,10 @@ export class VisitantesService {
   constructor(private http: HttpClient) {
   }
 
+  findAll(): Observable<Visitante[]> {
+    return this.http.get<Visitante[]>(`${environment.baseUrl}/visitantes`);
+  }
+
   getVisitantesUnauthorizedCondomino(page: number = 0): Observable<VisitantePage> {
     return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/un-authorized/condomino?page=${page}`);
   }

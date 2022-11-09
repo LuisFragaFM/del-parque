@@ -25,5 +25,4 @@ public class GuardiaController {
         guardia.setRole("ROLE_GUARD");
         return usersService.register(guardia);
     }
-
 }

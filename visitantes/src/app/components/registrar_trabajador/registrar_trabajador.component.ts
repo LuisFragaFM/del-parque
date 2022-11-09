@@ -71,6 +71,8 @@ export class RegistrarTrabajadorComponent implements OnInit {
         confirmButtonText: `Cerrar`,
       }).then(() => {
         this.trabajador = {} as Trabajador;
+        this.condomino = {} as Condomino;
+        this.name = '';
       });
     });
   }

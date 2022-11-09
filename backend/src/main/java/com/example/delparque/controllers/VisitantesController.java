@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/visitantes")
@@ -18,6 +19,12 @@ public class VisitantesController {
     VisitantesController(VisitantesService visitantesService, SessionHelper sessionHelper) {
         this.visitantesService = visitantesService;
         this.sessionHelper = sessionHelper;
+    }
+
+    @GetMapping()
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD')")
+    public List<Visitante> findAll() {
+        return visitantesService.findAll();
     }
 
     @GetMapping("/un-authorized/condomino")
@@ -33,7 +40,6 @@ public class VisitantesController {
     public Page<Visitante> findAllByAuthorized(@RequestParam Integer page) {
         return visitantesService.findAllByAuthorized(page);
     }
-
 
     @GetMapping("/gone-out")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
@@ -58,5 +64,4 @@ public class VisitantesController {
     public void delete(@PathVariable String id) {
         visitantesService.delete(id);
     }
-
 }

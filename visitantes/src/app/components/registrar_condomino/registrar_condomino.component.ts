@@ -45,13 +45,14 @@ export class RegistrarCondominoComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then();
-      if (this.files[0]) {
+      if (this.files) {
         this.uploadFilesService
           .upload(this.files[0], condomino.user.id)
           .subscribe(() => {
           });
       }
       this.condomino = {} as Condomino;
+      this.condomino.user = {} as User;
       this.files = {} as FileList;
       this.uri = '';
     });

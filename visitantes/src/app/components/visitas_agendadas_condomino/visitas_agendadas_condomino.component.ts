@@ -32,7 +32,6 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
   findVisitante() {
     if (this.name) {
       this.visitantesService.findByName(this.name).subscribe(visitante => {
-        console.log(visitante);
         this.visitante = visitante;
       });
     } else {

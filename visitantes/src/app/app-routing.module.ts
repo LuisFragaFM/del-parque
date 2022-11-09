@@ -22,14 +22,14 @@ import {
 import {RegistrarCondominoComponent} from './components/registrar_condomino/registrar_condomino.component';
 import {UsuariosComponent} from "./components/usuarios/usuarios.component";
 import {RegistrarGuardiaComponent} from './components/registrar-guardia/registrar-guardia.component';
-import {RoleGuardGuard} from "./guards/role-guard.guard";
 import {RoleAdminGuard} from "./guards/role-admin.guard";
 import {RoleResidentGuard} from "./guards/role-resident.guard";
+import {AdminGuardGuard} from "./guards/admin-guard.guard";
 
 const routes: Routes = [
   {
     path: 'registrar_visitas', component: RegistrarVisitasGuardiaComponent,
-    canActivate: [RoleGuardGuard, RoleAdminGuard]
+    canLoad: [AdminGuardGuard]
   },
   {
     path: 'agendar_visita_condomino', component: AgendarVisitaCondominoComponent,
@@ -38,7 +38,7 @@ const routes: Routes = [
         path: ':id', component: AgendarVisitaCondominoComponent,
       }
     ],
-    canActivate: [RoleResidentGuard]
+    canLoad: [RoleResidentGuard]
   },
   {
     path: 'registrar_trabajador', component: RegistrarTrabajadorComponent,
@@ -47,51 +47,51 @@ const routes: Routes = [
         path: ':id', component: RegistrarTrabajadorComponent,
       }
     ],
-    canActivate: [RoleGuardGuard, RoleAdminGuard]
+    canLoad: [AdminGuardGuard]
   },
   {
     path: 'registrar_salida', component: RegistrarSalidaComponent,
-    canActivate: [RoleGuardGuard, RoleAdminGuard]
+    canLoad: [AdminGuardGuard]
   },
   {
     path: 'registro-paq', component: RegistrarPaqueteriaComponent,
-    canActivate: [RoleGuardGuard, RoleAdminGuard]
+    canLoad: [AdminGuardGuard]
   },
   {
     path: 'visitas_registradas', component: VisitasRegistradasAdminComponent,
-    canActivate: [RoleGuardGuard, RoleAdminGuard]
+    canLoad: [AdminGuardGuard]
   },
   {
     path: 'modificacion_condomino', component: Modificacion_CondominoComponent,
-    canActivate: [RoleAdminGuard]
+    canLoad: [RoleAdminGuard]
   },
   {
     path: 'reportes', component: ReportesComponent,
-    canActivate: [RoleAdminGuard]
+    canLoad: [RoleAdminGuard]
   },
   {
     path: 'entregar-paq', component: EntregarPaqueteComponent,
-    canActivate: [RoleGuardGuard, RoleAdminGuard]
+    canLoad: [AdminGuardGuard]
   },
   {
     path: 'lista_trabajadores', component: ListaTrabajadoresComponent,
-    canActivate: [RoleAdminGuard]
+    canLoad: [RoleAdminGuard]
   },
   {
     path: 'registrar_condomino', component: RegistrarCondominoComponent,
-    canActivate: [RoleAdminGuard]
+    canLoad: [RoleAdminGuard]
   },
   {
     path: 'visitas_agendadas', component: VisitasAgendadasCondominoComponent,
-    canActivate: [RoleResidentGuard]
+    canLoad: [RoleResidentGuard]
   },
   {
     path: 'usuarios', component: UsuariosComponent,
-    canActivate: [RoleGuardGuard]
+    canLoad: [AdminGuardGuard]
   },
   {
     path: 'registrar_guardia', component: RegistrarGuardiaComponent,
-    canActivate: [RoleAdminGuard]
+    canLoad: [RoleAdminGuard]
   }
 ];
 

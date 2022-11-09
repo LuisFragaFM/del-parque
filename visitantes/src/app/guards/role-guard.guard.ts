@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {CanLoad, Route, UrlSegment, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
 import {SessionService} from "../services/session.service";
 import {User} from "../models/user";
@@ -7,7 +7,7 @@ import {User} from "../models/user";
 @Injectable({
   providedIn: 'root'
 })
-export class RoleGuardGuard implements CanActivate {
+export class RoleGuardGuard implements CanLoad {
 
   user!: User;
 
@@ -15,10 +15,7 @@ export class RoleGuardGuard implements CanActivate {
     sessionService.getUser().subscribe(user => this.user = user)
   }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.user.role === 'ROLE_GUARD';
   }
-
 }

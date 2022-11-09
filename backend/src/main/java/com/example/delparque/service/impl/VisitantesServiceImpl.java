@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -38,6 +39,13 @@ public class VisitantesServiceImpl implements VisitantesService {
         return visitantesRepository.findById(id)
                 .map(this::addExtraInfo)
                 .orElse(null);
+    }
+
+    @Override
+    public List<Visitante> findAll() {
+        return visitantesRepository.findAll().stream()
+                .map(this::addExtraInfo)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -1,10 +1,5 @@
 import {Injectable} from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 import {SessionService} from "./session.service";
 import Swal from 'sweetalert2';
@@ -28,7 +23,6 @@ export class AuthInterceptorService implements HttpInterceptor {
     }
 
     if (error?.error?.code) {
-      console.log('hola')
       errorMessage = error.error.message;
       Swal.fire({
         title: error.error.message,

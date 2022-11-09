@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-// imports para realizar la busqueda y notificaciones
 import {TrabajadoresService} from "../../services/trabajadores.service";
 import {Trabajador} from "../../models/trabajador";
-import {ActivatedRoute} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-lista_trabajadores',
@@ -33,28 +32,33 @@ export class ListaTrabajadoresComponent implements OnInit {
 
   }
 
-  // busqueda de trabajador
-  findTrabajador() {
-    if (this.name) {
-      this.trabajadoresService.findByNombre(this.name).subscribe(trabajador => {
-        this.trabajador = trabajador;
-      });
-    } else {
-      this.trabajadoresService.findByNombre(this.name!).subscribe(trabajador => {
-        this.trabajador = trabajador;
-      });
-    }
-
-  }
-
   updatePage(page: number) {
-    this.page = page - 1;
-    this.trabajadoresService.getTrabajadores(this.page).subscribe(trabajadores => {
+    this.trabajadoresService.getTrabajadores(page).subscribe(trabajadores => {
       this.trabajadores = trabajadores.content;
     })
   }
 
   delete(id: string) {
-    this.trabajadoresService.delete(id).subscribe();
+    Swal.fire({
+      title: `Estas seguro que deseas borrar este trabajador?`,
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonText: `Si`,
+      cancelButtonText: `No`
+    }).then((value) => {
+      if (value.isConfirmed) {
+        this.trabajadoresService.delete(id).subscribe(() => {
+          Swal.fire({
+            title: `El trabajador fue borrado correctamente`,
+            icon: 'success',
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: `Cerrar`
+          }).then(() => {
+            this.updatePage(this.page);
+          })
+        })
+      }
+    });
   }
 }

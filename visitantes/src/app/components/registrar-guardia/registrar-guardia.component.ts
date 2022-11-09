@@ -36,7 +36,6 @@ export class RegistrarGuardiaComponent implements OnInit {
   }
 
   save() {
-    console.log(this.guardia)
     this.guardiasService.register(this.guardia).subscribe((guardia) => {
       Swal.fire({
         title: `El Guardia ${guardia.name} fue guardado correctamente`,
