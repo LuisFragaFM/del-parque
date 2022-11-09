@@ -9,7 +9,7 @@
         <!-- se ingresan los datos de la empresa que envia el paquete -->
         <input
           class="form-control col-12"
-          (change)="validaName(regexName, empresa.value)"
+          (keyup)="validaName(regexName, empresa.value)"
           required
           #empresa
           autocomplete="off"
@@ -32,7 +32,7 @@
         <label class="form-label" for="guia">Número de Guía</label>
         <input
           class="form-control col-12"
-          (change)="validaGuia(regexName, guia.value)"
+          (keyup)="validaGuia(regexName, guia.value)"
           required
           #guia
           autocomplete="off"
