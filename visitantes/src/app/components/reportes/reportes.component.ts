@@ -51,6 +51,7 @@ export class ReportesComponent implements OnInit {
     this.visitantesService.findAll().subscribe(visitantes  => {
       this.visitantes = visitantes;
     });
+    console.log(this.visitantes);
   }
 
   changeImage(event: Event): void {
