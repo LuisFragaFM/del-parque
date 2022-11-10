@@ -19,7 +19,6 @@ export class ReportesComponent implements OnInit {
   phone: string | undefined;
   condomino: Condomino = {} as Condomino;
   condominos: Condomino[] = [];
-  visitante: Visitante = {} as Visitante;
   visitantes: Visitante[] = [];
   image: any;
   environment = environment.baseUrl;
@@ -49,11 +48,9 @@ export class ReportesComponent implements OnInit {
     this.uploadFilesService.loadFilename(this.condomino.user.id).subscribe(({filename}) => {
       this.uri = this.environment + '/file/' + filename;
     });
-    this.visitantesService.findAll().subscribe( visitantes => {
+    this.visitantesService.findAll().subscribe(visitantes  => {
       this.visitantes = visitantes;
-      console.log(visitantes);
     });
-    
   }
 
   changeImage(event: Event): void {
