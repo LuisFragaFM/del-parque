@@ -68,8 +68,25 @@ export class ReportesComponent implements OnInit {
 
   printReport(){
     const encabezado = ["Nombre", "Vehiculo", "Placas", "Fecha llegada", "Fecha salida"]
-    const cuerpo = ["uriel", "mercedes", "HTTPS", "07/11/2022", "08/11/2022"]
-    this.reporteService.imprimir(encabezado, cuerpo, "reportetest", true);
+    const lista:string[][] = [];
+    var temp:Array<any> = [];
+    
+    for (var i = 0; i < this.visitantes.length; i++)
+    {
+      console.log(lista);
+      lista[i][0] = this.visitantes[i].name;
+      lista[i][1] = this.visitantes[i].vehicle;
+      lista[i][2] = this.visitantes[i].licensePlates;
+      lista[i][3] = this.visitantes[i].arrivalDate;
+      lista[i][4] = this.visitantes[i].departureDate;
+    }
+    /*this.visitantes.forEach(element => {
+      temp = [element.name, element.vehicle, element.licensePlates, element.arrivalDate, element.departureDate];
+      lista.push(temp);
+    })*/
+    const cuerpo = [["dato1", "dato1","dato1", "dato1"],["dato1", "dato1","dato1", "dato1"]]
+    console.log(cuerpo);
+    this.reporteService.imprimir(encabezado, lista, "reportetest", true);
   }
 
 }
