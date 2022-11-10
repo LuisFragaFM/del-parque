@@ -114,11 +114,13 @@ public class VisitantesServiceImpl implements VisitantesService {
     private Visitante addExtraInfo(com.example.delparque.model.Visitante v) {
         Visitante visitante = VisitanteMapper.entityToDto(v);
 
-        com.example.delparque.model.Condomino condomino = condominosRepository.findById(v.getUserId()).orElseThrow();
+        com.example.delparque.model.Condomino condomino = condominosRepository.findByUserId(v.getUserId()).orElseThrow();
         User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
 
         CondominoInfo condominoInfo = CondominoInfo.builder()
                 .userId(user.getId())
+                .houseStreet(condomino.getStreet())
+                .houseNumber(condomino.getHouseNumber())
                 .owner(user.getName())
                 .build();
 
