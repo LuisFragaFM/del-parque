@@ -14,6 +14,7 @@ export class ListaTrabajadoresComponent implements OnInit {
   trabajador: Trabajador = {} as Trabajador;
   trabajadores: Trabajador[] = [];
   page: number = 0;
+  isLoading: boolean = true;
   listOfPages: number[] = [];
 
   constructor(private trabajadoresService: TrabajadoresService,) {
@@ -21,20 +22,22 @@ export class ListaTrabajadoresComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //Paginacion
     this.trabajadoresService.getTrabajadores(this.page).subscribe(trabajadores => {
       this.trabajadores = trabajadores.content;
-      const totalOfPages = 10 //Math.trunc(trabajadores.totalElements / trabajadores.size);
-      for (let i = 0; i < totalOfPages; i++) {
+      const totalOfPages = Math.trunc(trabajadores.totalElements / trabajadores.size);
+      for (let i = 0; i <= totalOfPages; i++) {
         this.listOfPages.push(i + 1);
       }
+      this.isLoading = false;
     })
 
   }
 
   updatePage(page: number) {
+    this.isLoading = true;
     this.trabajadoresService.getTrabajadores(page).subscribe(trabajadores => {
       this.trabajadores = trabajadores.content;
+      this.isLoading = false;
     })
   }
 

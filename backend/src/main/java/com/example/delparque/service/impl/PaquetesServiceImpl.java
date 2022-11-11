@@ -13,8 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class PaquetesServiceImpl implements PaquetesService {
@@ -38,13 +38,17 @@ public class PaquetesServiceImpl implements PaquetesService {
 
     @Override
     public Page<Paquete> findAll(Integer page) {
+
+        List<Paquete> paquetes = paquetesRepository.findAllByDeliveryIs(false).stream()
+                .map(this::addExtraInfo).toList();
+
         Pageable pageable = PageRequest.of(page, 10);
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), paquetes.size());
 
         return new PageImpl<>(
-                paquetesRepository.findAllByDeliveryIs(false).stream()
-                        .map(this::addExtraInfo)
-                        .collect(Collectors.toList()),
-                pageable, pageable.getPageSize()
+                paquetes.subList(start, end),
+                pageable, paquetes.size()
         );
     }
 

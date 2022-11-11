@@ -1,5 +1,5 @@
 <div class="buttons">
-  <span *ngFor="let p of listOfPages" (click)="updatePage(p)" class="cursor pagination"
+  <span (click)="updatePage(p - 1)" *ngFor="let p of listOfPages" class="cursor pagination"
         [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}">
     {{p}}
   </span>
@@ -9,6 +9,8 @@
   <div class="titleDatos">
     <h2>BITÁCORA DE TRABAJADORES</h2>
   </div>
+  <i *ngIf="isLoading" class="spinner-border"></i>
+  <div *ngIf="!trabajadores.length">No hay trabajadores registrados</div>
   <div class="tarjetaT  p-2 text-white bg-dark  " *ngFor="let trabajador of trabajadores">
     <div class="row">
       <div class="col-5">

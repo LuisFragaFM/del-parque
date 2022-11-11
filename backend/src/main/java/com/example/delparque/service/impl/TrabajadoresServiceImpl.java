@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -43,13 +44,16 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     @Override
     public Page<Trabajador> findAll(Integer page) {
 
+        List<Trabajador> trabajadores = trabajadoresRepository.findAll().stream()
+                .map(this::addExtraInfo).toList();
+
         Pageable pageable = PageRequest.of(page, 10);
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), trabajadores.size());
 
         return new PageImpl<>(
-                trabajadoresRepository.findAll().stream()
-                        .map(this::addExtraInfo)
-                        .collect(Collectors.toList()),
-                pageable, pageable.getPageSize()
+                trabajadores.subList(start, end),
+                pageable, trabajadores.size()
         );
     }
 
@@ -67,6 +71,7 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     }
 
     @Override
+    @Transactional
     public Trabajador save(Trabajador trabajador) {
         if (trabajador.getId() == null) {
             trabajador.setId(UUID.randomUUID().toString());
@@ -85,6 +90,8 @@ public class TrabajadoresServiceImpl implements TrabajadoresService {
     }
 
     private void saveWorkDays(List<WorkDay> workDays, String trabajadorId) {
+
+        workDaysRepository.deleteAllByTrabajadorId(trabajadorId);
 
         workDays.forEach(workDay -> {
 

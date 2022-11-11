@@ -50,37 +50,49 @@ public class VisitantesServiceImpl implements VisitantesService {
 
     @Override
     public Page<Visitante> findAllByAuthorized(Integer page, String userId) {
+
+        List<Visitante> visitantes = visitantesRepository.findAllByAuthorizedIsAndUserId(false, userId).stream()
+                .map(this::addExtraInfo).toList();
+
         Pageable pageable = PageRequest.of(page, 10);
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), visitantes.size());
 
         return new PageImpl<>(
-                visitantesRepository.findAllByAuthorizedIsAndUserId(false, userId).stream()
-                        .map(this::addExtraInfo)
-                        .collect(Collectors.toList()),
-                pageable, pageable.getPageSize()
+                visitantes.subList(start, end),
+                pageable, visitantes.size()
         );
     }
 
     @Override
     public Page<Visitante> findAllByAuthorized(Integer page) {
+
+        List<Visitante> visitantes = visitantesRepository.findAllByAuthorizedIsAndArrivalDateIs(false, LocalDate.now()).stream()
+                .map(this::addExtraInfo).toList();
+
         Pageable pageable = PageRequest.of(page, 10);
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), visitantes.size());
 
         return new PageImpl<>(
-                visitantesRepository.findAllByAuthorizedIsAndArrivalDateIs(false, LocalDate.now()).stream()
-                        .map(this::addExtraInfo)
-                        .collect(Collectors.toList()),
-                pageable, pageable.getPageSize()
+                visitantes.subList(start, end),
+                pageable, visitantes.size()
         );
     }
 
     @Override
     public Page<Visitante> findAllByGoneOut(Integer page) {
+
+        List<Visitante> visitantes = visitantesRepository.findAllByGoneOutIs(false).stream()
+                .map(this::addExtraInfo).toList();
+
         Pageable pageable = PageRequest.of(page, 10);
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), visitantes.size());
 
         return new PageImpl<>(
-                visitantesRepository.findAllByGoneOutIs(false).stream()
-                        .map(this::addExtraInfo)
-                        .collect(Collectors.toList()),
-                pageable, pageable.getPageSize()
+                visitantes.subList(start, end),
+                pageable, visitantes.size()
         );
     }
 
@@ -102,11 +114,13 @@ public class VisitantesServiceImpl implements VisitantesService {
     private Visitante addExtraInfo(com.example.delparque.model.Visitante v) {
         Visitante visitante = VisitanteMapper.entityToDto(v);
 
-        com.example.delparque.model.Condomino condomino = condominosRepository.findById(v.getUserId()).orElseThrow();
+        com.example.delparque.model.Condomino condomino = condominosRepository.findByUserId(v.getUserId()).orElseThrow();
         User user = usersRepository.findById(condomino.getUserId()).orElseThrow();
 
         CondominoInfo condominoInfo = CondominoInfo.builder()
                 .userId(user.getId())
+                .houseStreet(condomino.getStreet())
+                .houseNumber(condomino.getHouseNumber())
                 .owner(user.getName())
                 .build();
 

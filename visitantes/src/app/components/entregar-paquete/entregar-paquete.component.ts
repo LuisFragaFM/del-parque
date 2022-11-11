@@ -27,7 +27,7 @@ export class EntregarPaqueteComponent implements OnInit {
     this.paquetesService.getPaquetes().subscribe((paquetes) => {
       this.isLoading = false;
       this.paquetes = paquetes.content;
-      const totalOfPages = 10
+      const totalOfPages = Math.trunc(paquetes.totalElements / paquetes.size);
       for (let i = 0; i < totalOfPages; i++) {
         this.listOfPages.push(i);
       }
@@ -58,6 +58,7 @@ export class EntregarPaqueteComponent implements OnInit {
   }
 
   updatePage(page: number) {
+    this.isLoading = true;
     this.paquetesService.getPaquetes(page).subscribe(({content: paquetes}) => {
       this.paquetes = paquetes;
       this.isLoading = false;

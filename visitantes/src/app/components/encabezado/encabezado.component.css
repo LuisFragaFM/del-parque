@@ -1,76 +1,82 @@
 
-header{
-    padding: 10px 0;
-    
-    background-color: rgba(211, 245, 197, 0.7);
+header {
+  padding: 10px 0;
+
+  background-color: rgba(211, 245, 197, 0.7);
 }
 
-.name{
-    font-weight: bolder;
+.name {
+  font-weight: bolder;
 }
 
 
-.LOGO{
-    height: auto;
-    width: auto;
+.LOGO {
+  height: auto;
+  width: auto;
 }
 
-a.log{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    
-}
-a:hover.log{
-    color: rgb(63, 59, 59);
-}
-@media only screen and (max-width: 999px){
+a.log {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
 
-   .menu{
+}
+
+a:hover.log {
+  color: rgb(63, 59, 59);
+}
+
+@media only screen and (max-width: 999px) {
+
+  .menu {
     margin: 0 50px;
-   }
-    
-    .LOGO{
-        height: auto;
-        width: 220px;
-    }
+  }
 
-    .menu ul li{
-        font-size: 15px;
-        margin: 5px;
-        
-        list-style-type: none;
-        display: inline-block;
-        
-        
-    }
-    .menu ul{
-        padding: 0;
-        margin: 0;
-        margin-right: 0;
-        margin-top: 0;
-    }
+  .LOGO {
+    height: auto;
+    width: 220px;
+  }
+
+  .menu ul li {
+    font-size: 15px;
+    margin: 5px;
+
+    list-style-type: none;
+    display: inline-block;
+
+
+  }
+
+  .menu ul {
+    padding: 0;
+    margin: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
 }
 
-@media only screen and (max-width: 499px){
-    .LOGO{
-        height: auto;
-        width: 150px;
-    }
+@media only screen and (max-width: 499px) {
+  .LOGO {
+    height: auto;
+    width: 150px;
+  }
 
-    .menu{
-        font-size: 13px;
-    }
+  .menu {
+    font-size: 13px;
+  }
 
-    .perfiluser{
-        height: auto;
-        width: 32px;
-    }
+  .perfiluser {
+    height: auto;
+    width: 32px;
+  }
 
 }
 
-
-
+.perfiluser {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 
 
 /*.encabezado{
