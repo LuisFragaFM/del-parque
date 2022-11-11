@@ -8,6 +8,15 @@ import {User} from "../../models/user";
 import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
 
+
+interface VisitanteReporte {
+  name: string;
+  licensePlates: string;
+  vehicle: string;
+  arrivalDate: string;
+  departureDate: string;
+}
+
 @Component({
   selector: 'app-reportes',
   templateUrl: './reportes.component.html',
@@ -32,6 +41,7 @@ export class ReportesComponent implements OnInit {
   }
   ngOnInit(): void {
     this.condomino.user = {} as User;
+    this.visitantes[0].licensePlates
     
   }
 
@@ -51,7 +61,6 @@ export class ReportesComponent implements OnInit {
     this.visitantesService.findAll().subscribe(visitantes  => {
       this.visitantes = visitantes;
     });
-    console.log(this.visitantes);
   }
 
   changeImage(event: Event): void {
@@ -67,26 +76,23 @@ export class ReportesComponent implements OnInit {
   }
 
   printReport(){
-    const encabezado = ["Nombre", "Vehiculo", "Placas", "Fecha llegada", "Fecha salida"]
-    const lista:string[][] = [];
-    var temp:Array<any> = [];
-    
-    for (var i = 0; i < this.visitantes.length; i++)
-    {
-      console.log(lista);
-      lista[i][0] = this.visitantes[i].name;
-      lista[i][1] = this.visitantes[i].vehicle;
-      lista[i][2] = this.visitantes[i].licensePlates;
-      lista[i][3] = this.visitantes[i].arrivalDate;
-      lista[i][4] = this.visitantes[i].departureDate;
-    }
-    /*this.visitantes.forEach(element => {
-      temp = [element.name, element.vehicle, element.licensePlates, element.arrivalDate, element.departureDate];
-      lista.push(temp);
-    })*/
-    const cuerpo = [["dato1", "dato1","dato1", "dato1"],["dato1", "dato1","dato1", "dato1"]]
+    const encabezado = ["Nombre", "Vehiculo", "Placas", "Fecha llegada", "Fecha salida"];
+
+    const cuerpo  = this.visitantes.map((visitante) => {
+      const visitanteReporte: VisitanteReporte = {
+        name: visitante.name,
+        vehicle: visitante.vehicle,
+        licensePlates: visitante.licensePlates,
+        arrivalDate: visitante.arrivalDate,
+        departureDate: visitante.departureDate
+        
+      }
+      return Object.values(visitanteReporte);
+    })
     console.log(cuerpo);
-    this.reporteService.imprimir(encabezado, lista, "reportetest", true);
+    
+    const test = [["dato", "dato", "dato", "dato", "dato"], ["dato", "dato", "dato", "dato", "dato"]];
+    this.reporteService.imprimir(encabezado, cuerpo, "reportetest", true);
   }
 
 }
