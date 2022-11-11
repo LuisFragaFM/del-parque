@@ -25,11 +25,12 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label">Nombre</label>
+        <!-- Input para ingresar el nombre del visitante -->
         <input
           class="form-control"
-          (keydown)="validaNombre(regexName, nombreVisita.value);"
+          (keyup)="validaNombre(regexName, inputVisita.value)"
           (keyup)="findInquilinoByName()"
-          #nombreVisita
+          #inputVisita
           required
           autocomplete="off"
           type="text"
@@ -56,7 +57,10 @@
       <div class="col-5">
         <div *ngIf="isChecked">
           <label class="form-label" for="type_car">Tipo de Vehículo</label>
+          <!-- Input para agregar el tipo de vehiculo -->
           <input
+            (keyup)="validaVehiculo(regexName, inputVisita.value)"
+            #inputVisita
             id="type_car"
             class="form-control"
             required
@@ -65,6 +69,14 @@
             placeholder="Escriba aqui"
             [(ngModel)]="visitante.vehicle"
           />
+          <!--Alerta de datos -->
+          <div
+            id="alertName"
+            class="alert alert-danger"
+            *ngIf="!visitaVehiculo"
+          >
+            Favor de agregar datos correspondientes en este campo
+          </div>
         </div>
       </div>
     </div>
@@ -72,19 +84,29 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label">Tarjeton</label>
+        <!-- Input para agregar el tarjeton del vsitante -->
         <input
           class="form-control"
+          (keyup)="validaTarjeton(regexName, inputTarjeton.value)"
+          #inputTarjeton
           required
           autocomplete="off"
           type="text"
           placeholder="Escriba aqui"
           [(ngModel)]="visitante.card"
         />
+        <!--Alerta de datos -->
+        <div id="alertName" class="alert alert-danger" *ngIf="!visitaTarjeton">
+          Favor de agregar datos correspondientes en este campo
+        </div>
       </div>
       <div class="col-5">
         <div *ngIf="isChecked">
           <label class="form-label" for="placas">Placas</label>
+          <!-- Input para agregar las placas del vsitante -->
           <input
+            (keyup)="validaPlacas(regexName, inputPlacas.value)"
+            #inputPlacas
             class="form-control"
             id="placas"
             required
@@ -93,6 +115,10 @@
             placeholder="Escriba aqui"
             [(ngModel)]="visitante.licensePlates"
           />
+          <!--Alerta de datos -->
+          <div id="alertName" class="alert alert-danger" *ngIf="!visitaPlacas">
+            Favor de agregar datos correspondientes en este campo
+          </div>
         </div>
       </div>
     </div>
@@ -203,14 +229,21 @@
       </div>
       <div class="col-5">
         <label class="form-label" for="caseta">Caseta recibida:</label>
+        <!-- Input para seleccionar la casilla -->
         <select
           class="form-control"
           required
+          (keyup)="validaCasilla(regexName, inputCasilla.value)"
+          #inputCasilla
           autocomplete="on"
           name="Caseta"
           id="caseta"
           [(ngModel)]="visitante.arrivalBooth"
         >
+          <!--Alerta de datos -->
+          <div id="alertName" class="alert alert-danger" *ngIf="!visitaCasilla">
+            Favor de agregar datos correspondientes en este campo
+          </div>
           <option value="Caseta 1">
             <h2>Caseta 1</h2>
           </option>
@@ -227,6 +260,7 @@
           class="botonAgendar btn btn-success"
           type="button"
           (click)="save()"
+          [disabled]="!isValidForm()"
         >
           Entrar
         </button>
