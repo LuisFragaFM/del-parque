@@ -23,8 +23,8 @@ export class RegistrarTrabajadorComponent implements OnInit {
   //Variable para validar nombre y activar boton
   trabajadorName: boolean = true;
   validacionTel: boolean = true;
-  //Validacion de fechas
-  regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
+  //Validaciones
+  regexName: any = /[\S\s]+[\S]+/;
   regexTel: any = /^\+?[1-9][0-9]{5,12}$/; //recibe paquete
   id: string = '';
 

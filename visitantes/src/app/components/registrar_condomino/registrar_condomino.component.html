@@ -4,44 +4,138 @@
     <div class="row mt-3">
       <div class="col-5">
         <label class="form-label" for="nombrecondomino">Nombre: </label>
-        <input required (keydown)="validaResidente(regexName, altaResidente.value)" #altaResidente autocomplete="off"
-          type="text" placeholder="Nombre Inquilino" id="nombrecondomino" class="inputDatosAltas form-control"
-          name="muestraCondominoName" [(ngModel)]="condomino.user.name" />
+        <!-- Input para registrar el nombre del residente -->
+        <input
+          required
+          (keyup)="validaResidente(regexName, altaResidente.value)"
+          #altaResidente
+          autocomplete="off"
+          type="text"
+          placeholder="Nombre Inquilino"
+          id="nombrecondomino"
+          class="inputDatosAltas form-control"
+          name="muestraCondominoName"
+          [(ngModel)]="condomino.user.name"
+        />
+        <!--Alerta de nombre-->
+        <div id="alertRecibo" class="alert alert-danger" *ngIf="!altaName">
+          Ingrese el nombre del residente
+        </div>
       </div>
       <div class="col-5">
         <label class="form-label" for="numerocondomino">Teléfono:</label>
-        <input required (keydown)="validaTel(regexTel, altaTel.value)" #altaTel autocomplete="off" type="text"
-          placeholder="Telefono" id="numerocondomino" class="inputDatosAltas form-control"
-          name="muestraCondominoTelefono" [(ngModel)]="condomino.user.telephoneNumber" />
+        <!-- Input para registrar el numero de telefono -->
+        <input
+          required
+          (keydown)="validaTel(regexTel, altaTel.value)"
+          #altaTel
+          autocomplete="off"
+          type="text"
+          placeholder="Telefono"
+          id="numerocondomino"
+          class="inputDatosAltas form-control"
+          name="muestraCondominoTelefono"
+          [(ngModel)]="condomino.user.telephoneNumber"
+        />
+        <!--Alerta numero telefono-->
+        <div
+          id="alertRecibo"
+          class="alert alert-danger"
+          *ngIf="!altaTelResidente"
+        >
+          Ingrese el númerp de telefono del residente
+        </div>
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="col-5">
         <label class="form-label" for="direcondomino">Calle:</label>
-        <input required autocomplete="off" type="text" placeholder="Calle" class="inputDatosAltas form-control"
-          name="muestraCondominoDireccion" id="direcondomino" [(ngModel)]="condomino.street" />
+        <!-- Input para regsitrar la direccion del residente -->
+        <input
+          (keyup)="validaCalle(regexName, residenteCalle.value)"
+          required
+          #residenteCalle
+          autocomplete="off"
+          type="text"
+          placeholder="Calle"
+          class="inputDatosAltas form-control"
+          name="muestraCondominoDireccion"
+          id="direcondomino"
+          [(ngModel)]="condomino.street"
+        />
+        <!--Alerta deCalle de inquilino -->
+        <div id="alertRecibo" class="alert alert-danger" *ngIf="!altaStreet">
+          Ingrese la calle de la residencia
+        </div>
       </div>
       <div class="col-5">
-        <label class="form-label" for="emailcondomino">Correo Electrónico:</label>
-        <input required (keydown)="validaCorreo(regexMail, altaCorreo.value)" #altaCorreo autocomplete="off"
-          type="email" placeholder="Correo electronico" id="emailcondomino" class="inputDatosAltas form-control"
-          name="muestraCondominoCorreo" [(ngModel)]="condomino.user.email" />
+        <label class="form-label" for="emailcondomino"
+          >Correo Electrónico:</label
+        >
+        <!-- Input para ingresar el correo electronico -->
+        <input
+          required
+          (keydown)="validaCorreo(regexMail, altaCorreo.value)"
+          #altaCorreo
+          autocomplete="off"
+          type="email"
+          placeholder="Correo electronico"
+          id="emailcondomino"
+          class="inputDatosAltas form-control"
+          name="muestraCondominoCorreo"
+          [(ngModel)]="condomino.user.email"
+        />
+        <!--Alerta de datos (recibe Inquilino)-->
+        <div id="alertRecibo" class="alert alert-danger" *ngIf="!altaMail">
+          Ingrese un correo electronico valido
+        </div>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-5">
-        <label class="form-label" for="numemergencia">Numero de emergencia:</label>
-        <input required (keydown)="validaEmergencia(regexTel, altaEmergencia.value)" #altaEmergencia autocomplete="off"
-          type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia"
-          class="inputDatosAltas form-control" name="muestraCondominoEmergencia" id="numemergencia"
-          [(ngModel)]="condomino.user.emergencyNumber" />
+        <label class="form-label" for="numemergencia"
+          >Numero de emergencia:</label
+        >
+        <!-- Input para ingresar el numero de emergencia del residente -->
+        <input
+          required
+          (keydown)="validaEmergencia(regexTel, altaEmergencia.value)"
+          #altaEmergencia
+          autocomplete="off"
+          type="text"
+          minlength="10"
+          maxlength="10"
+          placeholder="Telefono de emergencia"
+          class="inputDatosAltas form-control"
+          name="muestraCondominoEmergencia"
+          id="numemergencia"
+          [(ngModel)]="condomino.user.emergencyNumber"
+        />
+        <!--Alerta de datos (recibe Inquilino)-->
+        <div
+          id="alertRecibo"
+          class="alert alert-danger"
+          *ngIf="!altaTelEmergencia"
+        >
+          Ingrese un número telefonico valido
+        </div>
       </div>
       <div class="col-5">
         <label class="form-label" for="numcasa">Numero de casa:</label>
-        <input required autocomplete="off" type="number" minlength="10" maxlength="10" placeholder="Numero de casa"
-          class="inputDatosAltas form-control" id="numcasa" name="muestraCondominonumcasa"
-          [(ngModel)]="condomino.houseNumber" />
+        <!-- Input para ingresar el numero de casa del residente -->
+        <input
+          required
+          autocomplete="off"
+          type="number"
+          minlength="10"
+          maxlength="10"
+          placeholder="Numero de casa"
+          class="inputDatosAltas form-control"
+          id="numcasa"
+          name="muestraCondominonumcasa"
+          [(ngModel)]="condomino.houseNumber"
+        />
       </div>
     </div>
     <div class="row mt-3">
@@ -50,19 +144,43 @@
           <label id="insert" for="inputTag">
             Insertar foto
             <i class="fa fa-2x fa-camera"></i>
-            <input id="inputTag" type="file" (change)="showImage($event)" accept="image/*" required />
+            <input
+              id="inputTag"
+              type="file"
+              (change)="showImage($event)"
+              accept="image/*"
+              required
+            />
             <span id="imageName"></span>
           </label>
         </div>
       </div>
       <div class="col-5 text-center">
-        <div *ngIf="!condomino.paidStatus" (click)="condomino.paidStatus = true" class="cursor">
+        <div
+          *ngIf="!condomino.paidStatus"
+          (click)="condomino.paidStatus = true"
+          class="cursor"
+        >
           <label class="form-label" for="noPagadoImg"> No Pagado</label>
-          <img src="../../../assets/sadFace.png" alt="no pagado" id="noPagadoImg" width="160px" />
+          <img
+            src="../../../assets/sadFace.png"
+            alt="no pagado"
+            id="noPagadoImg"
+            width="160px"
+          />
         </div>
-        <div *ngIf="condomino.paidStatus" (click)="condomino.paidStatus = false" class="cursor">
+        <div
+          *ngIf="condomino.paidStatus"
+          (click)="condomino.paidStatus = false"
+          class="cursor"
+        >
           <label class="form-label" for="pagoImg"> Pagado</label>
-          <img src="../../../assets/happyFace.png" alt="pago" id="pagoImg" width="150px" />
+          <img
+            src="../../../assets/happyFace.png"
+            alt="pago"
+            id="pagoImg"
+            width="150px"
+          />
         </div>
       </div>
     </div>
@@ -71,7 +189,11 @@
         <img [src]="uri" alt="" class="imagenUser" *ngIf="uri" />
       </div>
       <div class="d-grid gap-2 justify-content-end mx-block">
-        <button class="botonGuardar btn btn-success" type="submit">
+        <button
+          class="botonGuardar btn btn-success"
+          type="submit"
+          [disabled]="!isValidForm()"
+        >
           Guardar
         </button>
       </div>

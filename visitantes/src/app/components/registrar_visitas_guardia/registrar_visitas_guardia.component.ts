@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {VisitantesService} from '../../services/visitantes.service';
-import {Visitante} from '../../models/visitante';
-import {CondominosService} from '../../services/condominos.service';
-import {Condomino} from '../../models/condomino';
+import { Component, OnInit } from '@angular/core';
+import { VisitantesService } from '../../services/visitantes.service';
+import { Visitante } from '../../models/visitante';
+import { CondominosService } from '../../services/condominos.service';
+import { Condomino } from '../../models/condomino';
 import Swal from 'sweetalert2';
-import {SessionService} from '../../services/session.service';
-import {User} from '../../models/user';
-import {validaInput} from 'src/app/tools/validation';
-import {CondominoInfo} from "../../models/condominoInfo";
+import { SessionService } from '../../services/session.service';
+import { User } from '../../models/user';
+import { validaInput } from 'src/app/tools/validation';
+import { CondominoInfo } from '../../models/condominoInfo';
 
 @Component({
   selector: 'app-registrar_visitas_guardia',
@@ -23,8 +23,12 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   condomino: Condomino = {} as Condomino;
   //Variable para validar nombre y activar boton
   visitaName: boolean = true;
-  //Validacion de fechas
-  regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
+  visitaVehiculo: boolean = true;
+  visitaTarjeton: boolean = true;
+  visitaPlacas: boolean = true;
+  visitaCasilla: boolean = true;
+  //Validacion de datos
+  regexName: any = /[\S\s]+[\S]+/;
   error: boolean = false;
   nameAuth!: string;
 
@@ -32,8 +36,7 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
     private visitantesService: VisitantesService,
     private condominosService: CondominosService,
     private sessionService: SessionService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.visitante.condomino = {} as CondominoInfo;
@@ -109,9 +112,27 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   validaNombre(regex: any, name: string) {
     this.visitaName = validaInput(regex, name);
   }
+  validaVehiculo(regex: any, name: string) {
+    this.visitaVehiculo = validaInput(regex, name);
+  }
+  validaTarjeton(regex: any, name: string) {
+    this.visitaTarjeton = validaInput(regex, name);
+  }
+  validaPlacas(regex: any, name: string) {
+    this.visitaPlacas = validaInput(regex, name);
+  }
+  validaCasilla(regex: any, name: string) {
+    this.visitaCasilla = validaInput(regex, name);
+  }
 
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
-    return this.visitaName;
+    return (
+      this.visitaName &&
+      this.visitaVehiculo &&
+      this.visitaTarjeton &&
+      this.visitaPlacas &&
+      this.visitaCasilla
+    );
   }
 }

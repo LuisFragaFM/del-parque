@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {CondominosService} from '../../services/condominos.service';
-import {Condomino} from '../../models/condomino';
-import {validaInput} from 'src/app/tools/validation';
+import { Component, OnInit } from '@angular/core';
+import { CondominosService } from '../../services/condominos.service';
+import { Condomino } from '../../models/condomino';
+import { validaInput } from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
-import {UploadFilesService} from '../../services/upload-files.service';
-import {User} from "../../models/user";
+import { UploadFilesService } from '../../services/upload-files.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-registrar_condomino',
@@ -14,23 +14,23 @@ import {User} from "../../models/user";
 export class RegistrarCondominoComponent implements OnInit {
   condomino: Condomino = {} as Condomino;
 
-  //Variable para validar nombre y activar boton
+  //Variables
   altaName: boolean = true;
   altaTelEmergencia: boolean = true;
   altaTelResidente: boolean = true;
   altaMail: boolean = true;
-  //Validacion de fechas
-  regexName: any = /^[A-Za-zÀ-ÿ ,.'-]+$/; //nombre
-  regexTel: any = /^\+?[1-9][0-9]{1,12}$/; //recibe paquete
+  altaStreet: boolean = true;
+  //Validacion
+  regexName: any = /[\S\s]+[\S]+/;
+  regexTel: any = /^\+?[1-9][0-9]{1,12}$/;
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
   uri!: any;
   files!: FileList;
 
   constructor(
     private condominosService: CondominosService,
-    private uploadFilesService: UploadFilesService,
-  ) {
-  }
+    private uploadFilesService: UploadFilesService
+  ) {}
 
   ngOnInit(): void {
     this.condomino.user = {} as User;
@@ -48,8 +48,7 @@ export class RegistrarCondominoComponent implements OnInit {
       if (this.files) {
         this.uploadFilesService
           .upload(this.files[0], condomino.user.id)
-          .subscribe(() => {
-          });
+          .subscribe(() => {});
       }
       this.condomino = {} as Condomino;
       this.condomino.user = {} as User;
@@ -86,14 +85,17 @@ export class RegistrarCondominoComponent implements OnInit {
   validaCorreo(regex: any, correo: string) {
     this.altaMail = validaInput(regex, correo);
   }
-
+  validaCalle(regex: any, calle: string) {
+    this.altaStreet = validaInput(regex, calle);
+  }
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
     return (
       this.altaName &&
       this.altaTelResidente &&
       this.altaTelEmergencia &&
-      this.altaMail
+      this.altaMail &&
+      this.altaStreet
     );
   }
 }
