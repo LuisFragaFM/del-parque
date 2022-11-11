@@ -64,6 +64,10 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
         confirmButtonText: `Cerrar`,
       }).then(() => {
         this.visitante = {} as Visitante;
+        this.condomino = {} as Condomino;
+        this.visitante.condomino = {} as CondominoInfo;
+        this.name = '';
+        this.condominos = [];
       });
     });
   }
