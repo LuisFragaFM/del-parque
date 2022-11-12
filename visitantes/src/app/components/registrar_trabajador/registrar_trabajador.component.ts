@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import {CondominoInfo} from "../../models/condominoInfo";
 import {ActivatedRoute} from "@angular/router";
 import {WorkDay} from "../../models/WorkDay";
+import { clippingParents } from '@popperjs/core';
 
 @Component({
   selector: 'app-registrar_trabajador',
@@ -17,7 +18,9 @@ import {WorkDay} from "../../models/WorkDay";
 export class RegistrarTrabajadorComponent implements OnInit {
   trabajador: Trabajador = {} as Trabajador;
   workDays: Map<string, WorkDay> = new Map();
-  name: string | undefined;
+  // name: string | undefined;
+  name!: string;
+  error: boolean = false;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
   //Variable para validar nombre y activar boton
@@ -53,6 +56,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
   findInquilinoByName() {
     this.condominosService.findByName(this.trabajador.condominoInfo.owner).subscribe((condominos) => {
       this.condominos = condominos;
+      // console.log(this.trabajador.condominoInfo.owner);
     });
   }
 
@@ -86,6 +90,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
     this.condominos = [];
     this.name = condomino.user.name;
     this.trabajador.condominoInfo.userId = condomino.id;
+    console.log( this.name);
   }
 
   // funcion para validacion

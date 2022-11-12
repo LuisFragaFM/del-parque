@@ -29,11 +29,12 @@
           <!-- Input para ingresar nombre de trabajador -->
           <input
             class="form-control"
-            (keyup)="validaTrabajador(regexName, nombreTrabajador.value)"            required
+            (keyup)="validaTrabajador(regexName, nombreTrabajador.value)"
+            required
             #nombreTrabajador
             autocomplete="off"
             type="text"
-            placeholder="Escriba aqui"
+            placeholder="Escriba aquí"
             name="nombre-trabajador"
             id="nombre-trabajador"
             [(ngModel)]="trabajador.name"
@@ -60,9 +61,10 @@
             required
             autocomplete="off"
             type="text"
-            placeholder="Escriba aqui"
+            placeholder="Escriba aquí"
             name="nombre-condomino"
             id="nombre-condomino"
+            list="nombre_condominos"
             (keyup)="findInquilinoByName()"
             [(ngModel)]="trabajador.condominoInfo.owner"
           />
@@ -73,33 +75,79 @@
               </div>
             </div>
           </div>
+          <!--  -->
+          <div class="alert-danger" *ngIf="error">
+            Porfavor seleccione un inquilino
+          </div>
+          <!--  -->
         </div>
       </div>
 
-      <div class="row g-2 mt-2 justify-content-center align-items-center">
+      <!-- <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
           <label class="form-label" for="nombre-condomino"
             >Dias de trabajo</label
           >
           <div class="d-flex flex-column">
-            <span>Lunes<input type="checkbox" name="Lunes" [checked]="hasDay('monday')" value="MONDAY"
-                              (click)="addDay('monday')"></span>
-            <span>Martes<input type="checkbox" name="Martes" [checked]="hasDay('tuesday')" value="TUESDAY"
-                               (click)="addDay('tuesday')"></span>
-            <span>Miercoles<input type="checkbox" name="Miercoles" [checked]="hasDay('wednesday')" value="WEDNESDAY"
-                                  (click)="addDay('wednesday')"></span>
-            <span>Jueves<input type="checkbox" name="Thursday" [checked]="hasDay('thursday')" value="THURSDAY"
-                               (click)="addDay('thursday')"></span>
-            <span>Viernes<input type="checkbox" name="Friday" [checked]="hasDay('friday')" value="FRIDAY"
-                                (click)="addDay('friday')"></span>
-            <span>Sadado<input (click)="addDay('saturday')" [checked]="hasDay('saturday')" name="Saturday"
-                               type="checkbox"
-                               value="SATURDAY"></span>
-            <span>Domingo<input (click)="addDay('sunday')" [checked]="hasDay('sunday')" name="Sunday" type="checkbox"
-                                value="SUNDAY"></span>
+            <span
+              >Lunes<input
+                type="checkbox"
+                name="Lunes"
+                [checked]="hasDay('monday')"
+                value="MONDAY"
+                (click)="addDay('monday')"
+            /></span>
+            <span
+              >Martes<input
+                type="checkbox"
+                name="Martes"
+                [checked]="hasDay('tuesday')"
+                value="TUESDAY"
+                (click)="addDay('tuesday')"
+            /></span>
+            <span
+              >Miercoles<input
+                type="checkbox"
+                name="Miercoles"
+                [checked]="hasDay('wednesday')"
+                value="WEDNESDAY"
+                (click)="addDay('wednesday')"
+            /></span>
+            <span
+              >Jueves<input
+                type="checkbox"
+                name="Thursday"
+                [checked]="hasDay('thursday')"
+                value="THURSDAY"
+                (click)="addDay('thursday')"
+            /></span>
+            <span
+              >Viernes<input
+                type="checkbox"
+                name="Friday"
+                [checked]="hasDay('friday')"
+                value="FRIDAY"
+                (click)="addDay('friday')"
+            /></span>
+            <span
+              >Sadado<input
+                (click)="addDay('saturday')"
+                [checked]="hasDay('saturday')"
+                name="Saturday"
+                type="checkbox"
+                value="SATURDAY"
+            /></span>
+            <span
+              >Domingo<input
+                (click)="addDay('sunday')"
+                [checked]="hasDay('sunday')"
+                name="Sunday"
+                type="checkbox"
+                value="SUNDAY"
+            /></span>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
@@ -111,7 +159,7 @@
             required
             autocomplete="off"
             type="time"
-            placeholder="Escriba aqui"
+            placeholder="Escriba aquí"
             name="hora-llegada"
             id="hora-llegada"
             [(ngModel)]="trabajador.schedule"
@@ -129,7 +177,7 @@
             required
             autocomplete="off"
             type="text"
-            placeholder="Escriba aqui"
+            placeholder="Escriba aquí"
             name="telefono-trabajador"
             id="telefono-trabajador"
             [(ngModel)]="trabajador.telephoneNumber"
@@ -142,7 +190,11 @@
       </div>
       <div class="row g-2 mt-6 mb-3 justify-content-center align-items-center">
         <div class="col-4 text-end">
-          <button class="boton btn btn-success btn-block" (click)="save()"  [disabled]="!isValidForm()">
+          <button
+            class="boton btn btn-success btn-block"
+            (click)="save()"
+            [disabled]="!isValidForm()"
+          >
             Guardar
           </button>
         </div>

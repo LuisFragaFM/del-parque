@@ -49,6 +49,7 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   findInquilinoByName() {
     this.condominosService.findByName(this.name!).subscribe((condominos) => {
       this.condominos = condominos;
+      console.log(this.name!);
     });
   }
 
