@@ -89,10 +89,8 @@ export class ReportesComponent implements OnInit {
       }
       return Object.values(visitanteReporte);
     })
-    console.log(cuerpo);
-    
-    const test = [["dato", "dato", "dato", "dato", "dato"], ["dato", "dato", "dato", "dato", "dato"]];
-    this.reporteService.imprimir(encabezado, cuerpo, "reportetest", true);
+
+    this.reporteService.imprimir(encabezado, cuerpo, "Reporte de visitas " + this.condomino.user.name, true);
   }
 
 }

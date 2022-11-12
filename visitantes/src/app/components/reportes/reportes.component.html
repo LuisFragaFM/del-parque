@@ -39,8 +39,8 @@
     <div class="tarjet row border border-dark border-4 rounded align-items-center" >
         <div class="col-5"><div class="imagenUser">
             <label class="form-label" for="busquedaInquilino">Nombre:</label>
-            <input required autocomplete="off" type="text" placeholder="Introduzca el nombre del inquilino" class="inputBarraInquilino form-control" id="busquedaInquilino" name="busquedaInquilino"
-                   [(ngModel)]="condomino.user.name" readonly="readonly">
+            <input required autocomplete="off" type="text" class="inputBarraInquilino form-control" id="busquedaInquilino" name="busquedaInquilino"
+                   [(ngModel)]="condomino.user.name" readonly="readonly" disabled>
         </div></div>
         <div class="col-5 text-center">
             <img [src]="uri" alt="" class="imagenUser" *ngIf="uri">
