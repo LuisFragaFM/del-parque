@@ -52,7 +52,7 @@
       <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
           <!--Nombre condomino -->
-          <label class="form-label" for="nombre-condomino"
+          <label class="form-label" for="nombre_condomino"
             >Nombre del condómino</label
           >
           <!-- Input para ingresar el nombre del condomino -->
@@ -62,11 +62,12 @@
             autocomplete="off"
             type="text"
             placeholder="Escriba aquí"
-            name="nombre-condomino"
-            id="nombre-condomino"
+            name="nombre_condomino"
+            id="nombre_condomino"
             list="nombre_condominos"
             (keyup)="findInquilinoByName()"
             [(ngModel)]="trabajador.condominoInfo.owner"
+            [(ngModel)]="name"
           />
           <div class="busqueda" *ngIf="condominos.length > 0">
             <div *ngFor="let c of condominos">
@@ -83,7 +84,7 @@
         </div>
       </div>
 
-      <!-- <div class="row g-2 mt-2 justify-content-center align-items-center">
+      <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
           <label class="form-label" for="nombre-condomino"
             >Dias de trabajo</label
@@ -147,7 +148,7 @@
             /></span>
           </div>
         </div>
-      </div> -->
+      </div>
 
       <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
