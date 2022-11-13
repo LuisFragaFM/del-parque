@@ -8,6 +8,7 @@ import {validaInput} from 'src/app/tools/validation';
 import {SessionService} from '../../services/session.service';
 import {Visitante} from '../../models/visitante';
 import {CondominoInfo} from "../../models/condominoInfo";
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -28,6 +29,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   //Validaciones
   regexName: any = /[\S\s]+[\S]+/; //empresa
   error: boolean = false;
+  nameAuth!: string;
 
   constructor(
     private paquetesService: PaquetesService,
@@ -63,6 +65,12 @@ export class RegistrarPaqueteriaComponent implements OnInit {
         confirmButtonText: `Cerrar`,
       }).then(() => {
         this.paquete = {} as Paquete;
+        this.condomino = {} as Condomino;
+        this.condomino.user = {} as User;
+        this.paquete.condomino = {} as CondominoInfo;
+        this.name = '';
+        this.nameAuth='';
+        this.condominos = [];
       });
     });
   }
@@ -74,6 +82,8 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     this.paquete.condomino.userId = this.condomino.id;
     this.paquete.condomino.houseStreet = condomino.street;
     this.paquete.condomino.houseNumber = condomino.houseNumber;
+    this.paquete.arrivalTime = this.formatAMPM();
+    this.paquete.arrivalDate = this.formatDate();
   }
 
   // funcion para validacion
