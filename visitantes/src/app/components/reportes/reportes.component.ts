@@ -58,7 +58,7 @@ export class ReportesComponent implements OnInit {
     this.uploadFilesService.loadFilename(this.condomino.user.id).subscribe(({filename}) => {
       this.uri = this.environment + '/file/' + filename;
     });
-    this.visitantesService.findAll().subscribe(visitantes  => {
+    this.visitantesService.findAllByUserId(this.condomino.user.id).subscribe(visitantes  => {
       this.visitantes = visitantes;
     });
   }
