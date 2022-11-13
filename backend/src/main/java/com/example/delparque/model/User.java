@@ -36,4 +36,6 @@ public class User {
     private String resetPasswordToken;
 
     private String role;
+
+    private String picture;
 }

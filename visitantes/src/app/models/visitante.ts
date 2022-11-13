@@ -1,4 +1,4 @@
-import { CondominoInfo } from "./condominoInfo";
+import {CondominoInfo} from "./condominoInfo";
 
 export interface Visitante {
   id: string;
@@ -15,5 +15,5 @@ export interface Visitante {
   arrivalBooth: string;
   condomino: CondominoInfo;
   authorized: boolean;
-  goneOut: boolean;
+  checkOut: boolean;
 }

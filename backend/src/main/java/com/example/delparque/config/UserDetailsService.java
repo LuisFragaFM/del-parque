@@ -36,6 +36,7 @@ public class UserDetailsService {
         attributes.put("name", user.getName());
         attributes.put("userId", user.getId());
         attributes.put("role", user.getRole());
+        attributes.put("picture", user.getPicture());
 
         authorities.add(new SimpleGrantedAuthority(user.getRole()));
 

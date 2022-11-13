@@ -10,6 +10,7 @@ public class UserMapper {
                 .name(user.getName())
                 .password(user.getPassword())
                 .role(user.getRole())
+                .picture(user.getPicture())
                 .telephoneNumber(user.getTelephoneNumber())
                 .emergencyNumber(user.getEmergencyNumber())
                 .build();
@@ -22,6 +23,7 @@ public class UserMapper {
                 .name(user.getName())
                 .password(user.getPassword())
                 .role(user.getRole())
+                .picture(user.getPicture())
                 .telephoneNumber(user.getTelephoneNumber())
                 .emergencyNumber(user.getEmergencyNumber())
                 .build();

@@ -55,6 +55,6 @@ public class Visitante {
 
     private boolean authorized;
 
-    @Column(name = "gone_out")
-    private boolean goneOut;
+    @Column(name = "check_out")
+    private boolean checkOut;
 }

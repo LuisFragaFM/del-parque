@@ -29,5 +29,5 @@ public class Visitante {
     private String arrivalBooth;
     private CondominoInfo condomino;
     private boolean authorized;
-    private boolean goneOut;
+    private boolean checkOut;
 }

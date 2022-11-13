@@ -1,7 +1,7 @@
 package com.example.delparque.service.impl;
 
-import com.example.delparque.model.UserImage;
-import com.example.delparque.repository.UserImageRepository;
+import com.example.delparque.model.User;
+import com.example.delparque.repository.UsersRepository;
 import com.example.delparque.service.FilesStorageService;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -20,10 +20,10 @@ import java.util.stream.Stream;
 @Service
 public class FilesStorageServiceImpl implements FilesStorageService {
     private final Path root = Paths.get("backend/uploads");
-    private final UserImageRepository userImageRepository;
+    private final UsersRepository usersRepository;
 
-    FilesStorageServiceImpl(UserImageRepository userImageRepository) {
-        this.userImageRepository = userImageRepository;
+    FilesStorageServiceImpl(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
     }
 
     @Override
@@ -45,17 +45,11 @@ public class FilesStorageServiceImpl implements FilesStorageService {
             Path newFile = this.root.resolve(fileName);
             Files.copy(file.getInputStream(), newFile);
 
-            UserImage userImage = userImageRepository.findByUserId(userId).orElse(new UserImage());
+            User user = usersRepository.findById(userId).orElseThrow();
 
-            if (userImage.getId() == null) {
-                userImage.setId(UUID.randomUUID().toString());
-                userImage.setUserId(userId);
-            }
+            user.setPicture(fileName);
 
-            userImage.setUri(fileName);
-            userImage.setFilename(fileName);
-
-            userImageRepository.save(userImage);
+            usersRepository.save(user);
 
         } catch (Exception e) {
             throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
@@ -92,8 +86,4 @@ public class FilesStorageServiceImpl implements FilesStorageService {
         }
     }
 
-    @Override
-    public UserImage getFilenameByUserId(String userId) {
-        return userImageRepository.findByUserId(userId).orElse(null);
-    }
 }

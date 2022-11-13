@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface VisitantesService {
 
-    List<Visitante> findAll();
+    List<Visitante> findAllByUserId(String userId);
 
     Page<Visitante> findAllByAuthorized(Integer page, String userId);
 

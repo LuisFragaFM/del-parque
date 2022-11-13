@@ -13,8 +13,8 @@ export class VisitantesService {
   constructor(private http: HttpClient) {
   }
 
-  findAll(): Observable<Visitante[]> {
-    return this.http.get<Visitante[]>(`${environment.baseUrl}/visitantes`);
+  findAllByUserId(userId: string): Observable<Visitante[]> {
+    return this.http.get<Visitante[]>(`${environment.baseUrl}/visitantes?userId=${userId}`);
   }
 
   getVisitantesUnauthorizedCondomino(page: number = 0): Observable<VisitantePage> {

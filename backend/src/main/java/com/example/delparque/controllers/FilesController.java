@@ -22,13 +22,13 @@ public class FilesController {
         this.filesStorageService = filesStorageService;
     }
 
-    @PostMapping("uploads/{condominoId}")
+    @PostMapping("uploads/{userId}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<Map<String, Object>> uploadFile(@RequestParam("file") MultipartFile file,
-                                                          @PathVariable String condominoId) {
+                                                          @PathVariable String userId) {
         Map<String, Object> response = new HashMap<>();
         try {
-            filesStorageService.save(file, condominoId);
+            filesStorageService.save(file, userId);
 
             response.put("message", "Archivo subido exitosamente");
 
@@ -45,9 +45,4 @@ public class FilesController {
         return filesStorageService.load(filename);
     }
 
-    @GetMapping("/filename/{userId}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_RESIDENT')")
-    public Map<String, String> getFileName(@PathVariable String userId) {
-        return Map.of("filename", filesStorageService.getFilenameByUserId(userId).getFilename());
-    }
 }

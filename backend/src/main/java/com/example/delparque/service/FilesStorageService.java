@@ -1,6 +1,5 @@
 package com.example.delparque.service;
 
-import com.example.delparque.model.UserImage;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +16,4 @@ public interface FilesStorageService {
     void deleteAll();
 
     Stream<Path> loadAll();
-
-    UserImage getFilenameByUserId(String userId);
 }

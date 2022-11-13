@@ -42,8 +42,8 @@ public class VisitantesServiceImpl implements VisitantesService {
     }
 
     @Override
-    public List<Visitante> findAll() {
-        return visitantesRepository.findAll().stream()
+    public List<Visitante> findAllByUserId(String userId) {
+        return visitantesRepository.findAllByUserId(userId).stream()
                 .map(this::addExtraInfo)
                 .collect(Collectors.toList());
     }

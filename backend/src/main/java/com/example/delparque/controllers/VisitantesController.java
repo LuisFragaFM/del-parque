@@ -23,8 +23,8 @@ public class VisitantesController {
 
     @GetMapping()
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD')")
-    public List<Visitante> findAll() {
-        return visitantesService.findAll();
+    public List<Visitante> findAllByUserId(@RequestParam String userId) {
+        return visitantesService.findAllByUserId(userId);
     }
 
     @GetMapping("/un-authorized/condomino")

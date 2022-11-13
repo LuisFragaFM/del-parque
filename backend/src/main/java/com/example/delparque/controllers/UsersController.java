@@ -48,10 +48,4 @@ public class UsersController {
 
         return usersService.buildUserForEmail(email);
     }
-
-    @GetMapping("/api/register")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public User register(@RequestBody() User user) {
-        return usersService.register(user);
-    }
 }

@@ -5,18 +5,10 @@ CREATE TABLE users
     password             varchar(100),
     name                 varchar(40),
     role                 varchar(45),
+    picture              varchar(140),
     telephone_number     varchar(40),
     emergency_number     varchar(40),
     reset_password_token varchar(40)
-);
-
-CREATE TABLE user_image
-(
-    id       varchar(40) primary key,
-    uri      varchar(140),
-    filename varchar(140),
-    user_id  varchar(40),
-    foreign key (user_id) references users (id) on delete cascade on update cascade
 );
 
 CREATE TABLE condominos
@@ -82,7 +74,7 @@ CREATE TABLE visitantes
     arrival_booth   varchar(120),
     departure_booth varchar(120),
     authorized      boolean,
-    gone_out        boolean,
+    check_out       boolean,
     user_id         varchar(40),
     foreign key (authorization) references users (id) on delete cascade on update cascade,
     foreign key (user_id) references users (id) on delete cascade on update cascade

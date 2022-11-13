@@ -5,8 +5,6 @@ import com.example.delparque.config.EmailSender;
 import com.example.delparque.dto.ResetPassword;
 import com.example.delparque.exception.DelParqueSystemException;
 import com.example.delparque.model.User;
-import com.example.delparque.model.UserImage;
-import com.example.delparque.repository.UserImageRepository;
 import com.example.delparque.repository.UsersRepository;
 import com.example.delparque.service.UsersService;
 import com.example.delparque.service.mappers.UserMapper;
@@ -35,19 +33,17 @@ public class UsersServiceImpl implements UsersService {
     private final Default def;
     private final UsersRepository usersRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final UserImageRepository userImageRepository;
 
     UsersServiceImpl(UsersRepository usersRepository,
                      BCryptPasswordEncoder bCryptPasswordEncoder,
                      JavaMailSender mailSender,
                      EmailSender emailSender,
-                     Default def, UserImageRepository userImageRepository) {
+                     Default def) {
         this.usersRepository = usersRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.mailSender = mailSender;
         this.emailSender = emailSender;
         this.def = def;
-        this.userImageRepository = userImageRepository;
     }
 
     @Override
@@ -133,10 +129,6 @@ public class UsersServiceImpl implements UsersService {
     public com.example.delparque.dto.User buildUserForEmail(String email) {
         User user = usersRepository.findByEmail(email).orElseThrow();
 
-        String picture = userImageRepository.findByUserId(user.getId())
-                .orElse(UserImage.builder().uri("").build())
-                .getUri();
-
         return com.example.delparque.dto.User.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -144,7 +136,7 @@ public class UsersServiceImpl implements UsersService {
                 .emergencyNumber(user.getEmergencyNumber())
                 .name(user.getName())
                 .role(user.getRole())
-                .picture(picture)
+                .picture(user.getPicture())
                 .build();
     }
 

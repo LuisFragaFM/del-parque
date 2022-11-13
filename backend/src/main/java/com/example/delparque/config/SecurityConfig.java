@@ -34,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
-                .antMatchers("/api/users/register")
                 .antMatchers("/forgot_password")
                 .antMatchers("/reset_password");
     }

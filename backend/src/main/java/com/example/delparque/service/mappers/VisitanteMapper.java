@@ -19,7 +19,7 @@ public class VisitanteMapper {
                 .departureDate(visitante.getDepartureDate())
                 .departureTime(visitante.getDepartureTime())
                 .authorization(visitante.getAuthorization())
-                .goneOut(visitante.isGoneOut())
+                .checkOut(visitante.isCheckOut())
                 .build();
     }
 
@@ -39,7 +39,7 @@ public class VisitanteMapper {
                 .departureDate(visitante.getDepartureDate())
                 .departureTime(visitante.getDepartureTime())
                 .authorization(visitante.getAuthorization())
-                .goneOut(visitante.isGoneOut())
+                .checkOut(visitante.isCheckOut())
                 .userId(visitante.getCondomino().getUserId())
                 .build();
     }
