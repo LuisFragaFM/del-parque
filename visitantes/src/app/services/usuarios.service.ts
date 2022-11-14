@@ -12,6 +12,10 @@ export class UsuariosService {
   constructor(private http: HttpClient) {
   }
 
+  findById(id: string): Observable<User> {
+    return this.http.get<User>(`${environment.baseUrl}/users/${id}`);
+  }
+
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.baseUrl}/users`);
   }

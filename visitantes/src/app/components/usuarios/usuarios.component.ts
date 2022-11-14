@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UsuariosService} from "../../services/usuarios.service";
 import {User} from "../../models/user";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-usuarios',
@@ -10,6 +11,7 @@ import {User} from "../../models/user";
 export class UsuariosComponent implements OnInit {
   users: User[] = [];
   isLoading: boolean = true;
+  environment = environment.baseUrl;
 
   constructor(private usuariosService: UsuariosService) {
   }
@@ -17,6 +19,9 @@ export class UsuariosComponent implements OnInit {
   ngOnInit(): void {
     this.usuariosService.getAllUsers().subscribe((users) => {
       this.users = users;
+      this.users.forEach(user => {
+        user.picture = this.environment + '/file/' + user.picture;
+      });
       this.isLoading = false;
     })
   }

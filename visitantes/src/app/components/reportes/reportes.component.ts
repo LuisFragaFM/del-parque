@@ -7,6 +7,7 @@ import {environment} from "../../../environments/environment";
 import {User} from "../../models/user";
 import {VisitantesService} from "../../services/visitantes.service";
 import {Visitante} from "../../models/visitante";
+import {UsuariosService} from "../../services/usuarios.service";
 
 
 interface VisitanteReporte {
@@ -34,15 +35,16 @@ export class ReportesComponent implements OnInit {
   uri: any = '';
   files!: FileList;
 
-  constructor(private condominosService: CondominosService, 
-    private reporteService: ReporteService,
-    private uploadFilesService: UploadFilesService,
-    private visitantesService: VisitantesService) {
+  constructor(private condominosService: CondominosService,
+              private reporteService: ReporteService,
+              private uploadFilesService: UploadFilesService,
+              private visitantesService: VisitantesService,
+              private usuariosService: UsuariosService) {
   }
+
   ngOnInit(): void {
     this.condomino.user = {} as User;
     this.visitantes[0].licensePlates
-    
   }
 
   findInquilinoByName() {
@@ -55,10 +57,10 @@ export class ReportesComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = undefined;
-    this.uploadFilesService.loadFilename(this.condomino.user.id).subscribe(({filename}) => {
-      this.uri = this.environment + '/file/' + filename;
+    this.usuariosService.findById(this.condomino.user.id).subscribe(user => {
+      this.uri = this.environment + '/file/' + user.picture;
     });
-    this.visitantesService.findAllByUserId(this.condomino.user.id).subscribe(visitantes  => {
+    this.visitantesService.findAllByUserId(this.condomino.user.id).subscribe(visitantes => {
       this.visitantes = visitantes;
     });
   }
@@ -75,17 +77,17 @@ export class ReportesComponent implements OnInit {
     }
   }
 
-  printReport(){
+  printReport() {
     const encabezado = ["Nombre", "Vehiculo", "Placas", "Fecha llegada", "Fecha salida"];
 
-    const cuerpo  = this.visitantes.map((visitante) => {
+    const cuerpo = this.visitantes.map((visitante) => {
       const visitanteReporte: VisitanteReporte = {
         name: visitante.name,
         vehicle: visitante.vehicle,
         licensePlates: visitante.licensePlates,
         arrivalDate: visitante.arrivalDate,
         departureDate: visitante.departureDate
-        
+
       }
       return Object.values(visitanteReporte);
     })

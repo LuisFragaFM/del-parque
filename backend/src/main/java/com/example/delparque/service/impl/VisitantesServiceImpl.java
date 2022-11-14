@@ -81,9 +81,9 @@ public class VisitantesServiceImpl implements VisitantesService {
     }
 
     @Override
-    public Page<Visitante> findAllByGoneOut(Integer page) {
+    public Page<Visitante> findAllByCheckOutIs(Integer page) {
 
-        List<Visitante> visitantes = visitantesRepository.findAllByGoneOutIs(false).stream()
+        List<Visitante> visitantes = visitantesRepository.findAllByCheckOutIs(false).stream()
                 .map(this::addExtraInfo).toList();
 
         Pageable pageable = PageRequest.of(page, 10);

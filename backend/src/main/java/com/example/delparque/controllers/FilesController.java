@@ -3,6 +3,7 @@ package com.example.delparque.controllers;
 import com.example.delparque.service.FilesStorageService;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -40,9 +41,13 @@ public class FilesController {
     }
 
     @GetMapping("/file/{filename}")
+    @ResponseBody
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD', 'ROLE_RESIDENT')")
-    public Resource getFile(@PathVariable String filename) {
-        return filesStorageService.load(filename);
+    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+        Resource file = filesStorageService.load(filename);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG).body(file);
     }
 
 }

@@ -9,6 +9,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public interface UsersService {
+
+    com.example.delparque.dto.User findById(String id);
+
     User findUserByEmailAndPassword(String email, String password);
 
     void sendMailForRecoverPassword(HttpServletRequest httpServletRequest)

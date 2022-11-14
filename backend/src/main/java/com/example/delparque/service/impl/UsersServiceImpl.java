@@ -47,6 +47,11 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public com.example.delparque.dto.User findById(String id) {
+        return UserMapper.entityToDto(usersRepository.findById(id).orElseThrow());
+    }
+
+    @Override
     public User findUserByEmailAndPassword(String email, String password) {
         User user = usersRepository.findByEmail(email).orElseThrow();
 

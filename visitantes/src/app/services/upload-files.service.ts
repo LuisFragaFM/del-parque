@@ -24,8 +24,8 @@ export class UploadFilesService {
     return this.http.request(req);
   }
 
-  loadFilename(condominoId: string):Observable<any> {
-    return this.http.get<any>(`${environment.baseUrl}/filename/${condominoId}`);
+  load(file: string): Observable<any> {
+    return this.http.get<any>(`${environment.baseUrl}/file/${file}`);
   }
 
 }

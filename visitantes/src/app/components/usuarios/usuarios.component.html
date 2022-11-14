@@ -5,6 +5,7 @@
     <th scope="col">Nombre</th>
     <th scope="col">Correo Electronico</th>
     <th scope="col">Role</th>
+    <th scope="col">Imagen</th>
   </tr>
   </thead>
   <tbody>
@@ -17,6 +18,9 @@
     </td>
     <td>
       <span>{{user.role | role}}</span>
+    </td>
+    <td>
+      <img [src]="user.picture" alt="" class="img">
     </td>
   </tr>
   </tbody>

@@ -13,7 +13,7 @@ public interface VisitantesService {
 
     Page<Visitante> findAllByAuthorized(Integer page);
 
-    Page<Visitante> findAllByGoneOut(Integer page);
+    Page<Visitante> findAllByCheckOutIs(Integer page);
 
     Visitante findById(String id);
 

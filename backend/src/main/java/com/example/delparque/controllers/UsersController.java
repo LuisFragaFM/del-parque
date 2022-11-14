@@ -24,6 +24,12 @@ public class UsersController {
         this.sessionHelper = sessionHelper;
     }
 
+    @GetMapping("/api/users/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_RESIDENT', 'ROLE_GUARD')")
+    public User findById(@PathVariable String id) {
+        return usersService.findById(id);
+    }
+
     @GetMapping("/api/users")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public List<User> getAllUsers() {

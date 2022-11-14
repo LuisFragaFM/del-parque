@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { CondominosService } from '../../services/condominos.service';
-import { Condomino } from '../../models/condomino';
+import {Component, OnInit} from '@angular/core';
+import {CondominosService} from '../../services/condominos.service';
+import {Condomino} from '../../models/condomino';
 import Swal from 'sweetalert2';
-import { UploadFilesService } from '../../services/upload-files.service';
-import { environment } from '../../../environments/environment';
-import { User } from '../../models/user';
-import { validaInput } from 'src/app/tools/validation';
+import {UploadFilesService} from '../../services/upload-files.service';
+import {environment} from '../../../environments/environment';
+import {User} from '../../models/user';
+import {validaInput} from 'src/app/tools/validation';
+import {UsuariosService} from "../../services/usuarios.service";
 
 @Component({
   selector: 'app-modificacion_condomino',
@@ -33,8 +34,10 @@ export class Modificacion_CondominoComponent implements OnInit {
 
   constructor(
     private condominosService: CondominosService,
-    private uploadFilesService: UploadFilesService
-  ) {}
+    private uploadFilesService: UploadFilesService,
+    private usuariosService: UsuariosService
+  ) {
+  }
 
   ngOnInit(): void {
     this.condomino.user = {} as User;
@@ -58,7 +61,8 @@ export class Modificacion_CondominoComponent implements OnInit {
         if (this.files) {
           this.uploadFilesService
             .upload(this.files[0], condomino.user.id)
-            .subscribe(() => {});
+            .subscribe(() => {
+            });
         }
       });
       this.condomino = {} as Condomino;
@@ -96,11 +100,9 @@ export class Modificacion_CondominoComponent implements OnInit {
     this.condomino = condomino;
     this.condominos = [];
     this.name = undefined;
-    this.uploadFilesService
-      .loadFilename(this.condomino.user.id)
-      .subscribe(({ filename }) => {
-        this.uri = this.environment + '/file/' + filename;
-      });
+    this.usuariosService.findById(this.condomino.user.id).subscribe(user => {
+      this.uri = this.environment + '/file/' + user.picture;
+    });
   }
 
   changeImage(event: Event): void {
@@ -114,13 +116,16 @@ export class Modificacion_CondominoComponent implements OnInit {
       this.uri = reader.result;
     };
   }
+
   // funcion para validacion
   validaResidente(regex: any, nombre: string) {
     this.altaName = validaInput(regex, nombre);
   }
+
   validaTel(regex: any, telResidente: string) {
     this.altaTelResidente = validaInput(regex, telResidente);
   }
+
   validaCalle(regex: any, calle: string) {
     this.altaStreet = validaInput(regex, calle);
   }
@@ -128,9 +133,11 @@ export class Modificacion_CondominoComponent implements OnInit {
   validaCorreo(regex: any, correo: string) {
     this.altaMail = validaInput(regex, correo);
   }
+
   validaEmergencia(regex: any, telEmergencia: string) {
     this.altaTelEmergencia = validaInput(regex, telEmergencia);
   }
+
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
     return (

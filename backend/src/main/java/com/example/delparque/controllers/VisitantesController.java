@@ -41,10 +41,10 @@ public class VisitantesController {
         return visitantesService.findAllByAuthorized(page);
     }
 
-    @GetMapping("/gone-out")
+    @GetMapping("/check-out")
     @PreAuthorize("hasAnyRole('ROLE_GUARD', 'ROLE_ADMIN')")
-    public Page<Visitante> findAllByGoneOut(@RequestParam Integer page) {
-        return visitantesService.findAllByGoneOut(page);
+    public Page<Visitante> findAllByCheckOutIs(@RequestParam Integer page) {
+        return visitantesService.findAllByCheckOutIs(page);
     }
 
     @GetMapping("{id}")
