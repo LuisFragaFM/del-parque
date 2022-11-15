@@ -24,33 +24,6 @@
       </div>
       <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
-          <!-- validacion de nombre del trabajador -->
-          <label class="form-label" for="nombre-trabajador">Nombre</label>
-          <!-- Input para ingresar nombre de trabajador -->
-          <input
-            class="form-control"
-            (keyup)="validaTrabajador(regexName, nombreTrabajador.value)"
-            required
-            #nombreTrabajador
-            autocomplete="off"
-            type="text"
-            placeholder="Escriba aquí"
-            name="nombre-trabajador"
-            id="nombre-trabajador"
-            [(ngModel)]="trabajador.name"
-          />
-          <!--Alerta de datos -->
-          <div
-            id="alertName"
-            class="alert alert-danger"
-            *ngIf="!trabajadorName"
-          >
-            Favor de agregar solamente letras en este campo
-          </div>
-        </div>
-      </div>
-      <div class="row g-2 mt-2 justify-content-center align-items-center">
-        <div class="col-6">
           <!--Nombre condomino -->
           <label class="form-label" for="nombre_condomino"
             >Nombre del condómino</label
@@ -83,69 +56,102 @@
           <!--  -->
         </div>
       </div>
-
       <div class="row g-2 mt-2 justify-content-center align-items-center">
         <div class="col-6">
-          <label class="form-label" for="nombre-condomino"
+          <!-- validacion de nombre del trabajador -->
+          <label class="form-label" for="nombre-trabajador">Nombre</label>
+          <!-- Input para ingresar nombre de trabajador -->
+          <input
+            class="form-control"
+            (keyup)="validaTrabajador(regexName, nombreTrabajador.value)"
+            required
+            #nombreTrabajador
+            autocomplete="off"
+            type="text"
+            placeholder="Escriba aquí"
+            name="nombre-trabajador"
+            id="nombre-trabajador"
+            [(ngModel)]="trabajador.name"
+          />
+          <!--Alerta de datos -->
+          <div
+            id="alertName"
+            class="alert alert-danger"
+            *ngIf="!trabajadorName"
+          >
+            Favor de agregar solamente letras en este campo
+          </div>
+        </div>
+        
+        
+        
+        
+      </div>
+
+      <div class="row g-2 mt-2 justify-content-center align-items-center">
+        <label class="form-label " for="nombre-condomino"
             >Dias de trabajo</label
           >
-          <div class="d-flex flex-column">
+        <div class="col-6 ">
+          
+          <div class="d-flex flex-wrap">
             <span
-              >Lunes<input
+               class="alert alert-primary"><input
                 type="checkbox"
                 name="Lunes"
                 [checked]="hasDay('monday')"
                 value="MONDAY"
+                checked autocomplete="off"
                 (click)="addDay('monday')"
-            /></span>
+            /> Lunes </span>
             <span
-              >Martes<input
+            class="alert alert-primary"><input
                 type="checkbox"
                 name="Martes"
                 [checked]="hasDay('tuesday')"
                 value="TUESDAY"
                 (click)="addDay('tuesday')"
-            /></span>
+            /> Martes </span>
             <span
-              >Miercoles<input
+            class="alert alert-primary"><input
                 type="checkbox"
                 name="Miercoles"
                 [checked]="hasDay('wednesday')"
                 value="WEDNESDAY"
                 (click)="addDay('wednesday')"
-            /></span>
+            /> Miercoles </span>
             <span
-              >Jueves<input
+            class="alert alert-primary"><input
                 type="checkbox"
                 name="Thursday"
                 [checked]="hasDay('thursday')"
                 value="THURSDAY"
                 (click)="addDay('thursday')"
-            /></span>
+            /> Jueves </span>
             <span
-              >Viernes<input
+            class="alert alert-primary"><input
                 type="checkbox"
                 name="Friday"
                 [checked]="hasDay('friday')"
                 value="FRIDAY"
                 (click)="addDay('friday')"
-            /></span>
+            /> Viernes </span>
             <span
-              >Sadado<input
+            class="alert alert-primary"><input
                 (click)="addDay('saturday')"
                 [checked]="hasDay('saturday')"
                 name="Saturday"
                 type="checkbox"
                 value="SATURDAY"
-            /></span>
+            /> Sadado </span>
             <span
-              >Domingo<input
+            class="alert alert-primary" ><input
                 (click)="addDay('sunday')"
                 [checked]="hasDay('sunday')"
                 name="Sunday"
                 type="checkbox"
                 value="SUNDAY"
-            /></span>
+            /> Domingo </span>
           </div>
         </div>
       </div>

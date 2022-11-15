@@ -5,6 +5,8 @@
   height: 100% !important;
   max-width: auto;
   height: fit-content;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .tarjet{
@@ -18,14 +20,13 @@
 
 
 
-.busqueda{
+.busqueda {
   background-color: rgb(159, 211, 176);
   overflow: scroll;
   overflow-x: hidden;
   position: absolute;
   border-radius: 5px;
-  width: auto;
-  height: 40px;
+  padding: 4px 8px;
 }
 .cursor
 {
