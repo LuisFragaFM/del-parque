@@ -6,7 +6,7 @@ import {UploadFilesService} from '../../services/upload-files.service';
 import {environment} from '../../../environments/environment';
 import {User} from '../../models/user';
 import {validaInput} from 'src/app/tools/validation';
-import {UsuariosService} from "../../services/usuarios.service";
+import {UsuariosService} from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-modificacion_condomino',
@@ -14,18 +14,16 @@ import {UsuariosService} from "../../services/usuarios.service";
   styleUrls: ['./modificacion_condomino.component.css'],
 })
 export class Modificacion_CondominoComponent implements OnInit {
-  name: string | undefined;
+  name = '';
   condomino: Condomino = {} as Condomino;
   condominos: Condomino[] = [];
-  //Variable para validar nombre y activar boton
-  altaName: boolean = true;
-  altaTelEmergencia: boolean = true;
-  altaTelResidente: boolean = true;
-  altaMail: boolean = true;
-  altaStreet: boolean = true;
-  //Validacion
+  altaName = true;
+  altaTelEmergencia = true;
+  altaTelResidente = true;
+  altaMail = true;
+  altaStreet = true;
   regexName: any = /[\S\s]+[\S]+/;
-  regexTel: any = /^\+?[1-9][0-9]{1,12}$/; //recibe paquete
+  regexTel: any = /^\+?[1-9][0-9]{1,12}$/;
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
   image: any;
   environment = environment.baseUrl;
@@ -43,13 +41,13 @@ export class Modificacion_CondominoComponent implements OnInit {
     this.condomino.user = {} as User;
   }
 
-  findInquilinoByName() {
-    this.condominosService.findByName(this.name!).subscribe((condominos) => {
+  findInquilinoByName(): void {
+    this.condominosService.findByName(this.name).subscribe((condominos) => {
       this.condominos = condominos;
     });
   }
 
-  modify() {
+  modify(): void {
     this.condominosService.save(this.condomino).subscribe((condomino) => {
       Swal.fire({
         title: `El condomino de ${condomino.user.name} fue guardado correctamente`,
@@ -72,7 +70,7 @@ export class Modificacion_CondominoComponent implements OnInit {
     });
   }
 
-  delete() {
+  delete(): void {
     Swal.fire({
       title: `Estas seguro que deseas borrar este condomino?`,
       icon: 'warning',
@@ -96,10 +94,10 @@ export class Modificacion_CondominoComponent implements OnInit {
     });
   }
 
-  selectInquilino(condomino: Condomino) {
+  selectInquilino(condomino: Condomino): void {
     this.condomino = condomino;
     this.condominos = [];
-    this.name = undefined;
+    this.name = '';
     this.usuariosService.findById(this.condomino.user.id).subscribe(user => {
       this.uri = this.environment + '/file/' + user.picture;
     });
@@ -118,23 +116,23 @@ export class Modificacion_CondominoComponent implements OnInit {
   }
 
   // funcion para validacion
-  validaResidente(regex: any, nombre: string) {
+  validaResidente(regex: any, nombre: string): void {
     this.altaName = validaInput(regex, nombre);
   }
 
-  validaTel(regex: any, telResidente: string) {
+  validaTel(regex: any, telResidente: string): void {
     this.altaTelResidente = validaInput(regex, telResidente);
   }
 
-  validaCalle(regex: any, calle: string) {
+  validaCalle(regex: any, calle: string): void {
     this.altaStreet = validaInput(regex, calle);
   }
 
-  validaCorreo(regex: any, correo: string) {
+  validaCorreo(regex: any, correo: string): void {
     this.altaMail = validaInput(regex, correo);
   }
 
-  validaEmergencia(regex: any, telEmergencia: string) {
+  validaEmergencia(regex: any, telEmergencia: string): void {
     this.altaTelEmergencia = validaInput(regex, telEmergencia);
   }
 

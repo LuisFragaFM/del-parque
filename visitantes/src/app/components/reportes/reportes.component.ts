@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {CondominosService} from "../../services/condominos.service";
-import {Condomino} from "../../models/condomino";
-import {ReporteService} from "../../services/reporte.service";
-import {UploadFilesService} from "../../services/upload-files.service";
-import {environment} from "../../../environments/environment";
-import {User} from "../../models/user";
-import {VisitantesService} from "../../services/visitantes.service";
-import {Visitante} from "../../models/visitante";
-import {UsuariosService} from "../../services/usuarios.service";
+import {CondominosService} from '../../services/condominos.service';
+import {Condomino} from '../../models/condomino';
+import {ReporteService} from '../../services/reporte.service';
+import {UploadFilesService} from '../../services/upload-files.service';
+import {environment} from '../../../environments/environment';
+import {User} from '../../models/user';
+import {VisitantesService} from '../../services/visitantes.service';
+import {Visitante} from '../../models/visitante';
+import {UsuariosService} from '../../services/usuarios.service';
 
 
 interface VisitanteReporte {
@@ -25,7 +25,7 @@ interface VisitanteReporte {
 })
 export class ReportesComponent implements OnInit {
 
-  name: string | undefined;
+  name = '';
   phone: string | undefined;
   condomino: Condomino = {} as Condomino;
   condominos: Condomino[] = [];
@@ -44,19 +44,18 @@ export class ReportesComponent implements OnInit {
 
   ngOnInit(): void {
     this.condomino.user = {} as User;
-    this.visitantes[0].licensePlates
   }
 
-  findInquilinoByName() {
-    this.condominosService.findByName(this.name!).subscribe(condominos => {
+  findInquilinoByName(): void {
+    this.condominosService.findByName(this.name).subscribe(condominos => {
       this.condominos = condominos;
     });
   }
 
-  selectInquilino(condomino: Condomino) {
+  selectInquilino(condomino: Condomino): void {
     this.condomino = condomino;
     this.condominos = [];
-    this.name = undefined;
+    this.name = '';
     this.usuariosService.findById(this.condomino.user.id).subscribe(user => {
       this.uri = this.environment + '/file/' + user.picture;
     });
@@ -65,20 +64,8 @@ export class ReportesComponent implements OnInit {
     });
   }
 
-  changeImage(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.files = target.files as FileList;
-
-    const reader = new FileReader();
-    reader.readAsDataURL(this.files[0]);
-
-    reader.onload = (_event) => {
-      this.uri = reader.result;
-    }
-  }
-
-  printReport() {
-    const encabezado = ["Nombre", "Vehiculo", "Placas", "Fecha llegada", "Fecha salida"];
+  printReport(): void {
+    const encabezado = ['Nombre', 'Vehiculo', 'Placas', 'Fecha llegada', 'Fecha salida'];
 
     const cuerpo = this.visitantes.map((visitante) => {
       const visitanteReporte: VisitanteReporte = {
@@ -88,11 +75,11 @@ export class ReportesComponent implements OnInit {
         arrivalDate: visitante.arrivalDate,
         departureDate: visitante.departureDate
 
-      }
+      };
       return Object.values(visitanteReporte);
-    })
+    });
 
-    this.reporteService.imprimir(encabezado, cuerpo, "Reporte de visitas " + this.condomino.user.name, true);
+    this.reporteService.imprimir(encabezado, cuerpo, 'Reporte de visitas ' + this.condomino.user.name, true);
   }
 
 }

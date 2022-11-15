@@ -14,13 +14,11 @@ import {User} from '../../models/user';
 export class RegistrarCondominoComponent implements OnInit {
   condomino: Condomino = {} as Condomino;
 
-  //Variables
-  altaName: boolean = true;
-  altaTelEmergencia: boolean = true;
-  altaTelResidente: boolean = true;
-  altaMail: boolean = true;
-  altaStreet: boolean = true;
-  //Validacion
+  altaName = true;
+  altaTelEmergencia = true;
+  altaTelResidente = true;
+  altaMail = true;
+  altaStreet = true;
   regexName: any = /[\S\s]+[\S]+/;
   regexTel: any = /^\+?[1-9][0-9]{1,12}$/;
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
@@ -37,7 +35,7 @@ export class RegistrarCondominoComponent implements OnInit {
     this.condomino.user = {} as User;
   }
 
-  save() {
+  save(): void {
     this.condominosService.save(this.condomino).subscribe((condomino) => {
       Swal.fire({
         title: `El condomino ${condomino.user.name} fue guardado correctamente`,
@@ -59,7 +57,7 @@ export class RegistrarCondominoComponent implements OnInit {
     });
   }
 
-  showImage(event: Event) {
+  showImage(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.files = target.files as FileList;
 
@@ -72,23 +70,23 @@ export class RegistrarCondominoComponent implements OnInit {
   }
 
   // funcion para validacion
-  validaResidente(regex: any, nombre: string) {
+  validaResidente(regex: any, nombre: string): void {
     this.altaName = validaInput(regex, nombre);
   }
 
-  validaEmergencia(regex: any, telEmergencia: string) {
+  validaEmergencia(regex: any, telEmergencia: string): void {
     this.altaTelEmergencia = validaInput(regex, telEmergencia);
   }
 
-  validaTel(regex: any, telResidente: string) {
+  validaTel(regex: any, telResidente: string): void {
     this.altaTelResidente = validaInput(regex, telResidente);
   }
 
-  validaCorreo(regex: any, correo: string) {
+  validaCorreo(regex: any, correo: string): void {
     this.altaMail = validaInput(regex, correo);
   }
 
-  validaCalle(regex: any, calle: string) {
+  validaCalle(regex: any, calle: string): void {
     this.altaStreet = validaInput(regex, calle);
   }
 

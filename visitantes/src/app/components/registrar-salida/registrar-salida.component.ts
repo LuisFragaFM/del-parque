@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {VisitantesService} from "../../services/visitantes.service";
-import {Visitante} from "../../models/visitante";
+import {VisitantesService} from '../../services/visitantes.service';
+import {Visitante} from '../../models/visitante';
 
 @Component({
   selector: 'app-registrar-salida',

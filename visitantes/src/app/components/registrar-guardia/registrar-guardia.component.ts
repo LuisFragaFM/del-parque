@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UploadFilesService} from '../../services/upload-files.service';
-import Swal from "sweetalert2";
-import {User} from "../../models/user";
-import {GuardiasService} from "../../services/guardias.service";
+import Swal from 'sweetalert2';
+import {User} from '../../models/user';
+import {GuardiasService} from '../../services/guardias.service';
 
 @Component({
   selector: 'app-registrar-guardia',
@@ -22,7 +22,7 @@ export class RegistrarGuardiaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showImage(event: Event) {
+  showImage(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.files = target.files as FileList;
 
@@ -35,7 +35,7 @@ export class RegistrarGuardiaComponent implements OnInit {
 
   }
 
-  save() {
+  save(): void {
     this.guardiasService.register(this.guardia).subscribe((guardia) => {
       Swal.fire({
         title: `El Guardia ${guardia.name} fue guardado correctamente`,

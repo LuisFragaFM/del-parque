@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {VisitantesService} from "../../services/visitantes.service";
-import {Visitante} from "../../models/visitante";
-import Swal from "sweetalert2";
+import {VisitantesService} from '../../services/visitantes.service';
+import {Visitante} from '../../models/visitante';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-visitas_agendadas_condomino',
@@ -14,42 +14,27 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
   name: string | undefined;
   visitante: Visitante = {} as Visitante;
   visitantes: Visitante[] = [];
-  page: number = 0;
+  page = 0;
   listOfPages: number[] = [];
 
   constructor(private visitantesService: VisitantesService) {
   }
 
   ngOnInit(): void {
-    //Paginacion
     this.visitantesService.getVisitantesUnauthorizedCondomino(0).subscribe(({content: visitantes}) => {
       this.visitantes = visitantes;
     });
 
   }
 
-  // busqueda de visitante
-  findVisitante() {
-    if (this.name) {
-      this.visitantesService.findByName(this.name).subscribe(visitante => {
-        this.visitante = visitante;
-      });
-    } else {
-      this.visitantesService.findByName(this.name!).subscribe(visitante => {
-        this.visitante = visitante;
-      });
-    }
-
-  }
-
-  updatePage(page: number) {
+  updatePage(page: number): void {
     this.page = page - 1;
     this.visitantesService.getVisitantesUnauthorizedCondomino(this.page).subscribe(({content: visitantes}) => {
       this.visitantes = visitantes;
-    })
+    });
   }
 
-  delete(id: string) {
+  delete(id: string): void {
     Swal.fire({
       title: `Estas seguro que quieres eliminar esta visita?`,
       icon: 'warning',

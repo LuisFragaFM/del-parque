@@ -12,7 +12,7 @@
  }
 
  button{
-    border-radius: 5 px;
+    border-radius: 5px;
     margin: 10px;
 
   }
@@ -31,18 +31,18 @@
   {
     padding-left: 8px;
   }
-  
+
   :hover.cursor{
     background-color: rgb(31, 146, 70);
     font-weight: bold;
   }
 
- 
+
 
   /*
 .Title1{
     margin: 30px;
-    
+
 }
 
 .Form{

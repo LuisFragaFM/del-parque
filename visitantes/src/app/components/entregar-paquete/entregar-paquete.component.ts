@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-// modelos, servicios y alertas
-import {Paquete} from "../../models/paquete"; //Modelo de paquete
-import {PaquetesService} from "../../services/paquetes.service"; //Servicio de paquete
-import Swal from "sweetalert2";
-import {SessionService} from "../../services/session.service";
-import {Visitante} from "../../models/visitante";
+import {Paquete} from '../../models/paquete';
+import {PaquetesService} from '../../services/paquetes.service';
+import Swal from 'sweetalert2';
+import {SessionService} from '../../services/session.service';
+import {Visitante} from '../../models/visitante';
+import {formatDate} from '../../tools/formatDate';
+import {formatAMPM} from '../../tools/formatAMPM';
 
 @Component({
   selector: 'app-entregar-paquete',
@@ -15,9 +16,9 @@ export class EntregarPaqueteComponent implements OnInit {
   // datos para realizar la paginacion
   visitante: Visitante = {} as Visitante;
   paquetes: Paquete[] = [];
-  page: number = 0;
+  page = 0;
   listOfPages: number[] = [];
-  isLoading: boolean = true;
+  isLoading = true;
 
   constructor(private paquetesService: PaquetesService,
               private sessionService: SessionService) {
@@ -34,14 +35,14 @@ export class EntregarPaqueteComponent implements OnInit {
     });
     this.sessionService.getUser().subscribe(user => {
       this.visitante.authorization = user.name;
-    })
+    });
 
   }
 
   // Notificaciones de usuario
-  save(paquete: Paquete) {
-    paquete.deliveryDate = this.formatDate();
-    paquete.deliveryTime = this.formatAMPM();
+  save(paquete: Paquete): void {
+    paquete.deliveryDate = formatDate();
+    paquete.deliveryTime = formatAMPM();
     paquete.delivery = true;
     this.paquetesService.save(paquete).subscribe(entregaPaquete => {
       Swal.fire({
@@ -57,36 +58,11 @@ export class EntregarPaqueteComponent implements OnInit {
     });
   }
 
-  updatePage(page: number) {
+  updatePage(page: number): void {
     this.isLoading = true;
     this.paquetesService.getPaquetes(page).subscribe(({content: paquetes}) => {
       this.paquetes = paquetes;
       this.isLoading = false;
-    })
-  }
-
-  formatDate() {
-    const d = new Date()
-    let month = '' + (d.getMonth() + 1);
-    let day = '' + d.getDate();
-    let year = d.getFullYear();
-
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2)
-      day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
-
-  formatAMPM() {
-    const date = new Date();
-    let hours = date.getHours();
-    let minutes: number | string = date.getMinutes();
-    let ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    return hours + ':' + minutes + ' ' + ampm;
+    });
   }
 }

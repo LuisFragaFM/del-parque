@@ -7,8 +7,10 @@ import Swal from 'sweetalert2';
 import {validaInput} from 'src/app/tools/validation';
 import {SessionService} from '../../services/session.service';
 import {Visitante} from '../../models/visitante';
-import {CondominoInfo} from "../../models/condominoInfo";
-import { User } from 'src/app/models/user';
+import {CondominoInfo} from '../../models/condominoInfo';
+import {User} from 'src/app/models/user';
+import {formatAMPM} from '../../tools/formatAMPM';
+import {formatDate} from '../../tools/formatDate';
 
 @Component({
   selector: 'app-registrar-paqueteria',
@@ -21,14 +23,12 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   name!: string;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-  //Variable para validar nombre y activar boton
-  validacionEmpresa: boolean = true;
-  validacionGuia: boolean = true;
-  validacionRecibo: boolean = true;
-  fechaRecibo: boolean = true;
-  //Validaciones
-  regexName: any = /[\S\s]+[\S]+/; //empresa
-  error: boolean = false;
+  validacionEmpresa = true;
+  validacionGuia = true;
+  validacionRecibo = true;
+  fechaRecibo = true;
+  regexName: any = /[\S\s]+[\S]+/;
+  error = false;
   nameAuth!: string;
 
   constructor(
@@ -45,13 +45,13 @@ export class RegistrarPaqueteriaComponent implements OnInit {
     });
   }
 
-  findInquilinoByName() {
+  findInquilinoByName(): void {
     this.condominosService.findByName(this.name).subscribe((condominos) => {
       this.condominos = condominos;
     });
   }
 
-  save() {
+  save(): void {
     if (!this.paquete.condomino.userId) {
       this.error = true;
       return;
@@ -69,37 +69,37 @@ export class RegistrarPaqueteriaComponent implements OnInit {
         this.condomino.user = {} as User;
         this.paquete.condomino = {} as CondominoInfo;
         this.name = '';
-        this.nameAuth='';
+        this.nameAuth = '';
         this.condominos = [];
       });
     });
   }
 
-  selectInquilino(condomino: Condomino) {
+  selectInquilino(condomino: Condomino): void {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.user.name;
     this.paquete.condomino.userId = this.condomino.id;
     this.paquete.condomino.houseStreet = condomino.street;
     this.paquete.condomino.houseNumber = condomino.houseNumber;
-    this.paquete.arrivalTime = this.formatAMPM();
-    this.paquete.arrivalDate = this.formatDate();
+    this.paquete.arrivalTime = formatAMPM();
+    this.paquete.arrivalDate = formatDate();
   }
 
   // funcion para validacion
-  validaName(regex: any, nombreRecibo: string) {
+  validaName(regex: any, nombreRecibo: string): void {
     this.validacionEmpresa = validaInput(regex, nombreRecibo);
   }
 
-  validaGuia(regex: any, guiaRecibo: string) {
+  validaGuia(regex: any, guiaRecibo: string): void {
     this.validacionGuia = validaInput(regex, guiaRecibo);
   }
 
-  validaReci(regex: any, residenteRecibe: string) {
+  validaReci(regex: any, residenteRecibe: string): void {
     this.validacionRecibo = validaInput(regex, residenteRecibe);
   }
 
-  validaFecha(regex: any, fechaRecibe: string) {
+  validaFecha(regex: any, fechaRecibe: string): void {
     this.fechaRecibo = validaInput(regex, fechaRecibe);
   }
 
@@ -111,28 +111,5 @@ export class RegistrarPaqueteriaComponent implements OnInit {
       this.validacionRecibo &&
       this.fechaRecibo
     );
-  }
-
-  formatDate() {
-    const d = new Date();
-    let month = '' + (d.getMonth() + 1);
-    let day = '' + d.getDate();
-    let year = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
-
-  formatAMPM() {
-    const date = new Date();
-    let hours = date.getHours();
-    let minutes: number | string = date.getMinutes();
-    let ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    return hours + ':' + minutes + ' ' + ampm;
   }
 }

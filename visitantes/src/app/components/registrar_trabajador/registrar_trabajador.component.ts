@@ -5,10 +5,9 @@ import {CondominosService} from '../../services/condominos.service';
 import {Condomino} from '../../models/condomino';
 import {validaInput} from 'src/app/tools/validation';
 import Swal from 'sweetalert2';
-import {CondominoInfo} from "../../models/condominoInfo";
-import {ActivatedRoute} from "@angular/router";
-import {WorkDay} from "../../models/WorkDay";
-import { clippingParents } from '@popperjs/core';
+import {CondominoInfo} from '../../models/condominoInfo';
+import {ActivatedRoute} from '@angular/router';
+import {WorkDay} from '../../models/WorkDay';
 
 @Component({
   selector: 'app-registrar_trabajador',
@@ -18,18 +17,15 @@ import { clippingParents } from '@popperjs/core';
 export class RegistrarTrabajadorComponent implements OnInit {
   trabajador: Trabajador = {} as Trabajador;
   workDays: Map<string, WorkDay> = new Map();
-  // name: string | undefined;
   name!: string;
-  error: boolean = false;
+  error = false;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
-  //Variable para validar nombre y activar boton
-  trabajadorName: boolean = true;
-  validacionTel: boolean = true;
-  //Validaciones
+  trabajadorName = true;
+  validacionTel = true;
   regexName: any = /[\S\s]+[\S]+/;
-  regexTel: any = /^\+?[1-9][0-9]{5,12}$/; //recibe paquete
-  id: string = '';
+  regexTel: any = /^\+?[1-9][0-9]{5,12}$/;
+  id = '';
 
   constructor(
     private trabajadoresService: TrabajadoresService,
@@ -46,17 +42,16 @@ export class RegistrarTrabajadorComponent implements OnInit {
       this.trabajadoresService.findById(this.id).subscribe(trabajador => {
         this.trabajador = trabajador;
         trabajador.workDays.forEach(wd => this.workDays.set(wd.dayName, wd));
-      })
+      });
     }
 
     this.trabajador.workDays = [];
     this.trabajador.condominoInfo = {} as CondominoInfo;
   }
 
-  findInquilinoByName() {
+  findInquilinoByName(): void {
     this.condominosService.findByName(this.trabajador.condominoInfo.owner).subscribe((condominos) => {
       this.condominos = condominos;
-      // console.log(this.trabajador.condominoInfo.owner);
     });
   }
 
@@ -66,7 +61,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
     }
 
     this.trabajador.workDays = [];
-    this.workDays.forEach(value => this.trabajador.workDays.push(value))
+    this.workDays.forEach(value => this.trabajador.workDays.push(value));
 
     this.trabajadoresService.save(this.trabajador).subscribe((trabajador) => {
       Swal.fire({
@@ -85,20 +80,19 @@ export class RegistrarTrabajadorComponent implements OnInit {
     });
   }
 
-  selectInquilino(condomino: Condomino) {
+  selectInquilino(condomino: Condomino): void {
     this.condomino = condomino;
     this.condominos = [];
     this.name = condomino.user.name;
     this.trabajador.condominoInfo.userId = condomino.id;
-    console.log( this.name);
   }
 
   // funcion para validacion
-  validaTrabajador(regex: any, name: string) {
+  validaTrabajador(regex: any, name: string): void {
     this.trabajadorName = validaInput(regex, name);
   }
 
-  validaTel(regex: any, trabajadorTel: string) {
+  validaTel(regex: any, trabajadorTel: string): void {
     this.validacionTel = validaInput(regex, trabajadorTel);
   }
 
@@ -107,17 +101,17 @@ export class RegistrarTrabajadorComponent implements OnInit {
     return this.trabajadorName && this.validacionTel;
   }
 
-  addDay(day: string) {
+  addDay(day: string): void {
 
     if (this.workDays.get(day)) {
       this.workDays.delete(day);
     } else {
-      const workDay: WorkDay = {dayName: day}
+      const workDay: WorkDay = {dayName: day};
       this.workDays.set(day, workDay);
     }
   }
 
-  hasDay(day: string) {
+  hasDay(day: string): WorkDay | undefined {
     return this.trabajador.workDays.find(d => d.dayName === day);
   }
 

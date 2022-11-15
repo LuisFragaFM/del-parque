@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {VisitantesService} from "../../services/visitantes.service";
-import {SessionService} from "../../services/session.service";
-import {Visitante} from "../../models/visitante";
-import Swal from "sweetalert2";
+import {VisitantesService} from '../../services/visitantes.service';
+import {SessionService} from '../../services/session.service';
+import {Visitante} from '../../models/visitante';
+import Swal from 'sweetalert2';
 import {User} from 'src/app/models/user';
 
 @Component({
@@ -16,11 +16,11 @@ export class VisitasRegistradasAdminComponent implements OnInit {
   name: string | undefined;
   visitante: Visitante = {} as Visitante;
   visitantes: Visitante[] = [];
-  page: number = 0;
+  page = 0;
   listOfPages: number[] = [];
   id: string | undefined;
   user: User = {} as User;
-  isLoading: boolean = true;
+  isLoading = true;
 
   constructor(private visitantesService: VisitantesService,
               private sessionService: SessionService) {
@@ -34,27 +34,27 @@ export class VisitasRegistradasAdminComponent implements OnInit {
         this.listOfPages.push(i);
       }
       this.isLoading = false;
-    })
+    });
     this.sessionService.getUser().subscribe(user => {
       this.user = user;
-    })
+    });
   }
 
-  updatePage(page: number) {
+  updatePage(page: number): void {
     this.isLoading = true;
     this.visitantesService.getVisitantesUnauthorized(page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
       this.isLoading = false;
-    })
+    });
   }
 
-  modify(visitante: Visitante) {
+  modify(visitante: Visitante): void {
     visitante.authorized = true;
     visitante.authorization = this.user.id;
 
-    this.visitantesService.save(visitante).subscribe(visitante => {
+    this.visitantesService.save(visitante).subscribe(v => {
       Swal.fire({
-        title: `El visitante ${visitante.name} fue registrado correctamente`,
+        title: `El visitante ${v.name} fue registrado correctamente`,
         icon: 'success',
         showDenyButton: false,
         showCancelButton: false,
@@ -62,10 +62,10 @@ export class VisitasRegistradasAdminComponent implements OnInit {
       }).then(() => {
       });
       this.updatePage(this.page);
-    })
+    });
   }
 
-  delete() {
+  delete(): void {
     if (this.visitante.id) {
 
       Swal.fire({

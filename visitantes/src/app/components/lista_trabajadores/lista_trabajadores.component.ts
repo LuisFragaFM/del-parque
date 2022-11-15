@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {TrabajadoresService} from "../../services/trabajadores.service";
-import {Trabajador} from "../../models/trabajador";
-import Swal from "sweetalert2";
+import {TrabajadoresService} from '../../services/trabajadores.service';
+import {Trabajador} from '../../models/trabajador';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista_trabajadores',
@@ -9,15 +9,13 @@ import Swal from "sweetalert2";
   styleUrls: ['./lista_trabajadores.component.css']
 })
 export class ListaTrabajadoresComponent implements OnInit {
-  // datos usados para realizar la busqueda
   name: string | undefined;
-  trabajador: Trabajador = {} as Trabajador;
   trabajadores: Trabajador[] = [];
-  page: number = 0;
-  isLoading: boolean = true;
+  page = 0;
+  isLoading = true;
   listOfPages: number[] = [];
 
-  constructor(private trabajadoresService: TrabajadoresService,) {
+  constructor(private trabajadoresService: TrabajadoresService, ) {
   }
 
   ngOnInit(): void {
@@ -29,19 +27,19 @@ export class ListaTrabajadoresComponent implements OnInit {
         this.listOfPages.push(i + 1);
       }
       this.isLoading = false;
-    })
+    });
 
   }
 
-  updatePage(page: number) {
+  updatePage(page: number): void {
     this.isLoading = true;
     this.trabajadoresService.getTrabajadores(page).subscribe(trabajadores => {
       this.trabajadores = trabajadores.content;
       this.isLoading = false;
-    })
+    });
   }
 
-  delete(id: string) {
+  delete(id: string): void {
     Swal.fire({
       title: `Estas seguro que deseas borrar este trabajador?`,
       icon: 'warning',
@@ -59,8 +57,8 @@ export class ListaTrabajadoresComponent implements OnInit {
             confirmButtonText: `Cerrar`
           }).then(() => {
             this.updatePage(this.page);
-          })
-        })
+          });
+        });
       }
     });
   }
