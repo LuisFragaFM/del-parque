@@ -1,4 +1,4 @@
-import {Trabajador} from "./trabajador";
+import {Trabajador} from './trabajador';
 
 export interface TrabajadorPage {
   empty: boolean;

@@ -1,4 +1,4 @@
-import {Visitante} from "./visitante";
+import {Visitante} from './visitante';
 
 export interface VisitantePage {
   empty: boolean;

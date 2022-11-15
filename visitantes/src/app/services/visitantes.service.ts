@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
-import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {Visitante} from "../models/visitante";
+import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Visitante} from '../models/visitante';
 import {VisitantePage} from '../models/visitante-page';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {jsPDF} from "jspdf";
+import {jsPDF} from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
 
@@ -11,10 +11,10 @@ export class ReporteService {
   constructor() {
   }
 
-  imprimir(encabezado: string[], cuerpo: Array<any>, titulo: string, guardar?: boolean) {
+  imprimir(encabezado: string[], cuerpo: Array<any>, titulo: string, guardar?: boolean): void {
     const doc = new jsPDF({
-      orientation: "portrait",
-      unit: "px",
+      orientation: 'portrait',
+      unit: 'px',
       format: 'letter'
     });
 
@@ -22,7 +22,7 @@ export class ReporteService {
     autoTable(doc, {
       head: [encabezado],
       body: cuerpo
-    })
+    });
     if (guardar) {
       const hoy = new Date();
       doc.save(hoy.getDate() + hoy.getMonth() + hoy.getFullYear() + hoy.getTime() + '.pdf');

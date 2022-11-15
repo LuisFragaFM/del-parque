@@ -1,4 +1,4 @@
-import { CondominoInfo } from "./condominoInfo";
+import {CondominoInfo} from './condominoInfo';
 
 export interface Paquete {
   id: string;

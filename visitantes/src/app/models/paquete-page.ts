@@ -1,4 +1,4 @@
-import { Paquete } from "./paquete";
+import {Paquete} from './paquete';
 
 export interface PaquetePage {
   empty: boolean;

@@ -1,5 +1,5 @@
-import {CondominoInfo} from "./condominoInfo";
-import {WorkDay} from "./WorkDay";
+import {CondominoInfo} from './condominoInfo';
+import {WorkDay} from './WorkDay';
 
 export interface Trabajador {
   id: string;

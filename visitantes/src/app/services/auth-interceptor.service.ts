@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
-import {SessionService} from "./session.service";
+import {SessionService} from './session.service';
 import Swal from 'sweetalert2';
 
 @Injectable()

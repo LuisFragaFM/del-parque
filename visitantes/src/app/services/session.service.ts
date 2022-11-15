@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {map, Observable, of} from "rxjs";
-import {User} from "../models/user";
-import {environment} from "../../environments/environment";
+import {HttpClient} from '@angular/common/http';
+import {map, Observable, of} from 'rxjs';
+import {User} from '../models/user';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import {environment} from "../../environments/environment";
 export class SessionService {
 
   private user: User | undefined;
+  // tslint:disable-next-line:variable-name
   private _authorizationHeader!: string | null;
   private rememberMe!: boolean;
 
@@ -18,6 +19,7 @@ export class SessionService {
 
   getUser(): Observable<User> {
     if (localStorage.getItem('user')) {
+      // tslint:disable-next-line:no-non-null-assertion
       return of(JSON.parse(localStorage.getItem('user')!));
     }
 

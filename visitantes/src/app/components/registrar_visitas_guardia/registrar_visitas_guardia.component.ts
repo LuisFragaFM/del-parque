@@ -8,6 +8,8 @@ import {SessionService} from '../../services/session.service';
 import {User} from '../../models/user';
 import {validaInput} from 'src/app/tools/validation';
 import {CondominoInfo} from '../../models/condominoInfo';
+import {formatAMPM} from '../../tools/formatAMPM';
+import {formatDate} from '../../tools/formatDate';
 
 @Component({
   selector: 'app-registrar_visitas_guardia',
@@ -80,35 +82,8 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
     this.visitante.condomino.userId = condomino.user.id;
     this.visitante.authorization = this.autoriza.id;
     this.condominos = [];
-    this.visitante.checkIn = this.formatAMPM();
-    this.visitante.arrivalDate = this.formatDate();
-  }
-
-  formatDate(): string {
-    const d = new Date();
-    let month = '' + (d.getMonth() + 1);
-    let day = '' + d.getDate();
-    const year = d.getFullYear();
-
-    if (month.length < 2) {
-      month = '0' + month;
-    }
-    if (day.length < 2) {
-      day = '0' + day;
-    }
-
-    return [year, month, day].join('-');
-  }
-
-  formatAMPM(): string {
-    const date = new Date();
-    let hours = date.getHours();
-    let minutes: number | string = date.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    return hours + ':' + minutes + ' ' + ampm;
+    this.visitante.checkIn = formatAMPM();
+    this.visitante.arrivalDate = formatDate();
   }
 
   // funcion para validacion
