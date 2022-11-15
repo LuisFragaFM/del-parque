@@ -44,6 +44,12 @@ export class RegistrarGuardiaComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
+        if (this.files) {
+          this.uploadFilesService
+            .upload(this.files[0], guardia.id)
+            .subscribe(() => {
+            });
+        }
         this.guardia = {} as User;
       });
     });
