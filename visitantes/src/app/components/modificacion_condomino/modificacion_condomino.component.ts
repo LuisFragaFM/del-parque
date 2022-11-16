@@ -27,7 +27,7 @@ export class Modificacion_CondominoComponent implements OnInit {
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
   image: any;
   environment = environment.baseUrl;
-  uri: any = '';
+  uri: string | ArrayBuffer | null = '';
   files!: FileList;
 
   constructor(
@@ -110,7 +110,7 @@ export class Modificacion_CondominoComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(this.files[0]);
 
-    reader.onload = (_event) => {
+    reader.onload = (_) => {
       this.uri = reader.result;
     };
   }

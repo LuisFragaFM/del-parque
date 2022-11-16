@@ -11,7 +11,7 @@ import {GuardiasService} from '../../services/guardias.service';
 })
 export class RegistrarGuardiaComponent implements OnInit {
 
-  uri!: any;
+  uri: string | ArrayBuffer | null = '';
   files!: FileList;
   guardia: User = {} as User;
 
@@ -32,7 +32,6 @@ export class RegistrarGuardiaComponent implements OnInit {
     reader.onload = (_event) => {
       this.uri = reader.result;
     };
-
   }
 
   save(): void {
