@@ -20,7 +20,9 @@ export class UsuariosComponent implements OnInit {
     this.usuariosService.getAllUsers().subscribe((users) => {
       this.users = users;
       this.users.forEach(user => {
-        user.picture = this.environment + '/file/' + user.picture;
+        user.picture = (user.picture)
+          ? this.environment + '/file/' + user.picture
+          : 'assets/perfil.PNG';
       });
       this.isLoading = false;
     });

@@ -3,6 +3,7 @@ import {UploadFilesService} from '../../services/upload-files.service';
 import Swal from 'sweetalert2';
 import {User} from '../../models/user';
 import {GuardiasService} from '../../services/guardias.service';
+import {Condomino} from '../../models/condomino';
 
 @Component({
   selector: 'app-registrar-guardia',
@@ -50,6 +51,8 @@ export class RegistrarGuardiaComponent implements OnInit {
             });
         }
         this.guardia = {} as User;
+        this.files = {} as FileList;
+        this.uri = '';
       });
     });
   }
