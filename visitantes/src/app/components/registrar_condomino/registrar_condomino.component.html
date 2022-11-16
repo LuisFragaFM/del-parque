@@ -35,7 +35,9 @@
           name="muestraCondominoTelefono"
           placeholder="Telefono"
           required
-          type="text"
+          maxlength="10"
+          minlength="10"
+          type="number"
         />
         <!--Alerta numero telefono-->
         <div *ngIf="!altaTelResidente"
@@ -107,7 +109,7 @@
           name="muestraCondominoEmergencia"
           placeholder="Telefono de emergencia"
           required
-          type="text"
+          type="number"
         />
         <!--Alerta de datos (recibe Inquilino)-->
         <div

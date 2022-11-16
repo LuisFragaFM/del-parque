@@ -23,8 +23,8 @@ export class ListaTrabajadoresComponent implements OnInit {
     this.trabajadoresService.getTrabajadores(this.page).subscribe(trabajadores => {
       this.trabajadores = trabajadores.content;
       const totalOfPages = Math.trunc(trabajadores.totalElements / trabajadores.size);
-      for (let i = 0; i <= totalOfPages; i++) {
-        this.listOfPages.push(i + 1);
+      for (let i = 0; i < totalOfPages; i++) {
+        this.listOfPages.push(i);
       }
       this.isLoading = false;
     });

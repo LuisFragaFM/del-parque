@@ -51,7 +51,7 @@
             <button class="btn btn-dark w-100 mt-4" (click)="apiLogin(login.value, password.value)">
               Entrar
             </button>
-            <span *ngIf="failedLogin && passwordTouched && emailTouched">
+            <span *ngIf="failedLogin && touched">
               Correo electronico o contraseña incorrecta
             </span>
           </div>

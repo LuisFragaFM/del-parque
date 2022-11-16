@@ -7,17 +7,17 @@
       </label>
       <!-- Input para ingresar el nombre del condomino a buscar -->
       <input
-        id="buscaPagosName"
-        required
-        type="text"
-        placeholder="Buscar Inquilino"
-        class="inputBarra form-control"
-        name="buscaPagosName"
-        autocomplete="off"
         (keyup)="findInquilinoByName()"
         [(ngModel)]="name"
+        autocomplete="off"
+        class="inputBarra form-control"
+        id="buscaPagosName"
+        name="buscaPagosName"
+        placeholder="Buscar Inquilino"
+        required
+        type="text"
       />
-      <div class="busqueda" *ngIf="condominos.length > 0">
+      <div *ngIf="condominos.length > 0" class="busqueda">
         <div *ngFor="let c of condominos">
           <div (click)="selectInquilino(c)" class="cursorb">
             {{ c.user.name }}
@@ -28,8 +28,8 @@
   </div>
 
   <div
-    class="tarjet row border border-dark border-4 rounded"
     *ngIf="condomino.id"
+    class="tarjet row border border-dark border-4 rounded"
   >
     <h1>Datos del condómino</h1>
     <div class="row">
@@ -37,19 +37,19 @@
         <label class="form-label" for="muestraPagosName">Nombre: </label>
         <!-- Input para el nombre del condomino -->
         <input
-          required
-          (keyup)="validaResidente(regexName, altaResidente.value)"
           #altaResidente
+          (keyup)="validaResidente(regexName, altaResidente.value)"
+          [(ngModel)]="condomino.user.name"
           autocomplete="off"
-          type="text"
-          placeholder="Buscar Inquilino"
           class="inputDatos form-control"
           id="muestraPagosName"
           name="muestraPagosName"
-          [(ngModel)]="condomino.user.name"
+          placeholder="Buscar Inquilino"
+          required
+          type="text"
         />
         <!--Alerta numero telefono-->
-        <div id="alertRecibo" class="alert alert-danger" *ngIf="!altaName">
+        <div *ngIf="!altaName" class="alert alert-danger">
           Ingrese el nombre del residente
         </div>
       </div>
@@ -57,22 +57,21 @@
         <label class="form-label" for="muestraPagosTelefono">Teléfono:</label>
         <!-- Input para ingresar el numero de telefono del residente -->
         <input
-          required
-          (keydown)="validaTel(regexTel, altaTel.value)"
           #altaTel
+          (keydown)="validaTel(regexTel, altaTel.value)"
+          [(ngModel)]="condomino.user.telephoneNumber"
           autocomplete="off"
-          type="text"
-          placeholder="Teléfono"
           class="inputDatos form-control"
           id="muestraPagosTelefono"
           name="muestraPagosTelefono"
-          [(ngModel)]="condomino.user.telephoneNumber"
+          placeholder="Teléfono"
+          required
+          type="number"
         />
         <!--Alerta numero telefono-->
         <div
-          id="alertRecibo"
-          class="alert alert-danger"
           *ngIf="!altaTelResidente"
+          class="alert alert-danger"
         >
           Ingrese el número de telefono del residente
         </div>
@@ -84,19 +83,19 @@
         <label class="form-label" for="muestraPagosDireccion">Calle:</label>
         <!-- Input para ingresar la calle del residente -->
         <input
-          required
-          (keyup)="validaCalle(regexName, residenteCalle.value)"
           #residenteCalle
+          (keyup)="validaCalle(regexName, residenteCalle.value)"
+          [(ngModel)]="condomino.street"
           autocomplete="off"
-          type="text"
-          placeholder="Dirección"
           class="inputDatos form-control"
           id="muestraPagosDireccion"
           name="muestraPagosDireccion"
-          [(ngModel)]="condomino.street"
+          placeholder="Dirección"
+          required
+          type="text"
         />
         <!--Alerta deCalle de inquilino -->
-        <div id="alertRecibo" class="alert alert-danger" *ngIf="!altaStreet">
+        <div *ngIf="!altaStreet" class="alert alert-danger" id="alertRecibo">
           Ingrese la calle de la residencia
         </div>
       </div>
@@ -106,19 +105,19 @@
         >
         <!-- Input para ingresar el correo electronico -->
         <input
-          required
-          (keydown)="validaCorreo(regexMail, altaCorreo.value)"
           #altaCorreo
+          (keydown)="validaCorreo(regexMail, altaCorreo.value)"
+          [(ngModel)]="condomino.user.email"
           autocomplete="off"
-          type="text"
-          placeholder="Correo Electrónico"
           class="inputDatos form-control"
           id="muestraPagosCorreo"
           name="muestraPagosCorreo"
-          [(ngModel)]="condomino.user.email"
+          placeholder="Correo Electrónico"
+          required
+          type="text"
         />
         <!--Alerta de datos (recibe Inquilino)-->
-        <div id="alertRecibo" class="alert alert-danger" *ngIf="!altaMail">
+        <div *ngIf="!altaMail" class="alert alert-danger">
           Ingrese un correo electronico valido
         </div>
       </div>
@@ -131,22 +130,21 @@
         >
         <!-- Input para ingresar el numero de emergencia -->
         <input
-          required
-          (keydown)="validaEmergencia(regexTel, altaEmergencia.value)"
           #altaEmergencia
+          (keydown)="validaEmergencia(regexTel, altaEmergencia.value)"
+          [(ngModel)]="condomino.user.emergencyNumber"
           autocomplete="off"
-          type="text"
-          placeholder="Teléfono de emergencia"
           class="inputDatos form-control"
           id="muestraPagosEmergencia"
           name="muestraPagosEmergencia"
-          [(ngModel)]="condomino.user.emergencyNumber"
+          placeholder="Teléfono de emergencia"
+          required
+          type="number"
         />
         <!--Alerta de datos (recibe Inquilino)-->
         <div
-          id="alertRecibo"
-          class="alert alert-danger"
           *ngIf="!altaTelEmergencia"
+          class="alert alert-danger"
         >
           Ingrese un número telefonico valido
         </div>
@@ -154,61 +152,61 @@
       <div class="col-5">
         <label class="form-label" for="numcasa">Número de casa:</label>
         <input
-          required
+          [(ngModel)]="condomino.houseNumber"
           autocomplete="off"
-          type="number"
-          minlength="10"
-          maxlength="10"
-          placeholder="número de casa"
           class="inputDatosAltas form-control"
           id="numcasa"
+          maxlength="10"
+          minlength="10"
           name="muestraCondominonumcasa"
-          [(ngModel)]="condomino.houseNumber"
+          placeholder="número de casa"
+          required
+          type="number"
         />
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-5">
         <div class="div_file">
-          <label id="insert" for="inputTag">
+          <label for="inputTag" id="insert">
             Cambiar foto
             <i class="fa fa-2x fa-camera"></i>
             <input
-              id="inputTag"
-              type="file"
               (change)="changeImage($event)"
               accept="image/*"
+              id="inputTag"
               required
+              type="file"
             />
             <span id="imageName"></span>
           </label>
         </div>
-        <img [src]="uri" alt="" class="imagenUser" *ngIf="uri" />
+        <img *ngIf="uri" [src]="uri" alt="" class="imagenUser"/>
       </div>
       <div class="col-5 text-center">
         <div
-          *ngIf="!condomino.paidStatus"
           (click)="condomino.paidStatus = true"
+          *ngIf="!condomino.paidStatus"
           class="cursor"
         >
           <label class="form-label" for="noPagadoImg"> No Pagado</label>
           <img
-            src="../../../assets/sadFace.png"
             alt="no pagado"
             id="noPagadoImg"
+            src="../../../assets/sadFace.png"
             width="160px"
           />
         </div>
         <div
-          *ngIf="condomino.paidStatus"
           (click)="condomino.paidStatus = false"
+          *ngIf="condomino.paidStatus"
           class="cursor"
         >
           <label class="form-label" for="pagoImg"> Pagado</label>
           <img
-            src="../../../assets/happyFace.png"
             alt="pago"
             id="pagoImg"
+            src="../../../assets/happyFace.png"
             width="150px"
           />
         </div>
@@ -217,13 +215,13 @@
       <div class="row">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mx-auto">
           <button
-            class="botonModificar btn btn-primary"
             (click)="modify()"
             [disabled]="!isValidForm()"
+            class="botonModificar btn btn-primary"
           >
             Modificar
           </button>
-          <button class="botonEliminar btn btn-danger" (click)="delete()">
+          <button (click)="delete()" class="botonEliminar btn btn-danger">
             Eliminar
           </button>
         </div>

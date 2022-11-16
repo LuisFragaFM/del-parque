@@ -1,8 +1,8 @@
 <!--  Numero paginas-->
 <div class="buttons">
   <span *ngFor="let p of listOfPages" [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}"
-        (click)="updatePage(p)" class="cursor pagination">
-    {{p}}
+        (click)="updatePage(p - 1)" class="cursor pagination">
+    {{p + 1}}
   </span>
 
 </div>

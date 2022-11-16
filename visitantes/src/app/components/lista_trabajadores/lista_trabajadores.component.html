@@ -1,7 +1,7 @@
 <div class="buttons">
   <span (click)="updatePage(p - 1)" *ngFor="let p of listOfPages" class="cursor pagination"
         [ngStyle]="{'color':'white','background-color':'#2A2A2A','text-align':'center'}">
-    {{p}}
+    {{p + 1}}
   </span>
 </div>
 

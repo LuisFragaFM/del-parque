@@ -1,70 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
 
 html {
-    background-color: rgba(156, 224, 179, 0.9);
-    
+  background-color: rgba(156, 224, 179, 0.9);
+
 }
 
 * {
-    font-family: url("./assets/SedanSC-Regular.ttf");
-    margin: 0px auto;
-    padding: 0px;
-    box-sizing: border-box;
+  font-family: url("/assets/SedanSC-Regular.ttf");
+  margin: 0px auto;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 .pagina {
-    width: auto;
-    height: max-content;
-    background-image: url("./assets/Fondo.PNG");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  width: auto;
+  height: max-content;
+  background-image: url("./assets/Fondo.PNG");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* estilo para los titulos eg.(inquilinos)*/
 
 h1 {
-    /* agregar tamnaño */
-    font-size: 30px;
-    font-family: url("./assets/SedanSC-Regular.ttf");
+  /* agregar tamnaño */
+  font-size: 30px;
+  font-family: url("./assets/SedanSC-Regular.ttf");
 }
 
 
 /* estilo para subtitulos eg.(Busqueda de inquilino */
 
 h2 {
-    /* agregar tamnaño */
-    font-size: 25px;
-    font-family: url("./assets/SedanSC-Regular.ttf");
+  /* agregar tamnaño */
+  font-size: 25px;
+  font-family: url("./assets/SedanSC-Regular.ttf");
 }
 
 
 /* estilo para titulo de indicacion eg.(nombre) */
 
 h3 {
-    /* agregar tamnaño */
-    font-size: 20px;
-    font-family: url("./assets/SedanSC-Regular.ttf");
+  /* agregar tamnaño */
+  font-size: 20px;
+  font-family: url("./assets/SedanSC-Regular.ttf");
 }
-
-
-/* quita borde para cada uno de los input */
 
 input:focus {
-    outline: 0px;
+  outline: 0px;
 }
 
-/* ------prueba de blur ------------
--------para uso futuro en las otras pantallas medidas aun no listas----------
-.blurs{
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    height: 100vh;
-    width: 100%;
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-*/
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

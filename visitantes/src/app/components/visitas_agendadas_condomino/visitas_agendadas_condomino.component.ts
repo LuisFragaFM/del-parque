@@ -28,8 +28,7 @@ export class VisitasAgendadasCondominoComponent implements OnInit {
   }
 
   updatePage(page: number): void {
-    this.page = page - 1;
-    this.visitantesService.getVisitantesUnauthorizedCondomino(this.page).subscribe(({content: visitantes}) => {
+    this.visitantesService.getVisitantesUnauthorizedCondomino(page).subscribe(({content: visitantes}) => {
       this.visitantes = visitantes;
     });
   }

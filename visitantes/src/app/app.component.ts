@@ -13,8 +13,7 @@ export class AppComponent implements OnInit {
   @Input('user') user: User = {} as User;
   failedLogin = false;
   rememberMe = false;
-  emailTouched = false;
-  passwordTouched = false;
+  touched = false;
 
   validacionMail = true;
   validacionContra = true;
@@ -32,13 +31,13 @@ export class AppComponent implements OnInit {
   }
 
   apiLogin(email: string, password: string): void {
-    this.emailTouched = true;
-    this.passwordTouched = true;
+    this.touched = true;
     this.sessionService.setCredentials(email, password, this.rememberMe);
     this.login();
   }
 
   login(): void {
+    this.failedLogin = false;
     this.sessionService.getUser().subscribe(
       (user) => {
         this.failedLogin = false;

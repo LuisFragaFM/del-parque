@@ -5,52 +5,56 @@
     <div class="row mt-3">
       <div class="col-5">
         <label class="form-label" for="nombreguardia">Nombre: </label>
-        <input type="text" placeholder="Nombre Guradia" id="nombreguardia" class="inputDatosGuard form-control"
-               [(ngModel)]="guardia.name"
-               name="muestraGuardiaName"/>
+        <input [(ngModel)]="guardia.name" class="inputDatosGuard form-control" id="nombreguardia"
+               name="muestraGuardiaName"
+               placeholder="Nombre Guradia"
+               type="text"/>
       </div>
       <div class="col-5">
         <label class="form-label" for="numeroguardia">Teléfono:</label>
-        <input placeholder="Telefono" id="numeroguardia" class="inputDatosGuard form-control"
-               [(ngModel)]="guardia.telephoneNumber"
-               name="muestraGuardiaTelefono"/>
+        <input [(ngModel)]="guardia.telephoneNumber" class="inputDatosGuard form-control" id="numeroguardia"
+               name="muestraGuardiaTelefono"
+               placeholder="Telefono"
+               type="number"/>
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="col-5">
         <label class="form-label" for="emailguardia">Correo Electrónico:</label>
-        <input type="email" placeholder="Correo electronico" id="emailguardia" class="inputDatosGuard form-control"
-               [(ngModel)]="guardia.email"
-               name="muestraGuardiaCorreo"/>
+        <input [(ngModel)]="guardia.email" class="inputDatosGuard form-control" id="emailguardia"
+               name="muestraGuardiaCorreo"
+               placeholder="Correo electronico"
+               type="email"/>
       </div>
       <div class="col-5">
         <label class="form-label" for="numemergencia">Numero de emergencia:</label>
-        <input type="text" minlength="10" maxlength="10" placeholder="Telefono de emergencia"
-               [(ngModel)]="guardia.emergencyNumber"
-               class="inputDatosGuard form-control" name="muestraGuardiaEmergencia" id="numemergencia"/>
+        <input [(ngModel)]="guardia.emergencyNumber" class="inputDatosGuard form-control" id="numemergencia"
+               maxlength="10"
+               minlength="10"
+               name="muestraGuardiaEmergencia" placeholder="Telefono de emergencia" type="number"/>
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="col-5">
         <div class="div_file">
-          <label id="insert" for="inputTag">
+          <label for="inputTag" id="insert">
             Insertar foto
             <i class="fa fa-2x fa-camera"></i>
-            <input id="inputTag" type="file" (change)="showImage($event)" accept="image/*" required/>
+            <input (change)="showImage($event)" accept="image/*" id="inputTag" required type="file"/>
             <span id="imageName"></span>
           </label>
         </div>
       </div>
       <div class="col-5">
-        <img [src]="uri" alt="" class="imagenUser" *ngIf="uri"/>
+        <img *ngIf="uri" [src]="uri" alt="" class="imagenUser"/>
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="d-grid gap-2 justify-content-end mx-block">
-        <button class="botonGuardar btn btn-success" type="submit" (click)="save()">
+        <button (click)="save()" class="botonGuardar btn btn-success" type="submit">
           Guardar
         </button>
       </div>

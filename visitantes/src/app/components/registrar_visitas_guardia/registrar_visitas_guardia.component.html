@@ -4,10 +4,10 @@
       <div class="col-6 text-center">
         <h2>Tipo de visita</h2>
         <select
-          class="Opciones form-select form-select-lg mb-3"
-          name="TipoVisita"
-          id="Visita"
           aria-label=".form-select-lg example"
+          class="Opciones form-select form-select-lg mb-3"
+          id="Visita"
+          name="TipoVisita"
         >
           <option value="Visitantes">
             <h2>Visitantes</h2>
@@ -27,27 +27,27 @@
         <label class="form-label">Nombre</label>
         <!-- Input para ingresar el nombre del visitante -->
         <input
-          class="form-control"
-          (keyup)="validaNombre(regexName, inputVisita.value)"
-          (keyup)="findInquilinoByName()"
           #inputVisita
-          required
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
+          (keyup)="findInquilinoByName()"
+          (keyup)="validaNombre(regexName, inputVisita.value)"
           [(ngModel)]="visitante.name"
+          autocomplete="off"
+          class="form-control"
+          placeholder="Escriba aqui"
+          required
+          type="text"
         />
 
         <!--Alerta de datos -->
-        <div id="alertName" class="alert alert-danger" *ngIf="!visitaName">
+        <div *ngIf="!visitaName" class="alert alert-danger">
           Favor de agregar solamente letras en este campo
         </div>
         <input
-          id="flexCheckDefault"
-          class="BotonVehiculo form-check-input"
-          type="checkbox"
-          name="Vehiculo"
           [(ngModel)]="isChecked"
+          class="BotonVehiculo form-check-input"
+          id="flexCheckDefault"
+          name="Vehiculo"
+          type="checkbox"
         />
         <label class="form-check-label" for="flexCheckDefault">
           ¿Tiene vehiculo?
@@ -59,21 +59,21 @@
           <label class="form-label" for="type_car">Tipo de Vehículo</label>
           <!-- Input para agregar el tipo de vehiculo -->
           <input
-            (keyup)="validaVehiculo(regexName, inputVisita.value)"
             #inputVisita
-            id="type_car"
-            class="form-control"
-            required
-            autocomplete="off"
-            type="text"
-            placeholder="Escriba aqui"
+            (keyup)="validaVehiculo(regexName, inputVisita.value)"
             [(ngModel)]="visitante.vehicle"
+            autocomplete="off"
+            class="form-control"
+            id="type_car"
+            placeholder="Escriba aqui"
+            required
+            type="text"
           />
           <!--Alerta de datos -->
           <div
-            id="alertName"
-            class="alert alert-danger"
             *ngIf="!visitaVehiculo"
+            class="alert alert-danger"
+            id="alertName"
           >
             Favor de agregar datos correspondientes en este campo
           </div>
@@ -86,17 +86,17 @@
         <label class="form-label">Tarjeton</label>
         <!-- Input para agregar el tarjeton del vsitante -->
         <input
-          class="form-control"
-          (keyup)="validaTarjeton(regexName, inputTarjeton.value)"
           #inputTarjeton
-          required
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
+          (keyup)="validaTarjeton(regexName, inputTarjeton.value)"
           [(ngModel)]="visitante.card"
+          autocomplete="off"
+          class="form-control"
+          placeholder="Escriba aqui"
+          required
+          type="text"
         />
         <!--Alerta de datos -->
-        <div id="alertName" class="alert alert-danger" *ngIf="!visitaTarjeton">
+        <div *ngIf="!visitaTarjeton" class="alert alert-danger">
           Favor de agregar datos correspondientes en este campo
         </div>
       </div>
@@ -105,18 +105,18 @@
           <label class="form-label" for="placas">Placas</label>
           <!-- Input para agregar las placas del vsitante -->
           <input
-            (keyup)="validaPlacas(regexName, inputPlacas.value)"
             #inputPlacas
+            (keyup)="validaPlacas(regexName, inputPlacas.value)"
+            [(ngModel)]="visitante.licensePlates"
+            autocomplete="off"
             class="form-control"
             id="placas"
-            required
-            autocomplete="off"
-            type="text"
             placeholder="Escriba aqui"
-            [(ngModel)]="visitante.licensePlates"
+            required
+            type="text"
           />
           <!--Alerta de datos -->
-          <div id="alertName" class="alert alert-danger" *ngIf="!visitaPlacas">
+          <div *ngIf="!visitaPlacas" class="alert alert-danger">
             Favor de agregar datos correspondientes en este campo
           </div>
         </div>
@@ -130,51 +130,51 @@
       <div class="col-5">
         <label class="form-label" for="nombre_condomino">Nombre</label>
         <input
-          class="form-control"
-          required
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
-          id="nombre_condomino"
           (keyup)="findInquilinoByName()"
           [(ngModel)]="name"
+          autocomplete="off"
+          class="form-control"
+          id="nombre_condomino"
           list="nombre_condominos"
+          placeholder="Escriba aqui"
+          required
+          type="text"
         />
-        <div class="busqueda" *ngIf="condominos.length > 0">
+        <div *ngIf="condominos.length > 0" class="busqueda">
           <div *ngFor="let c of condominos">
             <div (click)="selectInquilino(c)" class="cursor">
               {{ c.user.name }}
             </div>
           </div>
         </div>
-        <div class="alert-danger" *ngIf="error">
+        <div *ngIf="error" class="alert-danger">
           Porfavor seleccione un inquilino
         </div>
       </div>
 
       <div class="col-5">
-        <div class="input" *ngIf="condomino.id">
+        <div *ngIf="condomino.id" class="input">
           <label class="form-label" for="barra">Número de la casa</label>
           <input
-            required
+            [(ngModel)]="condomino.houseNumber"
             autocomplete="off"
-            type="text"
             class="barra form-control"
+            disabled
             id="barra"
             name="asdasd"
-            [(ngModel)]="condomino.houseNumber"
-            disabled
+            required
+            type="text"
           />
           <label class="form-label" for="calle">Calle</label>
           <input
-            required
-            autocomplete="off"
-            type="text"
-            class="barra form-control"
-            name="asdasd"
-            id="calle"
             [(ngModel)]="condomino.street"
+            autocomplete="off"
+            class="barra form-control"
             disabled
+            id="calle"
+            name="asdasd"
+            required
+            type="text"
           />
         </div>
       </div>
@@ -186,29 +186,29 @@
 
     <div class="row">
       <div class="col-5">
-        <label for="fecha" class="form-label">Fecha</label>
+        <label class="form-label" for="fecha">Fecha</label>
         <input
-          class="form-control"
-          id="fecha"
-          required
-          disabled
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
           [(ngModel)]="visitante.arrivalDate"
+          autocomplete="off"
+          class="form-control"
+          disabled
+          id="fecha"
+          placeholder="Escriba aqui"
+          required
+          type="text"
         />
       </div>
       <div class="col-5">
         <label class="form-label" for="autoriza">Autorizada por</label>
         <input
-          id="autoriza"
-          class="form-control"
-          required
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
-          disabled
           [(ngModel)]="nameAuth"
+          autocomplete="off"
+          class="form-control"
+          disabled
+          id="autoriza"
+          placeholder="Escriba aqui"
+          required
+          type="text"
         />
       </div>
     </div>
@@ -217,31 +217,31 @@
       <div class="col-5">
         <label class="form-label" for="hora">Hora</label>
         <input
-          class="form-control"
-          id="hora"
-          required
-          disabled
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
           [(ngModel)]="visitante.checkIn"
+          autocomplete="off"
+          class="form-control"
+          disabled
+          id="hora"
+          placeholder="Escriba aqui"
+          required
+          type="text"
         />
       </div>
       <div class="col-5">
         <label class="form-label" for="caseta">Caseta recibida:</label>
         <!-- Input para seleccionar la casilla -->
         <select
-          class="form-control"
-          required
-          (keyup)="validaCasilla(regexName, inputCasilla.value)"
           #inputCasilla
-          autocomplete="on"
-          name="Caseta"
-          id="caseta"
+          (keyup)="validaCasilla(regexName, inputCasilla.value)"
           [(ngModel)]="visitante.arrivalBooth"
+          autocomplete="on"
+          class="form-control"
+          id="caseta"
+          name="Caseta"
+          required
         >
           <!--Alerta de datos -->
-          <div id="alertName" class="alert alert-danger" *ngIf="!visitaCasilla">
+          <div *ngIf="!visitaCasilla" class="alert alert-danger">
             Favor de agregar datos correspondientes en este campo
           </div>
           <option value="Caseta 1">
@@ -257,10 +257,10 @@
     <div class="row">
       <div class="d-grid gap-2 justify-content-end mx-auto">
         <button
-          class="botonAgendar btn btn-success"
-          type="button"
           (click)="save()"
           [disabled]="!isValidForm()"
+          class="botonAgendar btn btn-success"
+          type="button"
         >
           Entrar
         </button>
