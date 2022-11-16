@@ -13,7 +13,7 @@
   <i *ngIf="isLoading" class="spinner-border"></i>
   <div *ngIf="!paquetes.length">No hay paquetes</div>
   <div class="tarjetaT mt-3 p-2 text-white bg-dark " *ngFor="let paquete of paquetes">
-    <div class="row">
+    <div class="row"> 
       <div class="col-5">
         <label class="form-label" for="recibidorfor">Recibido por: </label>
         <input id="recibidorfor" required autocomplete="off" type="text" placeholder="Persona que recibe"
@@ -40,7 +40,8 @@
           </option>
         </select>
       </div>
-      <label class="form-label" for="guia">Numero de guia</label>
+      <div class="col-5">
+        <label class="form-label" for="guia">Numero de guia</label>
       <input class="form-control"
              disabled
              autocomplete="off"
@@ -48,6 +49,8 @@
              placeholder="Guardar paquete en"
              id="guia"
              [(ngModel)]="paquete.guideNumber">
+      </div>
+      
       <div class="col-5 ">
 
       </div>

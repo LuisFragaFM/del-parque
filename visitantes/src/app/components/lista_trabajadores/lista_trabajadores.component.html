@@ -7,7 +7,7 @@
 
 <div class="container">
   <div class="titleDatos">
-    <h2>BITÁCORA DE TRABAJADORES</h2>
+    <h2>Bitácora de trabajadores</h2>
   </div>
   <i *ngIf="isLoading" class="spinner-border"></i>
   <div *ngIf="!trabajadores.length">No hay trabajadores registrados</div>
@@ -29,11 +29,13 @@
     <div class="row mt-3">
       <div class="col-5">
         <label class="form-label" for="dia_trabajador">Dias de trabajo</label>
+        <div class="d-flex flex-wrap">
         <span *ngFor="let day of trabajador.workDays"
               id="dia_trabajador"
-              class="inputBitacora form-control">
+              class="inputBitacora daysofweek">
                   {{day.dayName | day}}
                 </span>
+              </div>
       </div>
       <div class="col-5">
         <label class="form-label" for="condomino_trabajador">Nombre del Condómino</label>

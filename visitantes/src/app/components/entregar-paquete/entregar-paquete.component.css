@@ -4,6 +4,7 @@
   width: auto;
   border-radius: 5px;
   margin: 20px;
+  margin-bottom: 50px;
 }
 
 .container {
@@ -13,6 +14,9 @@
   height: 100% !important;
   max-width: auto;
   height: fit-content;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
 }
 
 /* estilo de botones */

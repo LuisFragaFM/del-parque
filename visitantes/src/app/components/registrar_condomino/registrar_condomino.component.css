@@ -10,6 +10,7 @@
     height: 100% !important;
     max-width: auto;
     height: fit-content;
+    padding: 3px;
   }
   .div_file {
     text-align: center;

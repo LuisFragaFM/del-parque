@@ -4,6 +4,8 @@
   width: auto;
   border-radius: 5px;
   margin: 20px;
+  margin-bottom:50px ;
+  margin-top: 30px;
 }
 
 .container {
@@ -13,6 +15,7 @@
   height: 100% !important;
   max-width: auto;
   height: fit-content;
+  padding: 20px;
 }
 
 /* estilo de botones */
@@ -35,4 +38,11 @@
 button {
   margin: 10px;
   border-radius: 5px;
+}
+
+.daysofweek{
+  background: rgba(101, 238, 147, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
 }
