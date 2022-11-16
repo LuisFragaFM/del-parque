@@ -1,8 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 .container {
   background: rgba(255, 255, 255, 0.5);
@@ -11,12 +7,11 @@
   height: 100% !important;
   max-width: auto;
   height: fit-content;
+  margin-top:20px;
+  
 }
 
 section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   max-width: 1200px;
   padding: 18px;
   margin: 16px;
