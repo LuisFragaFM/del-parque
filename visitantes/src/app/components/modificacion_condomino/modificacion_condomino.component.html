@@ -19,7 +19,7 @@
       />
       <div *ngIf="condominos.length > 0" class="busqueda">
         <div *ngFor="let c of condominos">
-          <div (click)="selectInquilino(c)" class="cursorb">
+          <div (click)="selectInquilino(c)" class="cursorb" [routerLink]="['/modificacion_condomino', c.id]">
             {{ c.user.name }}
           </div>
         </div>

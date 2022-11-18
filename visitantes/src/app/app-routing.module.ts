@@ -20,11 +20,11 @@ import {
   VisitasAgendadasCondominoComponent
 } from './components/visitas_agendadas_condomino/visitas_agendadas_condomino.component';
 import {RegistrarCondominoComponent} from './components/registrar_condomino/registrar_condomino.component';
-import {UsuariosComponent} from "./components/usuarios/usuarios.component";
+import {UsuariosComponent} from './components/usuarios/usuarios.component';
 import {RegistrarGuardiaComponent} from './components/registrar-guardia/registrar-guardia.component';
-import {RoleAdminGuard} from "./guards/role-admin.guard";
-import {RoleResidentGuard} from "./guards/role-resident.guard";
-import {RoleGuardGuard} from "./guards/role-guard.guard";
+import {RoleAdminGuard} from './guards/role-admin.guard';
+import {RoleResidentGuard} from './guards/role-resident.guard';
+import {RoleGuardGuard} from './guards/role-guard.guard';
 
 const routes: Routes = [
   {
@@ -63,6 +63,11 @@ const routes: Routes = [
   },
   {
     path: 'modificacion_condomino', component: Modificacion_CondominoComponent,
+    children: [
+      {
+        path: ':id', component: RegistrarTrabajadorComponent,
+      }
+    ],
     canLoad: [RoleAdminGuard]
   },
   {

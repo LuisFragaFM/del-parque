@@ -7,6 +7,7 @@ import {environment} from '../../../environments/environment';
 import {User} from '../../models/user';
 import {validaInput} from 'src/app/tools/validation';
 import {UsuariosService} from '../../services/usuarios.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-modificacion_condomino',
@@ -29,15 +30,24 @@ export class Modificacion_CondominoComponent implements OnInit {
   environment = environment.baseUrl;
   uri: string | ArrayBuffer | null = '';
   files!: FileList;
+  id = '';
 
   constructor(
     private condominosService: CondominosService,
     private uploadFilesService: UploadFilesService,
-    private usuariosService: UsuariosService
+    private usuariosService: UsuariosService,
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.children[0]?.paramMap?.get('id') || '';
+
+    if (this.id) {
+      this.condominosService.findById(this.id).subscribe(condomino => {
+        this.condomino = condomino;
+      });
+    }
     this.condomino.user = {} as User;
   }
 
@@ -64,10 +74,6 @@ export class Modificacion_CondominoComponent implements OnInit {
             });
         }
       });
-      this.condomino = {} as Condomino;
-      this.condomino.user = {} as User;
-      this.files = {} as FileList;
-      this.uri = '';
     });
   }
 
@@ -97,6 +103,7 @@ export class Modificacion_CondominoComponent implements OnInit {
 
   selectInquilino(condomino: Condomino): void {
     this.condomino = condomino;
+    this.id = condomino.id;
     this.condominos = [];
     this.name = '';
     this.usuariosService.findById(this.condomino.user.id).subscribe(user => {
