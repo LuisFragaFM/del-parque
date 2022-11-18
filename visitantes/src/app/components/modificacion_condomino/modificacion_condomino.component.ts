@@ -42,6 +42,7 @@ export class Modificacion_CondominoComponent implements OnInit {
   }
 
   findInquilinoByName(): void {
+    this.condominos = [];
     this.condominosService.findByName(this.name).subscribe((condominos) => {
       this.condominos = condominos;
     });

@@ -1,75 +1,76 @@
 
-
 .container {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(8px);
-    border-radius: 5px;
-    height: 100% !important;
-    max-width: auto;
-    height: fit-content;
-    margin-top: 20px;
-  }
-  .busqueda {
-    background-color: rgb(159, 211, 176);
-    overflow: scroll;
-    overflow-x: hidden;
-    position: absolute;
-    border-radius: 5px;
-    padding: 4px 8px;
-  }
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 5px;
+  height: 100% !important;
+  max-width: auto;
+  height: fit-content;
+  margin-top: 20px;
+}
 
-  .cursor
-  {
-    padding-left: 8px;
-  }
-  :hover.cursor{
-    background-color: rgb(31, 146, 70);
-    font-weight: bold;
-  }
+.busqueda {
+  background-color: rgb(159, 211, 176);
+  overflow: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+.cursor {
+  padding-left: 8px;
+}
+
+:hover.cursor {
+  background-color: rgb(31, 146, 70);
+  font-weight: bold;
+}
 
 
-h1{
-    
-    font-size: 40px;
+h1 {
+
+  font-size: 40px;
 }
 
 
 label {
-    
-    font-weight: bold;
-    font-size: 20px;
-    
+
+  font-weight: bold;
+  font-size: 20px;
+
 }
 
 
 /* Alerta de telefono */
-.hiddenAlert{
-    display: none;
-    /*  */
-    background-color: #2196f3;
-    color: #ffffff;
-    font-family: inherit;
-    font-weight: bold;
-    padding: 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-/* Alerta de nombres */
-.hiddenAlertName{
-    display: none;
-    /*  */
-    background-color: #2196f3;
-    color: #ffffff;
-    font-family: inherit;
-    font-weight: bold;
-    padding: 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+.hiddenAlert {
+  display: none;
+  /*  */
+  background-color: #2196f3;
+  color: #ffffff;
+  font-family: inherit;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
 
-.boton{
-    margin-top: 50px;
-    margin-bottom: 50px;
+/* Alerta de nombres */
+.hiddenAlertName {
+  display: none;
+  /*  */
+  background-color: #2196f3;
+  color: #ffffff;
+  font-family: inherit;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.boton {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }

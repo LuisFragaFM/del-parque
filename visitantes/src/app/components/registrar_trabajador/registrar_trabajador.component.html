@@ -8,11 +8,11 @@
           >Tipo de trabajador</label
         >
         <select
-          class="form-select form-select-lg mb-3"
-          aria-label=".form-select-lg example"
-          name="TipoTrabajador"
-          id="tipo-trabajador"
           [(ngModel)]="trabajador.type"
+          aria-label=".form-select-lg example"
+          class="form-select form-select-lg mb-3"
+          id="tipo-trabajador"
+          name="TipoTrabajador"
         >
           <option value="Trabajador diario">
             <h2>Trabajador diario</h2>
@@ -22,27 +22,25 @@
           </option>
         </select>
       </div>
-      <div class="row g-2 mt-2 justify-content-center align-items-center">
+      <div class="row g-2 mt-2 justify-content-center align-items-center busqueda-div">
         <div class="col-6">
           <!--Nombre condomino -->
           <label class="form-label" for="nombre_condomino"
-            >Nombre del condómino</label
-          >
+            >Nombre del condómino</label>
           <!-- Input para ingresar el nombre del condomino -->
           <input
-            class="form-control"
-            required
-            autocomplete="off"
-            type="text"
-            placeholder="Escriba aquí"
-            name="nombre_condomino"
-            id="nombre_condomino"
-            list="nombre_condominos"
             (keyup)="findInquilinoByName()"
             [(ngModel)]="trabajador.condominoInfo.owner"
-            [(ngModel)]="name"
+            autocomplete="off"
+            class="form-control"
+            id="nombre_condomino"
+            list="nombre_condominos"
+            name="nombre_condomino"
+            placeholder="Escriba aquí"
+            required
+            type="text"
           />
-          <div class="busqueda" *ngIf="condominos.length > 0">
+          <div *ngIf="condominos.length > 0" class="busqueda">
             <div *ngFor="let c of condominos">
               <div (click)="selectInquilino(c)" class="cursor">
                 {{ c.user.name }}
@@ -50,7 +48,7 @@
             </div>
           </div>
           <!--  -->
-          <div class="alert-danger" *ngIf="error">
+          <div *ngIf="error" class="alert-danger">
             Porfavor seleccione un inquilino
           </div>
           <!--  -->
@@ -62,22 +60,22 @@
           <label class="form-label" for="nombre-trabajador">Nombre</label>
           <!-- Input para ingresar nombre de trabajador -->
           <input
-            class="form-control"
-            (keyup)="validaTrabajador(regexName, nombreTrabajador.value)"
-            required
             #nombreTrabajador
-            autocomplete="off"
-            type="text"
-            placeholder="Escriba aquí"
-            name="nombre-trabajador"
-            id="nombre-trabajador"
+            (keyup)="validaTrabajador(regexName, nombreTrabajador.value)"
             [(ngModel)]="trabajador.name"
+            autocomplete="off"
+            class="form-control"
+            id="nombre-trabajador"
+            name="nombre-trabajador"
+            placeholder="Escriba aquí"
+            required
+            type="text"
           />
           <!--Alerta de datos -->
           <div
-            id="alertName"
-            class="alert alert-danger"
             *ngIf="!trabajadorName"
+            class="alert alert-danger"
+            id="alertName"
           >
             Favor de agregar solamente letras en este campo
           </div>
@@ -87,7 +85,7 @@
       </div>
 
       <div class="row g-2 mt-2 justify-content-center align-items-center">
-        <label class="form-label " for="nombre-condomino"
+        <label class="form-label "
             >Dias de trabajo</label
           >
         <div class="col-6 ">
@@ -95,44 +93,44 @@
           <div class="d-flex flex-wrap">
             <span
                class="alert alert-primary"><input
-                type="checkbox"
-                name="Lunes"
-                [checked]="hasDay('monday')"
-                value="MONDAY"
-                checked autocomplete="off"
                 (click)="addDay('monday')"
+                [checked]="hasDay('monday')"
+                autocomplete="off"
+                checked
+                name="Lunes" type="checkbox"
+                value="MONDAY"
             /> Lunes </span>
             <span
             class="alert alert-primary"><input
-                type="checkbox"
-                name="Martes"
-                [checked]="hasDay('tuesday')"
-                value="TUESDAY"
                 (click)="addDay('tuesday')"
+                [checked]="hasDay('tuesday')"
+                name="Martes"
+                type="checkbox"
+                value="TUESDAY"
             /> Martes </span>
             <span
             class="alert alert-primary"><input
-                type="checkbox"
-                name="Miercoles"
-                [checked]="hasDay('wednesday')"
-                value="WEDNESDAY"
                 (click)="addDay('wednesday')"
+                [checked]="hasDay('wednesday')"
+                name="Miercoles"
+                type="checkbox"
+                value="WEDNESDAY"
             /> Miercoles </span>
             <span
             class="alert alert-primary"><input
-                type="checkbox"
-                name="Thursday"
-                [checked]="hasDay('thursday')"
-                value="THURSDAY"
                 (click)="addDay('thursday')"
+                [checked]="hasDay('thursday')"
+                name="Thursday"
+                type="checkbox"
+                value="THURSDAY"
             /> Jueves </span>
             <span
             class="alert alert-primary"><input
-                type="checkbox"
-                name="Friday"
-                [checked]="hasDay('friday')"
-                value="FRIDAY"
                 (click)="addDay('friday')"
+                [checked]="hasDay('friday')"
+                name="Friday"
+                type="checkbox"
+                value="FRIDAY"
             /> Viernes </span>
             <span
             class="alert alert-primary"><input
@@ -159,15 +157,15 @@
           <!--Hora de llegada a residencial -->
           <label class="form-label" for="hora-llegada">Hora llegada</label>
           <input
-            class="form-control"
             #hora="ngModel"
-            required
-            autocomplete="off"
-            type="time"
-            placeholder="Escriba aquí"
-            name="hora-llegada"
-            id="hora-llegada"
             [(ngModel)]="trabajador.schedule"
+            autocomplete="off"
+            class="form-control"
+            id="hora-llegada"
+            name="hora-llegada"
+            placeholder="Escriba aquí"
+            required
+            type="time"
           />
         </div>
       </div>
@@ -176,19 +174,19 @@
         <div class="col-6">
           <label for="telefono-trabajador">Teléfono</label>
           <input
-            class="form-control"
-            (keyup)="validaTel(regexTel, telefono.value)"
             #telefono
-            required
-            autocomplete="off"
-            type="number"
-            placeholder="Escriba aquí"
-            name="telefono-trabajador"
-            id="telefono-trabajador"
+            (keyup)="validaTel(regexTel, telefono.value)"
             [(ngModel)]="trabajador.telephoneNumber"
+            autocomplete="off"
+            class="form-control"
+            id="telefono-trabajador"
+            name="telefono-trabajador"
+            placeholder="Escriba aquí"
+            required
+            type="number"
           />
           <!--Alerta de datos -->
-          <div id="alertTel" class="alert alert-danger" *ngIf="!validacionTel">
+          <div *ngIf="!validacionTel" class="alert alert-danger" id="alertTel">
             Inserte el número de telefono de 7 a 14 digitos
           </div>
         </div>
@@ -196,9 +194,9 @@
       <div class="row g-2 mt-6 mb-3 justify-content-center align-items-center">
         <div class="col-4 text-end">
           <button
-            class="boton btn btn-success btn-block"
             (click)="save()"
             [disabled]="!isValidForm()"
+            class="boton btn btn-success btn-block"
           >
             Guardar
           </button>

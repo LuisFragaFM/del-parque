@@ -46,7 +46,8 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   }
 
   findInquilinoByName(): void {
-    this.condominosService.findByName(this.name).subscribe((condominos) => {
+    this.condominos = [];
+      this.condominosService.findByName(this.name).subscribe((condominos) => {
       this.condominos = condominos;
     });
   }

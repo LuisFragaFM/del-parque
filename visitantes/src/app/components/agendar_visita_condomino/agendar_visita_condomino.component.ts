@@ -70,7 +70,8 @@ export class AgendarVisitaCondominoComponent implements OnInit, OnDestroy {
   }
 
   findInquilinoByName(): void {
-    this.condominosService.findByName(this.name).subscribe((condominos) => {
+    this.condominos = [];
+      this.condominosService.findByName(this.name).subscribe((condominos) => {
       this.condominos = condominos;
     });
   }

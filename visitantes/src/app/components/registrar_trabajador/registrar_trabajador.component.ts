@@ -50,6 +50,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
   }
 
   findInquilinoByName(): void {
+    this.condominos = [];
     this.condominosService.findByName(this.trabajador.condominoInfo.owner).subscribe((condominos) => {
       this.condominos = condominos;
     });
