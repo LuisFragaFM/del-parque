@@ -17,7 +17,7 @@ import {WorkDay} from '../../models/WorkDay';
 export class RegistrarTrabajadorComponent implements OnInit {
   trabajador: Trabajador = {} as Trabajador;
   workDays: Map<string, WorkDay> = new Map();
-  name!: string;
+  name = '';
   error = false;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
@@ -51,7 +51,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
 
   findInquilinoByName(): void {
     this.condominos = [];
-    this.condominosService.findByName(this.trabajador.condominoInfo.owner).subscribe((condominos) => {
+    this.condominosService.findByName(this.name).subscribe((condominos) => {
       this.condominos = condominos;
     });
   }
@@ -72,11 +72,13 @@ export class RegistrarTrabajadorComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
-        if (!this.id) {
-          this.trabajador = {} as Trabajador;
-          this.condomino = {} as Condomino;
-          this.name = '';
-        }
+        this.trabajador = {} as Trabajador;
+        this.trabajador.workDays = [];
+        this.condomino = {} as Condomino;
+        this.name = '';
+        this.condominos = [];
+        this.workDays = new Map<string, WorkDay>();
+        this.trabajador.condominoInfo = {} as CondominoInfo;
       });
     });
   }
@@ -86,6 +88,7 @@ export class RegistrarTrabajadorComponent implements OnInit {
     this.condominos = [];
     this.name = condomino.user.name;
     this.trabajador.condominoInfo.userId = condomino.id;
+    this.trabajador.condominoInfo.owner = condomino.id;
   }
 
   // funcion para validacion
