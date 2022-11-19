@@ -8,6 +8,7 @@ public class CondominoMapper {
         return Condomino.builder()
                 .id(condomino.getId())
                 .street(condomino.getStreet())
+                .relatives(condomino.getRelatives())
                 .houseNumber(condomino.getHouseNumber())
                 .paidStatus(condomino.isPaidStatus())
                 .build();
