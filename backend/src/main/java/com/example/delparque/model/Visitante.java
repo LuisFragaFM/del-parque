@@ -23,6 +23,8 @@ public class Visitante {
 
     private String name;
 
+    private Boolean type_visitor;
+
     @Column(name = "license_plates")
     private String licensePlates;
 

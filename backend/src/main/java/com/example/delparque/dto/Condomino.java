@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class Condomino {
     private String id;
     private String street;
+    private String relatives;
     private String houseNumber;
     private User user;
     private boolean paidStatus;
