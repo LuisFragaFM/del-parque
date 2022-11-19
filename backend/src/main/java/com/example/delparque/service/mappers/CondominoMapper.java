@@ -18,6 +18,7 @@ public class CondominoMapper {
         return com.example.delparque.model.Condomino.builder()
                 .id(condomino.getId())
                 .street(condomino.getStreet())
+                .relatives(condomino.getRelatives())
                 .houseNumber(condomino.getHouseNumber())
                 .paidStatus(condomino.isPaidStatus())
                 .userId(condomino.getUser().getId())
