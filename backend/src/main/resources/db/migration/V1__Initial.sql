@@ -63,7 +63,7 @@ CREATE TABLE paquetes
 CREATE TABLE visitantes
 (
     id              varchar(40) primary key,
-    type_visitor    boolean,
+    type_visitor    varchar(20),
     name            varchar(140),
     card            varchar(140),
     vehicle         varchar(140),

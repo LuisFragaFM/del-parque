@@ -8,16 +8,18 @@
           class="Opciones form-select form-select-lg mb-3"
           id="Visita"
           name="TipoVisita"
+          [(ngModel)]="visitante.type_visitor"
         >
           <option value="Visitantes">
             <h2>Visitantes</h2>
           </option>
           <option value="Proveedor">
-            <h2>Provedor</h2>
+            <h2>Proveedor</h2>
           </option>
         </select>
       </div>
     </div>
+    <div *ngIf='visitante.type_visitor === "Visitantes"'>
     <div class="col">
       <h2>Datos del Visitante</h2>
     </div>
@@ -266,5 +268,200 @@
         </button>
       </div>
     </div>
+  </div>
+  <!-- --------------------------------------Proveedor--------------------------------------------- -->
+  <div *ngIf='visitante.type_visitor === "Proveedor"'>
+    <div class="col">
+      <h2>Datos del Visitante</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <label class="form-label">Nombre</label>
+        <!-- Input para ingresar el nombre del visitante -->
+        <input
+          #inputVisita
+          (keyup)="findInquilinoByName()"
+          (keyup)="validaNombre(regexName, inputVisita.value)"
+          [(ngModel)]="visitante.name"
+          autocomplete="off"
+          class="form-control"
+          placeholder="Escriba aqui"
+          required
+          type="text"
+        />
+
+        <!--Alerta de datos -->
+        <div *ngIf="!visitaName" class="alert alert-danger">
+          Favor de agregar solamente letras en este campo
+        </div>
+        <input
+          [(ngModel)]="isChecked"
+          class="BotonVehiculo form-check-input"
+          id="flexCheckDefault"
+          name="Vehiculo"
+          type="checkbox"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          ¿Tiene vehiculo?
+        </label>
+      </div>
+
+      <div class="col-5">
+        <div *ngIf="isChecked">
+          <label class="form-label" for="type_car">Tipo de Vehículo</label>
+          <!-- Input para agregar el tipo de vehiculo -->
+          <input
+            #inputVisita
+            (keyup)="validaVehiculo(regexName, inputVisita.value)"
+            [(ngModel)]="visitante.vehicle"
+            autocomplete="off"
+            class="form-control"
+            id="type_car"
+            placeholder="Escriba aqui"
+            required
+            type="text"
+          />
+          <!--Alerta de datos -->
+          <div
+            *ngIf="!visitaVehiculo"
+            class="alert alert-danger"
+            id="alertName"
+          >
+            Favor de agregar datos correspondientes en este campo
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <label class="form-label">Tarjeton</label>
+        <!-- Input para agregar el tarjeton del vsitante -->
+        <input
+          #inputTarjeton
+          (keyup)="validaTarjeton(regexName, inputTarjeton.value)"
+          [(ngModel)]="visitante.card"
+          autocomplete="off"
+          class="form-control"
+          placeholder="Escriba aqui"
+          required
+          type="text"
+        />
+        <!--Alerta de datos -->
+        <div *ngIf="!visitaTarjeton" class="alert alert-danger">
+          Favor de agregar datos correspondientes en este campo
+        </div>
+      </div>
+      <div class="col-5">
+        <div *ngIf="isChecked">
+          <label class="form-label" for="placas">Placas</label>
+          <!-- Input para agregar las placas del vsitante -->
+          <input
+            #inputPlacas
+            (keyup)="validaPlacas(regexName, inputPlacas.value)"
+            [(ngModel)]="visitante.licensePlates"
+            autocomplete="off"
+            class="form-control"
+            id="placas"
+            placeholder="Escriba aqui"
+            required
+            type="text"
+          />
+          <!--Alerta de datos -->
+          <div *ngIf="!visitaPlacas" class="alert alert-danger">
+            Favor de agregar datos correspondientes en este campo
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2>Datos de Generales</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <label class="form-label" for="fecha">Fecha</label>
+        <input
+          [(ngModel)]="visitante.arrivalDate"
+          autocomplete="off"
+          class="form-control"
+          disabled
+          id="fecha"
+          placeholder="Escriba aqui"
+          required
+          type="text"
+        />
+      </div>
+      <div class="col-5">
+        <label class="form-label" for="autoriza">Autorizada por</label>
+        <input
+          [(ngModel)]="nameAuth"
+          autocomplete="off"
+          class="form-control"
+          disabled
+          id="autoriza"
+          placeholder="Escriba aqui"
+          required
+          type="text"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <label class="form-label" for="hora">Hora</label>
+        <input
+          [(ngModel)]="visitante.checkIn"
+          autocomplete="off"
+          class="form-control"
+          disabled
+          id="hora"
+          placeholder="Escriba aqui"
+          required
+          type="text"
+        />
+      </div>
+      <div class="col-5">
+        <label class="form-label" for="caseta">Caseta recibida:</label>
+        <!-- Input para seleccionar la casilla -->
+        <select
+          #inputCasilla
+          (keyup)="validaCasilla(regexName, inputCasilla.value)"
+          [(ngModel)]="visitante.arrivalBooth"
+          autocomplete="on"
+          class="form-control"
+          id="caseta"
+          name="Caseta"
+          required
+        >
+          <!--Alerta de datos -->
+          <div *ngIf="!visitaCasilla" class="alert alert-danger">
+            Favor de agregar datos correspondientes en este campo
+          </div>
+          <option value="Caseta 1">
+            <h2>Caseta 1</h2>
+          </option>
+          <option value="Caseta 2">
+            <h2>Caseta 2</h2>
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="d-grid gap-2 justify-content-end mx-auto">
+        <button
+          (click)="save()"
+          [disabled]="!isValidForm()"
+          class="botonAgendar btn btn-success"
+          type="button"
+        >
+          Entrar
+        </button>
+      </div>
+    </div>
+  </div>
   </div>
 </div>
