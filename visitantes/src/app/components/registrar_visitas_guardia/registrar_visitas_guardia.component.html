@@ -335,24 +335,7 @@
     </div>
 
     <div class="row">
-      <div class="col-5">
-        <label class="form-label">Tarjeton</label>
-        <!-- Input para agregar el tarjeton del vsitante -->
-        <input
-          #inputTarjeton
-          (keyup)="validaTarjeton(regexName, inputTarjeton.value)"
-          [(ngModel)]="visitante.card"
-          autocomplete="off"
-          class="form-control"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-        <!--Alerta de datos -->
-        <div *ngIf="!visitaTarjeton" class="alert alert-danger">
-          Favor de agregar datos correspondientes en este campo
-        </div>
-      </div>
+      
       <div class="col-5">
         <div *ngIf="isChecked">
           <label class="form-label" for="placas">Placas</label>
