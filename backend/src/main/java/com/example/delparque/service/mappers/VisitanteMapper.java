@@ -27,6 +27,7 @@ public class VisitanteMapper {
     public static com.example.delparque.model.Visitante dtoToEntity(Visitante visitante) {
         return com.example.delparque.model.Visitante.builder()
                 .id(visitante.getId())
+                .type_visitor(visitante.getType_visitor())
                 .departureBooth(visitante.getDepartureBooth())
                 .authorized(visitante.isAuthorized())
                 .userId(visitante.getCondomino().getUserId())
