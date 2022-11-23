@@ -64,34 +64,4 @@ export class VisitasRegistradasAdminComponent implements OnInit {
       this.updatePage(this.page);
     });
   }
-
-  delete(): void {
-    if (this.visitante.id) {
-
-      Swal.fire({
-        title: `Estas seguro que deseas borrar este condomino?`,
-        icon: 'warning',
-        showDenyButton: true,
-        confirmButtonText: `Si`,
-        cancelButtonText: `No`
-      }).then((value) => {
-        if (value.isConfirmed) {
-          this.visitantesService.delete(this.visitante.id).subscribe(() => {
-            Swal.fire({
-              title: `El visitante de ${this.visitante.name} fue borrado correctamente`,
-              icon: 'success',
-              showDenyButton: false,
-              showCancelButton: false,
-              confirmButtonText: `Cerrar`
-            }).then(() => {
-              this.visitante = {} as Visitante;
-
-            });
-          });
-        }
-
-      });
-
-    }
-  }
 }
