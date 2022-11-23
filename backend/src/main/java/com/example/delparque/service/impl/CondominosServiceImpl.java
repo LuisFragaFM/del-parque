@@ -80,7 +80,7 @@ public class CondominosServiceImpl implements CondominosService {
 
     @Override
     public void delete(String id) {
-        condominosRepository.deleteById(id);
+        usersRepository.deleteById(id);
     }
 
     private Condomino addExtraInfo(com.example.delparque.model.Condomino c) {

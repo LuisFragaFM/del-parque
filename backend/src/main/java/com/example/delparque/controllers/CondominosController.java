@@ -36,6 +36,7 @@ public class CondominosController {
     public List<Condomino> findByName(@PathVariable String name) {
         return condominosService.findByName(name);
     }
+
     @GetMapping("filter")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD', 'ROLE_RESIDENT')")
     public Optional<Condomino> findByStreetAndHouseNumber(@RequestParam() String street, @RequestParam() String houseNumber) {
