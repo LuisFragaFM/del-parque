@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -69,6 +70,12 @@ public class CondominosServiceImpl implements CondominosService {
     public List<Condomino> findByName(String name) {
         return condominosRepository.findAllByName(name).stream()
                 .map(this::addExtraInfo).collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Condomino> findByStreetAndHouseNumber(String street, String houseNumber) {
+        return condominosRepository.findByStreetAndHouseNumber(street, houseNumber).stream()
+                .map(this::addExtraInfo).findFirst();
     }
 
     @Override

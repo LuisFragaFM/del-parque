@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/condominos")
@@ -34,6 +35,11 @@ public class CondominosController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD', 'ROLE_RESIDENT')")
     public List<Condomino> findByName(@PathVariable String name) {
         return condominosService.findByName(name);
+    }
+    @GetMapping("filter")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GUARD', 'ROLE_RESIDENT')")
+    public Optional<Condomino> findByStreetAndHouseNumber(@RequestParam() String street, @RequestParam() String houseNumber) {
+        return condominosService.findByStreetAndHouseNumber(street, houseNumber);
     }
 
     @PostMapping()

@@ -24,6 +24,10 @@ export class CondominosService {
     return this.http.get<Condomino[]>(`${environment.baseUrl}/condominos/name/${nombre}`);
   }
 
+  findByStreetAndHouseNumber(street: string, houseNumber: string): Observable<Condomino> {
+    return this.http.get<Condomino>(`${environment.baseUrl}/condominos/filter?street=/${street}&houseNumber=${houseNumber}`);
+  }
+
   findByTelefono(telefono: string): Observable<Condomino> {
     return this.http.get<Condomino>(`${environment.baseUrl}/condominos/telefono/${telefono}`);
   }

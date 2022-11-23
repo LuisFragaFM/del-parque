@@ -14,4 +14,6 @@ public interface CondominosRepository extends JpaRepository<Condomino, String> {
     List<Condomino> findAllByName(String name);
 
     Optional<Condomino> findByUserId(String s);
+
+    Optional<Condomino> findByStreetAndHouseNumber(String street, String houseNumber);
 }
