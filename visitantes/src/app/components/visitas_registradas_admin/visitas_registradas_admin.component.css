@@ -136,23 +136,11 @@
 
 /* estilo de botones */
 
-.botonEliminar {
-    position: absolute;
-    height: 40px;
-    width: 150px;
-    left: 600px;
-    top: 205px;
-    background-color: rgb(237, 95, 95);
-    color: white;
-    border-radius: 40px;
-    font-size: 20px;
-}
-
 .botonRegistro {
     position: absolute;
     height: 40px;
     width: 150px;
-    left: 850px;
+    left: 700px;
     top: 205px;
     background-color: rgb(110, 148, 221);
     color: white;
