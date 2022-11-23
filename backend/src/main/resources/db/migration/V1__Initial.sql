@@ -15,6 +15,7 @@ CREATE TABLE condominos
 (
     id           varchar(40) primary key,
     street       varchar(120),
+    relatives    varchar(280),
     house_number varchar(10),
     paid_status  boolean,
     user_id      varchar(40),
@@ -62,6 +63,7 @@ CREATE TABLE paquetes
 CREATE TABLE visitantes
 (
     id              varchar(40) primary key,
+    type_visitor    varchar(20),
     name            varchar(140),
     card            varchar(140),
     vehicle         varchar(140),

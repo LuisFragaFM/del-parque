@@ -22,6 +22,10 @@ public class Condomino {
 
     private String street;
 
+    @Column(name = "relatives")
+
+    private String relatives;
+
     @Column(name = "house_number")
     private String houseNumber;
 

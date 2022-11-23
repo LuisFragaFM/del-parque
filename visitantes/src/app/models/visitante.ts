@@ -3,6 +3,7 @@ import {CondominoInfo} from './condominoInfo';
 export interface Visitante {
   id: string;
   name: string;
+  type_visitor: string;
   licensePlates: string;
   vehicle: string;
   card: string;

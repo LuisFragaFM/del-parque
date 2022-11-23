@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Visitante {
     private String id;
+    private String type_visitor;
     private String name;
     private String licensePlates;
     private String vehicle;
