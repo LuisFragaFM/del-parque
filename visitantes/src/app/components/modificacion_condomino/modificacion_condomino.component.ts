@@ -86,7 +86,7 @@ export class Modificacion_CondominoComponent implements OnInit {
       cancelButtonText: `No`,
     }).then((value) => {
       if (value.isConfirmed) {
-        this.condominosService.delete(this.condomino.id).subscribe(() => {
+        this.condominosService.delete(this.condomino.user.id).subscribe(() => {
           Swal.fire({
             title: `El condomino de ${this.condomino.user.name} fue borrado correctamente`,
             icon: 'success',
