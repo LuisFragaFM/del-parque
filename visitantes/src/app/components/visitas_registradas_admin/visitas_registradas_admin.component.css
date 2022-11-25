@@ -1,13 +1,15 @@
 /* blur */
 
-.contenido {
+.container {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    height: 710px;
-    width: 1170px;
-    
-}
-
+    border-radius: 5px;
+    height: 100% !important;
+    max-width: auto;
+    height: fit-content;
+    margin-top: 20px;
+    padding: 10px;
+  }
 
 /* estilo para el contenedor bitacoras */
 

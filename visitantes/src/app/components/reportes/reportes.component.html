@@ -36,20 +36,21 @@
 
     </div>
 
-    <div class="tarjet row border border-dark border-4 rounded align-items-center" >
-        <div class="col-5"><div class="imagenUser">
-            <label class="form-label" for="busquedaInquilino">Nombre:</label>
-            <input required autocomplete="off" type="text" class="inputBarraInquilino form-control" id="busquedaInquilino" name="busquedaInquilino"
-                   [(ngModel)]="condomino.user.name" readonly="readonly" disabled>
-        </div></div>
-        <div class="col-5 text-center">
+    <div class="tarjet row border border-dark border-4 a " *ngIf="condomino.id" >
+        <div class="col-4">
             <img [src]="uri" alt="" class="imagenUser" *ngIf="uri">
             
         </div>
-        <div class="row ">
-            <div class="d-grid gap-2  d-md-flex justify-content-md-end mx-auto">
-            <button class="boton btn btn-primary " (click)="printReport()">Descargar</button>
+        <div class="col-4  align-self-center ">
+            
+            <label class="form-label" for="busquedaInquilino">Nombre:</label>
+            <input required autocomplete="off" type="text" class="inputBarraInquilino form-control" id="busquedaInquilino" name="busquedaInquilino"
+                   [(ngModel)]="condomino.user.name" readonly="readonly" disabled>
+            
         </div>
+        
+        <div class="col-4 align-self-center">
+            <button class="boton btn btn-primary " (click)="printReport()">Descargar</button>
         </div>
     </div>
 </div>
