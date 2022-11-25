@@ -23,10 +23,10 @@
     <div class="col">
       <h2>Datos del Visitante</h2>
     </div>
-
-    <div class="row">
+    <div class="Recuadro">
+    <div class="row ">
       <div class="col-5">
-        <label class="form-label">Nombre</label>
+        <label class="form-label">Nombre:</label>
         <!-- Input para ingresar el nombre del visitante -->
         <input
           #inputVisita
@@ -58,7 +58,7 @@
 
       <div class="col-5">
         <div *ngIf="isChecked">
-          <label class="form-label" for="type_car">Tipo de Vehículo</label>
+          <label class="form-label" for="type_car">Tipo de Vehículo: </label>
           <!-- Input para agregar el tipo de vehiculo -->
           <input
             #inputVisita
@@ -82,10 +82,10 @@
         </div>
       </div>
     </div>
-
+  
     <div class="row">
       <div class="col-5">
-        <label class="form-label">Tarjeton</label>
+        <label class="form-label">Tarjeton: </label>
         <!-- Input para agregar el tarjeton del vsitante -->
         <input
           #inputTarjeton
@@ -104,7 +104,7 @@
       </div>
       <div class="col-5">
         <div *ngIf="isChecked">
-          <label class="form-label" for="placas">Placas</label>
+          <label class="form-label" for="placas">Placas: </label>
           <!-- Input para agregar las placas del vsitante -->
           <input
             #inputPlacas
@@ -124,13 +124,14 @@
         </div>
       </div>
     </div>
-
+  </div>
     <div class="col">
-      <h2>Datos del condómino</h2>
+      <h2>Datos del condómino: </h2>
     </div>
+    <div class="Recuadro">
     <div class="row g-3 mt-3 row justify-content-around">
       <div class="col-5">
-        <label class="form-label" for="nombre_condomino">Nombre</label>
+        <label class="form-label" for="nombre_condomino">Nombre: </label>
         <input
           (keyup)="findInquilinoByName()"
           [(ngModel)]="name"
@@ -156,7 +157,7 @@
 
       <div class="col-5">
         <div *ngIf="condomino.id" class="input">
-          <label class="form-label" for="barra">Número de la casa</label>
+          <label class="form-label" for="barra">Número de la casa: </label>
           <input
             [(ngModel)]="condomino.houseNumber"
             autocomplete="off"
@@ -167,7 +168,7 @@
             required
             type="text"
           />
-          <label class="form-label" for="calle">Calle</label>
+          <label class="form-label" for="calle">Calle: </label>
           <input
             [(ngModel)]="condomino.street"
             autocomplete="off"
@@ -181,14 +182,15 @@
         </div>
       </div>
     </div>
-
+  </div>
     <div class="col">
       <h2>Datos de Generales</h2>
     </div>
 
+    <div class="Recuadro">
     <div class="row">
       <div class="col-5">
-        <label class="form-label" for="fecha">Fecha</label>
+        <label class="form-label" for="fecha">Fecha: </label>
         <input
           [(ngModel)]="visitante.arrivalDate"
           autocomplete="off"
@@ -201,7 +203,7 @@
         />
       </div>
       <div class="col-5">
-        <label class="form-label" for="autoriza">Autorizada por</label>
+        <label class="form-label" for="autoriza">Autorizada por: </label>
         <input
           [(ngModel)]="nameAuth"
           autocomplete="off"
@@ -217,7 +219,7 @@
 
     <div class="row">
       <div class="col-5">
-        <label class="form-label" for="hora">Hora</label>
+        <label class="form-label" for="hora">Hora: </label>
         <input
           [(ngModel)]="visitante.checkIn"
           autocomplete="off"
@@ -255,7 +257,7 @@
         </select>
       </div>
     </div>
-
+  </div>
     <div class="row">
       <div class="d-grid gap-2 justify-content-end mx-auto">
         <button
@@ -268,16 +270,17 @@
         </button>
       </div>
     </div>
+  
   </div>
   <!-- --------------------------------------Proveedor--------------------------------------------- -->
   <div *ngIf='visitante.type_visitor === "Proveedor"'>
     <div class="col">
       <h2>Datos del Proveedor</h2>
     </div>
-
+    <div class="Recuadro"> 
     <div class="row">
       <div class="col-5">
-        <label class="form-label">Nombre</label>
+        <label class="form-label">Nombre:</label>
         <!-- Input para ingresar el nombre del visitante -->
         <input
           #inputVisita
@@ -309,7 +312,7 @@
 
       <div class="col-5">
         <div *ngIf="isChecked">
-          <label class="form-label" for="type_car">Tipo de Vehículo</label>
+          <label class="form-label" for="type_car">Tipo de Vehículo: </label>
           <!-- Input para agregar el tipo de vehiculo -->
           <input
             #inputVisita
@@ -338,7 +341,7 @@
       
       <div class="col-5">
         <div *ngIf="isChecked">
-          <label class="form-label" for="placas">Placas</label>
+          <label class="form-label" for="placas">Placas:</label>
           <!-- Input para agregar las placas del vsitante -->
           <input
             #inputPlacas
@@ -358,13 +361,14 @@
         </div>
       </div>
     </div>
-
+    </div>
     <div class="col">
       <h2>Datos del condómino</h2>
     </div>
+    <div class="Recuadro">
     <div class="row g-3 mt-3 row justify-content-around">
       <div class="col-5">
-        <label class="form-label" for="nombre_condomino">Nombre</label>
+        <label class="form-label" for="nombre_condomino">Nombre:</label>
         <input
           (keyup)="findInquilinoByName()"
           [(ngModel)]="name"
@@ -390,7 +394,7 @@
 
       <div class="col-5">
         <div *ngIf="condomino.id" class="input">
-          <label class="form-label" for="barra">Número de la casa</label>
+          <label class="form-label" for="barra">Número de la casa: </label>
           <input
             [(ngModel)]="condomino.houseNumber"
             autocomplete="off"
@@ -401,7 +405,7 @@
             required
             type="text"
           />
-          <label class="form-label" for="calle">Calle</label>
+          <label class="form-label" for="calle">Calle: </label>
           <input
             [(ngModel)]="condomino.street"
             autocomplete="off"
@@ -415,14 +419,15 @@
         </div>
       </div>
     </div>
-
+    </div>
     <div class="col">
       <h2>Datos de Generales</h2>
     </div>
-
+    
+    <div class="Recuadro">
     <div class="row">
       <div class="col-5">
-        <label class="form-label" for="fecha">Fecha</label>
+        <label class="form-label" for="fecha">Fecha: </label>
         <input
           [(ngModel)]="visitante.arrivalDate"
           autocomplete="off"
@@ -435,7 +440,7 @@
         />
       </div>
       <div class="col-5">
-        <label class="form-label" for="autoriza">Autorizada por</label>
+        <label class="form-label" for="autoriza">Autorizada por: </label>
         <input
           [(ngModel)]="nameAuth"
           autocomplete="off"
@@ -451,7 +456,7 @@
 
     <div class="row">
       <div class="col-5">
-        <label class="form-label" for="hora">Hora</label>
+        <label class="form-label" for="hora">Hora: </label>
         <input
           [(ngModel)]="visitante.checkIn"
           autocomplete="off"
@@ -490,6 +495,7 @@
       </div>
     </div>
 
+    </div>
     <div class="row">
       <div class="d-grid gap-2 justify-content-end mx-auto">
         <button

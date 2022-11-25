@@ -11,7 +11,9 @@
     max-width: auto;
     height: fit-content;
     padding: 3px;
+    margin-top:20px;
   }
+
   .div_file {
     text-align: center;
     padding: 3%;

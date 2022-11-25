@@ -28,10 +28,10 @@
   </section>
   <section>
     <h2>Datos del condómino</h2>
-    <div class="row g-3 mt-3 row justify-content-around">
+    <div class="row g-3 mt-3 ">
       <!--Se ingresan los datos que tiene el condomino  -->
       <div class="col-5">
-        <label class="form-label" for="nombre_condomino">Nombre</label>
+        <label class="form-label" for="nombre_condomino">Nombre: </label>
         <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aquí"
           id="nombre_condomino" (keyup)="findInquilinoByName()" [(ngModel)]="name" list="nombre_condominos" />
         <div class="busqueda" *ngIf="condominos.length > 0">
@@ -48,15 +48,27 @@
 
       <div class="col-5">
         <!-- Se ingresa el numero de la casa a la que va el paquete -->
-        <div class="input" *ngIf="condomino.id">
-          <label class="form-label" for="calle">Número de la casa</label>
+        <div class="input" >
+          <label class="form-label" for="calle">Número de la casa: </label>
           <input class="form-control" required autocomplete="off" type="text" id="casa"
-            [(ngModel)]="condomino.houseNumber" disabled />
-          <label class="form-label" for="calle">Calle</label>
-          <input class="form-control" required autocomplete="off" type="text" id="calle" [(ngModel)]="condomino.street"
-            disabled />
+            [(ngModel)]="condomino.houseNumber" placeholder="Escriba aquí" />
+          
         </div>
       </div>
+
+      
+    </div>
+    <div class="row g-3 mt-3 ">
+      <div class="col-5"> 
+        <label class="form-label" for="nombre_members_condomino">Miembros del condómino: </label>
+      <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aquí"
+        id="nombre_members_condomino"  />
+      </div>
+      
+      <div class="col-5">
+        <label class="form-label mt-6" for="calle">Calle: </label>
+        <input class="form-control" required autocomplete="off" type="text" id="calle" [(ngModel)]="condomino.street"
+        placeholder="Escriba aquí"/></div>
     </div>
   </section>
 
@@ -75,7 +87,7 @@
         </div>
       </div>
       <div class="col-5">
-        <label class="form-label" for="fecha">Fecha</label>
+        <label class="form-label" for="fecha">Fecha: </label>
         <input class="form-control" disabled required autocomplete="off" type="date" id="fecha"
           [(ngModel)]="paquete.arrivalDate" />
         <!--Alerta de datos (recibe Inquilino)-->
@@ -87,7 +99,7 @@
 
     <div class="row g-3 mt-3 row justify-content-around">
       <div class="col-5">
-        <label class="form-label" for="hora">Hora</label>
+        <label class="form-label" for="hora">Hora: </label>
         <input class="form-control" disabled required autocomplete="off" type="text" id="hora"
           [(ngModel)]="paquete.arrivalTime" />
       </div>

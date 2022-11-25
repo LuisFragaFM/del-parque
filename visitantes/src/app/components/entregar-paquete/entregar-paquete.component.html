@@ -11,7 +11,7 @@
     <h2>ENTREGA DE PAQUETES</h2>
   </div>
   <i *ngIf="isLoading" class="spinner-border"></i>
-  <div *ngIf="!paquetes.length">No hay paquetes</div>
+  <span *ngIf="!paquetes.length"><h3>No hay paquetes</h3></span>
   <div class="tarjetaT mt-3 p-2 text-white bg-dark " *ngFor="let paquete of paquetes">
     <div class="row"> 
       <div class="col-5">

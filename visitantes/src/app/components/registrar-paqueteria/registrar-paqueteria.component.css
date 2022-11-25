@@ -17,12 +17,7 @@ section {
   margin: 16px;
 }
 
-.input {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-left: 8px;
-}
+
 
 .form {
   display: flex;
@@ -40,7 +35,7 @@ section {
   background-color: rgb(159, 211, 176);
   overflow: scroll;
   overflow-x: hidden;
-  position: absolute;
+  max-height: 100px;
   border-radius: 5px;
   padding: 4px 8px;
 }
@@ -50,6 +45,6 @@ section {
 }
 
 :hover.cursor {
-  background-color: rgb(31, 146, 70);
+  background-color: rgb(70, 186, 240);
   font-weight: bold;
 }

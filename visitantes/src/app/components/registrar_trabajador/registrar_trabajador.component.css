@@ -13,7 +13,7 @@
   background-color: rgb(159, 211, 176);
   overflow: scroll;
   overflow-x: hidden;
-  position: absolute;
+  max-height: 100px;
   border-radius: 5px;
   padding: 4px 8px;
 }
@@ -23,9 +23,10 @@
 }
 
 :hover.cursor {
-  background-color: rgb(31, 146, 70);
+  background-color: rgb(70, 186, 240);
   font-weight: bold;
 }
+
 
 
 h1 {
