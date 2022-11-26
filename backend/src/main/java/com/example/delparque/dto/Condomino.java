@@ -16,5 +16,4 @@ public class Condomino {
     private String houseNumber;
     private User user;
     private boolean paidStatus;
-    private String role;
 }

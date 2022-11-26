@@ -93,6 +93,7 @@ public class CondominosServiceImpl implements CondominosService {
                 .email(user.getEmail())
                 .emergencyNumber(user.getEmergencyNumber())
                 .telephoneNumber(user.getTelephoneNumber())
+                .role(user.getRole())
                 .build();
 
         condomino.setUser(u);
