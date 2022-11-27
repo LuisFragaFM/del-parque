@@ -40,3 +40,8 @@ button {
   background-color: rgb(70, 186, 240);
   font-weight: bold;
 }
+.infPer{
+  position: relative;
+  left:-640px;
+  top: -70px;
+}
