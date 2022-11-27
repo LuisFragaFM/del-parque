@@ -24,7 +24,6 @@ export class RegistrarCondominoComponent implements OnInit {
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
   uri!: any;
   files!: FileList;
-  file!: File;
   
   constructor(
     private condominosService: CondominosService,
