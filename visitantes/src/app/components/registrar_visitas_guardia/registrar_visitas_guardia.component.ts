@@ -81,7 +81,8 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
     this.name = condomino.user.name;
     this.visitante.condomino.userId = condomino.user.id;
     this.visitante.authorization = this.autoriza.id;
-    this.condominos = [];
+    this.condominos = []; 
+    this.condomino.user.telephoneNumber = condomino.user.telephoneNumber;
     this.visitante.checkIn = formatAMPM();
     this.visitante.arrivalDate = formatDate();
   }
