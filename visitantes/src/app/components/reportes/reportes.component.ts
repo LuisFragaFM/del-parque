@@ -12,9 +12,12 @@ import {UsuariosService} from '../../services/usuarios.service';
 
 interface VisitanteReporte {
   name: string;
+  typevisitor: string;
   licensePlates: string;
   vehicle: string;
   arrivalDate: string;
+  checkIn: string;
+  departureTime: string;
   departureDate: string;
 }
 
@@ -57,7 +60,12 @@ export class ReportesComponent implements OnInit {
     this.condominos = [];
     this.name = '';
     this.usuariosService.findById(this.condomino.user.id).subscribe(user => {
-      this.uri = this.environment + '/file/' + user.picture;
+      if(user.picture === 'assets/perfil.PNG')
+      {
+        this.uri = user.picture;
+      } else{
+        this.uri = this.environment + '/file/' + user.picture;
+      }
     });
     this.visitantesService.findAllByUserId(this.condomino.user.id).subscribe(visitantes => {
       this.visitantes = visitantes;
@@ -65,15 +73,18 @@ export class ReportesComponent implements OnInit {
   }
 
   printReport(): void {
-    const encabezado = ['Nombre', 'Vehiculo', 'Placas', 'Fecha llegada', 'Fecha salida'];
+    const encabezado = ['Nombre', 'Tipo de visita', 'Vehiculo', 'Placas', 'Fecha llegada', 'Hora llegada', 'Fecha salida', 'Hora de salida'];
 
     const cuerpo = this.visitantes.map((visitante) => {
       const visitanteReporte: VisitanteReporte = {
         name: visitante.name,
+        typevisitor: visitante.type_visitor,
         vehicle: visitante.vehicle,
         licensePlates: visitante.licensePlates,
         arrivalDate: visitante.arrivalDate,
-        departureDate: visitante.departureDate
+        checkIn: visitante.checkIn,
+        departureDate: visitante.departureDate,
+        departureTime: visitante.departureTime
 
       };
       return Object.values(visitanteReporte);

@@ -107,7 +107,12 @@ export class Modificacion_CondominoComponent implements OnInit {
     this.condominos = [];
     this.name = '';
     this.usuariosService.findById(this.condomino.user.id).subscribe(user => {
-      this.uri = this.environment + '/file/' + user.picture;
+      if(user.picture === 'assets/perfil.PNG')
+      {
+        this.uri = user.picture;
+      } else{
+        this.uri = this.environment + '/file/' + user.picture;
+      }
     });
   }
 
