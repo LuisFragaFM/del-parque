@@ -79,6 +79,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   selectInquilino(condomino: Condomino): void {
     this.condomino = condomino;
     this.condominos = [];
+    this.condomino.relatives = condomino.relatives; 
     this.name = condomino.user.name;
     this.paquete.condomino.userId = this.condomino.id;
     this.paquete.condomino.houseStreet = condomino.street;

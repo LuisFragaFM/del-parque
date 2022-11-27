@@ -61,8 +61,8 @@
     <div class="row g-3 mt-3 ">
       <div class="col-5"> 
         <label class="form-label" for="nombre_members_condomino">Miembros del condómino: </label>
-      <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aquí"
-        id="nombre_members_condomino"  />
+      <input class="form-control" disabled required autocomplete="off" type="text" placeholder="Escriba aquí"
+        id="nombre_members_condomino"  [(ngModel)]="condomino.relatives" />
       </div>
       
       <div class="col-5">
