@@ -17,12 +17,12 @@
     <div class="row fila1">
       <div class="col-5">
         <label class="form-label" for="buscaSalidaName">Nombre:</label>
-        <input required autocomplete="off" type="text" placeholder="Nombre" class="inputAgendados form-control"
+        <input required disabled autocomplete="off" type="text" placeholder="Nombre" class="inputAgendados form-control"
                name="buscaSalidaName" id="buscaSalidaName" [(ngModel)]="visitante.name">
       </div>
       <div class="col-5">
         <label class="form-label" for="tipoVehiculo">Tipo de vehículo:</label>
-        <input required autocomplete="off" type="text" placeholder="Tipo de vehiculo "
+        <input required disabled autocomplete="off" type="text" placeholder="Tipo de vehiculo "
                class="inputAgendados form-control"
                name="tipoVehiculo" id="tipoVehiculo" [(ngModel)]="visitante.vehicle">
       </div>
@@ -31,12 +31,12 @@
     <div class="row fila2">
       <div class="col-5">
         <label class="form-label" for="fechaVisita">Fecha:</label>
-        <input required autocomplete="off" type="date" placeholder="Fecha agendada" class="inputAgendados form-control"
+        <input required disabled autocomplete="off" type="text" placeholder="Fecha agendada" class="inputAgendados form-control"
                name="fechaVisita" id="fechaVisita" [(ngModel)]="visitante.arrivalDate">
       </div>
       <div class="col-5">
         <label class="form-label" for="horaVisita">Hora:</label>
-        <input required autocomplete="off" type="time" placeholder="Hora" class="inputAgendados form-control"
+        <input required disabled autocomplete="off" type="text" placeholder="Hora" class="inputAgendados form-control"
                id="horaVisita" name="fechaVisita"
                [(ngModel)]="visitante.checkIn">
       </div>
