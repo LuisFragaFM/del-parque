@@ -53,6 +53,7 @@ export class AgendarVisitaCondominoComponent implements OnInit, OnDestroy {
       this.user = user;
       this.visitante.authorization = user.id;
       this.visitante.condomino.userId = user.id;
+      this.visitante.type_visitor = "Visitantes";
     });
   }
 
@@ -65,6 +66,11 @@ export class AgendarVisitaCondominoComponent implements OnInit, OnDestroy {
         showCancelButton: false,
         confirmButtonText: `Cerrar`
       }).then(() => {
+        this.visitante = {} as Visitante;
+        this.condomino = {} as Condomino;
+        this.visitante.condomino = {} as CondominoInfo;
+        this.name = '';
+        this.condominos = [];
       });
     });
   }
