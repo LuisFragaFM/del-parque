@@ -1,7 +1,9 @@
 <div class="container">
+  <!-- Inicio del formulario de datos -->
   <div class="formulario row">
     <div class="row">
       <div class="col-6 text-center">
+        <!-- Seleccionar el tipo de visita que se agendara -->
         <h2>Tipo de visita</h2>
         <select
           aria-label=".form-select-lg example"
@@ -10,504 +12,530 @@
           name="TipoVisita"
           [(ngModel)]="visitante.type_visitor"
         >
+          <!-- Opcion de visitantes  -->
           <option value="Visitantes">
             <h2>Visitantes</h2>
           </option>
+          <!-- Opcion de proveedor -->
           <option value="Proveedor">
             <h2>Proveedor</h2>
           </option>
         </select>
       </div>
     </div>
-    <div *ngIf='visitante.type_visitor === "Visitantes"'>
-    <div class="col">
-      <h2>Datos del Visitante</h2>
-    </div>
-    <div class="Recuadro">
-    <div class="row ">
-      <div class="col-5">
-        <label class="form-label">Nombre:</label>
-        <!-- Input para ingresar el nombre del visitante -->
-        <input
-          #inputVisita
-          (keyup)="findInquilinoByName()"
-          (keyup)="validaNombre(regexName, inputVisita.value)"
-          [(ngModel)]="visitante.name"
-          autocomplete="off"
-          class="form-control"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
+    <!-- Estas opciones apareceran si se selecciona visitantes como tipo de visita -->
+    <div *ngIf="visitante.type_visitor === 'Visitantes'">
+      <div class="col">
+        <!-- Input para los datos del visitante -->
+        <h2>Datos del Visitante</h2>
+      </div>
+      <div class="Recuadro">
+        <div class="row">
+          <div class="col-5">
+            <label class="form-label">Nombre:</label>
+            <!-- Input para ingresar el nombre del visitante -->
+            <input
+              #inputVisita
+              (keyup)="findInquilinoByName()"
+              (keyup)="validaNombre(regexName, inputVisita.value)"
+              [(ngModel)]="visitante.name"
+              autocomplete="off"
+              class="form-control"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
 
-        <!--Alerta de datos -->
-        <div *ngIf="!visitaName" class="alert alert-danger">
-          Favor de agregar solamente letras en este campo
-        </div>
-        <input
-          [(ngModel)]="isChecked"
-          class="BotonVehiculo form-check-input"
-          id="flexCheckDefault"
-          name="Vehiculo"
-          type="checkbox"
-        />
-        <label class="form-check-label" for="flexCheckDefault">
-          ¿Tiene vehiculo?
-        </label>
-      </div>
+            <!--Alerta de datos -->
+            <div *ngIf="!visitaName" class="alert alert-danger">
+              Favor de agregar solamente letras en este campo
+            </div>
+            <input
+              [(ngModel)]="isChecked"
+              class="BotonVehiculo form-check-input"
+              id="flexCheckDefault"
+              name="Vehiculo"
+              type="checkbox"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              ¿Tiene vehiculo?
+            </label>
+          </div>
 
-      <div class="col-5">
-        <div *ngIf="isChecked">
-          <label class="form-label" for="type_car">Tipo de Vehículo: </label>
-          <!-- Input para agregar el tipo de vehiculo -->
-          <input
-            #inputVisita
-            (keyup)="validaVehiculo(regexName, inputVisita.value)"
-            [(ngModel)]="visitante.vehicle"
-            autocomplete="off"
-            class="form-control"
-            id="type_car"
-            placeholder="Escriba aqui"
-            required
-            type="text"
-          />
-          <!--Alerta de datos -->
-          <div
-            *ngIf="!visitaVehiculo"
-            class="alert alert-danger"
-            id="alertName"
-          >
-            Favor de agregar datos correspondientes en este campo
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="row">
-      <div class="col-5">
-        <label class="form-label">Tarjeton: </label>
-        <!-- Input para agregar el tarjeton del vsitante -->
-        <input
-          #inputTarjeton
-          (keyup)="validaTarjeton(regexName, inputTarjeton.value)"
-          [(ngModel)]="visitante.card"
-          autocomplete="off"
-          class="form-control"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-        <!--Alerta de datos -->
-        <div *ngIf="!visitaTarjeton" class="alert alert-danger">
-          Favor de agregar datos correspondientes en este campo
-        </div>
-      </div>
-      <div class="col-5">
-        <div *ngIf="isChecked">
-          <label class="form-label" for="placas">Placas: </label>
-          <!-- Input para agregar las placas del vsitante -->
-          <input
-            #inputPlacas
-            (keyup)="validaPlacas(regexName, inputPlacas.value)"
-            [(ngModel)]="visitante.licensePlates"
-            autocomplete="off"
-            class="form-control"
-            id="placas"
-            placeholder="Escriba aqui"
-            required
-            type="text"
-          />
-          <!--Alerta de datos -->
-          <div *ngIf="!visitaPlacas" class="alert alert-danger">
-            Favor de agregar datos correspondientes en este campo
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    <div class="col">
-      <h2>Datos del condómino: </h2>
-    </div>
-    <div class="Recuadro">
-    <div class="row g-3 mt-3 row justify-content-around">
-      <div class="col-5">
-        <label class="form-label" for="nombre_condomino">Nombre: </label>
-        <input
-          (keyup)="findInquilinoByName()"
-          [(ngModel)]="name"
-          autocomplete="off"
-          class="form-control"
-          id="nombre_condomino"
-          list="nombre_condominos"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-        <div *ngIf="condominos.length > 0" class="busqueda">
-          <div *ngFor="let c of condominos">
-            <div (click)="selectInquilino(c)" class="cursor">
-              {{ c.user.name }}
+          <div class="col-5">
+            <div *ngIf="isChecked">
+              <label class="form-label" for="type_car"
+                >Tipo de Vehículo:
+              </label>
+              <!-- Input para agregar el tipo de vehiculo -->
+              <input
+                #inputVisita
+                (keyup)="validaVehiculo(regexName, inputVisita.value)"
+                [(ngModel)]="visitante.vehicle"
+                autocomplete="off"
+                class="form-control"
+                id="type_car"
+                placeholder="Escriba aqui"
+                required
+                type="text"
+              />
+              <!--Alerta de datos -->
+              <div
+                *ngIf="!visitaVehiculo"
+                class="alert alert-danger"
+                id="alertName"
+              >
+                Favor de agregar datos correspondientes en este campo
+              </div>
             </div>
           </div>
         </div>
-        <div *ngIf="error" class="alert-danger">
-          Porfavor seleccione un inquilino
-        </div>
-      </div>
 
-      <div class="col-5">
-        <div *ngIf="condomino.id" class="input">
-          <label class="form-label" for="barra">Número de la casa: </label>
-          <input
-            [(ngModel)]="condomino.houseNumber"
-            autocomplete="off"
-            class="barra form-control"
-            disabled
-            id="barra"
-            name="asdasd"
-            required
-            type="text"
-          />
-          <label class="form-label" for="calle">Calle: </label>
-          <input
-            [(ngModel)]="condomino.street"
-            autocomplete="off"
-            class="barra form-control"
-            disabled
-            id="calle"
-            name="asdasd"
-            required
-            type="text"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-    <div class="col">
-      <h2>Datos de Generales</h2>
-    </div>
-
-    <div class="Recuadro">
-    <div class="row">
-      <div class="col-5">
-        <label class="form-label" for="fecha">Fecha: </label>
-        <input
-          [(ngModel)]="visitante.arrivalDate"
-          autocomplete="off"
-          class="form-control"
-          disabled
-          id="fecha"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-      </div>
-      <div class="col-5">
-        <label class="form-label" for="autoriza">Autorizada por: </label>
-        <input
-          [(ngModel)]="nameAuth"
-          autocomplete="off"
-          class="form-control"
-          disabled
-          id="autoriza"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-5">
-        <label class="form-label" for="hora">Hora: </label>
-        <input
-          [(ngModel)]="visitante.checkIn"
-          autocomplete="off"
-          class="form-control"
-          disabled
-          id="hora"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-      </div>
-      <div class="col-5">
-        <label class="form-label" for="caseta">Caseta recibida:</label>
-        <!-- Input para seleccionar la casilla -->
-        <select
-          #inputCasilla
-          (keyup)="validaCasilla(regexName, inputCasilla.value)"
-          [(ngModel)]="visitante.arrivalBooth"
-          autocomplete="on"
-          class="form-control"
-          id="caseta"
-          name="Caseta"
-          required
-        >
-          <!--Alerta de datos -->
-          <div *ngIf="!visitaCasilla" class="alert alert-danger">
-            Favor de agregar datos correspondientes en este campo
+        <div class="row">
+          <div class="col-5">
+            <label class="form-label">Tarjeton: </label>
+            <!-- Input para agregar el tarjeton del vsitante -->
+            <input
+              #inputTarjeton
+              (keyup)="validaTarjeton(regexName, inputTarjeton.value)"
+              [(ngModel)]="visitante.card"
+              autocomplete="off"
+              class="form-control"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+            <!--Alerta de datos -->
+            <div *ngIf="!visitaTarjeton" class="alert alert-danger">
+              Favor de agregar datos correspondientes en este campo
+            </div>
           </div>
-          <option value="Caseta 1">
-            <h2>Caseta 1</h2>
-          </option>
-          <option value="Caseta 2">
-            <h2>Caseta 2</h2>
-          </option>
-        </select>
-      </div>
-    </div>
-  </div>
-    <div class="row">
-      <div class="d-grid gap-2 justify-content-end mx-auto">
-        <button
-          (click)="save()"
-          [disabled]="!isValidForm()"
-          class="botonAgendar btn btn-success"
-          type="button"
-        >
-          Entrar
-        </button>
-      </div>
-    </div>
-  
-  </div>
-  <!-- --------------------------------------Proveedor--------------------------------------------- -->
-  <div *ngIf='visitante.type_visitor === "Proveedor"'>
-    <div class="col">
-      <h2>Datos del Proveedor</h2>
-    </div>
-    <div class="Recuadro"> 
-    <div class="row">
-      <div class="col-5">
-        <label class="form-label">Nombre:</label>
-        <!-- Input para ingresar el nombre del visitante -->
-        <input
-          #inputVisita
-          (keyup)="findInquilinoByName()"
-          (keyup)="validaNombre(regexName, inputVisita.value)"
-          [(ngModel)]="visitante.name"
-          autocomplete="off"
-          class="form-control"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-
-        <!--Alerta de datos -->
-        <div *ngIf="!visitaName" class="alert alert-danger">
-          Favor de agregar solamente letras en este campo
-        </div>
-        <input
-          [(ngModel)]="isChecked"
-          class="BotonVehiculo form-check-input"
-          id="flexCheckDefault"
-          name="Vehiculo"
-          type="checkbox"
-        />
-        <label class="form-check-label" for="flexCheckDefault">
-          ¿Tiene vehiculo?
-        </label>
-      </div>
-
-      <div class="col-5">
-        <div *ngIf="isChecked">
-          <label class="form-label" for="type_car">Tipo de Vehículo: </label>
-          <!-- Input para agregar el tipo de vehiculo -->
-          <input
-            #inputVisita
-            (keyup)="validaVehiculo(regexName, inputVisita.value)"
-            [(ngModel)]="visitante.vehicle"
-            autocomplete="off"
-            class="form-control"
-            id="type_car"
-            placeholder="Escriba aqui"
-            required
-            type="text"
-          />
-          <!--Alerta de datos -->
-          <div
-            *ngIf="!visitaVehiculo"
-            class="alert alert-danger"
-            id="alertName"
-          >
-            Favor de agregar datos correspondientes en este campo
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      
-      <div class="col-5">
-        <div *ngIf="isChecked">
-          <label class="form-label" for="placas">Placas:</label>
-          <!-- Input para agregar las placas del vsitante -->
-          <input
-            #inputPlacas
-            (keyup)="validaPlacas(regexName, inputPlacas.value)"
-            [(ngModel)]="visitante.licensePlates"
-            autocomplete="off"
-            class="form-control"
-            id="placas"
-            placeholder="Escriba aqui"
-            required
-            type="text"
-          />
-          <!--Alerta de datos -->
-          <div *ngIf="!visitaPlacas" class="alert alert-danger">
-            Favor de agregar datos correspondientes en este campo
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="col">
-      <h2>Datos del condómino</h2>
-    </div>
-    <div class="Recuadro">
-    <div class="row g-3 mt-3 row justify-content-around">
-      <div class="col-5">
-        <label class="form-label" for="nombre_condomino">Nombre:</label>
-        <input
-          (keyup)="findInquilinoByName()"
-          [(ngModel)]="name"
-          autocomplete="off"
-          class="form-control"
-          id="nombre_condomino"
-          list="nombre_condominos"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-        <div *ngIf="condominos.length > 0" class="busqueda">
-          <div *ngFor="let c of condominos">
-            <div (click)="selectInquilino(c)" class="cursor">
-              {{ c.user.name }}
+          <div class="col-5">
+            <div *ngIf="isChecked">
+              <label class="form-label" for="placas">Placas: </label>
+              <!-- Input para agregar las placas del vsitante -->
+              <input
+                #inputPlacas
+                (keyup)="validaPlacas(regexName, inputPlacas.value)"
+                [(ngModel)]="visitante.licensePlates"
+                autocomplete="off"
+                class="form-control"
+                id="placas"
+                placeholder="Escriba aqui"
+                required
+                type="text"
+              />
+              <!--Alerta de datos -->
+              <div *ngIf="!visitaPlacas" class="alert alert-danger">
+                Favor de agregar datos correspondientes en este campo
+              </div>
             </div>
           </div>
         </div>
-        <div *ngIf="error" class="alert-danger">
-          Porfavor seleccione un inquilino
-        </div>
       </div>
-
-      <div class="col-5">
-        <div *ngIf="condomino.id" class="input">
-          <label class="form-label" for="barra">Número de la casa: </label>
-          <input
-            [(ngModel)]="condomino.houseNumber"
-            autocomplete="off"
-            class="barra form-control"
-            disabled
-            id="barra"
-            name="asdasd"
-            required
-            type="text"
-          />
-          <label class="form-label" for="calle">Calle: </label>
-          <input
-            [(ngModel)]="condomino.street"
-            autocomplete="off"
-            class="barra form-control"
-            disabled
-            id="calle"
-            name="asdasd"
-            required
-            type="text"
-          />
-        </div>
+      <div class="col">
+        <h2>Datos del condómino:</h2>
       </div>
-    </div>
-    </div>
-    <div class="col">
-      <h2>Datos de Generales</h2>
-    </div>
-    
-    <div class="Recuadro">
-    <div class="row">
-      <div class="col-5">
-        <label class="form-label" for="fecha">Fecha: </label>
-        <input
-          [(ngModel)]="visitante.arrivalDate"
-          autocomplete="off"
-          class="form-control"
-          disabled
-          id="fecha"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-      </div>
-      <div class="col-5">
-        <label class="form-label" for="autoriza">Autorizada por: </label>
-        <input
-          [(ngModel)]="nameAuth"
-          autocomplete="off"
-          class="form-control"
-          disabled
-          id="autoriza"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-5">
-        <label class="form-label" for="hora">Hora: </label>
-        <input
-          [(ngModel)]="visitante.checkIn"
-          autocomplete="off"
-          class="form-control"
-          disabled
-          id="hora"
-          placeholder="Escriba aqui"
-          required
-          type="text"
-        />
-      </div>
-      <div class="col-5">
-        <label class="form-label" for="caseta">Caseta recibida:</label>
-        <!-- Input para seleccionar la casilla -->
-        <select
-          #inputCasilla
-          (keyup)="validaCasilla(regexName, inputCasilla.value)"
-          [(ngModel)]="visitante.arrivalBooth"
-          autocomplete="on"
-          class="form-control"
-          id="caseta"
-          name="Caseta"
-          required
-        >
-          <!--Alerta de datos -->
-          <div *ngIf="!visitaCasilla" class="alert alert-danger">
-            Favor de agregar datos correspondientes en este campo
+      <div class="Recuadro">
+        <div class="row g-3 mt-3 row justify-content-around">
+          <div class="col-5">
+            <!-- Se ingresa el nombre del inquilino -->
+            <label class="form-label" for="nombre_condomino">Nombre: </label>
+            <!-- Se busca el nombre del inquilino en la BD -->
+            <input
+              (keyup)="findInquilinoByName()"
+              [(ngModel)]="name"
+              autocomplete="off"
+              class="form-control"
+              id="nombre_condomino"
+              list="nombre_condominos"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+            <div *ngIf="condominos.length > 0" class="busqueda">
+              <div *ngFor="let c of condominos">
+                <div (click)="selectInquilino(c)" class="cursor">
+                  {{ c.user.name }}
+                </div>
+              </div>
+            </div>
+            <!-- Alerta para seleccionar al inquilino-->
+            <div *ngIf="error" class="alert-danger">
+              Porfavor seleccione un inquilino
+            </div>
           </div>
-          <option value="Caseta 1">
-            <h2>Caseta 1</h2>
-          </option>
-          <option value="Caseta 2">
-            <h2>Caseta 2</h2>
-          </option>
-        </select>
+          <!-- Informacion de los inquilinos -->
+          <div class="col-5">
+            <!-- Muestra el numero de la casa -->
+            <div *ngIf="condomino.id" class="input">
+              <label class="form-label" for="barra">Número de la casa: </label>
+              <input
+                [(ngModel)]="condomino.houseNumber"
+                autocomplete="off"
+                class="barra form-control"
+                disabled
+                id="barra"
+                name="asdasd"
+                required
+                type="text"
+              />
+              <!-- Muestra el nombre de la calle -->
+              <label class="form-label" for="calle">Calle: </label>
+              <input
+                [(ngModel)]="condomino.street"
+                autocomplete="off"
+                class="barra form-control"
+                disabled
+                id="calle"
+                name="asdasd"
+                required
+                type="text"
+              />
+              <!-- Muestra los familiares del residente -->
+              <label class="form-label" for="calle">Familiares: </label>
+              <input
+                [(ngModel)]="condomino.relatives"
+                autocomplete="off"
+                class="barra form-control"
+                disabled
+                id="relatives"
+                name="asdasd"
+                required
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <!-- Inputs para los datos generales de la visita -->
+      <div class="col">
+        <h2>Datos de Generales</h2>
+      </div>
 
-    </div>
-    <div class="row">
-      <div class="d-grid gap-2 justify-content-end mx-auto">
-        <button
-          (click)="save()"
-          [disabled]="!isValidForm()"
-          class="botonAgendar btn btn-success"
-          type="button"
-        >
-          Entrar
-        </button>
+      <div class="Recuadro">
+        <div class="row">
+          <div class="col-5">
+            <!-- Fecha, esta informacion se llenara al momento de seleccionar al inquilino -->
+            <label class="form-label" for="fecha">Fecha: </label>
+            <input
+              [(ngModel)]="visitante.arrivalDate"
+              autocomplete="off"
+              class="form-control"
+              disabled
+              id="fecha"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+          </div>
+          <div class="col-5">
+            <!-- Input para mostrar la persona que aprovo la visita, esta informacion se llena al seleccionar al inquilino -->
+            <label class="form-label" for="autoriza">Autorizada por: </label>
+            <input
+              [(ngModel)]="nameAuth"
+              autocomplete="off"
+              class="form-control"
+              disabled
+              id="autoriza"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-5">
+            <!-- Input para mostrar la hora de la visita, esta informacion se llena al seleccionar al inquilino -->
+            <label class="form-label" for="hora">Hora: </label>
+            <input
+              [(ngModel)]="visitante.checkIn"
+              autocomplete="off"
+              class="form-control"
+              disabled
+              id="hora"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+          </div>
+          <div class="col-5">
+            <label class="form-label" for="caseta">Caseta recibida:</label>
+            <!-- Input para seleccionar la casilla -->
+            <select
+              #inputCasilla
+              (keyup)="validaCasilla(regexName, inputCasilla.value)"
+              [(ngModel)]="visitante.arrivalBooth"
+              autocomplete="on"
+              class="form-control"
+              id="caseta"
+              name="Caseta"
+              required
+            >
+              <!--Alerta de datos -->
+              <div *ngIf="!visitaCasilla" class="alert alert-danger">
+                Favor de agregar datos correspondientes en este campo
+              </div>
+              <option value="Caseta 1">
+                <h2>Caseta 1</h2>
+              </option>
+              <option value="Caseta 2">
+                <h2>Caseta 2</h2>
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-grid gap-2 justify-content-end mx-auto">
+          <button
+            (click)="save()"
+            [disabled]="!isValidForm()"
+            class="botonAgendar btn btn-success"
+            type="button"
+          >
+            Entrar
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+    <!-- --------------------------------------Proveedor--------------------------------------------- -->
+    <div *ngIf="visitante.type_visitor === 'Proveedor'">
+      <div class="col">
+        <h2>Datos del Proveedor</h2>
+      </div>
+      <div class="Recuadro">
+        <div class="row">
+          <div class="col-5">
+            <label class="form-label">Nombre:</label>
+            <!-- Input para ingresar el nombre del visitante -->
+            <input
+              #inputVisita
+              (keyup)="findInquilinoByName()"
+              (keyup)="validaNombre(regexName, inputVisita.value)"
+              [(ngModel)]="visitante.name"
+              autocomplete="off"
+              class="form-control"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+
+            <!--Alerta de datos -->
+            <div *ngIf="!visitaName" class="alert alert-danger">
+              Favor de agregar solamente letras en este campo
+            </div>
+            <input
+              [(ngModel)]="isChecked"
+              class="BotonVehiculo form-check-input"
+              id="flexCheckDefault"
+              name="Vehiculo"
+              type="checkbox"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              ¿Tiene vehiculo?
+            </label>
+          </div>
+
+          <div class="col-5">
+            <div *ngIf="isChecked">
+              <label class="form-label" for="type_car"
+                >Tipo de Vehículo:
+              </label>
+              <!-- Input para agregar el tipo de vehiculo -->
+              <input
+                #inputVisita
+                (keyup)="validaVehiculo(regexName, inputVisita.value)"
+                [(ngModel)]="visitante.vehicle"
+                autocomplete="off"
+                class="form-control"
+                id="type_car"
+                placeholder="Escriba aqui"
+                required
+                type="text"
+              />
+              <!--Alerta de datos -->
+              <div
+                *ngIf="!visitaVehiculo"
+                class="alert alert-danger"
+                id="alertName"
+              >
+                Favor de agregar datos correspondientes en este campo
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-5">
+            <div *ngIf="isChecked">
+              <label class="form-label" for="placas">Placas:</label>
+              <!-- Input para agregar las placas del vsitante -->
+              <input
+                #inputPlacas
+                (keyup)="validaPlacas(regexName, inputPlacas.value)"
+                [(ngModel)]="visitante.licensePlates"
+                autocomplete="off"
+                class="form-control"
+                id="placas"
+                placeholder="Escriba aqui"
+                required
+                type="text"
+              />
+              <!--Alerta de datos -->
+              <div *ngIf="!visitaPlacas" class="alert alert-danger">
+                Favor de agregar datos correspondientes en este campo
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h2>Datos del condómino</h2>
+      </div>
+      <div class="Recuadro">
+        <div class="row g-3 mt-3 row justify-content-around">
+          <div class="col-5">
+            <label class="form-label" for="nombre_condomino">Nombre:</label>
+            <input
+              (keyup)="findInquilinoByName()"
+              [(ngModel)]="name"
+              autocomplete="off"
+              class="form-control"
+              id="nombre_condomino"
+              list="nombre_condominos"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+            <div *ngIf="condominos.length > 0" class="busqueda">
+              <div *ngFor="let c of condominos">
+                <div (click)="selectInquilino(c)" class="cursor">
+                  {{ c.user.name }}
+                </div>
+              </div>
+            </div>
+            <div *ngIf="error" class="alert-danger">
+              Porfavor seleccione un inquilino
+            </div>
+          </div>
+
+          <div class="col-5">
+            <div *ngIf="condomino.id" class="input">
+              <label class="form-label" for="barra">Número de la casa: </label>
+              <input
+                [(ngModel)]="condomino.houseNumber"
+                autocomplete="off"
+                class="barra form-control"
+                disabled
+                id="barra"
+                name="asdasd"
+                required
+                type="text"
+              />
+              <label class="form-label" for="calle">Calle: </label>
+              <input
+                [(ngModel)]="condomino.street"
+                autocomplete="off"
+                class="barra form-control"
+                disabled
+                id="calle"
+                name="asdasd"
+                required
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h2>Datos de Generales</h2>
+      </div>
+
+      <div class="Recuadro">
+        <div class="row">
+          <div class="col-5">
+            <label class="form-label" for="fecha">Fecha: </label>
+            <input
+              [(ngModel)]="visitante.arrivalDate"
+              autocomplete="off"
+              class="form-control"
+              disabled
+              id="fecha"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+          </div>
+          <div class="col-5">
+            <label class="form-label" for="autoriza">Autorizada por: </label>
+            <input
+              [(ngModel)]="nameAuth"
+              autocomplete="off"
+              class="form-control"
+              disabled
+              id="autoriza"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-5">
+            <label class="form-label" for="hora">Hora: </label>
+            <input
+              [(ngModel)]="visitante.checkIn"
+              autocomplete="off"
+              class="form-control"
+              disabled
+              id="hora"
+              placeholder="Escriba aqui"
+              required
+              type="text"
+            />
+          </div>
+          <div class="col-5">
+            <label class="form-label" for="caseta">Caseta recibida:</label>
+            <!-- Input para seleccionar la casilla -->
+            <select
+              #inputCasilla
+              (keyup)="validaCasilla(regexName, inputCasilla.value)"
+              [(ngModel)]="visitante.arrivalBooth"
+              autocomplete="on"
+              class="form-control"
+              id="caseta"
+              name="Caseta"
+              required
+            >
+              <!--Alerta de datos -->
+              <div *ngIf="!visitaCasilla" class="alert alert-danger">
+                Favor de agregar datos correspondientes en este campo
+              </div>
+              <option value="Caseta 1">
+                <h2>Caseta 1</h2>
+              </option>
+              <option value="Caseta 2">
+                <h2>Caseta 2</h2>
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-grid gap-2 justify-content-end mx-auto">
+          <button
+            (click)="save()"
+            [disabled]="!isValidForm()"
+            class="botonAgendar btn btn-success"
+            type="button"
+          >
+            Entrar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
