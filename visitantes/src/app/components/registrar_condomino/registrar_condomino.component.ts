@@ -24,7 +24,8 @@ export class RegistrarCondominoComponent implements OnInit {
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
   uri!: any;
   files!: FileList;
-
+  file!: File;
+  
   constructor(
     private condominosService: CondominosService,
     private uploadFilesService: UploadFilesService
@@ -36,6 +37,7 @@ export class RegistrarCondominoComponent implements OnInit {
   }
 
   save(): void {
+    this.condomino.user.picture = 'assets/perfil.PNG';
     this.condominosService.save(this.condomino).subscribe((condomino) => {
       Swal.fire({
         title: `El condomino ${condomino.user.name} fue guardado correctamente`,
@@ -100,4 +102,6 @@ export class RegistrarCondominoComponent implements OnInit {
       this.altaStreet
     );
   }
+
 }
+
