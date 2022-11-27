@@ -111,9 +111,7 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   isValidForm(): boolean {
     return (
       this.visitaName &&
-      this.visitaVehiculo &&
       this.visitaTarjeton &&
-      this.visitaPlacas &&
       this.visitaCasilla
     );
   }
