@@ -9,8 +9,8 @@
   padding: 10px;
 }
 
-.formulario {
-  margin: 10px;
+h2{
+  margin: 20px;
 }
 
 button {
@@ -30,6 +30,7 @@ button {
 
 .Recuadro{
   margin-bottom: 30px;
+  margin: 10px;
 }
 
 .cursor {
@@ -39,9 +40,4 @@ button {
 :hover.cursor {
   background-color: rgb(70, 186, 240);
   font-weight: bold;
-}
-.infPer{
-  position: relative;
-  left:-640px;
-  top: -70px;
 }
