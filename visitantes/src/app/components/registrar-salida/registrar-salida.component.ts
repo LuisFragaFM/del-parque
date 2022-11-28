@@ -12,6 +12,7 @@ import {formatDate} from '../../tools/formatDate';
 })
 export class RegistrarSalidaComponent implements OnInit {
   visitantes: Visitante[] = [];
+  departureTime!: string;
 
   constructor(private visitantesService: VisitantesService) {
   }
@@ -19,6 +20,7 @@ export class RegistrarSalidaComponent implements OnInit {
   ngOnInit(): void {
     this.visitantesService.getVisitantesByCheckOut(0).subscribe(({content: visitantes}) => {
       this.visitantes = visitantes;
+      this.departureTime = formatAMPM();
     });
   }
 
@@ -35,6 +37,8 @@ export class RegistrarSalidaComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
+        this.visitantes = [];
+        this.departureTime = '';
       });
     });
   }
