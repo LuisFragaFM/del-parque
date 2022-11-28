@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="buscador row rounded">
+  <!--<div class="buscador row rounded">
     <div class="col-5">
       <h3>Tipo de visita:</h3>
       <select name="id_salida" id="id_salida" class="inputVisitante form-select form-select-lg mb-3"
@@ -18,7 +18,7 @@
              name="buscaSalida">
 
     </div>
-  </div>
+  </div>-->
 
   <div *ngFor="let visitante of visitantes" class="tarjet row border border-dark border-4 rounded">
     <h2>Visitante: {{visitante.name}}</h2>
@@ -26,7 +26,7 @@
       <div class="col-5">
         <label class="form-label" for="buscaSalidaName">Nombre:</label>
         <input required autocomplete="off" type="text" placeholder="Nombre" class="inputAgendados form-control"
-               name="buscaSalidaName" id="buscaSalidaName" [(ngModel)]="visitante.name">
+               name="buscaSalidaName" id="buscaSalidaName" [(ngModel)]="visitante.name" disabled>
       </div>
       <div class="col-5">
         <label class="form-label" for="buscaHorasSalida">Hora de salida:</label>
@@ -43,8 +43,8 @@
 
       </div>
       <div class="col-5">
-        <label class="form-label" for="Caseta">Caseta:</label>
-        <select class="inputSalidas form-select form-select-lg" name="Caseta" id="Caseta">
+        <label class="form-label" for="Caseta">Caseta de salida:</label>
+        <select class="inputSalidas form-select form-select-lg" name="Caseta" id="Caseta" [(ngModel)]="visitante.departureBooth">
           <option value="Caseta 1"><h3>Caseta 1</h3></option>
           <option value="Caseta 2"><h3>Caseta 2</h3></option>
         </select>
