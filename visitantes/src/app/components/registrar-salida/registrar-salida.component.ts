@@ -26,6 +26,7 @@ export class RegistrarSalidaComponent implements OnInit {
   save( visitante: Visitante): void {
     visitante.departureTime = formatAMPM();
     visitante.departureDate = formatDate();
+    visitante.checkOut = true;
     this.visitantesService.save(visitante).subscribe((visitante) => {
       Swal.fire({
         title: `La visita de ${visitante.name} fue guardada`,
@@ -34,7 +35,6 @@ export class RegistrarSalidaComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
-        
       });
     });
   }
