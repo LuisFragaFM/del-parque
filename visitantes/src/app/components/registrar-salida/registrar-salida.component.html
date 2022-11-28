@@ -30,7 +30,7 @@
       </div>
       <div class="col-5">
         <label class="form-label" for="buscaHorasSalida">Hora de salida:</label>
-        <input required autocomplete="off" type="time" placeholder="Hora" class="inputSalidas form-control"
+        <input required disabled autocomplete="off"  placeholder="Hora" class="inputSalidas form-control"
                id="buscaHorasSalida" name="buscaHorasSalida" [(ngModel)]="visitante.departureTime">
       </div>
     </div>
@@ -38,8 +38,8 @@
     <div class="row fila2 mt-3">
       <div class="col-5">
         <label class="form-label" for="buscaHorasEntrada">Hora de entrada:</label>
-        <input required autocomplete="off" type="time" placeholder="Hora" id="buscaHorasEntrada"
-               class="inputSalidas form-control" name="buscaHorasEntrada" [(ngModel)]="visitante.checkIn">
+        <input required autocomplete="off" placeholder="Hora" id="buscaHorasEntrada"
+               class="inputSalidas form-control" disabled="" name="buscaHorasEntrada" [(ngModel)]="visitante.checkIn">
 
       </div>
       <div class="col-5">
@@ -55,7 +55,7 @@
 
       <div class="d-grid gap-2  d-md-flex justify-content-md-end mx-auto">
         <button class="botonEliminar btn btn-danger ">Eliminar</button>
-        <button class="botonGuardar btn btn-primary ">Guardar</button>
+        <button class="botonGuardar btn btn-primary " (click)="save(visitante)">Guardar</button>
       </div>
     </div>
 

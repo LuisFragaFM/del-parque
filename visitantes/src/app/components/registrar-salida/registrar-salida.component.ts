@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {VisitantesService} from '../../services/visitantes.service';
 import {Visitante} from '../../models/visitante';
+import Swal from 'sweetalert2';
+import {formatAMPM} from '../../tools/formatAMPM';
+import {formatDate} from '../../tools/formatDate';
 
 @Component({
   selector: 'app-registrar-salida',
@@ -19,4 +22,20 @@ export class RegistrarSalidaComponent implements OnInit {
     });
   }
 
+
+  save( visitante: Visitante): void {
+    visitante.departureTime = formatAMPM();
+    visitante.departureDate = formatDate();
+    this.visitantesService.save(visitante).subscribe((visitante) => {
+      Swal.fire({
+        title: `La visita de ${visitante.name} fue guardada`,
+        icon: 'success',
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: `Cerrar`,
+      }).then(() => {
+        
+      });
+    });
+  }
 }
