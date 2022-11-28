@@ -14,7 +14,7 @@ export class RegistrarSalidaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.visitantesService.getVisitantesByGoneOut(0).subscribe(({content: visitantes}) => {
+    this.visitantesService.getVisitantesByCheckOut(0).subscribe(({content: visitantes}) => {
       this.visitantes = visitantes;
     });
   }

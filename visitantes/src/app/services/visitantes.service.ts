@@ -25,8 +25,8 @@ export class VisitantesService {
     return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/un-authorized/?page=${page}`);
   }
 
-  getVisitantesByGoneOut(page: number = 0): Observable<VisitantePage> {
-    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/gone-out?page=${page}`);
+  getVisitantesByCheckOut(page: number = 0): Observable<VisitantePage> {
+    return this.http.get<VisitantePage>(`${environment.baseUrl}/visitantes/check-out?page=${page}`);
   }
 
   findById(id: string): Observable<Visitante> {
