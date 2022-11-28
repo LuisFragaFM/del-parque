@@ -48,7 +48,7 @@
             </div>
           </div>
           <!--  -->
-          <div *ngIf="error" class="alert-danger">
+          <div *ngIf="!error" class="alert-danger" id="alertName">
             Porfavor seleccione un inquilino
           </div>
           <!--  -->
@@ -195,6 +195,8 @@
         <div class="col-4 text-end">
           <button
             (click)="save()"
+            (mousemove)="validaTrabajador(regexName, nombreTrabajador.value)"
+            (mousemove)="validaTel(regexTel, telefono.value)"
             [disabled]="!isValidForm()"
             class="boton btn btn-success btn-block"
           >

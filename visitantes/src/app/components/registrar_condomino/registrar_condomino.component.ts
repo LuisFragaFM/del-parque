@@ -19,6 +19,7 @@ export class RegistrarCondominoComponent implements OnInit {
   altaTelResidente = true;
   altaMail = true;
   altaStreet = true;
+  altaRelatives = true;
   regexName: any = /[\S\s]+[\S]+/;
   regexTel: any = /^\+?[1-9][0-9]{1,12}$/;
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
@@ -90,6 +91,9 @@ export class RegistrarCondominoComponent implements OnInit {
   validaCalle(regex: any, calle: string): void {
     this.altaStreet = validaInput(regex, calle);
   }
+  validaRelatives(regex: any, relatives: string): void {
+    this.altaRelatives = validaInput(regex, relatives);
+  }
 
   // deshabilitar o habilitar boton
   isValidForm(): boolean {
@@ -98,7 +102,8 @@ export class RegistrarCondominoComponent implements OnInit {
       this.altaTelResidente &&
       this.altaTelEmergencia &&
       this.altaMail &&
-      this.altaStreet
+      this.altaStreet &&
+      this.altaRelatives
     );
   }
 
