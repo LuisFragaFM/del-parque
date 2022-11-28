@@ -53,11 +53,13 @@ export class AgendarVisitaCondominoComponent implements OnInit, OnDestroy {
       this.user = user;
       this.visitante.authorization = user.id;
       this.visitante.condomino.userId = user.id;
-      this.visitante.type_visitor = "Visitantes";
     });
   }
 
   save(): void {
+    this.visitante.authorization = this.user.id;
+    this.visitante.condomino.userId = this.user.id;
+    this.visitante.type_visitor = "Visitantes";
     this.visitantesService.save(this.visitante).subscribe((visitante) => {
       Swal.fire({
         title: `La visita de ${visitante.name} fue agendada`,
