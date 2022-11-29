@@ -13,6 +13,7 @@ import {formatDate} from '../../tools/formatDate';
 export class RegistrarSalidaComponent implements OnInit {
   visitantes: Visitante[] = [];
   departureTime!: string;
+  isLoading = true;
 
   constructor(private visitantesService: VisitantesService) {
   }
@@ -24,6 +25,14 @@ export class RegistrarSalidaComponent implements OnInit {
     });
   }
 
+  update(): void {
+    this.isLoading = true;
+    this.visitantesService.getVisitantesByCheckOut(0).subscribe(({content: visitantes}) => {
+      this.visitantes = visitantes;
+      this.departureTime = formatAMPM();
+      this.isLoading = false;
+    });
+  }
 
   save( visitante: Visitante): void {
     visitante.departureTime = formatAMPM();
@@ -37,9 +46,8 @@ export class RegistrarSalidaComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Cerrar`,
       }).then(() => {
-        this.visitantes = [];
-        this.departureTime = '';
       });
+      this.update();
     });
   }
 }
