@@ -29,13 +29,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.login();
   }
-
+// verifica que las credenciales sean correctas asi como tambien valida que los datos se recuerden
   apiLogin(email: string, password: string): void {
     this.touched = true;
     this.sessionService.setCredentials(email, password, this.rememberMe);
     this.login();
   }
-
+// asigna valores a login acorde al estado del usuario 
   login(): void {
     this.failedLogin = false;
     this.sessionService.getUser().subscribe(

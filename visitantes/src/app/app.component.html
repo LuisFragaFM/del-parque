@@ -4,26 +4,37 @@
   <router-outlet></router-outlet>
   <app-pie-pagina></app-pie-pagina>
 </div>
-
+<!-- Loggin o inicio de sesion -->
 <form class="contenido" *ngIf="!user.id">
   <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="loginperso">
       <div class="p-4" style="width: 25rem">
         <div class="d-flex justify-content-center p-2">
-          <img src="/assets/Silueta1.png" alt="log-in icon" width="40%"/>
+          <img src="/assets/Silueta1.png" alt="log-in icon" width="40%" />
         </div>
 
         <div class="d-flex justify-content-center">
-          <img src="/assets/title.PNG" alt="log-in icon" width="60%"/>
+          <img src="/assets/title.PNG" alt="log-in icon" width="60%" />
         </div>
 
         <div class="input-group-text bg-dark mt-4">
           <div class="p-2">
-            <img src="/assets/Silueta2.PNG" alt="icon username" style="height: 2rem"/>
+            <img
+              src="/assets/Silueta2.PNG"
+              alt="icon username"
+              style="height: 2rem"
+            />
           </div>
           <!-- Ingreso de correo electronico -->
-          <input class="form-control" id="email" (keydown)="validaMail(regexMail, login.value)" type="text"
-                 placeholder="Ingresa Correo" #login required/>
+          <input
+            class="form-control"
+            id="email"
+            (keydown)="validaMail(regexMail, login.value)"
+            type="text"
+            placeholder="Ingresa Correo"
+            #login
+            required
+          />
         </div>
         <!--Alerta de datos
         <div id="alertMail" class="alert alert-danger" *ngIf="!validacionMail">
@@ -31,11 +42,22 @@
         </div> -->
         <div class="input-group-text bg-dark mt-2">
           <div class="p-1">
-            <img src="/assets/Silueta3.PNG" alt="icon password" style="height: 2rem"/>
+            <img
+              src="/assets/Silueta3.PNG"
+              alt="icon password"
+              style="height: 2rem"
+            />
           </div>
           <!-- Ingreso de datos en contrase;a -->
-          <input class="form-control" id="password" (keydown)="validaPassword(regexPssw, password.value)"
-                 type="password" placeholder="Ingresa Contraseña" #password required/>
+          <input
+            class="form-control"
+            id="password"
+            (keydown)="validaPassword(regexPssw, password.value)"
+            type="password"
+            placeholder="Ingresa Contraseña"
+            #password
+            required
+          />
         </div>
         <!--Alerta de datos
         <div id="alertPassw" class="alert alert-danger" *ngIf="!validacionContra">
@@ -48,22 +70,30 @@
           <div>
             <!-- <button class="btn btn-dark w-100 mt-4" (click)="apiLogin(login.value, password.value)"
               [disabled]="!isValidForm()">-->
-            <button class="btn btn-dark w-100 mt-4" (click)="apiLogin(login.value, password.value)">
+            <button
+              class="btn btn-dark w-100 mt-4"
+              (click)="apiLogin(login.value, password.value)"
+            >
               Entrar
             </button>
             <span *ngIf="failedLogin && touched">
               Correo electronico o contraseña incorrecta
             </span>
           </div>
-          <input type="checkbox" name="remember-me" [(ngModel)]="rememberMe" id="remember-me"/>
+          <input
+            type="checkbox"
+            name="remember-me"
+            [(ngModel)]="rememberMe"
+            id="remember-me"
+          />
           <label for="remember-me">Recordar Contraseña</label>
         </div>
       </div>
       <div class="bg-dark text-center fixed-bottom text-white">
         Av. Parque Chapultepec 1050
-        <br/>
+        <br />
         Colinas del Parque
-        <br/>
+        <br />
         78260 San Luis Potosí, S.L.P.
       </div>
     </div>

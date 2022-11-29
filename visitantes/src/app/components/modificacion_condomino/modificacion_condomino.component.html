@@ -1,5 +1,6 @@
 <div class="container">
   <div class="tarjet row border border-dark border-4 rounded">
+    <!-- Busqueda del inquilino -->
     <h2>Inquilino</h2>
     <div class="col">
       <label class="form-label" for="buscaPagosName"
@@ -17,9 +18,15 @@
         required
         type="text"
       />
+      <!-- recorre la lista de los usuarios para poder mostrarlos en pantalla -->
       <div *ngIf="condominos.length > 0" class="busqueda">
         <div *ngFor="let c of condominos">
-          <div (click)="selectInquilino(c)" class="cursorb" [routerLink]="['/modificacion_condomino', c.id]">
+          <!-- Seleccion de inquilinos de la lista para mostrar en el input -->
+          <div
+            (click)="selectInquilino(c)"
+            class="cursorb"
+            [routerLink]="['/modificacion_condomino', c.id]"
+          >
             {{ c.user.name }}
           </div>
         </div>
@@ -48,7 +55,7 @@
           required
           type="text"
         />
-        <!--Alerta numero telefono-->
+        <!--Alerta nombre del residente-->
         <div *ngIf="!altaName" class="alert alert-danger">
           Ingrese el nombre del residente
         </div>
@@ -69,10 +76,7 @@
           type="number"
         />
         <!--Alerta numero telefono-->
-        <div
-          *ngIf="!altaTelResidente"
-          class="alert alert-danger"
-        >
+        <div *ngIf="!altaTelResidente" class="alert alert-danger">
           Ingrese el número de telefono del residente
         </div>
       </div>
@@ -142,14 +146,12 @@
           type="number"
         />
         <!--Alerta de datos (recibe Inquilino)-->
-        <div
-          *ngIf="!altaTelEmergencia"
-          class="alert alert-danger"
-        >
+        <div *ngIf="!altaTelEmergencia" class="alert alert-danger">
           Ingrese un número telefonico valido
         </div>
       </div>
       <div class="col-5">
+        <!-- Input para ingresar el numero de la casa del residente -->
         <label class="form-label" for="numcasa">Número de casa:</label>
         <input
           [(ngModel)]="condomino.houseNumber"
@@ -171,6 +173,7 @@
           <label for="inputTag" id="insert">
             Cambiar foto
             <i class="fa fa-2x fa-camera"></i>
+            <!-- Cambio de imagenes -->
             <input
               (change)="changeImage($event)"
               accept="image/*"
@@ -181,14 +184,16 @@
             <span id="imageName"></span>
           </label>
         </div>
-        <img *ngIf="uri" [src]="uri" alt="" class="imagenUser"/>
+        <img *ngIf="uri" [src]="uri" alt="" class="imagenUser" />
       </div>
       <div class="col-5 text-center">
+        <!-- Cambio de estado de pago -->
         <div
           (click)="condomino.paidStatus = true"
           *ngIf="!condomino.paidStatus"
           class="cursor"
         >
+          <!-- Cambia el estado a no pagado  -->
           <label class="form-label" for="noPagadoImg"> No Pagado</label>
           <img
             alt="no pagado"
@@ -197,6 +202,7 @@
             width="160px"
           />
         </div>
+        <!-- Cambia el estado a pagado  -->
         <div
           (click)="condomino.paidStatus = false"
           *ngIf="condomino.paidStatus"

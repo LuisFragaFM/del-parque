@@ -13,13 +13,14 @@ import {User} from '../../models/user';
 })
 export class RegistrarCondominoComponent implements OnInit {
   condomino: Condomino = {} as Condomino;
-
+// Variables para la activacion del boton de envio de datos
   altaName = true;
   altaTelEmergencia = true;
   altaTelResidente = true;
   altaMail = true;
   altaStreet = true;
   altaRelatives = true;
+  // RegEx a utilizar
   regexName: any = /[\S\s]+[\S]+/;
   regexTel: any = /^\+?[1-9][0-9]{1,12}$/;
   regexMail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
@@ -71,7 +72,7 @@ export class RegistrarCondominoComponent implements OnInit {
     };
   }
 
-  // funcion para validacion
+  // funciones para validacion
   validaResidente(regex: any, nombre: string): void {
     this.altaName = validaInput(regex, nombre);
   }
