@@ -31,6 +31,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
   error = false;
   nameAuth!: string;
 
+
   constructor(
     private paquetesService: PaquetesService,
     private condominosService: CondominosService,
@@ -57,6 +58,7 @@ export class RegistrarPaqueteriaComponent implements OnInit {
       this.error = true;
       return;
     }
+    this.paquete.receivesGuard= this.name;
     this.paquetesService.save(this.paquete).subscribe(() => {
       Swal.fire({
         title: `El paquete para la casa ${this.paquete.condomino.houseNumber} en la calle ${this.paquete.condomino.houseStreet} fue guardado correctamente`,

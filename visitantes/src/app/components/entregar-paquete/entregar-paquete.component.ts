@@ -44,6 +44,7 @@ export class EntregarPaqueteComponent implements OnInit {
     paquete.deliveryDate = formatDate();
     paquete.deliveryTime = formatAMPM();
     paquete.delivery = true;
+    paquete.deliveryGuard = this.visitante.authorization;
     this.paquetesService.save(paquete).subscribe(entregaPaquete => {
       Swal.fire({
         title: `El paquete fue recibido por ${entregaPaquete.receivesResident} y entregado por ${entregaPaquete.deliveryGuard}`,
