@@ -23,6 +23,7 @@ export class RegistrarVisitasGuardiaComponent implements OnInit {
   visitante: Visitante = {} as Visitante;
   condominos: Condomino[] = [];
   condomino: Condomino = {} as Condomino;
+  // Variables de activacion del boton de registro
   visitaName = true;
   visitaVehiculo = true;
   visitaTarjeton = true;

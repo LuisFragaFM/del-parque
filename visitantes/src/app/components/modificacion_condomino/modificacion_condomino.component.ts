@@ -57,7 +57,7 @@ export class Modificacion_CondominoComponent implements OnInit {
       this.condominos = condominos;
     });
   }
-
+// Modifica la informacion de los residentes dentro de la BD y el sistemna
   modify(): void {
     this.condominosService.save(this.condomino).subscribe((condomino) => {
       Swal.fire({
@@ -76,7 +76,7 @@ export class Modificacion_CondominoComponent implements OnInit {
       });
     });
   }
-
+// Borra la informacion de los residentes dentro de la BD y el sistemna
   delete(): void {
     Swal.fire({
       title: `Estas seguro que deseas borrar este condomino?`,
@@ -100,7 +100,7 @@ export class Modificacion_CondominoComponent implements OnInit {
       }
     });
   }
-
+// Funcion que sirve para la busqueda de inquilinos y mostrar la imagen en el sistema
   selectInquilino(condomino: Condomino): void {
     this.condomino = condomino;
     this.id = condomino.id;
@@ -115,7 +115,7 @@ export class Modificacion_CondominoComponent implements OnInit {
       }
     });
   }
-
+// Cambio de imagenes para el estado de pago
   changeImage(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.files = target.files as FileList;

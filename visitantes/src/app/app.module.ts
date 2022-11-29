@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
+// Componentes que se utilizaran en el desarrollo del sistema
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ListaTrabajadoresComponent} from './components/lista_trabajadores/lista_trabajadores.component';
