@@ -14,6 +14,7 @@ export class RegistrarSalidaComponent implements OnInit {
   visitantes: Visitante[] = [];
   departureTime!: string;
   isLoading = true;
+  page = 0;
 
   constructor(private visitantesService: VisitantesService) {
   }
@@ -25,10 +26,10 @@ export class RegistrarSalidaComponent implements OnInit {
     });
   }
 
-  update(): void {
+  update(page: number): void {
     this.isLoading = true;
-    this.visitantesService.getVisitantesByCheckOut(0).subscribe(({content: visitantes}) => {
-      this.visitantes = visitantes;
+    this.visitantesService.getVisitantesByCheckOut(page).subscribe(visitantes => {
+      this.visitantes = visitantes.content;
       this.departureTime = formatAMPM();
       this.isLoading = false;
     });
@@ -47,7 +48,7 @@ export class RegistrarSalidaComponent implements OnInit {
         confirmButtonText: `Cerrar`,
       }).then(() => {
       });
-      this.update();
+      this.update(this.page);
     });
   }
 }
