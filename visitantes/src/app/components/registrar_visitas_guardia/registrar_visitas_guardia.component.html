@@ -316,8 +316,7 @@
             (mousemove)="validaNombre(regexName, inputVisita.value)"
             (mousemove)="validaVehiculo(regexName, inputVisita.value)"
             (mousemove)="validaTarjeton(regexName, inputTarjeton.value)"
-            (mousemove)="validaPlacas(regexName, inputPlacas.value)"
-            #inputPlacas
+            (mousemove)="validaPlacas(regexName, inputVisita.value)"
             [disabled]="!isValidForm()"
             class="botonAgendar btn btn-success"
             type="button"
@@ -589,8 +588,7 @@
             (click)="save()"
             (mousemove)="validaNombre(regexName, inputVisita.value)"
             (mousemove)="validaVehiculo(regexName, inputVisita.value)"
-            (mousemove)="validaPlacas(regexName, inputPlacas.value)"
-            #inputPlacas
+            (mousemove)="validaPlacas(regexName, inputVisita.value)"
             [disabled]="!isValidForm()"
             class="botonAgendar btn btn-success"
             type="button"
