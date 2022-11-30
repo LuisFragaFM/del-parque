@@ -4,6 +4,8 @@ import {SessionService} from '../../services/session.service';
 import {Visitante} from '../../models/visitante';
 import Swal from 'sweetalert2';
 import {User} from 'src/app/models/user';
+import {formatAMPM} from '../../tools/formatAMPM';
+
 
 @Component({
   selector: 'app-visitas_registradas_admin',
@@ -21,6 +23,7 @@ export class VisitasRegistradasAdminComponent implements OnInit {
   id: string | undefined;
   user: User = {} as User;
   isLoading = true;
+  checkIn!: string;
 
   constructor(private visitantesService: VisitantesService,
               private sessionService: SessionService) {
@@ -37,6 +40,7 @@ export class VisitasRegistradasAdminComponent implements OnInit {
     });
     this.sessionService.getUser().subscribe(user => {
       this.user = user;
+      this.checkIn = formatAMPM();
     });
   }
 
@@ -45,13 +49,14 @@ export class VisitasRegistradasAdminComponent implements OnInit {
     this.visitantesService.getVisitantesUnauthorized(page).subscribe(visitantes => {
       this.visitantes = visitantes.content;
       this.isLoading = false;
+      this.checkIn = formatAMPM();
     });
   }
 
   modify(visitante: Visitante): void {
     visitante.authorized = true;
     visitante.authorization = this.user.id;
-
+    visitante.checkIn = this.checkIn;
     this.visitantesService.save(visitante).subscribe(v => {
       Swal.fire({
         title: `El visitante ${v.name} fue registrado correctamente`,
