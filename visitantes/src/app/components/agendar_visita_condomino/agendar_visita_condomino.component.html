@@ -7,27 +7,14 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label">Nombre</label>
-        <input
-          class="form-control"
-          (keydown)="validaVisita(regexName, nombreVisita.value)"
-          #nombreVisita
-          required
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
-          [(ngModel)]="visitante.name"
-        />
+        <input class="form-control" (keydown)="validaVisita(regexName, nombreVisita.value)" #nombreVisita required
+          autocomplete="off" type="text" placeholder="Escriba aqui" [(ngModel)]="visitante.name" />
         <!--Alerta de datos -->
         <div id="alertName" class="alert alert-danger" *ngIf="!visitaName">
           Favor de agregar solamente letras en este campo
         </div>
-        <input
-          id="flexCheckDefault"
-          class="BotonVehiculo form-check-input"
-          type="checkbox"
-          name="Vehiculo"
-          [(ngModel)]="isChecked"
-        />
+        <input id="flexCheckDefault" class="BotonVehiculo form-check-input" type="checkbox" name="Vehiculo"
+          [(ngModel)]="isChecked" />
         <label class="form-check-label" for="flexCheckDefault">
           ¿Tiene vehiculo?
         </label>
@@ -36,15 +23,8 @@
       <div class="col-5">
         <div *ngIf="isChecked">
           <label class="form-label" for="type_car">Tipo de Vehículo</label>
-          <input
-            id="type_car"
-            class="form-control"
-            required
-            autocomplete="off"
-            type="text"
-            placeholder="Escriba aqui"
-            [(ngModel)]="visitante.vehicle"
-          />
+          <input id="type_car" class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
+            [(ngModel)]="visitante.vehicle" />
         </div>
       </div>
     </div>
@@ -52,14 +32,11 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label">Tarjeton</label>
-        <input
-          class="form-control"
-          required
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
-          [(ngModel)]="visitante.card"
-        />
+        <input class="form-control" required autocomplete="off" type="text" placeholder="Escriba aqui"
+          [(ngModel)]="visitante.card" />
+      </div>
+      <div class="col-5">
+        
       </div>
     </div>
 
@@ -70,29 +47,13 @@
     <div class="row">
       <div class="col-5">
         <label for="fecha" class="form-label">Fecha</label>
-        <input
-          class="form-control"
-          id="fecha"
-          required
-          autocomplete="off"
-          type="date"
-          placeholder="Escriba aqui"
-          [(ngModel)]="visitante.arrivalDate"
-        />
+        <input class="form-control" id="fecha" required autocomplete="off" type="date" placeholder="Escriba aqui"
+          [(ngModel)]="visitante.arrivalDate" />
       </div>
       <div class="col-5">
         <label class="form-label" for="autoriza">Autorizada por</label>
-        <input
-          id="autoriza"
-          class="form-control"
-          required
-          disabled
-          autocomplete="off"
-          type="text"
-          placeholder="Escriba aqui"
-          (keyup)="findInquilinoByName()"
-          [(ngModel)]="user.name"
-        />
+        <input id="autoriza" class="form-control" required disabled autocomplete="off" type="text"
+          placeholder="Escriba aqui" (keyup)="findInquilinoByName()" [(ngModel)]="user.name" />
         <div class="busqueda" *ngIf="condominos.length > 0">
           <div *ngFor="let c of condominos">
             <div (click)="selectInquilino(c)" class="cursor">
@@ -106,15 +67,8 @@
     <div class="row">
       <div class="col-5">
         <label class="form-label" for="hora">Hora</label>
-        <input
-          class="form-control"
-          id="hora"
-          required
-          autocomplete="off"
-          type="time"
-          placeholder="Escriba aqui"
-          [(ngModel)]="visitante.checkIn"
-        />
+        <input class="form-control" id="hora" required autocomplete="off" type="time" placeholder="Escriba aqui"
+          [(ngModel)]="visitante.checkIn" />
       </div>
       <div class="col-5"></div>
     </div>
